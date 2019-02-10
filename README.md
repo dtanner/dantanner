@@ -1,2 +1,0 @@
-# dantanner
-personal website

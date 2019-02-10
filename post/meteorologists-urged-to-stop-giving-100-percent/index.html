@@ -1,0 +1,482 @@
+    <!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Dan Tanner">
+		<meta name="description" content="Personal and Semi-Professional Blog">
+		<meta name="generator" content="Hugo 0.18.1" />
+		<title>Meteorologists Urged To Stop Giving 100% &middot; Dan Tanner</title>
+		<link rel="shortcut icon" href="http://dantanner.com/images/favicon.ico">
+		<link rel="stylesheet" href="http://dantanner.com/css/style.css">
+		<link rel="stylesheet" href="http://dantanner.com/css/highlight.css">
+		
+
+		
+		<link rel="stylesheet" href="http://dantanner.com/css/monosocialiconsfont.css">
+		
+
+		
+		<link href="http://dantanner.com/index.xml" rel="alternate" type="application/rss+xml" title="Dan Tanner" />
+		
+
+		<meta property="og:title" content="Meteorologists Urged To Stop Giving 100%" />
+<meta property="og:description" content="I recently finished spending a year collecting and comparing forecasts from four different providers for seven different locations across the US.
+Background Why Did I Do It? The petty rage of a first world problem. My phone said there was a 0% chance of rain today, but it rained. More than once. This made me curious about what the forecast data actually looked like, and how different provider predictions compare." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://dantanner.com/post/meteorologists-urged-to-stop-giving-100-percent/" />
+
+
+<meta property="og:updated_time" content="2017-10-15T10:59:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+	    
+	    
+<meta itemprop="name" content="Meteorologists Urged To Stop Giving 100%">
+<meta itemprop="description" content="I recently finished spending a year collecting and comparing forecasts from four different providers for seven different locations across the US.
+Background Why Did I Do It? The petty rage of a first world problem. My phone said there was a 0% chance of rain today, but it rained. More than once. This made me curious about what the forecast data actually looked like, and how different provider predictions compare.">
+
+
+<meta itemprop="dateModified" content="2017-10-15T10:59:00&#43;00:00" />
+<meta itemprop="wordCount" content="1839">
+
+
+
+<meta itemprop="keywords" content="camping,codenarc,curl,data-science,datasource,domain-names,etcd,grails,groovy,hydration,java,java.time,joda-time,lottery,memory-less,mountain-biking,networking,playhouse,productivity,water,weather," />
+
+	    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Meteorologists Urged To Stop Giving 100%"/>
+<meta name="twitter:description" content="I recently finished spending a year collecting and comparing forecasts from four different providers for seven different locations across the US.
+Background Why Did I Do It? The petty rage of a first world problem. My phone said there was a 0% chance of rain today, but it rained. More than once. This made me curious about what the forecast data actually looked like, and how different provider predictions compare."/>
+<meta name="twitter:site" content="@https://www.twitter.com/edgescope"/>
+
+
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='http://dantanner.com/'> <span class="arrow">←</span>Home</a>
+	
+
+	
+		<a href='http://dantanner.com/about'>About</a>
+	
+
+	
+	<a class="cta" href="http://dantanner.com/index.xml">Subscribe</a>
+	
+</nav>
+
+        <section id="wrapper">
+            <article class="post">
+                <header>
+                    <h1>Meteorologists Urged To Stop Giving 100%</h1>
+                    <h2 class="headline">
+                    October 15, 2017 
+                    <br>
+                    
+                    </h2>
+                </header>
+                <section id="post-body">
+                    
+
+<p>I recently finished spending a year collecting and comparing forecasts from four different providers for seven different locations across the US.</p>
+
+<h1 id="background">Background</h1>
+
+<h3 id="why-did-i-do-it">Why Did I Do It?</h3>
+
+<p>The petty rage of a first world problem.  My phone said there was a 0% chance of rain today, but it rained.  More than once.
+This made me curious about what the forecast data actually looked like, and how different provider predictions compare.</p>
+
+<h3 id="daily-information-analyzed">Daily Information Analyzed</h3>
+
+<ul>
+<li>Low temp</li>
+<li>High temp</li>
+<li>Probability of Precipitation (POP). e.g. 70% chance of rain, or 30% chance of snow
+<br />
+<br /></li>
+</ul>
+
+<h3 id="the-forecast-providers">The Forecast Providers</h3>
+
+<p>I wanted to collect forecasts from all the providers I could find.  My requirements were:</p>
+
+<ul>
+<li>Must have a free API tier. This ruled out providers like World Weather Online and Weatherbug.<br /></li>
+<li>Must provide a numeric probability of precipitation, not just subjective info like &ldquo;partly cloudy, chance of rain&rdquo;.  This ruled out providers like OpenWeatherMap, Yahoo, and Accuweather.<br />
+<br /></li>
+</ul>
+
+<p>Given those requirements, I ended up with four: Aeris, Dark Sky, NOAA, and Weather Underground.</p>
+
+<h3 id="the-locations">The Locations</h3>
+
+<p>I used a limited set of locations, with the following goals:<br />
+<strong>I wanted a broad range of weather forecasting difficulty.</strong>
+e.g. On one end of the scale was San Diego, which is known to have some of the most stable and predictable weather.
+I also wanted the opposite of that, and according to <a href="https://fivethirtyeight.com/features/which-city-has-the-most-unpredictable-weather/">fivethirtyeight</a>, Houghton Michigan
+is the least predictable for precipitation.</p>
+
+<p><strong>I wanted the locations to be as specific as possible.</strong>
+Providers will give forecasts for a city, which can be misleading for geographically large cities.  The most consistent and comparable location I could think of
+was airport.  Some providers like Wunderground accept an airport code like <code>MSP</code>.  The others didn&rsquo;t support airport code, but do support lat/long, so I used that for the rest.</p>
+
+<p>Given those goals, I chose these seven airports:</p>
+
+<ul>
+<li>SAN (San Diego International, California)</li>
+<li>JFK (John F. Kennedy International, New York)</li>
+<li>ORD (O&rsquo;Hare International, Illinois)</li>
+<li>CMX (Houghton County Memorial, Michigan)</li>
+<li>MSP (Minneapolis/St. Paul International, Minnesota)</li>
+<li>DEN (Denver International, Colorado)</li>
+<li>SFO (San Francisco International, California)
+<br />
+<br /></li>
+</ul>
+
+<h3 id="the-collection-process">The Collection Process</h3>
+
+<p>I built a client that would use the API of each provider, scheduled to collect for all the locations each morning at the same time.
+I collected as many days in advance as the provider would give. They all gave predictions from 0 to 3 days out, so 3 days out is the farthest any of my comparisons go.</p>
+
+<p>The date range of the data is thirteen months worth of data: from August 1 2016 through August 31 2017.
+There were almost 70,000 rows of data. There were a relatively small number of errors total that resulted in missing data.
+e.g. There were a few times where the client was throttled or got some bad JSON, and a few daily observations were missing data.
+So the data&rsquo;s not perfect, but seems good enough to make some aggregate observations.
+I was pleasantly surprised by the stability of all the services though.
+Also kudos to Digital Ocean for 100% uptime for over a year on a $5/month virtual private server.</p>
+
+<p>If you look at the <a href="https://github.com/dtanner/weatherbane">code</a>, you&rsquo;ll see Dark Sky&rsquo;s data labeled as forecast.io - they changed their name midway through my collection process, but I kept
+the old name to be consistent.</p>
+
+<h1 id="don-t-bore-us-get-to-the-chorus">Don&rsquo;t Bore Us, Get To The Chorus</h1>
+
+<p>These were the questions I found most interesting to answer&hellip;</p>
+
+<h1 id="you-said-it-wouldn-t-rain-today">You Said It Wouldn&rsquo;t Rain Today!</h1>
+
+<p>This chart shows a count of the number of times providers predicted a 0% probability of precipitation today,
+when in fact there was at least 0.1 inches of precipitation.  Lower is better.
+<img src="/weather/incorrect-0pct-pop-today.png" alt="" />
+This is the most lenient way to view this scenario. NOAA and Weather Underground had the highest count at 8 and 7 respectfully.
+Aeris and Dark Sky had it happen one time each.  This should <strong>never</strong> happen.  It looks much worse if you count <em>any</em> precipitation.</p>
+
+<h3 id="where-did-these-errors-happen">Where did these errors happen?</h3>
+
+<p><img src="/weather/incorrect-0-pop-by-location.png" alt="" />
+Turns out O&rsquo;Hare was even more difficult to predict than Houghton for this date range.  San Diego&rsquo;s not even on the board.
+This confirms you can achieve a great work/life balance in San Diego as a forecaster.</p>
+
+<h3 id="you-were-sure-it-wouldn-t-rain-three-days-ago">You Were Sure It Wouldn&rsquo;t Rain Three Days Ago?</h3>
+
+<p>If you include predictions from <strong>three or less</strong> days out, you end up with these counts by provider.
+Again, this is forecasting a 0% chance of precipitation, when it reality there was at least 1/10th an inch of precip.<br />
+<img src="/weather/incorrect-0-pop-3-days.png" alt="" />
+NOAA&rsquo;s data is pretty bad for this span - I&rsquo;m not sure what&rsquo;s going on.  The lesson here is don&rsquo;t rely on NOAA&rsquo;s API data for long-range precipitation predictions.</p>
+
+<h1 id="you-were-sure-it-would-rain">You Were Sure It Would Rain!</h1>
+
+<p>Not nearly as serious a cloud crime since you hopefully brought your rain jacket, but still something that should never happen&hellip;
+<img src="/weather/incorrect-100-pop-same-day.png" alt="" />
+Above is the count by provider of those that predicted a 100% chance of precipitation today, when in reality there was none.</p>
+
+<h1 id="nailed-it">Nailed It!</h1>
+
+<p>Enough complaining. Let&rsquo;s talk about those providers that totally nailed it for various situations.</p>
+
+<h3 id="perfect-no-precipitation-prediction-today">Perfect no-precipitation prediction today</h3>
+
+<p>Here&rsquo;s a chart showing the count by provider for correctly predicting a 0% chance of precipitation today:
+<img src="/weather/correct-no-precip-that-day.png" alt="" />
+Often the sunny skies optimist, NOAA unsurprisingly is correct the most often at predicting no precipitation.</p>
+
+<h3 id="rain-long-shots">Rain Long-Shots</h3>
+
+<p>Here&rsquo;s a chart showing the count by provider for correctly being 100% sure about it raining 3 days out:
+<img src="/weather/rain-long-shots.png" alt="" />
+This was interesting to me - Wunderground is 100% sure about precipitation from 3 days out quite a bit, and they weren&rsquo;t ever wrong about that.
+(Again using 1/10th of an inch as the threshold of substantial precipitation.)  They get the bold award.</p>
+
+<h3 id="nailing-today-s-lows">Nailing today&rsquo;s lows</h3>
+
+<p>A count by provider correctly predicting today&rsquo;s low temp
+<img src="/weather/perfect-todays-lows.png" alt="" />
+Also interesting to me - Dark Sky has almost twice the count compared to the other providers in predicting today&rsquo;s low temperature.</p>
+
+<h3 id="nailing-today-s-lows-by-location">Nailing today&rsquo;s lows by location</h3>
+
+<p><img src="/weather/perfect-low-prediction-by-location.png" alt="" />
+You&rsquo;re almost twice as likely to get a perfect low prediction in San Francisco compared to Denver.</p>
+
+<h3 id="nailing-today-s-highs">Nailing today&rsquo;s highs</h3>
+
+<p><img src="/weather/perfect-highs.png" alt="" />
+The range between providers here is much smaller.  Where Dark Sky was the best at predicting today&rsquo;s low, they are the worst of the bunch at predicting today&rsquo;s high.</p>
+
+<h1 id="error-mean-absolute-deviation-mad">Error Mean Absolute Deviation (MAD)</h1>
+
+<p>AKA objectively speaking, how far off were the predictions from the actual measurements for the entire date range?
+The formula is Sum(Absolue Value of(prediction - actual)) / Number of Predictions.<br />
+A zero value would be a perfect prediction every time.  A lower value is more accurate.</p>
+
+<h3 id="today-s-low-temp-mad-by-provider">Today&rsquo;s low temp MAD by provider</h3>
+
+<p><img src="/weather/mad-lows.png" alt="" />
+This chart correlates closely with the counts of getting the low temp exactly right, which implies Dark Sky is consistently better at predicting low temps,
+with the other providers doing about the same as each other for that category.</p>
+
+<h3 id="today-s-low-temp-mad-by-location">Today&rsquo;s low temp MAD by location</h3>
+
+<p><img src="/weather/mad-lows-by-location.png" alt="" />
+This chart shows Denver as being the most difficult location among the gang to predict for low temps, with San Diego and SFO the easiest.</p>
+
+<h3 id="today-s-high-temp-mad-by-provider">Today&rsquo;s high temp MAD by provider</h3>
+
+<p><img src="/weather/mad-highs.png" alt="" />
+Wunderground on average is the most accurate at getting highs on average.  What&rsquo;s mildly interesting is that NOAA and Wunderground tied
+on their counts of <em>exactly</em> predicting today&rsquo;s high temp, so Wunderground having a lower MAD means they were on average closer to the actual high.</p>
+
+<h2 id="measuring-precipitation-accuracy">Measuring Precipitation Accuracy</h2>
+
+<p>You can use the MAD calculation for <strong>temperature</strong> predictions to get an objective average score, but it&rsquo;s not as clear how to objectively measure for <strong>precipitation</strong> predictions, since they&rsquo;re probabilities and not absolute values.
+I think we can get close though.  For example, if you say there&rsquo;s a 30% chance of rain, I say there&rsquo;s a 90% chance of rain, and it doesn&rsquo;t rain, you obviously did a better job of predicting rain than I did.</p>
+
+<p>For cases where it didn&rsquo;t rain, the score for a prediction could be the probability value itself.
+e.g. Give you an error score of 0.3 for that prediction, and me a score of 0.9.  A lower score indicates a more accurate prediction.</p>
+
+<p>For cases where it did actually rain, the error score would be <code>1 - POP</code>.<br />
+e.g. It rained, I predicted 30%, so my error score is <code>1 - 0.3</code>, or <code>0.7</code>.<br />
+Using this technique, here&rsquo;s a MAD-like score for today&rsquo;s precipitation prediction by provider for the time frame:<br />
+<img src="/weather/mad-pop.png" alt="" /></p>
+
+<h2 id="measuring-temperature-accuracy-by-tier">Measuring Temperature Accuracy By Tier</h2>
+
+<p>How about some counts showing the <em>subjective quality</em> of each forecast?
+i.e. Let&rsquo;s say that exactly predicting today&rsquo;s temperature is considered <em>perfect</em>, within 1-3 degrees is <em>good</em>, 4-6 is <em>ok</em>, and &gt; 6 is <em>bad</em>.</p>
+
+<h3 id="quality-count-for-today-s-low-temps">Quality count for today&rsquo;s low temps</h3>
+
+<p><img src="/weather/low-tiered.png" alt="" />
+Once again, this chart shows that Dark Sky is considerably better than anyone else at predicting the low temp.</p>
+
+<h3 id="quality-count-for-today-s-high-temps">Quality count for today&rsquo;s high temps</h3>
+
+<p><img src="/weather/high-tiered.png" alt="" />
+The accuracy comparison of the providers is much closer for measuring today&rsquo;s high temp.</p>
+
+<h2 id="distance-from-noaa">Distance from NOAA</h2>
+
+<p>My understanding is that NOAA is our government agency that does the heavy lifting for all the providers,
+and then they augment that information with their own analysis to further improve the quality of information.
+One question I had was, how much do the providers&rsquo; forecasts differ from NOAA&rsquo;s?</p>
+
+<h3 id="distance-from-noaa-for-today-s-low">Distance from NOAA for today&rsquo;s low</h3>
+
+<p><img src="/weather/noaa-distance-low.png" alt="" />
+Dark Sky deviates from NOAA over twice as much as the next provider.
+This was interesting, given how much better they were at predicting today&rsquo;s low temp compared to everyone else.<br />
+This made me wonder if there was a correlation between distance from NOAA and accuracy.</p>
+
+<h3 id="distance-from-noaa-for-today-s-high">Distance from NOAA for today&rsquo;s high</h3>
+
+<p><img src="/weather/noaa-distance-high.png" alt="" />
+Again Dark Sky deviates from NOAA by far more than anyone, but their high temp accuracy was the least accurate.
+So being different isn&rsquo;t necessarily better in this case.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>This turned out to be more charts that I originally intended, but it was interesting to me to view the data from different angles.
+Each provider presents the information in a little different way, with some more accurate in different areas than others.</p>
+
+<p>I did make one change to my phone&rsquo;s weather apps.  In the past, I only used Wunderground because it has the best user interface for how I want to see the information.<br />
+Since analyzing this data, I&rsquo;ve also added Dark Sky to my apps simply because they were so good at low temp predictions.<br />
+Their UI is novel, but its hyper-local precipitation predictions actually haven&rsquo;t been more useful or accurate for me than glancing at the radar.</p>
+
+<p>From a novice consumer&rsquo;s perspective on forecasting, I would make these changes:</p>
+
+<ul>
+<li>Analyze and adjust those 0% and 100% POP error situations.  They shouldn&rsquo;t ever happen.  Ever.<br /></li>
+<li>License or emulate whatever special sauce Dark Sky puts in today&rsquo;s low temp predictions.</li>
+<li>Recognize current limits in long-range forecasting and lessen forecasting confidence for 3 or more days out to be between 20-80% or some other squishy number.  No more zero and 100% chance of rain unless we&rsquo;re really really sure.<br />
+<br /></li>
+</ul>
+
+<h1 id="did-i-make-any-mistakes">Did I make any mistakes?</h1>
+
+<p>Please let me know if I did and I&rsquo;ll update the article.  The code and data is referenced below, and social links are in the footer.</p>
+
+<h1 id="references">References</h1>
+
+<ul>
+<li><strong>Forecast API Client Project</strong>: <a href="https://github.com/dtanner/weatherbane">https://github.com/dtanner/weatherbane</a></li>
+<li><strong>Queries used to collect the data</strong>: <a href="https://github.com/dtanner/weatherbane/raw/master/db/prediction-results-queries.sql">https://github.com/dtanner/weatherbane/raw/master/db/prediction-results-queries.sql</a></li>
+<li><strong>Data Collected</strong>: <a href="https://github.com/dtanner/weatherbane/raw/master/data/prediction-results.csv.zip">https://github.com/dtanner/weatherbane/raw/master/data/prediction-results.csv.zip</a></li>
+<li><strong>NOAA Weather History Downloads</strong>: <a href="https://www.ncdc.noaa.gov/cdo-web/search">https://www.ncdc.noaa.gov/cdo-web/search</a></li>
+</ul>
+
+                </section>
+            </article>
+            <footer id="post-meta" class="clearfix">
+                <a href="https://twitter.com/edgescope">
+                        <img class="avatar" src="http://dantanner.com/images/avatar.png">
+                        <div>
+                            <span class="dark">Dan Tanner</span>
+                            <span></span>
+                        </div>
+                    </a>
+                <section id="sharing">
+                    <a class="twitter" href="https://twitter.com/intent/tweet?text=http%3a%2f%2fdantanner.com%2fpost%2fmeteorologists-urged-to-stop-giving-100-percent%2f - Meteorologists%20Urged%20To%20Stop%20Giving%20100%25 by @edgescope"><span class="icon-twitter"> Tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+                </section>
+            </footer>
+
+            
+
+            <ul id="post-list" class="archive readmore">
+    <h3>Read more</h3>
+
+    
+    
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/meteorologists-urged-to-stop-giving-100-percent/">Meteorologists Urged To Stop Giving 100%<aside class="dates">Oct 15</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/camp-lotto/">Camp Lotto<aside class="dates">Aug 30</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/frame-hydration/">Mountain Bike Frame Hydration Hack<aside class="dates">Aug 11</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/take-note/">Markdown Notes<aside class="dates">Jul 16</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/curl-saves-the-day/">curl saves the day<aside class="dates">Jul 15</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/groovy-is-still-better-than-java/">Groovy is still better than Java<aside class="dates">Jan 25</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/javatime-for-impatient/">java.time for the extremely impatient<aside class="dates">Apr 13</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/dynamic-grails-tomcat-datasource/">Dynamic Grails Tomcat datasource configuration with Etcd<aside class="dates">Apr 30</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/groovy-collect-vs-spread-dot-operator/">Groovy collect vs spread-dot operator<aside class="dates">Nov 15</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/playhouse/">Playhouse<aside class="dates">Oct 16</aside></a>
+        </li>
+        
+   
+</ul>
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    
+    <a class="symbol" href="https://www.facebook.com/dan.tanner.12">
+        circlefacebook
+    </a>
+    
+    <a class="symbol" href="https://www.github.com/dtanner">
+        circlegithub
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/edgescope">
+        circletwitterbird
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+        © Copyright 2019 Dan Tanner
+    
+    </p>
+</footer>
+
+        </section>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://dantanner.com/js/main.js"></script>
+<script src="http://dantanner.com/js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+    </body>
+</html>

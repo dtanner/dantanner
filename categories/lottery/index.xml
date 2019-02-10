@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lottery on Dan Tanner</title>
+    <link>http://dantanner.com/categories/lottery/index.xml</link>
+    <description>Recent content in Lottery on Dan Tanner</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://dantanner.com/categories/lottery/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Camp Lotto</title>
+      <link>http://dantanner.com/post/camp-lotto/</link>
+      <pubDate>Wed, 30 Aug 2017 11:09:00 +0000</pubDate>
+      
+      <guid>http://dantanner.com/post/camp-lotto/</guid>
+      <description>
+
+&lt;p&gt;There&amp;rsquo;s a great &lt;a href=&#34;https://www.ymcamn.org/camps/camp_du_nord&#34;&gt;family camp&lt;/a&gt; my family has attended over the years.
+We spend a week on a beautiful lake with good friends, pawn our children off for a few hours each day, and disconnect from the world.&lt;/p&gt;
+
+&lt;p&gt;It started as a tiny little family camp decades ago, and is now so popular there&amp;rsquo;s a &lt;a href=&#34;https://www.ymcamn.org/camps/camp_du_nord/family_camp/summer/summer_reservations__lottery&#34;&gt;lottery system&lt;/a&gt; held each winter to determine who gets in for the summer.&lt;/p&gt;
+
+&lt;p&gt;The lottery process has some major flaws though, and gives a sour taste to an otherwise well-executed operation.  Specifically:&lt;/p&gt;
+
+&lt;h4 id=&#34;it-wastes-time&#34;&gt;It Wastes Time&lt;/h4&gt;
+
+&lt;p&gt;Applicants register for the lottery online with their preferences, choosing preferred cabins, weeks, and a preference of cabin vs. week (i.e. is the week more important than the cabin?).
+This is good.&lt;/p&gt;
+
+&lt;p&gt;But the actual lottery happens on a Saturday and requires all applicants to be available from 8am-1pm.
+The staff calls each family in order, discusses the options again, and the family makes a choice based on what&amp;rsquo;s available.&lt;/p&gt;
+
+&lt;p&gt;As an applicant, blocking out half a Saturday to be available by phone for a frantic mini-planning session is a hassle, and if you miss the call you get bumped down the list.
+And I can only imagine how chaotic the office must be.
+There are 12 weeks available each summer, with around 45 sites.
+That&amp;rsquo;s over 500 potential reservations to make over the phone, followed by an apology call to each family that was waiting all morning and didn&amp;rsquo;t make the lottery.&lt;/p&gt;
+
+&lt;h4 id=&#34;it-s-unfair&#34;&gt;It&amp;rsquo;s Unfair&lt;/h4&gt;
+
+&lt;p&gt;So you didn&amp;rsquo;t make the lottery this year.  Oh well.  Looks like we&amp;rsquo;ll have to vacation on our private island &lt;em&gt;again&lt;/em&gt;.  Wouldn&amp;rsquo;t it be nice if you were put in the front of the line for next year&amp;rsquo;s lottery?
+There&amp;rsquo;s nothing in place currently to allow this though, and some people wait years to get in.&lt;/p&gt;
+
+&lt;h4 id=&#34;it-doesn-t-produce-the-best-outcome&#34;&gt;It Doesn&amp;rsquo;t Produce The Best Outcome&lt;/h4&gt;
+
+&lt;p&gt;Applicants each make a different set of choices, and those available choices narrow as the lottery progresses.
+In the end, the organization is left with a number of unpicked sites and weeks.&lt;br /&gt;
+What if the first family chosen in the lottery would&amp;rsquo;ve been happy with one of those unpicked sites?
+With a manual lottery process, you only get one pass.
+Wouldn&amp;rsquo;t it be nice if you could optimize the combination of preferred sites and weeks to produce a lottery that accomodated the most campers?&lt;/p&gt;
+
+&lt;h1 id=&#34;camp-lotto&#34;&gt;Camp Lotto&lt;/h1&gt;
+
+&lt;p&gt;Thus was born &lt;a href=&#34;https://github.com/dtanner/camplotto&#34;&gt;Camp Lotto&lt;/a&gt; - an attempt to solve these problems.
+At a high level, it takes a list of available reservations and lottery registrations, and produces a list of reservations.
+The process is similar to a &lt;a href=&#34;https://en.wikipedia.org/wiki/Monte_Carlo_method&#34;&gt;Monte Carlo simulation&lt;/a&gt;,
+in that it simulates the lottery many times.  The winner is the lottery simulation that leaves the fewest number of available reservations.&lt;/p&gt;
+
+&lt;h4 id=&#34;features&#34;&gt;Features&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Applicants give 3 pieces of info: an ordered list of acceptable sites, an ordered list of acceptable weeks, and a preference indicating if their week or site should be prioritized when finding the next available reservation.&lt;/li&gt;
+&lt;li&gt;You can mark applicants as having priority (e.g. those people that didn&amp;rsquo;t get in last year). Every time it runs the lottery simulation, it places them at the top of the shuffled list.&lt;/li&gt;
+&lt;li&gt;You can mark sites as unavailable for certain weeks.  e.g. Scheduled repairs or other known unavailabilies.&lt;/li&gt;
+&lt;li&gt;Along with producing a spreadsheet of reservations, it also produces a sheet of any sites still open and unmatched registrations.
+Those remaining sites could be made available for open enrollment, and next year all the unmatched registrations could be given priority.
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;input-and-output-examples&#34;&gt;Input and Output Examples&lt;/h4&gt;
+
+&lt;p&gt;The first iteration of the app uses a spreadsheet for input and output, because everyone knows how to use a spreadsheet. Here&amp;rsquo;s what the available reservations sheet looks like:&lt;br /&gt;
+&lt;img src=&#34;http://dantanner.com/camplotto/input-available-reservations.png&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
+An &lt;code&gt;x&lt;/code&gt; in the cell indicates the site is available that week.  In the above example, Site B is considered unavailable for Week 2.&lt;/p&gt;
+
+&lt;p&gt;Next is the lottery registration information.  In reality the preferences will be all over the place, but you get the idea.
+&lt;img src=&#34;http://dantanner.com/camplotto/input-registrations.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When the program is run, it produces the following spreadsheet.  The first sheet consists of the calculated reservations:&lt;br /&gt;
+&lt;img src=&#34;http://dantanner.com/camplotto/output-reservations.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Any unreserved sites would be listed in the &lt;em&gt;Sites Still Open&lt;/em&gt; tab, and any unmatched registrations would look like this:&lt;br /&gt;
+&lt;img src=&#34;http://dantanner.com/camplotto/output-unmatched-registrations.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;next-steps&#34;&gt;Next Steps&lt;/h1&gt;
+
+&lt;p&gt;The project is open source (GPL-3 licensed).  Currently it&amp;rsquo;s run as a java app on your machine.
+One obvious next step is to have it run on a server and let people upload a spreadsheet to it through a web app, or integrate through some other type of data format.&lt;/p&gt;
+
+&lt;p&gt;Hopefully my favorite summer camp will use it.
+I pinged them about it just before the busy summer season began, and they seemed excited, but we haven&amp;rsquo;t reconnected yet.
+So until they adopt this new system, please disregard all of my praise for the camp.
+It&amp;rsquo;s actually a terrible mosquito-infested nightmare, completely devoid of wifi, and you shouldn&amp;rsquo;t even think about going there.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

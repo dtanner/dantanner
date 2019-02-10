@@ -1,0 +1,457 @@
+    <!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Dan Tanner">
+		<meta name="description" content="Personal and Semi-Professional Blog">
+		<meta name="generator" content="Hugo 0.18.1" />
+		<title>Groovy is still better than Java &middot; Dan Tanner</title>
+		<link rel="shortcut icon" href="http://dantanner.com/images/favicon.ico">
+		<link rel="stylesheet" href="http://dantanner.com/css/style.css">
+		<link rel="stylesheet" href="http://dantanner.com/css/highlight.css">
+		
+
+		
+		<link rel="stylesheet" href="http://dantanner.com/css/monosocialiconsfont.css">
+		
+
+		
+		<link href="http://dantanner.com/index.xml" rel="alternate" type="application/rss+xml" title="Dan Tanner" />
+		
+
+		<meta property="og:title" content="Groovy is still better than Java" />
+<meta property="og:description" content="The idea for this post started last week when a gifted teammate, whose experience lies outside JVM languages, asked me if it was still worth it to write Groovy over Java. Good question&hellip;
+For the last five years, when it comes to writing for the JVM, it&rsquo;s been mostly Groovy for me.
+Crap, it&rsquo;s been almost ten years. dan feels his bones creaking&hellip;
+When I first saw Venkat Subramaniam gliding through his beautiful java to groovy idioms at a conference, I was impressed." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://dantanner.com/post/groovy-is-still-better-than-java/" />
+
+
+<meta property="og:updated_time" content="2017-01-25T01:20:43-06:00"/>
+
+
+
+
+
+
+
+
+
+
+	    
+	    
+<meta itemprop="name" content="Groovy is still better than Java">
+<meta itemprop="description" content="The idea for this post started last week when a gifted teammate, whose experience lies outside JVM languages, asked me if it was still worth it to write Groovy over Java. Good question&hellip;
+For the last five years, when it comes to writing for the JVM, it&rsquo;s been mostly Groovy for me.
+Crap, it&rsquo;s been almost ten years. dan feels his bones creaking&hellip;
+When I first saw Venkat Subramaniam gliding through his beautiful java to groovy idioms at a conference, I was impressed.">
+
+
+<meta itemprop="dateModified" content="2017-01-25T01:20:43-06:00" />
+<meta itemprop="wordCount" content="1467">
+
+
+
+<meta itemprop="keywords" content="camping,codenarc,curl,data-science,datasource,domain-names,etcd,grails,groovy,hydration,java,java.time,joda-time,lottery,memory-less,mountain-biking,networking,playhouse,productivity,water,weather," />
+
+	    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Groovy is still better than Java"/>
+<meta name="twitter:description" content="The idea for this post started last week when a gifted teammate, whose experience lies outside JVM languages, asked me if it was still worth it to write Groovy over Java. Good question&hellip;
+For the last five years, when it comes to writing for the JVM, it&rsquo;s been mostly Groovy for me.
+Crap, it&rsquo;s been almost ten years. dan feels his bones creaking&hellip;
+When I first saw Venkat Subramaniam gliding through his beautiful java to groovy idioms at a conference, I was impressed."/>
+<meta name="twitter:site" content="@https://www.twitter.com/edgescope"/>
+
+
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='http://dantanner.com/'> <span class="arrow">←</span>Home</a>
+	
+
+	
+		<a href='http://dantanner.com/about'>About</a>
+	
+
+	
+	<a class="cta" href="http://dantanner.com/index.xml">Subscribe</a>
+	
+</nav>
+
+        <section id="wrapper">
+            <article class="post">
+                <header>
+                    <h1>Groovy is still better than Java</h1>
+                    <h2 class="headline">
+                    January 25, 2017 
+                    <br>
+                    
+                    </h2>
+                </header>
+                <section id="post-body">
+                    
+
+<p>The idea for this post started last week when a gifted teammate, whose experience lies outside JVM languages, asked me if it was still worth it to write Groovy over Java.  Good question&hellip;</p>
+
+<p>For the last five years, when it comes to writing for the JVM, it&rsquo;s been mostly Groovy for me.<br />
+Crap, it&rsquo;s been almost ten years.  <em>dan feels his bones creaking&hellip;</em></p>
+
+<p>When I first saw Venkat Subramaniam gliding through his beautiful java to groovy idioms at a conference, I was impressed.</p>
+
+<p>Little things were nice, like being able to use <code>println 'hello'</code> instead of <code>System.out.println(&quot;hello&quot;);</code>.</p>
+
+<p>Even better was reading a file line by line.  It went from this:</p>
+
+<pre><code>BufferedReader br = new BufferedReader(new FileReader(&quot;file.txt&quot;));
+try {
+    StringBuilder sb = new StringBuilder();
+    String line = br.readLine();
+
+    while (line != null) {
+        sb.append(line);
+        sb.append(System.lineSeparator());
+        line = br.readLine();
+        System.out.println(&quot;line = &quot; + line);
+    }
+} finally {
+    if (br != null) {
+        br.close();
+    }
+}
+</code></pre>
+
+<p>to this:</p>
+
+<pre><code>new File(&quot;file.txt&quot;).eachLine { println &quot;line = $it&quot; }
+</code></pre>
+
+<p><em>Look Ma, a one-liner!</em> That got me hooked.</p>
+
+<p>The <strong>biggest</strong> thing though, which I&rsquo;ve grown to appreciate even more over the years, is the <a href="http://docs.groovy-lang.org/latest/html/groovy-jdk/java/util/Collection.html">Collection</a> interface. The intrinsic power it gives to collection-like objects is immense.  And hey, c&rsquo;mon over here <a href="http://groovy-lang.org/groovy-dev-kit.html#_iterating_on_maps">Map</a> - you&rsquo;re iterable too as far as we&rsquo;re concerned.</p>
+
+<p>There&rsquo;s basic stuff like <code>10.times { println it }</code>, and
+<code>someCollection.each { println it }</code>, which shaves a few lines of code from the existing java iteration techniques.</p>
+
+<p>Then there&rsquo;s commonly useful but more powerful improvements like <code>collect()</code>, where you iterate through a collection of things, creating a new collection based on a function. e.g. going from this pre-Java 8 code:</p>
+
+<pre><code>List&lt;Integer&gt; input = Arrays.asList(1, 2, 3);
+List results = new ArrayList();
+for (Iterator&lt;Integer&gt; iterator = input.iterator(); iterator.hasNext(); ) {
+    Integer integer = iterator.next();
+    results.add(integer * 2);
+}
+</code></pre>
+
+<p>to:</p>
+
+<pre><code>List results = [1, 2, 3].collect { it * 2 }
+</code></pre>
+
+<p>Filtering a collection is a similar improvement, where you start with a collection and filter it down based on a condition applied to each element.  e.g. going from (once again, pre-Java 8):</p>
+
+<pre><code>List&lt;Integer&gt; input = Arrays.asList(1, 2, 3, 4);
+List evenNumbers = new ArrayList();
+for (Iterator&lt;Integer&gt; iterator = input.iterator(); iterator.hasNext(); ) {
+    Integer integer = iterator.next();
+    if (integer % 2 == 0) {
+       evenNumbers.add(integer);
+    }
+}
+</code></pre>
+
+<p>to:</p>
+
+<pre><code>List evenNumbers = [1, 2, 3, 4].findAll { it % 2 == 0 }
+</code></pre>
+
+<p>It gets even more concise and powerful with methods like <code>collectMany</code> and <code>inject</code>.  They&rsquo;re slightly more complicated, but worth the couple minutes of time it takes to understand.  If I were to give one piece of advice to people new to Groovy, it would be to thoroughly explore that interface.</p>
+
+<p>Lispers may smugly remark, &ldquo;oh, how cute; you&rsquo;re learning functional programming&rdquo;.  And they&rsquo;re right!
+The pragmatic functional features of Groovy provide a gentle transition from object-oriented to more pure functional programming for many developers.</p>
+
+<p>Fast-forward a bunch of years, and things have changed. Even though Java hasn&rsquo;t been progressing as fast as many would like, they&rsquo;ve made some significant changes to include features introduced by Groovy, and pioneered by other languages; most notably lambdas and streaming.  For example, the above Java examples can now be written like this:</p>
+
+<pre><code>// read each line in a file
+try (Stream&lt;String&gt; stream = Files.lines(Paths.get(&quot;file.txt&quot;))) {
+    stream.forEach(System.out::println);
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+// collect
+List&lt;Integer&gt; results = Stream.of(1, 2, 3).map(v -&gt; v * 2).collect(Collectors.toList());  
+
+// filter
+List&lt;Integer&gt; evenNumbers = Stream.of(1, 2, 3, 4).filter(v -&gt; v % 2 == 0).collect(Collectors.toList());
+</code></pre>
+
+<p>&hellip;<strong>much</strong> improved over the old Java syntax. Still not as concise or elegant as Groovy, but fairly close.</p>
+
+<h3 id="back-to-the-original-question">Back to the original question&hellip;</h3>
+
+<p>Is it still worth it to write groovy? Fortunately, I had a chance to make a direct comparison that same week.</p>
+
+<p>It started with a little bake-off we&rsquo;re doing to compare a couple different application design techniques.  I wrote a small service in plain groovy, and my teammate wrote one in java.  Our apps are running in a container that will have their environment-specific overrides specified as environment variables.  I strongly prefer typed configuration objects in the code, rather than things like generic Maps or JSON objects.  Ten minutes of googling, and I couldn&rsquo;t find a utility to let me override typed configuration object values with environment variables.  So I created this project in groovy: <a href="https://github.com/dtanner/env-config-loader-groovy">https://github.com/dtanner/env-config-loader-groovy</a></p>
+
+<p>My teammate initially used the <a href="https://github.com/typesafehub/config">typesafe/config</a> project to do his configuration overrides.  But its environment overrides are a little verbose IMO, we didn&rsquo;t need its additional complexity, and solving the same problem with different tools adds to the maintenance costs for the team.
+So I created a pure java version of the env-config-loader tool as well: <a href="https://github.com/dtanner/env-override">https://github.com/dtanner/env-override</a></p>
+
+<p>I wasn&rsquo;t excited about writing the java version, but:</p>
+
+<ul>
+<li>A pure java implementation can be used by other JVM languages</li>
+<li>It seemed like a useful tool for the community</li>
+<li>I&rsquo;d be able to have a current and relevant opinion on Groovy&rsquo;s usefulness compared to Java<br />
+<br /></li>
+</ul>
+
+<p>An example line in the Groovy code is this:</p>
+
+<pre><code>Map&lt;String, String&gt; envOverridesMap = getenv().findAll { it.key.startsWith(environmentPrefix) }
+</code></pre>
+
+<p>The above line populates a Map from all system environment variables that match a given environment prefix.  I wanted to avoid dependencies if possible to limit the transitive dependencies needed by consumers of the library; the only compile dependency is logback-classic.</p>
+
+<p>On the java side, I also tried building the tool without any dependencies, but it got ugly pretty fast.  Replicating the above Groovy wasn&rsquo;t too bad; you&rsquo;ve basically seen what it looks like in the earlier collect example:</p>
+
+<pre><code>Map&lt;String, String&gt; envOverridesMap = new HashMap&lt;&gt;();
+for (String envKey : envVars.keySet()) {
+    if (envKey.startsWith(environmentPrefix)) {
+        envOverridesMap.put(envKey, envVars.get(envKey));
+    }
+}
+</code></pre>
+
+<p>Isn&rsquo;t there a more concise way?  IntelliJ suggested this alternative syntax:</p>
+
+<pre><code>Map&lt;String, String&gt; envOverridesMap = new HashMap&lt;&gt;();
+envVars.keySet().stream().filter(envKey -&gt; 
+    envKey.startsWith(environmentPrefix)).forEach(envKey -&gt; 
+        envOverridesMap.put(envKey, envVars.get(envKey)));
+</code></pre>
+
+<p>&hellip;but that just made me sad.  I enjoy the new streaming capabilities, but it didn&rsquo;t add value in for me in this case.  It could&rsquo;ve been much cleaner if Map were iterable in java, but it&rsquo;s not and probably won&rsquo;t ever be.</p>
+
+<p>Things got ugly when I tried cloning an arbitrary object, and also dynamically setting properties on an object.  In Java <code>clone()</code> is a protected method, so you can&rsquo;t call it unless you extend from that object.  I tried to hack something together like this:</p>
+
+<pre><code>private static &lt;T&gt; T cloneObject(T obj) {
+    try {
+        T clone = (T) obj.getClass().newInstance();
+        for (Field field : obj.getClass().getDeclaredFields()) {
+            if (Modifier.isFinal(field.getModifiers())) {
+                continue;
+            }
+            field.setAccessible(true);
+            field.set(clone, field.get(obj));
+        }
+        return clone;
+    } catch (Exception e) {
+        throw new RuntimeException(e);
+    }
+}
+</code></pre>
+
+<p>but there were exceptional cases I hadn&rsquo;t handled yet, so eventually gave up and added the commons BeanUtils library so I could use the <code>cloneBean()</code> method.  Even uglier was going down the path of dynamic property value overrides.  I had started to toy with this monstrosity:</p>
+
+<pre><code>private static boolean setProperty(Object object, String fieldName, String fieldValueString) {
+    Class&lt;?&gt; clazz = object.getClass();
+    try {
+        Field field = clazz.getDeclaredField(fieldName);
+        field.setAccessible(true);
+        Class fieldType = field.getType();
+            if (fieldType.equals(Integer.class) || fieldType.equals(Integer.TYPE)) {
+                field.setInt(object, Integer.parseInt(fieldValueString));
+            } else if (fieldType.equals(Long.class) || fieldType.equals(Long.TYPE)) {
+                field.setLong(object, Long.parseLong(fieldValueString));
+            } else if (fieldType.equals(Boolean.class) || fieldType.equals(Boolean.TYPE)) {
+                field.setBoolean(object, Boolean.parseBoolean(fieldValueString));
+            } else if (fieldType.equals(Long.class) || fieldType.equals(Long.TYPE)) {
+                field.set(object, Long.parseLong(fieldValueString));
+            } else {
+                Class.forName(field.getDeclaringClass().getName());
+                field.getDeclaringClass().getConstructor(String.class).newInstance(fieldValueString);
+                field.set(object, field.getType().getConstructor(String.class).newInstance(fieldValueString));
+            }
+        return true;
+    } catch (NoSuchFieldException e) {
+        log.warn(&quot;Environment override for property &quot; + fieldName + &quot; found, but no matching property exists.&quot;);
+    } catch (Exception e) {
+        throw new IllegalStateException(e);
+    }
+    return false;
+}
+</code></pre>
+
+<p>&hellip;before punting.  Since I had already accepted the BeanUtils dependency, I was able to use the <code>copyProperty</code> method and delete a lot of potentially brittle code.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>You probably enjoyed reading the java code as much as I enjoyed writing it.  It&rsquo;s not the semicolons or the verbose exception handling.  It was that I could do in a single line of Groovy what took an entire method in the equivalent Java.  This is a big deal in terms of productivity, maintenance, and code quality.</p>
+
+<p>There are other advantages to using Groovy, for example listed by Peter Ledbrook <a href="http://blog.cacoethes.co.uk/groovyandgrails/groovy-in-light-of-java-8">here</a>.
+As to the question of when it&rsquo;s appropriate to write Java over Groovy, there&rsquo;s really only a couple reasons in my opinion:</p>
+
+<p>The first is the reason I just insulted the java code I wrote, but still intend to promote and deprecate the groovy version; it&rsquo;s a library that can be run on any JVM language.  The Groovy library is limited to Groovy usage.  It&rsquo;s worth it for that situation.</p>
+
+<p>The second is if you&rsquo;re using a framework or library that doesn&rsquo;t let you easily use Groovy.  If you&rsquo;re going down this path, I think you&rsquo;ll know it when you see it.  e.g. If you want to write a lot of RxJava, you might want to stick with Java, at least for now.</p>
+
+<p>tl;dr; I still think Groovy is still generally a better Java.</p>
+
+                </section>
+            </article>
+            <footer id="post-meta" class="clearfix">
+                <a href="https://twitter.com/edgescope">
+                        <img class="avatar" src="http://dantanner.com/images/avatar.png">
+                        <div>
+                            <span class="dark">Dan Tanner</span>
+                            <span></span>
+                        </div>
+                    </a>
+                <section id="sharing">
+                    <a class="twitter" href="https://twitter.com/intent/tweet?text=http%3a%2f%2fdantanner.com%2fpost%2fgroovy-is-still-better-than-java%2f - Groovy%20is%20still%20better%20than%20Java by @edgescope"><span class="icon-twitter"> Tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+                </section>
+            </footer>
+
+            
+
+            <ul id="post-list" class="archive readmore">
+    <h3>Read more</h3>
+
+    
+    
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/meteorologists-urged-to-stop-giving-100-percent/">Meteorologists Urged To Stop Giving 100%<aside class="dates">Oct 15</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/camp-lotto/">Camp Lotto<aside class="dates">Aug 30</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/frame-hydration/">Mountain Bike Frame Hydration Hack<aside class="dates">Aug 11</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/take-note/">Markdown Notes<aside class="dates">Jul 16</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/curl-saves-the-day/">curl saves the day<aside class="dates">Jul 15</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/groovy-is-still-better-than-java/">Groovy is still better than Java<aside class="dates">Jan 25</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/javatime-for-impatient/">java.time for the extremely impatient<aside class="dates">Apr 13</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/dynamic-grails-tomcat-datasource/">Dynamic Grails Tomcat datasource configuration with Etcd<aside class="dates">Apr 30</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/groovy-collect-vs-spread-dot-operator/">Groovy collect vs spread-dot operator<aside class="dates">Nov 15</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/playhouse/">Playhouse<aside class="dates">Oct 16</aside></a>
+        </li>
+        
+   
+</ul>
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    
+    <a class="symbol" href="https://www.facebook.com/dan.tanner.12">
+        circlefacebook
+    </a>
+    
+    <a class="symbol" href="https://www.github.com/dtanner">
+        circlegithub
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/edgescope">
+        circletwitterbird
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+        © Copyright 2019 Dan Tanner
+    
+    </p>
+</footer>
+
+        </section>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://dantanner.com/js/main.js"></script>
+<script src="http://dantanner.com/js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+    </body>
+</html>

@@ -1,0 +1,361 @@
+    <!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Dan Tanner">
+		<meta name="description" content="Personal and Semi-Professional Blog">
+		<meta name="generator" content="Hugo 0.18.1" />
+		<title>java.time for the extremely impatient &middot; Dan Tanner</title>
+		<link rel="shortcut icon" href="http://dantanner.com/images/favicon.ico">
+		<link rel="stylesheet" href="http://dantanner.com/css/style.css">
+		<link rel="stylesheet" href="http://dantanner.com/css/highlight.css">
+		
+
+		
+		<link rel="stylesheet" href="http://dantanner.com/css/monosocialiconsfont.css">
+		
+
+		
+		<link href="http://dantanner.com/index.xml" rel="alternate" type="application/rss+xml" title="Dan Tanner" />
+		
+
+		<meta property="og:title" content="java.time for the extremely impatient" />
+<meta property="og:description" content="This is a super quick history and primer for those familiar with java, but unfamiliar with Joda-Time. Java’s original date and time handling had some issues that could make it cumbersome and error-prone to work with. Then came the Joda-Time library, which is a fantastic replacement for pretty much everything date and time related. It’s intuitive, clean, fully-featured, and performant.
+Starting with Java 8, the library was folded into the core JDK, with very few modifications to the Joda API." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://dantanner.com/post/javatime-for-impatient/" />
+
+
+<meta property="og:updated_time" content="2016-04-13T02:26:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+	    
+	    
+<meta itemprop="name" content="java.time for the extremely impatient">
+<meta itemprop="description" content="This is a super quick history and primer for those familiar with java, but unfamiliar with Joda-Time. Java’s original date and time handling had some issues that could make it cumbersome and error-prone to work with. Then came the Joda-Time library, which is a fantastic replacement for pretty much everything date and time related. It’s intuitive, clean, fully-featured, and performant.
+Starting with Java 8, the library was folded into the core JDK, with very few modifications to the Joda API.">
+
+
+<meta itemprop="dateModified" content="2016-04-13T02:26:00&#43;00:00" />
+<meta itemprop="wordCount" content="632">
+
+
+
+<meta itemprop="keywords" content="camping,codenarc,curl,data-science,datasource,domain-names,etcd,grails,groovy,hydration,java,java.time,joda-time,lottery,memory-less,mountain-biking,networking,playhouse,productivity,water,weather," />
+
+	    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="java.time for the extremely impatient"/>
+<meta name="twitter:description" content="This is a super quick history and primer for those familiar with java, but unfamiliar with Joda-Time. Java’s original date and time handling had some issues that could make it cumbersome and error-prone to work with. Then came the Joda-Time library, which is a fantastic replacement for pretty much everything date and time related. It’s intuitive, clean, fully-featured, and performant.
+Starting with Java 8, the library was folded into the core JDK, with very few modifications to the Joda API."/>
+<meta name="twitter:site" content="@https://www.twitter.com/edgescope"/>
+
+
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='http://dantanner.com/'> <span class="arrow">←</span>Home</a>
+	
+
+	
+		<a href='http://dantanner.com/about'>About</a>
+	
+
+	
+	<a class="cta" href="http://dantanner.com/index.xml">Subscribe</a>
+	
+</nav>
+
+        <section id="wrapper">
+            <article class="post">
+                <header>
+                    <h1>java.time for the extremely impatient</h1>
+                    <h2 class="headline">
+                    April 13, 2016 
+                    <br>
+                    
+                    </h2>
+                </header>
+                <section id="post-body">
+                    
+
+<p>This is a super quick history and primer for those familiar with java, but unfamiliar with <a href="http://www.joda.org/joda-time/">Joda-Time</a>.
+Java’s original date and time handling had some issues that could make it cumbersome and error-prone to work with. Then came the Joda-Time library, which is a fantastic replacement for pretty much everything date and time related. It’s intuitive, clean, fully-featured, and performant.</p>
+
+<p>Starting with Java 8, the library was folded into the core JDK, with very few modifications to the Joda API.</p>
+
+<p>In short, if you’re not on Java 8 yet, you should probably be using the joda-time library. If you are on Java 8, you should use the java.time classes.</p>
+
+<p>There’s much more to the package than what I’ll show, and you’ll eventually want to dive deeper, but this article shows you some of the most frequently used techniques I’ve experienced on the last few projects. I’m using groovy for the code snippets, but they’re just java without the semicolons.</p>
+
+<h4 id="91-83-of-the-time-you-ll-work-with-localdate-or-zoneddatetime">91.83% of the time, you’ll work with LocalDate or ZonedDateTime.</h4>
+
+<pre><code>import java.time.LocalDate
+import java.time.ZonedDateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.time.temporal.TemporalAdjusters
+
+// If you have a date without time information, use a LocalDate. e.g. someone's birthday
+LocalDate localDate = new LocalDate(2016, 4, 12)
+println localDate.toString()  // 2016-04-12
+
+// If you need to include time in the date, use ZonedDateTime
+ZonedDateTime zdt = ZonedDateTime.now() 
+
+// when formatting a ZonedDateTime for API communication, you'll typically use the DateTimeFormatter.ISO_INSTANT format
+println zdt.format(DateTimeFormatter.ISO_INSTANT)
+// 2016-04-12T19:20:45.539Z
+
+// some more examples of formatters
+println zdt.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
+// 2016-04-12T14:20:45.539
+
+println zdt.format(DateTimeFormatter.RFC_1123_DATE_TIME)
+// Tue, 12 Apr 2016 14:20:45 -0500
+
+println zdt.format(DateTimeFormatter.ISO_ZONED_DATE_TIME)
+// 2016-04-12T14:20:45.539-05:00[America/Chicago]
+
+// you can also create a custom formatter
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&quot;MMM dd yyyy GG&quot;)
+println zdt.format(formatter)
+// Apr 12 2016 AD
+</code></pre>
+
+<h4 id="date-manipulation-is-fluent-and-intuitive">Date manipulation is fluent and intuitive.</h4>
+
+<pre><code>import java.time.LocalDate
+import java.time.temporal.TemporalAdjusters
+
+LocalDate localDate = LocalDate.now()
+println localDate 
+// 2016-04-12
+
+println localDate.plusMonths(1).withDayOfMonth(1)
+// 2016-05-01
+
+println localDate.minusMonths(1).with(TemporalAdjusters.lastDayOfMonth())
+// 2016-03-31
+</code></pre>
+
+<h4 id="prefer-to-work-in-utc-if-you-can-logs-database-timestamps-consistency-helps-avoid-mistakes">Prefer to work in UTC if you can - logs, database timestamps…consistency helps avoid mistakes.</h4>
+
+<p>In a startup class: <code>TimeZone.setDefault(TimeZone.getTimeZone(&quot;UTC&quot;))</code><br />
+or as a JVM flag: <code>-Duser.timezone=UTC</code></p>
+
+<h4 id="when-working-with-a-point-in-time-always-be-aware-of-timezone">When working with a point in time, always be aware of timezone!!!!</h4>
+
+<p>Even when working with objects like LocalDate, you must be timezone aware if you’re using a point-in-time operation. And by point-in-time, 99.273% of the time I’m referring to the now() method.
+For example, given the following scenario:</p>
+
+<ul>
+<li>The default JVM timezone is <code>UTC</code>.</li>
+<li>At <code>2016-04-12 3:10 PM</code> in <code>America/Chicago</code> (which is GMT-6), a call to println <code>LocalDate.now()</code> will result in <code>2016-04-12</code>.</li>
+</ul>
+
+<p>But at <code>2016-04-12 6:10 PM</code> in <code>America/Chicago</code>, the same call will result in <code>2016-04-13</code>.</p>
+
+<p>If you’re in Chicago, that looks like tomorrow, and might be a bug for what you’re trying to do! The code is doing precisely what it’s told though; the date in London is April 13th at the time the LocalDate is created for the UTC timezone.</p>
+
+<p>So to repeat, when working with specific points in time, be aware of the timezone you’re working with. For example, if you want to set a date 30 days out from now according to your business location, you could say <code>LocalDate.now(ZoneId.of('America/Chicago')).plusDays(30)</code>.</p>
+
+<h4 id="further-reading">Further Reading</h4>
+
+<p>The <a href="https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html">java.time javadocs</a> are actually really good, so read them for more detailed information. Wrapping up the whirlwind tour, here’s a quick table to help get you started with a few objects and their example uses:</p>
+
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Example Usage and Notes</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>LocalDate</td>
+<td>Birthday, Contract date where no time or timezone is needed</td>
+</tr>
+
+<tr>
+<td>ZonedDateTime</td>
+<td>Most points in time, like some startDateTime, endDateTime</td>
+</tr>
+
+<tr>
+<td>YearMonth</td>
+<td>When you only want to work with a year/month combination. Less commonly used, but handy for date comparisons if you don’t want granularity to the day. e.g. Credit Card Expiration Month</td>
+</tr>
+
+<tr>
+<td>LocalTime</td>
+<td>e.g. Chris’s hardware store opens at 8 am. This date is irrespective of timezone (i.e. you wouldn’t change the opening time when daylight savings rolls around.)</td>
+</tr>
+</tbody>
+</table>
+
+                </section>
+            </article>
+            <footer id="post-meta" class="clearfix">
+                <a href="https://twitter.com/edgescope">
+                        <img class="avatar" src="http://dantanner.com/images/avatar.png">
+                        <div>
+                            <span class="dark">Dan Tanner</span>
+                            <span></span>
+                        </div>
+                    </a>
+                <section id="sharing">
+                    <a class="twitter" href="https://twitter.com/intent/tweet?text=http%3a%2f%2fdantanner.com%2fpost%2fjavatime-for-impatient%2f - java.time%20for%20the%20extremely%20impatient by @edgescope"><span class="icon-twitter"> Tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+                </section>
+            </footer>
+
+            
+
+            <ul id="post-list" class="archive readmore">
+    <h3>Read more</h3>
+
+    
+    
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/meteorologists-urged-to-stop-giving-100-percent/">Meteorologists Urged To Stop Giving 100%<aside class="dates">Oct 15</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/camp-lotto/">Camp Lotto<aside class="dates">Aug 30</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/frame-hydration/">Mountain Bike Frame Hydration Hack<aside class="dates">Aug 11</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/take-note/">Markdown Notes<aside class="dates">Jul 16</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/curl-saves-the-day/">curl saves the day<aside class="dates">Jul 15</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/groovy-is-still-better-than-java/">Groovy is still better than Java<aside class="dates">Jan 25</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/javatime-for-impatient/">java.time for the extremely impatient<aside class="dates">Apr 13</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/dynamic-grails-tomcat-datasource/">Dynamic Grails Tomcat datasource configuration with Etcd<aside class="dates">Apr 30</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/groovy-collect-vs-spread-dot-operator/">Groovy collect vs spread-dot operator<aside class="dates">Nov 15</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/playhouse/">Playhouse<aside class="dates">Oct 16</aside></a>
+        </li>
+        
+   
+</ul>
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    
+    <a class="symbol" href="https://www.facebook.com/dan.tanner.12">
+        circlefacebook
+    </a>
+    
+    <a class="symbol" href="https://www.github.com/dtanner">
+        circlegithub
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/edgescope">
+        circletwitterbird
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+        © Copyright 2019 Dan Tanner
+    
+    </p>
+</footer>
+
+        </section>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://dantanner.com/js/main.js"></script>
+<script src="http://dantanner.com/js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+    </body>
+</html>

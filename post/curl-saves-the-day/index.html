@@ -1,0 +1,399 @@
+    <!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Dan Tanner">
+		<meta name="description" content="Personal and Semi-Professional Blog">
+		<meta name="generator" content="Hugo 0.18.1" />
+		<title>curl saves the day &middot; Dan Tanner</title>
+		<link rel="shortcut icon" href="http://dantanner.com/images/favicon.ico">
+		<link rel="stylesheet" href="http://dantanner.com/css/style.css">
+		<link rel="stylesheet" href="http://dantanner.com/css/highlight.css">
+		
+
+		
+		<link rel="stylesheet" href="http://dantanner.com/css/monosocialiconsfont.css">
+		
+
+		
+		<link href="http://dantanner.com/index.xml" rel="alternate" type="application/rss+xml" title="Dan Tanner" />
+		
+
+		<meta property="og:title" content="curl saves the day" />
+<meta property="og:description" content="Every developer should be comfortable with curl.
+For the same reason that you should at least be conversational in tools like sed, awk, and vi, you should be able to quickly type in something like like curl -v localhost:8080 to see what&rsquo;s going on. It&rsquo;s available on just about every unix-based box for a good reason.
+Like its man page states, the number of features will make your head spin." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://dantanner.com/post/curl-saves-the-day/" />
+
+
+<meta property="og:updated_time" content="2017-07-15T13:09:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+	    
+	    
+<meta itemprop="name" content="curl saves the day">
+<meta itemprop="description" content="Every developer should be comfortable with curl.
+For the same reason that you should at least be conversational in tools like sed, awk, and vi, you should be able to quickly type in something like like curl -v localhost:8080 to see what&rsquo;s going on. It&rsquo;s available on just about every unix-based box for a good reason.
+Like its man page states, the number of features will make your head spin.">
+
+
+<meta itemprop="dateModified" content="2017-07-15T13:09:00&#43;00:00" />
+<meta itemprop="wordCount" content="1012">
+
+
+
+<meta itemprop="keywords" content="camping,codenarc,curl,data-science,datasource,domain-names,etcd,grails,groovy,hydration,java,java.time,joda-time,lottery,memory-less,mountain-biking,networking,playhouse,productivity,water,weather," />
+
+	    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="curl saves the day"/>
+<meta name="twitter:description" content="Every developer should be comfortable with curl.
+For the same reason that you should at least be conversational in tools like sed, awk, and vi, you should be able to quickly type in something like like curl -v localhost:8080 to see what&rsquo;s going on. It&rsquo;s available on just about every unix-based box for a good reason.
+Like its man page states, the number of features will make your head spin."/>
+<meta name="twitter:site" content="@https://www.twitter.com/edgescope"/>
+
+
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='http://dantanner.com/'> <span class="arrow">←</span>Home</a>
+	
+
+	
+		<a href='http://dantanner.com/about'>About</a>
+	
+
+	
+	<a class="cta" href="http://dantanner.com/index.xml">Subscribe</a>
+	
+</nav>
+
+        <section id="wrapper">
+            <article class="post">
+                <header>
+                    <h1>curl saves the day</h1>
+                    <h2 class="headline">
+                    July 15, 2017 
+                    <br>
+                    
+                    </h2>
+                </header>
+                <section id="post-body">
+                    
+
+<p>Every developer should be comfortable with <a href="https://curl.haxx.se">curl</a>.</p>
+
+<p>For the same reason that you should at least be conversational in tools like sed, awk, and vi, you should be able to quickly type in something like
+like <code>curl -v localhost:8080</code> to see what&rsquo;s going on.  It&rsquo;s available on just about every unix-based box for a good reason.</p>
+
+<p>Like its man page states, the number of features will make your head spin.  That&rsquo;s probably the most discussed reason people are turned off by it.
+You don&rsquo;t have to understand all its features though; learn five of them and you&rsquo;ll be able to quickly solve problems you couldn&rsquo;t before.</p>
+
+<p>Memorize the basics, and keep notes of the more advanced problems you solve with it for the future.</p>
+
+<h1 id="the-basics">The Basics</h1>
+
+<p><strong>GET something</strong><br />
+<code>curl https://jsonplaceholder.typicode.com/posts/1</code></p>
+
+<p><strong>Verbose output [-v]</strong> (e.g. show response status, headers, etc..):<br />
+<code>curl -v https://jsonplaceholder.typicode.com/posts/1</code></p>
+
+<p><strong>Allow insecure SSL connections [-k]</strong> (useful for self-signed certs):<br />
+<code>curl -k https://untrusted-root.badssl.com/</code> (try it without <code>-k</code>)</p>
+
+<p><strong>Add a header [-H name: value]</strong>:<br />
+<code>curl -H &quot;Content-Type: application/json&quot; https://jsonplaceholder.typicode.com/posts/1</code></p>
+
+<p><strong>POST a file [-X POST and -d @file-path]</strong>:<br />
+<code>curl -X POST -d @/tmp/foo.json https://jsonplaceholder.typicode.com/posts/1</code></p>
+
+<h1 id="more-advanced-usage">More Advanced Usage</h1>
+
+<p>If you leave with nothing but the knowledge of what&rsquo;s above, you&rsquo;ll be in great shape.
+You&rsquo;ll be able to quickly solve situations with minimal effort and tooling.  But keep reading to get a glimpse of advanced features.</p>
+
+<p>Below are examples of commands I keep in my /notes/curl.md file.</p>
+
+<h3 id="get-a-service-100-times-and-get-a-count-of-the-response-codes-returned">Get a service 100 times, and get a count of the response codes returned</h3>
+
+<p>This is really handy when you have a service that is misbehaving, and you want to get a quick idea of how it&rsquo;s responding beyond a single request.
+For example, you might find that 25% of requests fail, then discover that <sup>1</sup>&frasl;<sub>4</sub> of your servers are misconfigured.</p>
+
+<pre><code>curl -sL -w &quot;%{http_code}\\n&quot; -o /dev/null &quot;https://foo.com/?[1-100]&quot; | sort | uniq -c
+     23 200
+     77 503
+</code></pre>
+
+<p>Explanation of the arguments:<br />
+<code>-s</code>: silent/quiet mode.  don&rsquo;t show progress meter or error messages.<br />
+<code>-L</code>: follow redirects<br />
+<code>-w &quot;%{http_code}\\n&quot;</code>: make curl write out the http code of the response, followed by a new line<br />
+<code>-o /dev/null</code>: write the response to a file (in this /dev/null, meaning we don&rsquo;t care)<br />
+<code>?[1-100]</code>: [] is a range specifier.  In this case, execute a request for every value in the range.  e.g. foo.com?1, foo.com?2, etc&hellip;</p>
+
+<p>Then we pipe the response code output to <code>sort</code> and <code>uniq -c</code>, which gives us a count of each response code.
+From the above sample output, there were 23 responses with a 200 response code, and 77 responses with a 503 response code.  Not good!</p>
+
+<p>Also note that the URL in this example is quoted.  This enables us to use special characters like the <code>?</code> query parameter without having to escape them.</p>
+
+<p>Similar to the range specifier is the sequence operator, e.g. <code>{a, b}</code>.<br />
+e.g. Type one curl command, but have it use a few different argument values, or have it hit each of your servers individually.</p>
+
+<h3 id="get-response-time">Get response time</h3>
+
+<p>Similar to the above example, but just returns the total response time in seconds.</p>
+
+<pre><code>curl -sL -w &quot;%{time_total}\\n&quot; -o /dev/null &quot;https://jsonplaceholder.typicode.com/posts/1&quot;
+
+1.412
+</code></pre>
+
+<h3 id="measure-network-performance-for-the-request-segments">Measure network performance for the request segments</h3>
+
+<p>The following example is really useful when want to quickly see where your request is taking its time.</p>
+
+<pre><code class="language-bash">curl -sL -w '   namelookup: %{time_namelookup}\n      connect: %{time_connect}\n   appconnect: %{time_appconnect}\n  pretransfer: %{time_pretransfer}\n     redirect: %{time_redirect}\nstarttransfer: %{time_starttransfer}\n        total: %{time_total}\n\n' -o /dev/null &quot;https://jsonplaceholder.typicode.com/posts/1&quot;
+
+   namelookup: 0.071
+      connect: 0.109
+   appconnect: 0.349
+  pretransfer: 0.349
+     redirect: 0.000
+starttransfer: 0.379
+        total: 0.379
+</code></pre>
+
+<h1 id="a-case-of-curl-saving-my-bacon">A case of curl saving my bacon</h1>
+
+<p>Recently our team deployed a new mobile app, to a new company warehouse, using a new network provider, in a new server infrastructure.<br />
+The users reported occasional slow response times in the application. ugh - so many variables.<br />
+Our server API stats were all consistently fast.  Load testing our services showed adequate performance, both from the warehouse and from headquarters.
+What also made this difficult was that during the alpha testing, initial actual usage was so low that our initial performance metrics didn&rsquo;t show any patterns.</p>
+
+<p>Given that we couldn&rsquo;t reproduce the issue internally, but could see it was only happening in the warehouse on the warehouse mobile device network, implied a network issue.
+But the network support staff couldn&rsquo;t find any issues, so we were stumped for a little while.</p>
+
+<p>I went to the warehouse to help support the rollout and used the above examples to eventually find the problem.<br />
+This was the first command that pointed me toward the real issue:</p>
+
+<pre><code class="language-bash">while true; do curl -sL -w &quot;%{time_total}\\n&quot; -o /dev/null 'https://oursite.com/health'; sleep 5; done
+0.293
+0.298
+0.426
+0.292
+0.833
+5.823
+0.283
+0.296
+0.296
+0.293
+0.295
+0.553
+0.294
+0.817
+0.289
+0.295
+0.300
+5.828
+0.364
+0.300
+...
+</code></pre>
+
+<p>Notice any pattern?  Every minute we got a slow response!  That smells like a lookup or a caching issue.
+So I issued this command to measure network segment performance:</p>
+
+<pre><code class="language-bash">curl -sL -w '   namelookup: %{time_namelookup}\n      connect: %{time_connect}\n   appconnect: %{time_appconnect}\n  pretransfer: %{time_pretransfer}\n     redirect: %{time_redirect}\nstarttransfer: %{time_starttransfer}\n        total: %{time_total}\n\n' -o /dev/null &quot;https://oursite.com/health&quot;
+   namelookup: 5.543
+      connect: 5.588
+   appconnect: 5.770
+  pretransfer: 5.770
+     redirect: 0.000
+starttransfer: 5.823
+        total: 5.823
+</code></pre>
+
+<p><code>namelookup</code> indicates the amount of time it took to do a DNS name lookup.  i.e. The primary DNS server configured for the device was failing to find the server.
+The backup server <em>was</em> working though.  The device cached the IP address of the server for a minute, and when the cache expired, the process repeated itself.
+Boom!  Using a different DNS server while we fixed the underlying DNS issue solved the problem.</p>
+
+<h1 id="summary">Summary</h1>
+
+<ul>
+<li>curl&rsquo;s basic and most common features are easy to use and memorize</li>
+<li>it has a huge feature list</li>
+<li>it will almost always be available on the *nix server you&rsquo;re shelled in to</li>
+<li>it integrates beautifully with other shell commands to build up your desired solution<br />
+<br /></li>
+</ul>
+
+<p>curl has dozens of arguments for its features, and it&rsquo;s easy to get lost in its man pages, but it&rsquo;s good stuff.
+And since curl is available on just about every system I use, it&rsquo;s been worth the small investment of time for me.
+Here&rsquo;s the official page for its <a href="https://ec.haxx.se/cmdline-options.html">command line options</a>.</p>
+
+                </section>
+            </article>
+            <footer id="post-meta" class="clearfix">
+                <a href="https://twitter.com/edgescope">
+                        <img class="avatar" src="http://dantanner.com/images/avatar.png">
+                        <div>
+                            <span class="dark">Dan Tanner</span>
+                            <span></span>
+                        </div>
+                    </a>
+                <section id="sharing">
+                    <a class="twitter" href="https://twitter.com/intent/tweet?text=http%3a%2f%2fdantanner.com%2fpost%2fcurl-saves-the-day%2f - curl%20saves%20the%20day by @edgescope"><span class="icon-twitter"> Tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+                </section>
+            </footer>
+
+            
+
+            <ul id="post-list" class="archive readmore">
+    <h3>Read more</h3>
+
+    
+    
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/meteorologists-urged-to-stop-giving-100-percent/">Meteorologists Urged To Stop Giving 100%<aside class="dates">Oct 15</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/camp-lotto/">Camp Lotto<aside class="dates">Aug 30</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/frame-hydration/">Mountain Bike Frame Hydration Hack<aside class="dates">Aug 11</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/take-note/">Markdown Notes<aside class="dates">Jul 16</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/curl-saves-the-day/">curl saves the day<aside class="dates">Jul 15</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/groovy-is-still-better-than-java/">Groovy is still better than Java<aside class="dates">Jan 25</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/javatime-for-impatient/">java.time for the extremely impatient<aside class="dates">Apr 13</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/dynamic-grails-tomcat-datasource/">Dynamic Grails Tomcat datasource configuration with Etcd<aside class="dates">Apr 30</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/groovy-collect-vs-spread-dot-operator/">Groovy collect vs spread-dot operator<aside class="dates">Nov 15</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://dantanner.com/post/playhouse/">Playhouse<aside class="dates">Oct 16</aside></a>
+        </li>
+        
+   
+</ul>
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    
+    <a class="symbol" href="https://www.facebook.com/dan.tanner.12">
+        circlefacebook
+    </a>
+    
+    <a class="symbol" href="https://www.github.com/dtanner">
+        circlegithub
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/edgescope">
+        circletwitterbird
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+        © Copyright 2019 Dan Tanner
+    
+    </p>
+</footer>
+
+        </section>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://dantanner.com/js/main.js"></script>
+<script src="http://dantanner.com/js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+    </body>
+</html>

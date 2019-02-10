@@ -1,0 +1,51 @@
+# Site settings
+baseurl = "http://dantanner.com/"
+languageCode = "en-us"
+title = "Dan Tanner"
+theme = "hugo-cactus-theme"
+# Enter your tracking code to enable Google Analytics
+googleAnalytics = ""
+# Disable comments by leaving disqusShortname empty
+disqusShortname = ""
+
+[params]
+    name = "Dan Tanner"
+    description = "Personal and Semi-Professional Blog"
+    bio = ""
+    # Enter optionally your twitter account
+    twitter = "edgescope"
+    enableRSS = true
+
+    # Add custom assets with their paths relative to the static folder
+    customCSS = []
+    customJS  = []
+
+    # The variables below are optionally too and can be used to
+    # translate or customize each string of the theme.
+
+    # Navigation links
+    home = ""
+    about = ""
+    subscribe = ""
+    # Pagination links
+    olderPosts = ""
+    newerPosts = ""
+    readMore = ""
+    copyright = ""
+    # Sharing options and author information in posts
+    aboutAuthor = ""
+    tweet = ""
+    share = ""
+    # 404 page
+    title404 = ""
+    subtitle404 = ""
+
+    # Choose a font for the social icons in the footer. Either "mono-social" or "font-awesome"
+    iconFont = "mono-social"
+    # The social icons can be styled differently if you use mono as font - circle, rounded, or empty
+    socialIconStyle = "circle"
+
+[social]
+    twitter  = "https://www.twitter.com/edgescope"
+    facebook = "https://www.facebook.com/dan.tanner.12"
+    github   = "https://www.github.com/dtanner"

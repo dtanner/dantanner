@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Datasource on Dan Tanner</title>
-    <link>http://dantanner.com/categories/datasource/index.xml</link>
+    <link>https://dantanner.com/categories/datasource/index.xml</link>
     <description>Recent content in Datasource on Dan Tanner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://dantanner.com/categories/datasource/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://dantanner.com/categories/datasource/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Dynamic Grails Tomcat datasource configuration with Etcd</title>
-      <link>http://dantanner.com/post/dynamic-grails-tomcat-datasource/</link>
+      <link>https://dantanner.com/post/dynamic-grails-tomcat-datasource/</link>
       <pubDate>Thu, 30 Apr 2015 06:05:00 +0000</pubDate>
       
-      <guid>http://dantanner.com/post/dynamic-grails-tomcat-datasource/</guid>
+      <guid>https://dantanner.com/post/dynamic-grails-tomcat-datasource/</guid>
       <description>
 
 &lt;p&gt;Ever wonder if you could modify a Grails datasource while the app is running?

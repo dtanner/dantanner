@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Curl on Dan Tanner</title>
-    <link>http://dantanner.com/categories/curl/index.xml</link>
+    <link>https://dantanner.com/categories/curl/index.xml</link>
     <description>Recent content in Curl on Dan Tanner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://dantanner.com/categories/curl/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://dantanner.com/categories/curl/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>curl saves the day</title>
-      <link>http://dantanner.com/post/curl-saves-the-day/</link>
+      <link>https://dantanner.com/post/curl-saves-the-day/</link>
       <pubDate>Sat, 15 Jul 2017 13:09:00 +0000</pubDate>
       
-      <guid>http://dantanner.com/post/curl-saves-the-day/</guid>
+      <guid>https://dantanner.com/post/curl-saves-the-day/</guid>
       <description>
 
 &lt;p&gt;Every developer should be comfortable with &lt;a href=&#34;https://curl.haxx.se&#34;&gt;curl&lt;/a&gt;.&lt;/p&gt;

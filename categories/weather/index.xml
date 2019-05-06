@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Weather on Dan Tanner</title>
-    <link>http://dantanner.com/categories/weather/index.xml</link>
+    <link>https://dantanner.com/categories/weather/index.xml</link>
     <description>Recent content in Weather on Dan Tanner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://dantanner.com/categories/weather/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://dantanner.com/categories/weather/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Meteorologists Urged To Stop Giving 100%</title>
-      <link>http://dantanner.com/post/meteorologists-urged-to-stop-giving-100-percent/</link>
+      <link>https://dantanner.com/post/meteorologists-urged-to-stop-giving-100-percent/</link>
       <pubDate>Sun, 15 Oct 2017 10:59:00 +0000</pubDate>
       
-      <guid>http://dantanner.com/post/meteorologists-urged-to-stop-giving-100-percent/</guid>
+      <guid>https://dantanner.com/post/meteorologists-urged-to-stop-giving-100-percent/</guid>
       <description>
 
 &lt;p&gt;I recently finished spending a year collecting and comparing forecasts from four different providers for seven different locations across the US.&lt;/p&gt;
@@ -96,13 +96,13 @@ the old name to be consistent.&lt;/p&gt;
 
 &lt;p&gt;This chart shows a count of the number of times providers predicted a 0% probability of precipitation today,
 when in fact there was at least 0.1 inches of precipitation.  Lower is better.
-&lt;img src=&#34;http://dantanner.com/weather/incorrect-0pct-pop-today.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://dantanner.com/weather/incorrect-0pct-pop-today.png&#34; alt=&#34;&#34; /&gt;
 This is the most lenient way to view this scenario. NOAA and Weather Underground had the highest count at 8 and 7 respectfully.
 Aeris and Dark Sky had it happen one time each.  This should &lt;strong&gt;never&lt;/strong&gt; happen.  It looks much worse if you count &lt;em&gt;any&lt;/em&gt; precipitation.&lt;/p&gt;
 
 &lt;h3 id=&#34;where-did-these-errors-happen&#34;&gt;Where did these errors happen?&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/incorrect-0-pop-by-location.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/incorrect-0-pop-by-location.png&#34; alt=&#34;&#34; /&gt;
 Turns out O&amp;rsquo;Hare was even more difficult to predict than Houghton for this date range.  San Diego&amp;rsquo;s not even on the board.
 This confirms you can achieve a great work/life balance in San Diego as a forecaster.&lt;/p&gt;
 
@@ -110,13 +110,13 @@ This confirms you can achieve a great work/life balance in San Diego as a foreca
 
 &lt;p&gt;If you include predictions from &lt;strong&gt;three or less&lt;/strong&gt; days out, you end up with these counts by provider.
 Again, this is forecasting a 0% chance of precipitation, when it reality there was at least 1/10th an inch of precip.&lt;br /&gt;
-&lt;img src=&#34;http://dantanner.com/weather/incorrect-0-pop-3-days.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://dantanner.com/weather/incorrect-0-pop-3-days.png&#34; alt=&#34;&#34; /&gt;
 NOAA&amp;rsquo;s data is pretty bad for this span - I&amp;rsquo;m not sure what&amp;rsquo;s going on.  The lesson here is don&amp;rsquo;t rely on NOAA&amp;rsquo;s API data for long-range precipitation predictions.&lt;/p&gt;
 
 &lt;h1 id=&#34;you-were-sure-it-would-rain&#34;&gt;You Were Sure It Would Rain!&lt;/h1&gt;
 
 &lt;p&gt;Not nearly as serious a cloud crime since you hopefully brought your rain jacket, but still something that should never happen&amp;hellip;
-&lt;img src=&#34;http://dantanner.com/weather/incorrect-100-pop-same-day.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://dantanner.com/weather/incorrect-100-pop-same-day.png&#34; alt=&#34;&#34; /&gt;
 Above is the count by provider of those that predicted a 100% chance of precipitation today, when in reality there was none.&lt;/p&gt;
 
 &lt;h1 id=&#34;nailed-it&#34;&gt;Nailed It!&lt;/h1&gt;
@@ -126,30 +126,30 @@ Above is the count by provider of those that predicted a 100% chance of precipit
 &lt;h3 id=&#34;perfect-no-precipitation-prediction-today&#34;&gt;Perfect no-precipitation prediction today&lt;/h3&gt;
 
 &lt;p&gt;Here&amp;rsquo;s a chart showing the count by provider for correctly predicting a 0% chance of precipitation today:
-&lt;img src=&#34;http://dantanner.com/weather/correct-no-precip-that-day.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://dantanner.com/weather/correct-no-precip-that-day.png&#34; alt=&#34;&#34; /&gt;
 Often the sunny skies optimist, NOAA unsurprisingly is correct the most often at predicting no precipitation.&lt;/p&gt;
 
 &lt;h3 id=&#34;rain-long-shots&#34;&gt;Rain Long-Shots&lt;/h3&gt;
 
 &lt;p&gt;Here&amp;rsquo;s a chart showing the count by provider for correctly being 100% sure about it raining 3 days out:
-&lt;img src=&#34;http://dantanner.com/weather/rain-long-shots.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://dantanner.com/weather/rain-long-shots.png&#34; alt=&#34;&#34; /&gt;
 This was interesting to me - Wunderground is 100% sure about precipitation from 3 days out quite a bit, and they weren&amp;rsquo;t ever wrong about that.
 (Again using 1/10th of an inch as the threshold of substantial precipitation.)  They get the bold award.&lt;/p&gt;
 
 &lt;h3 id=&#34;nailing-today-s-lows&#34;&gt;Nailing today&amp;rsquo;s lows&lt;/h3&gt;
 
 &lt;p&gt;A count by provider correctly predicting today&amp;rsquo;s low temp
-&lt;img src=&#34;http://dantanner.com/weather/perfect-todays-lows.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://dantanner.com/weather/perfect-todays-lows.png&#34; alt=&#34;&#34; /&gt;
 Also interesting to me - Dark Sky has almost twice the count compared to the other providers in predicting today&amp;rsquo;s low temperature.&lt;/p&gt;
 
 &lt;h3 id=&#34;nailing-today-s-lows-by-location&#34;&gt;Nailing today&amp;rsquo;s lows by location&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/perfect-low-prediction-by-location.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/perfect-low-prediction-by-location.png&#34; alt=&#34;&#34; /&gt;
 You&amp;rsquo;re almost twice as likely to get a perfect low prediction in San Francisco compared to Denver.&lt;/p&gt;
 
 &lt;h3 id=&#34;nailing-today-s-highs&#34;&gt;Nailing today&amp;rsquo;s highs&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/perfect-highs.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/perfect-highs.png&#34; alt=&#34;&#34; /&gt;
 The range between providers here is much smaller.  Where Dark Sky was the best at predicting today&amp;rsquo;s low, they are the worst of the bunch at predicting today&amp;rsquo;s high.&lt;/p&gt;
 
 &lt;h1 id=&#34;error-mean-absolute-deviation-mad&#34;&gt;Error Mean Absolute Deviation (MAD)&lt;/h1&gt;
@@ -160,18 +160,18 @@ A zero value would be a perfect prediction every time.  A lower value is more ac
 
 &lt;h3 id=&#34;today-s-low-temp-mad-by-provider&#34;&gt;Today&amp;rsquo;s low temp MAD by provider&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/mad-lows.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/mad-lows.png&#34; alt=&#34;&#34; /&gt;
 This chart correlates closely with the counts of getting the low temp exactly right, which implies Dark Sky is consistently better at predicting low temps,
 with the other providers doing about the same as each other for that category.&lt;/p&gt;
 
 &lt;h3 id=&#34;today-s-low-temp-mad-by-location&#34;&gt;Today&amp;rsquo;s low temp MAD by location&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/mad-lows-by-location.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/mad-lows-by-location.png&#34; alt=&#34;&#34; /&gt;
 This chart shows Denver as being the most difficult location among the gang to predict for low temps, with San Diego and SFO the easiest.&lt;/p&gt;
 
 &lt;h3 id=&#34;today-s-high-temp-mad-by-provider&#34;&gt;Today&amp;rsquo;s high temp MAD by provider&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/mad-highs.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/mad-highs.png&#34; alt=&#34;&#34; /&gt;
 Wunderground on average is the most accurate at getting highs on average.  What&amp;rsquo;s mildly interesting is that NOAA and Wunderground tied
 on their counts of &lt;em&gt;exactly&lt;/em&gt; predicting today&amp;rsquo;s high temp, so Wunderground having a lower MAD means they were on average closer to the actual high.&lt;/p&gt;
 
@@ -186,7 +186,7 @@ e.g. Give you an error score of 0.3 for that prediction, and me a score of 0.9. 
 &lt;p&gt;For cases where it did actually rain, the error score would be &lt;code&gt;1 - POP&lt;/code&gt;.&lt;br /&gt;
 e.g. It rained, I predicted 30%, so my error score is &lt;code&gt;1 - 0.3&lt;/code&gt;, or &lt;code&gt;0.7&lt;/code&gt;.&lt;br /&gt;
 Using this technique, here&amp;rsquo;s a MAD-like score for today&amp;rsquo;s precipitation prediction by provider for the time frame:&lt;br /&gt;
-&lt;img src=&#34;http://dantanner.com/weather/mad-pop.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://dantanner.com/weather/mad-pop.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;measuring-temperature-accuracy-by-tier&#34;&gt;Measuring Temperature Accuracy By Tier&lt;/h2&gt;
 
@@ -195,12 +195,12 @@ i.e. Let&amp;rsquo;s say that exactly predicting today&amp;rsquo;s temperature i
 
 &lt;h3 id=&#34;quality-count-for-today-s-low-temps&#34;&gt;Quality count for today&amp;rsquo;s low temps&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/low-tiered.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/low-tiered.png&#34; alt=&#34;&#34; /&gt;
 Once again, this chart shows that Dark Sky is considerably better than anyone else at predicting the low temp.&lt;/p&gt;
 
 &lt;h3 id=&#34;quality-count-for-today-s-high-temps&#34;&gt;Quality count for today&amp;rsquo;s high temps&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/high-tiered.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/high-tiered.png&#34; alt=&#34;&#34; /&gt;
 The accuracy comparison of the providers is much closer for measuring today&amp;rsquo;s high temp.&lt;/p&gt;
 
 &lt;h2 id=&#34;distance-from-noaa&#34;&gt;Distance from NOAA&lt;/h2&gt;
@@ -211,14 +211,14 @@ One question I had was, how much do the providers&amp;rsquo; forecasts differ fr
 
 &lt;h3 id=&#34;distance-from-noaa-for-today-s-low&#34;&gt;Distance from NOAA for today&amp;rsquo;s low&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/noaa-distance-low.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/noaa-distance-low.png&#34; alt=&#34;&#34; /&gt;
 Dark Sky deviates from NOAA over twice as much as the next provider.
 This was interesting, given how much better they were at predicting today&amp;rsquo;s low temp compared to everyone else.&lt;br /&gt;
 This made me wonder if there was a correlation between distance from NOAA and accuracy.&lt;/p&gt;
 
 &lt;h3 id=&#34;distance-from-noaa-for-today-s-high&#34;&gt;Distance from NOAA for today&amp;rsquo;s high&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/noaa-distance-high.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/noaa-distance-high.png&#34; alt=&#34;&#34; /&gt;
 Again Dark Sky deviates from NOAA by far more than anyone, but their high temp accuracy was the least accurate.
 So being different isn&amp;rsquo;t necessarily better in this case.&lt;/p&gt;
 

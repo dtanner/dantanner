@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Java on Dan Tanner</title>
-    <link>http://dantanner.com/categories/java/index.xml</link>
+    <link>https://dantanner.com/categories/java/index.xml</link>
     <description>Recent content in Java on Dan Tanner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://dantanner.com/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://dantanner.com/categories/java/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>java.time for the extremely impatient</title>
-      <link>http://dantanner.com/post/javatime-for-impatient/</link>
+      <link>https://dantanner.com/post/javatime-for-impatient/</link>
       <pubDate>Wed, 13 Apr 2016 02:26:00 +0000</pubDate>
       
-      <guid>http://dantanner.com/post/javatime-for-impatient/</guid>
+      <guid>https://dantanner.com/post/javatime-for-impatient/</guid>
       <description>
 
 &lt;p&gt;This is a super quick history and primer for those familiar with java, but unfamiliar with &lt;a href=&#34;http://www.joda.org/joda-time/&#34;&gt;Joda-Time&lt;/a&gt;.

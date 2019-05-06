@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Codenarc on Dan Tanner</title>
-    <link>http://dantanner.com/categories/codenarc/index.xml</link>
+    <link>https://dantanner.com/categories/codenarc/index.xml</link>
     <description>Recent content in Codenarc on Dan Tanner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://dantanner.com/categories/codenarc/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://dantanner.com/categories/codenarc/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Groovy collect vs spread-dot operator</title>
-      <link>http://dantanner.com/post/groovy-collect-vs-spread-dot-operator/</link>
+      <link>https://dantanner.com/post/groovy-collect-vs-spread-dot-operator/</link>
       <pubDate>Sat, 15 Nov 2014 23:17:00 +0000</pubDate>
       
-      <guid>http://dantanner.com/post/groovy-collect-vs-spread-dot-operator/</guid>
+      <guid>https://dantanner.com/post/groovy-collect-vs-spread-dot-operator/</guid>
       <description>&lt;p&gt;Yesterday I was doing some Groovy code cleanup with the wonderful &lt;a href=&#34;http://codenarc.sourceforge.net/&#34;&gt;CodeNarc&lt;/a&gt; static analysis tool. One of the violations it found was &lt;a href=&#34;http://codenarc.sourceforge.net/codenarc-rules-unnecessary.html#UnnecessaryCollectCall&#34;&gt;UnnecessaryCollectCall&lt;/a&gt;.
 The summary of the rule is &amp;ldquo;Some method calls to Object.collect(Closure) can be replaced with the spread operator.&amp;rdquo;
 e.g. Replace things.collect { it.name } with things*.name, or even things.name if what you&amp;rsquo;re after is a property.&lt;/p&gt;

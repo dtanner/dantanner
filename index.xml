@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dan Tanner</title>
-    <link>http://dantanner.com/index.xml</link>
+    <link>https://dantanner.com/index.xml</link>
     <description>Recent content on Dan Tanner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 15 Oct 2017 10:59:00 +0000</lastBuildDate>
-    <atom:link href="http://dantanner.com/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://dantanner.com/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Meteorologists Urged To Stop Giving 100%</title>
-      <link>http://dantanner.com/post/meteorologists-urged-to-stop-giving-100-percent/</link>
+      <link>https://dantanner.com/post/meteorologists-urged-to-stop-giving-100-percent/</link>
       <pubDate>Sun, 15 Oct 2017 10:59:00 +0000</pubDate>
       
-      <guid>http://dantanner.com/post/meteorologists-urged-to-stop-giving-100-percent/</guid>
+      <guid>https://dantanner.com/post/meteorologists-urged-to-stop-giving-100-percent/</guid>
       <description>
 
 &lt;p&gt;I recently finished spending a year collecting and comparing forecasts from four different providers for seven different locations across the US.&lt;/p&gt;
@@ -97,13 +97,13 @@ the old name to be consistent.&lt;/p&gt;
 
 &lt;p&gt;This chart shows a count of the number of times providers predicted a 0% probability of precipitation today,
 when in fact there was at least 0.1 inches of precipitation.  Lower is better.
-&lt;img src=&#34;http://dantanner.com/weather/incorrect-0pct-pop-today.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://dantanner.com/weather/incorrect-0pct-pop-today.png&#34; alt=&#34;&#34; /&gt;
 This is the most lenient way to view this scenario. NOAA and Weather Underground had the highest count at 8 and 7 respectfully.
 Aeris and Dark Sky had it happen one time each.  This should &lt;strong&gt;never&lt;/strong&gt; happen.  It looks much worse if you count &lt;em&gt;any&lt;/em&gt; precipitation.&lt;/p&gt;
 
 &lt;h3 id=&#34;where-did-these-errors-happen&#34;&gt;Where did these errors happen?&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/incorrect-0-pop-by-location.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/incorrect-0-pop-by-location.png&#34; alt=&#34;&#34; /&gt;
 Turns out O&amp;rsquo;Hare was even more difficult to predict than Houghton for this date range.  San Diego&amp;rsquo;s not even on the board.
 This confirms you can achieve a great work/life balance in San Diego as a forecaster.&lt;/p&gt;
 
@@ -111,13 +111,13 @@ This confirms you can achieve a great work/life balance in San Diego as a foreca
 
 &lt;p&gt;If you include predictions from &lt;strong&gt;three or less&lt;/strong&gt; days out, you end up with these counts by provider.
 Again, this is forecasting a 0% chance of precipitation, when it reality there was at least 1/10th an inch of precip.&lt;br /&gt;
-&lt;img src=&#34;http://dantanner.com/weather/incorrect-0-pop-3-days.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://dantanner.com/weather/incorrect-0-pop-3-days.png&#34; alt=&#34;&#34; /&gt;
 NOAA&amp;rsquo;s data is pretty bad for this span - I&amp;rsquo;m not sure what&amp;rsquo;s going on.  The lesson here is don&amp;rsquo;t rely on NOAA&amp;rsquo;s API data for long-range precipitation predictions.&lt;/p&gt;
 
 &lt;h1 id=&#34;you-were-sure-it-would-rain&#34;&gt;You Were Sure It Would Rain!&lt;/h1&gt;
 
 &lt;p&gt;Not nearly as serious a cloud crime since you hopefully brought your rain jacket, but still something that should never happen&amp;hellip;
-&lt;img src=&#34;http://dantanner.com/weather/incorrect-100-pop-same-day.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://dantanner.com/weather/incorrect-100-pop-same-day.png&#34; alt=&#34;&#34; /&gt;
 Above is the count by provider of those that predicted a 100% chance of precipitation today, when in reality there was none.&lt;/p&gt;
 
 &lt;h1 id=&#34;nailed-it&#34;&gt;Nailed It!&lt;/h1&gt;
@@ -127,30 +127,30 @@ Above is the count by provider of those that predicted a 100% chance of precipit
 &lt;h3 id=&#34;perfect-no-precipitation-prediction-today&#34;&gt;Perfect no-precipitation prediction today&lt;/h3&gt;
 
 &lt;p&gt;Here&amp;rsquo;s a chart showing the count by provider for correctly predicting a 0% chance of precipitation today:
-&lt;img src=&#34;http://dantanner.com/weather/correct-no-precip-that-day.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://dantanner.com/weather/correct-no-precip-that-day.png&#34; alt=&#34;&#34; /&gt;
 Often the sunny skies optimist, NOAA unsurprisingly is correct the most often at predicting no precipitation.&lt;/p&gt;
 
 &lt;h3 id=&#34;rain-long-shots&#34;&gt;Rain Long-Shots&lt;/h3&gt;
 
 &lt;p&gt;Here&amp;rsquo;s a chart showing the count by provider for correctly being 100% sure about it raining 3 days out:
-&lt;img src=&#34;http://dantanner.com/weather/rain-long-shots.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://dantanner.com/weather/rain-long-shots.png&#34; alt=&#34;&#34; /&gt;
 This was interesting to me - Wunderground is 100% sure about precipitation from 3 days out quite a bit, and they weren&amp;rsquo;t ever wrong about that.
 (Again using 1/10th of an inch as the threshold of substantial precipitation.)  They get the bold award.&lt;/p&gt;
 
 &lt;h3 id=&#34;nailing-today-s-lows&#34;&gt;Nailing today&amp;rsquo;s lows&lt;/h3&gt;
 
 &lt;p&gt;A count by provider correctly predicting today&amp;rsquo;s low temp
-&lt;img src=&#34;http://dantanner.com/weather/perfect-todays-lows.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://dantanner.com/weather/perfect-todays-lows.png&#34; alt=&#34;&#34; /&gt;
 Also interesting to me - Dark Sky has almost twice the count compared to the other providers in predicting today&amp;rsquo;s low temperature.&lt;/p&gt;
 
 &lt;h3 id=&#34;nailing-today-s-lows-by-location&#34;&gt;Nailing today&amp;rsquo;s lows by location&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/perfect-low-prediction-by-location.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/perfect-low-prediction-by-location.png&#34; alt=&#34;&#34; /&gt;
 You&amp;rsquo;re almost twice as likely to get a perfect low prediction in San Francisco compared to Denver.&lt;/p&gt;
 
 &lt;h3 id=&#34;nailing-today-s-highs&#34;&gt;Nailing today&amp;rsquo;s highs&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/perfect-highs.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/perfect-highs.png&#34; alt=&#34;&#34; /&gt;
 The range between providers here is much smaller.  Where Dark Sky was the best at predicting today&amp;rsquo;s low, they are the worst of the bunch at predicting today&amp;rsquo;s high.&lt;/p&gt;
 
 &lt;h1 id=&#34;error-mean-absolute-deviation-mad&#34;&gt;Error Mean Absolute Deviation (MAD)&lt;/h1&gt;
@@ -161,18 +161,18 @@ A zero value would be a perfect prediction every time.  A lower value is more ac
 
 &lt;h3 id=&#34;today-s-low-temp-mad-by-provider&#34;&gt;Today&amp;rsquo;s low temp MAD by provider&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/mad-lows.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/mad-lows.png&#34; alt=&#34;&#34; /&gt;
 This chart correlates closely with the counts of getting the low temp exactly right, which implies Dark Sky is consistently better at predicting low temps,
 with the other providers doing about the same as each other for that category.&lt;/p&gt;
 
 &lt;h3 id=&#34;today-s-low-temp-mad-by-location&#34;&gt;Today&amp;rsquo;s low temp MAD by location&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/mad-lows-by-location.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/mad-lows-by-location.png&#34; alt=&#34;&#34; /&gt;
 This chart shows Denver as being the most difficult location among the gang to predict for low temps, with San Diego and SFO the easiest.&lt;/p&gt;
 
 &lt;h3 id=&#34;today-s-high-temp-mad-by-provider&#34;&gt;Today&amp;rsquo;s high temp MAD by provider&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/mad-highs.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/mad-highs.png&#34; alt=&#34;&#34; /&gt;
 Wunderground on average is the most accurate at getting highs on average.  What&amp;rsquo;s mildly interesting is that NOAA and Wunderground tied
 on their counts of &lt;em&gt;exactly&lt;/em&gt; predicting today&amp;rsquo;s high temp, so Wunderground having a lower MAD means they were on average closer to the actual high.&lt;/p&gt;
 
@@ -187,7 +187,7 @@ e.g. Give you an error score of 0.3 for that prediction, and me a score of 0.9. 
 &lt;p&gt;For cases where it did actually rain, the error score would be &lt;code&gt;1 - POP&lt;/code&gt;.&lt;br /&gt;
 e.g. It rained, I predicted 30%, so my error score is &lt;code&gt;1 - 0.3&lt;/code&gt;, or &lt;code&gt;0.7&lt;/code&gt;.&lt;br /&gt;
 Using this technique, here&amp;rsquo;s a MAD-like score for today&amp;rsquo;s precipitation prediction by provider for the time frame:&lt;br /&gt;
-&lt;img src=&#34;http://dantanner.com/weather/mad-pop.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://dantanner.com/weather/mad-pop.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;measuring-temperature-accuracy-by-tier&#34;&gt;Measuring Temperature Accuracy By Tier&lt;/h2&gt;
 
@@ -196,12 +196,12 @@ i.e. Let&amp;rsquo;s say that exactly predicting today&amp;rsquo;s temperature i
 
 &lt;h3 id=&#34;quality-count-for-today-s-low-temps&#34;&gt;Quality count for today&amp;rsquo;s low temps&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/low-tiered.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/low-tiered.png&#34; alt=&#34;&#34; /&gt;
 Once again, this chart shows that Dark Sky is considerably better than anyone else at predicting the low temp.&lt;/p&gt;
 
 &lt;h3 id=&#34;quality-count-for-today-s-high-temps&#34;&gt;Quality count for today&amp;rsquo;s high temps&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/high-tiered.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/high-tiered.png&#34; alt=&#34;&#34; /&gt;
 The accuracy comparison of the providers is much closer for measuring today&amp;rsquo;s high temp.&lt;/p&gt;
 
 &lt;h2 id=&#34;distance-from-noaa&#34;&gt;Distance from NOAA&lt;/h2&gt;
@@ -212,14 +212,14 @@ One question I had was, how much do the providers&amp;rsquo; forecasts differ fr
 
 &lt;h3 id=&#34;distance-from-noaa-for-today-s-low&#34;&gt;Distance from NOAA for today&amp;rsquo;s low&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/noaa-distance-low.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/noaa-distance-low.png&#34; alt=&#34;&#34; /&gt;
 Dark Sky deviates from NOAA over twice as much as the next provider.
 This was interesting, given how much better they were at predicting today&amp;rsquo;s low temp compared to everyone else.&lt;br /&gt;
 This made me wonder if there was a correlation between distance from NOAA and accuracy.&lt;/p&gt;
 
 &lt;h3 id=&#34;distance-from-noaa-for-today-s-high&#34;&gt;Distance from NOAA for today&amp;rsquo;s high&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/weather/noaa-distance-high.png&#34; alt=&#34;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/weather/noaa-distance-high.png&#34; alt=&#34;&#34; /&gt;
 Again Dark Sky deviates from NOAA by far more than anyone, but their high temp accuracy was the least accurate.
 So being different isn&amp;rsquo;t necessarily better in this case.&lt;/p&gt;
 
@@ -258,10 +258,10 @@ Their UI is novel, but its hyper-local precipitation predictions actually haven&
     
     <item>
       <title>Camp Lotto</title>
-      <link>http://dantanner.com/post/camp-lotto/</link>
+      <link>https://dantanner.com/post/camp-lotto/</link>
       <pubDate>Wed, 30 Aug 2017 11:09:00 +0000</pubDate>
       
-      <guid>http://dantanner.com/post/camp-lotto/</guid>
+      <guid>https://dantanner.com/post/camp-lotto/</guid>
       <description>
 
 &lt;p&gt;There&amp;rsquo;s a great &lt;a href=&#34;https://www.ymcamn.org/camps/camp_du_nord&#34;&gt;family camp&lt;/a&gt; my family has attended over the years.
@@ -319,17 +319,17 @@ Those remaining sites could be made available for open enrollment, and next year
 &lt;h4 id=&#34;input-and-output-examples&#34;&gt;Input and Output Examples&lt;/h4&gt;
 
 &lt;p&gt;The first iteration of the app uses a spreadsheet for input and output, because everyone knows how to use a spreadsheet. Here&amp;rsquo;s what the available reservations sheet looks like:&lt;br /&gt;
-&lt;img src=&#34;http://dantanner.com/camplotto/input-available-reservations.png&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
+&lt;img src=&#34;https://dantanner.com/camplotto/input-available-reservations.png&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
 An &lt;code&gt;x&lt;/code&gt; in the cell indicates the site is available that week.  In the above example, Site B is considered unavailable for Week 2.&lt;/p&gt;
 
 &lt;p&gt;Next is the lottery registration information.  In reality the preferences will be all over the place, but you get the idea.
-&lt;img src=&#34;http://dantanner.com/camplotto/input-registrations.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://dantanner.com/camplotto/input-registrations.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;When the program is run, it produces the following spreadsheet.  The first sheet consists of the calculated reservations:&lt;br /&gt;
-&lt;img src=&#34;http://dantanner.com/camplotto/output-reservations.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://dantanner.com/camplotto/output-reservations.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Any unreserved sites would be listed in the &lt;em&gt;Sites Still Open&lt;/em&gt; tab, and any unmatched registrations would look like this:&lt;br /&gt;
-&lt;img src=&#34;http://dantanner.com/camplotto/output-unmatched-registrations.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://dantanner.com/camplotto/output-unmatched-registrations.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;next-steps&#34;&gt;Next Steps&lt;/h1&gt;
 
@@ -345,10 +345,10 @@ It&amp;rsquo;s actually a terrible mosquito-infested nightmare, completely devoi
     
     <item>
       <title>Mountain Bike Frame Hydration Hack</title>
-      <link>http://dantanner.com/post/frame-hydration/</link>
+      <link>https://dantanner.com/post/frame-hydration/</link>
       <pubDate>Fri, 11 Aug 2017 13:09:00 +0000</pubDate>
       
-      <guid>http://dantanner.com/post/frame-hydration/</guid>
+      <guid>https://dantanner.com/post/frame-hydration/</guid>
       <description>
 
 &lt;p&gt;I&amp;rsquo;ve been carrying water on my frame using a custom solution the last couple seasons.
@@ -370,10 +370,10 @@ In this example I&amp;rsquo;m using a hardtail, but many full suspension bikes c
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://banjobrothers.com/products/current/frame-packs/frame-pack-medium/&#34;&gt;Banjo Brothers Medium Frame Pack&lt;/a&gt; - $35. Or use whatever frame pack you like.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.platy.com/catalog/product/view/id/16837/s/hoser/category/45&#34;&gt;Platypus Hoser Hydration System - 2 Liter&lt;/a&gt; - $25. When full it just barely fits in the medium frame pack.
-The key to this bladder is that it has a small cap. A &lt;a href=&#34;http://dantanner.com/hydration/camelbak-bladder-annot.jpg&#34;&gt;CamelBak bladder&lt;/a&gt; won&amp;rsquo;t fit in this pack because of its giant cap.&lt;/li&gt;
+The key to this bladder is that it has a small cap. A &lt;a href=&#34;https://dantanner.com/hydration/camelbak-bladder-annot.jpg&#34;&gt;CamelBak bladder&lt;/a&gt; won&amp;rsquo;t fit in this pack because of its giant cap.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Camelbak-Quick-LinkTM-Conversion-Kit/dp/B006IB9TSE&#34;&gt;CambelBak Quick Link Conversion Kit&lt;/a&gt; - $10. Lets you easily remove the bladder and leave the hose in place.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Retractable-Carabiner-Keychain-Fishing-Translucent/dp/B01EIQXG66&#34;&gt;Retractable Badge Holder&lt;/a&gt; - $10 for 4, or free if your employer will give you one. They last about a season.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.rei.com/product/637547/camelbak-big-bite-valve&#34;&gt;CamelBak Big Bite Valve&lt;/a&gt; - $6. The flow of the &lt;a href=&#34;http://dantanner.com/hydration/platypus-bite-valve-annot.jpg&#34;&gt;Platypus bite valve&lt;/a&gt; that comes with the kit is ridiculously slow. Maybe they&amp;rsquo;ve improved it since I bought one, but the CamelBak valve works great.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rei.com/product/637547/camelbak-big-bite-valve&#34;&gt;CamelBak Big Bite Valve&lt;/a&gt; - $6. The flow of the &lt;a href=&#34;https://dantanner.com/hydration/platypus-bite-valve-annot.jpg&#34;&gt;Platypus bite valve&lt;/a&gt; that comes with the kit is ridiculously slow. Maybe they&amp;rsquo;ve improved it since I bought one, but the CamelBak valve works great.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h1 id=&#34;steps&#34;&gt;Steps&lt;/h1&gt;
@@ -381,14 +381,14 @@ The key to this bladder is that it has a small cap. A &lt;a href=&#34;http://dan
 &lt;ol&gt;
 &lt;li&gt;If you&amp;rsquo;re using the Banjo Brothers frame pack, you&amp;rsquo;ll need to cut a little hole in the front for the hose before installing it.
 I also used a lighter to singe/seal the hole edges to prevent fraying.&lt;br /&gt;
-&lt;img src=&#34;http://dantanner.com/hydration/hole.jpg&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;img src=&#34;https://dantanner.com/hydration/hole.jpg&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
 &lt;li&gt;If you&amp;rsquo;re using the quick link, install it so it fits in the frame pack. Here&amp;rsquo;s a picture of where I placed it in the line.
 The image also shows the orientation of how the bladder sits in the pack.
-&lt;img src=&#34;http://dantanner.com/hydration/quick-link.jpg&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;img src=&#34;https://dantanner.com/hydration/quick-link.jpg&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
 &lt;li&gt;Install the frame pack.&lt;/li&gt;
 &lt;li&gt;Fasten the badge holder onto the bars so the line is facing you as you&amp;rsquo;re riding. I used gorilla tape. Use whatever works.&lt;/li&gt;
 &lt;li&gt;Route the tubing, and mount it to the badge holder like this.&lt;br /&gt;
-&lt;img src=&#34;http://dantanner.com/hydration/tube-holder.jpg&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;img src=&#34;https://dantanner.com/hydration/tube-holder.jpg&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;Profit!  Well, actually cost you around $80.  But sure beats carrying water on your back or eating dirt.&lt;/li&gt;
 &lt;/ol&gt;
 </description>
@@ -396,10 +396,10 @@ The image also shows the orientation of how the bladder sits in the pack.
     
     <item>
       <title>Markdown Notes</title>
-      <link>http://dantanner.com/post/take-note/</link>
+      <link>https://dantanner.com/post/take-note/</link>
       <pubDate>Sun, 16 Jul 2017 20:09:00 +0000</pubDate>
       
-      <guid>http://dantanner.com/post/take-note/</guid>
+      <guid>https://dantanner.com/post/take-note/</guid>
       <description>
 
 &lt;p&gt;&lt;strong&gt;tl;dr; markdown files + file syncing + built-in OS file searching = easy organized notes&lt;/strong&gt;&lt;/p&gt;
@@ -489,10 +489,10 @@ e.g. with Alfred on OS X, where Cmd-Space is the hotkey to bring up the search b
     
     <item>
       <title>curl saves the day</title>
-      <link>http://dantanner.com/post/curl-saves-the-day/</link>
+      <link>https://dantanner.com/post/curl-saves-the-day/</link>
       <pubDate>Sat, 15 Jul 2017 13:09:00 +0000</pubDate>
       
-      <guid>http://dantanner.com/post/curl-saves-the-day/</guid>
+      <guid>https://dantanner.com/post/curl-saves-the-day/</guid>
       <description>
 
 &lt;p&gt;Every developer should be comfortable with &lt;a href=&#34;https://curl.haxx.se&#34;&gt;curl&lt;/a&gt;.&lt;/p&gt;
@@ -650,10 +650,10 @@ Here&amp;rsquo;s the official page for its &lt;a href=&#34;https://ec.haxx.se/cm
     
     <item>
       <title>Groovy is still better than Java</title>
-      <link>http://dantanner.com/post/groovy-is-still-better-than-java/</link>
+      <link>https://dantanner.com/post/groovy-is-still-better-than-java/</link>
       <pubDate>Wed, 25 Jan 2017 01:20:43 -0600</pubDate>
       
-      <guid>http://dantanner.com/post/groovy-is-still-better-than-java/</guid>
+      <guid>https://dantanner.com/post/groovy-is-still-better-than-java/</guid>
       <description>
 
 &lt;p&gt;The idea for this post started last week when a gifted teammate, whose experience lies outside JVM languages, asked me if it was still worth it to write Groovy over Java.  Good question&amp;hellip;&lt;/p&gt;
@@ -866,10 +866,10 @@ As to the question of when it&amp;rsquo;s appropriate to write Java over Groovy,
     
     <item>
       <title>java.time for the extremely impatient</title>
-      <link>http://dantanner.com/post/javatime-for-impatient/</link>
+      <link>https://dantanner.com/post/javatime-for-impatient/</link>
       <pubDate>Wed, 13 Apr 2016 02:26:00 +0000</pubDate>
       
-      <guid>http://dantanner.com/post/javatime-for-impatient/</guid>
+      <guid>https://dantanner.com/post/javatime-for-impatient/</guid>
       <description>
 
 &lt;p&gt;This is a super quick history and primer for those familiar with java, but unfamiliar with &lt;a href=&#34;http://www.joda.org/joda-time/&#34;&gt;Joda-Time&lt;/a&gt;.
@@ -992,10 +992,10 @@ For example, given the following scenario:&lt;/p&gt;
     
     <item>
       <title>Dynamic Grails Tomcat datasource configuration with Etcd</title>
-      <link>http://dantanner.com/post/dynamic-grails-tomcat-datasource/</link>
+      <link>https://dantanner.com/post/dynamic-grails-tomcat-datasource/</link>
       <pubDate>Thu, 30 Apr 2015 06:05:00 +0000</pubDate>
       
-      <guid>http://dantanner.com/post/dynamic-grails-tomcat-datasource/</guid>
+      <guid>https://dantanner.com/post/dynamic-grails-tomcat-datasource/</guid>
       <description>
 
 &lt;p&gt;Ever wonder if you could modify a Grails datasource while the app is running?
@@ -1192,10 +1192,10 @@ Yup - extremely well.  I actually expected the initial implementation to be a li
     
     <item>
       <title>Groovy collect vs spread-dot operator</title>
-      <link>http://dantanner.com/post/groovy-collect-vs-spread-dot-operator/</link>
+      <link>https://dantanner.com/post/groovy-collect-vs-spread-dot-operator/</link>
       <pubDate>Sat, 15 Nov 2014 23:17:00 +0000</pubDate>
       
-      <guid>http://dantanner.com/post/groovy-collect-vs-spread-dot-operator/</guid>
+      <guid>https://dantanner.com/post/groovy-collect-vs-spread-dot-operator/</guid>
       <description>&lt;p&gt;Yesterday I was doing some Groovy code cleanup with the wonderful &lt;a href=&#34;http://codenarc.sourceforge.net/&#34;&gt;CodeNarc&lt;/a&gt; static analysis tool. One of the violations it found was &lt;a href=&#34;http://codenarc.sourceforge.net/codenarc-rules-unnecessary.html#UnnecessaryCollectCall&#34;&gt;UnnecessaryCollectCall&lt;/a&gt;.
 The summary of the rule is &amp;ldquo;Some method calls to Object.collect(Closure) can be replaced with the spread operator.&amp;rdquo;
 e.g. Replace things.collect { it.name } with things*.name, or even things.name if what you&amp;rsquo;re after is a property.&lt;/p&gt;
@@ -1228,79 +1228,79 @@ things.a                  // throws a NullPointerException
     
     <item>
       <title>Playhouse</title>
-      <link>http://dantanner.com/post/playhouse/</link>
+      <link>https://dantanner.com/post/playhouse/</link>
       <pubDate>Sat, 16 Oct 2010 19:17:00 +0000</pubDate>
       
-      <guid>http://dantanner.com/post/playhouse/</guid>
+      <guid>https://dantanner.com/post/playhouse/</guid>
       <description>&lt;p&gt;A few months ago, I promised Maria that I would get her and Daniela a playhouse for their birthdays.  I was originally going to buy them a little Step2 playhouse, which would&amp;rsquo;ve been totally fine.  But my good friend Rob, a skilled woodworker, convinced me that building a playhouse was the way to go.  I was a little tentative about the idea, since I hadn&amp;rsquo;t built a real structure before on my own, but he very generously offered to help (and with two kids of his own, meant that his wife Karen also very generously helped&amp;hellip;we still can&amp;rsquo;t thank them enough!)&lt;/p&gt;
 
-&lt;p&gt;So I bought this &lt;a href=&#34;http://dantanner.com/playhouse/playhouse-small.pdf&#34;&gt;plan&lt;/a&gt; (which I can&amp;rsquo;t find any more, so am including it here), made a few modifications, and off we went:&lt;/p&gt;
+&lt;p&gt;So I bought this &lt;a href=&#34;https://dantanner.com/playhouse/playhouse-small.pdf&#34;&gt;plan&lt;/a&gt; (which I can&amp;rsquo;t find any more, so am including it here), made a few modifications, and off we went:&lt;/p&gt;
 
 &lt;p&gt;Starting with a pile of boards&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/playhouse/100828_IMG_3919.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/playhouse/100828_IMG_3919.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;and a friend who know&amp;rsquo;s what he&amp;rsquo;s doing&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/playhouse/100829_IMG_3929.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/playhouse/100829_IMG_3929.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;things started to take shape, and a lot of space!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/playhouse/100829_IMG_3931.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/playhouse/100829_IMG_3931.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We passed the initial kid inspection&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/playhouse/100829_IMG_3933.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/playhouse/100829_IMG_3933.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;and had lots of &amp;ldquo;help&amp;rdquo;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/playhouse/100829_IMG_3937.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/playhouse/100829_IMG_3937.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The first wall goes up&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/playhouse/100904_IMG_1129.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/playhouse/100904_IMG_1129.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And the playhouse is now fully operational.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/playhouse/100918_IMG_1257.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/playhouse/100918_IMG_1257.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;But we realized that it absolutely has to be red.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/playhouse/100918_IMG_3944.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/playhouse/100918_IMG_3944.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Much better color!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/playhouse/100919_IMG_1305.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/playhouse/100919_IMG_1305.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I finished up the railing in the dark with a million mosquito friends.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/playhouse/100920_IMG_1307.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/playhouse/100920_IMG_1307.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;One of the owner-operators.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/playhouse/100929_DSC_4771.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/playhouse/100929_DSC_4771.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Of course it needs a doorbell.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/playhouse/101003_IMG_1369.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/playhouse/101003_IMG_1369.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;and a solar-powered light for late night parties.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/playhouse/101016_DSC_4783.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/playhouse/101016_DSC_4783.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;With the trim, it&amp;rsquo;s pretty much done!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dantanner.com/playhouse/101016_DSC_4780.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;img src=&#34;http://dantanner.com/playhouse/101016_DSC_4782.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dantanner.com/playhouse/101016_DSC_4780.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://dantanner.com/playhouse/101016_DSC_4782.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Domain names for daughters</title>
-      <link>http://dantanner.com/post/domain-names-for-daughters/</link>
+      <link>https://dantanner.com/post/domain-names-for-daughters/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://dantanner.com/post/domain-names-for-daughters/</guid>
+      <guid>https://dantanner.com/post/domain-names-for-daughters/</guid>
       <description>&lt;p&gt;Though the biggest domain name purchases are probably long-gone since the initial dot-com boom, they still remain a valued property. They&amp;rsquo;ll never be as valuable as real land of course, since we can always create more of them, as opposed to things like lake-front property.&lt;/p&gt;
 
 &lt;p&gt;The recent mad rush for facebook profile names reminded me of this new global scale of gold rush activity. And yes, I&amp;rsquo;m a little annoyed that someone that has been farming this interweb as long as I have was offered a name like dan.tanner2 (in my day, we used Mosiac. And we liked it!). It also reminded me of something I&amp;rsquo;m hoping will come in handy for my two daughters some day - their very own short and memorable domain names.&lt;/p&gt;

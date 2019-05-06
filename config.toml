@@ -7,6 +7,9 @@ theme = "hugo-cactus-theme"
 googleAnalytics = ""
 # Disable comments by leaving disqusShortname empty
 disqusShortname = ""
+PygmentsCodeFences = true
+PygmentsStyle = "arduino"
+PygmentsLineNos= "inline"
 
 [params]
     name = "Dan Tanner"
@@ -47,5 +50,4 @@ disqusShortname = ""
 
 [social]
     twitter  = "https://www.twitter.com/edgescope"
-    facebook = "https://www.facebook.com/dan.tanner.12"
     github   = "https://www.github.com/dtanner"

@@ -1,5 +1,5 @@
 # Site settings
-baseurl = "http://dantanner.com/"
+baseurl = "https://dantanner.com/"
 languageCode = "en-us"
 title = "Dan Tanner"
 theme = "hugo-cactus-theme"

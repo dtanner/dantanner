@@ -78,33 +78,33 @@ Full implementations open in new tabs here:
 It's a lot of now unnecessary boilerplate like function definitions, and also bloated from a lack of collection operators. 
 To be fair, some of the cruft is test code, but this actually relates to the next criticism.
 * **Testing is an afterthought**.  Writing simple automated tests in Python and Kotlin is trivial. e.g. This is a passing test using tooling built into my IDE:
-{{< highlight Kotlin "linenos=inline, style=arduino" >}}
-    @Test
-    fun calculateHandValue() {
-        assertEquals(22, calculateHandValue(listOf(22, 8, 16, 45, 2)))
-        assertEquals(1232, calculateHandValue(listOf(47,9,40,48)))
-        assertEquals(15, calculateHandValue(listOf(24)))
-    }
+{{< highlight Kotlin "style=arduino">}}
+@Test
+fun calculateHandValue() {
+    assertEquals(22, calculateHandValue(listOf(22, 8, 16, 45, 2)))
+    assertEquals(1232, calculateHandValue(listOf(47,9,40,48)))
+    assertEquals(15, calculateHandValue(listOf(24)))
+}
 {{< /highlight >}}
 I looked up unit testing in C, and it looks like [a mess](https://stackoverflow.com/questions/65820/unit-testing-c-code). 
 Compilation hassles (the first example has you running a java program to generate the header file), 
 a confusing number of choices, and platform incompatibilities will ward off beginners. 
 * **Pointers and Addresses are an unnecessary concept for new programmers**. It's not a trivial concept for most beginners, and doesn't need to exist when learning the basics.  
-{{< highlight C "linenos=inline, style=arduino" >}}
+{{< highlight C >}}
 int getCards(int *); // asterisk means a pointer
 totalValue = totalValue * totalValue + 7; // asterisk here means multiplication 
 numCards = getCards(&cards[0]); // ampersand here references an address
-f (input <= 51 && input >= 0) { // double ampersand here is a logical operator
+if (input <= 51 && input >= 0) { // double ampersand here is a logical operator
 {{< /highlight >}}
 * **Language implementation details dilute quality of code**. For example, passing around the array of cards along with its size as a separate parameter in the C implementation is less readable and maintainable, but necessary. 
-{{< highlight C "linenos=inline, style=arduino" >}}
+{{< highlight C "style=arduino" >}}
 void displayCards(int arr[], int size) {
 {{< /highlight >}}
 Compare this to the same functions in Python and Kotlin:
-{{< highlight Python "linenos=inline, style=arduino" >}}
+{{< highlight Python "style=arduino" >}}
 def display_cards(cards):
 {{< /highlight >}}
-{{< highlight Kotlin "linenos=inline, style=arduino" >}}
+{{< highlight Kotlin "style=arduino" >}}
 fun displayCards(cards: List<Int>) {
 {{< /highlight >}}
 * **No strings**.  It had been so long I had forgotten C doesn't have strings.  
@@ -123,17 +123,17 @@ Before writing the Kotlin implementation, I expected it to be more verbose and l
 
 * **Lambdas in Kotlin are cleaner than Python**. And even though they're a higher-level concept that doesn't exist in C, they make for more readable code than the C equivalent. 
 e.g. Compare these two one-liners in Kotin and Python
-{{< highlight Python "linenos=inline, style=arduino" >}}
+{{< highlight Python "style=arduino" >}}
 return sum((get_card_value(card) - get_suit_number(card)) for card in cards)
 {{< /highlight >}}
-{{< highlight Kotlin "linenos=inline, style=arduino" >}}
+{{< highlight Kotlin "style=arduino" >}}
 return cards.sumBy { getCardValue(it) - getSuitNumber(it) }
 {{< /highlight >}}
 Kotlin is the newest language of the bunch, so had more time to incorporate the best design features from the latest languages. 
 That said, I wasn't taught lambdas when I was first learning, so don't know if this would be a handy feature or just one more thing to learn for most beginners.  
 * **Kotlin expands Java's already good Collection support for beautiful concise code**. e.g. `cards.sumBy` and `cards.count` are one-liners that intuitively implement the function.
-In C's brevity, you have to write more code, and this makes it less readable in most cases:
-{{< highlight C "linenos=inline, style=arduino" >}}
+In C's syntactic brevity, you write more code, and this makes it arguably less readable:
+{{< highlight C "style=arduino" >}}
 int hasThreeOrMoreNonNumberCards(int arr[], int numCards) {
     int count = 0;
     for (int i = 0; i < numCards; i++) {
@@ -141,11 +141,10 @@ int hasThreeOrMoreNonNumberCards(int arr[], int numCards) {
             count++;
         }
     }
-
     return count >= 3;
 }
 {{< /highlight >}}
-{{< highlight Kotlin "linenos=inline, style=arduino" >}}
+{{< highlight Kotlin "style=arduino" >}}
 fun hasThreeOrMoreNonNumberCards(cards: List<Int>): Boolean {
     return cards.count { getCardValue(it) >= 11 || getCardValue(it) == 1 } >= 3
 }

@@ -114,12 +114,13 @@ fun displayCards(cards: List<Int>) {
 ### Python observations
 It's pretty dang intuitive IMO, even for first-time programmers.  
 New coders will need to search on how to import stuff, and scan input from a user, but it's pretty trivial. You won't accidentally use `getchar()` and be left scratching your head.
-One thing I really missed was static typing.  I'm not super fluent in Python, and it took me twice as long to write the exercise in Python as it did in Kotlin.  
+One thing I really missed was static typing.  I'm not super fluent in Python, and it took me twice as long to write the exercise in Python as it did in Kotlin.
 A lot of the time was spent correcting code in the try-it-now stage rather than being highlighted by the editor during the typing stage.
 
 
 ### Kotlin Observations
-Before writing the Kotlin implementation, I expected it to be more verbose and less readable than Python.  But IMO it's actually cleaner due to better lambda support and types.
+Before writing the Kotlin implementation, I expected it to be more verbose and less readable than Python, because Java.
+But IMO it's actually cleaner.
 
 * **Lambdas in Kotlin are cleaner than Python**. And even though they're a higher-level concept that doesn't exist in C, they make for more readable code than the C equivalent. 
 e.g. Compare these two one-liners in Kotin and Python
@@ -130,7 +131,8 @@ return sum((get_card_value(card) - get_suit_number(card)) for card in cards)
 return cards.sumBy { getCardValue(it) - getSuitNumber(it) }
 {{< /highlight >}}
 Kotlin is the newest language of the bunch, so had more time to incorporate the best design features from the latest languages. 
-That said, I wasn't taught lambdas when I was first learning, so don't know if this would be a handy feature or just one more thing to learn for most beginners.  
+That said, I wasn't taught lambdas when I was first learning, so don't know if this would be a handy feature or just one more thing to learn for most beginners.   
+
 * **Kotlin expands Java's already good Collection support for beautiful concise code**. e.g. `cards.sumBy` and `cards.count` are one-liners that intuitively implement the function.
 In C's brevity, you have to write more code, and this makes it less readable in most cases:
 {{< highlight C "linenos=inline, style=arduino" >}}
@@ -150,27 +152,27 @@ fun hasThreeOrMoreNonNumberCards(cards: List<Int>): Boolean {
     return cards.count { getCardValue(it) >= 11 || getCardValue(it) == 1 } >= 3
 }
 {{< /highlight >}}
+
 * **Kotlin forces the programmer to think about production scenarios**.  This adds a little bit of extra work up front for the programmer, but this saves a lot of time in the end and greatly improves the quality of code.
 Explicit null awareness is a critical improvement in the language. The C implementation is littered with vulnerabilities and bugs.  
 One might argue Python is a better introductory language because you can ignore a lot more when focusing on learning and not making a production app. I think this is true.
 That said, Kotlin does make it easy to ignore yet still be obvious when you're working with a nullable variables.
 The `!!` in `readLine()!!.toInt()` indicates we know the input could be null, but we're gonna assume it's not.  
+<br>
+# Comparison
+I don't know how many schools still teach C to beginners.
+Their stated reasons might be similar to the response I received when I emailed the chair of the department asking why they're still teaching `C` to beginning programmers.
+The two main points from the response:  
 
-# Obstacles, Comparison, and Suggestions
-I don't know how many schools still teach C to beginners. My guess is a lot. 
-Their stated reasons are likely similar to the response I received when I emailed the chair of the department asking why they're still teaching `C` to beginning programmers. The two main points from the response:
-
-* The course is largely a service course for engineering students, as those programs require their students to use C throughout their curriculum.
+* The course is largely a service course for engineering students, as those programs require their students to use C throughout their curriculum.  
 * The course is subject to Engineering program accreditation standards.
 
-I also speculate that since C is still a popular language (#2 in the 2019 [Tiobe list](https://www.tiobe.com/tiobe-index/)), many school reference that as justification for teaching it.  
-Again, teaching it is fine; just don't teach it to beginners. 
-
-My argument is that even if you intend to become a full-time programmer, you'll have a better foundation if you start with a language that lets you focus on the fundamentals at a higher level.  
-I don't know much about Engineering program accreditation standards, so don't know what the signal to noise ratio is on effective guidance vs. red tape.
-
-
-### What are some of the top-rated schools teaching beginners?
+<br><br>
+I obviously disagree with the first point enough to have spent the time to write this article. 
+I think it's a big deal to start students with the language that will give them the most promise in their future.   
+To the second reason of accreditation standards, I don't know where this comes from. 
+Maybe good intentions, maybe good overall guidance; I'm skeptical about its merits in this decision for a couple reasons.
+The most convincing reason is to glance at what some of the top universities in the U.S. teach new students:
 
 | School | Language |
 | --- | --- |
@@ -180,8 +182,13 @@ I don't know much about Engineering program accreditation standards, so don't kn
 | Cornell | [Python](http://www.cs.cornell.edu/courses/cs1110/2019sp/) |
 | University of Washington | [Java](https://courses.cs.washington.edu/courses/cse142/)
 
-The best schools have already made the switch.  
-todo - mention java vs groovy/kotlin
-todo summarize recommendation 
+These are some of our best schools, and they all teach either Python or Java to their new students.  Java's no Kotlin, but I get that Kotlin is a relatively new language,
+and it takes time to make a major switch even when the language is in the same family. 
 
+# Summary and Suggestion
+
+These are some of the typical paths in today's landscape. 
+In only one of them do I think knowledge of a low-level language like C is important (embedded systems).
+The rest would be better off using other specialized or higher-level general languages.
+![](/intro-programming/language-track.svg)
 

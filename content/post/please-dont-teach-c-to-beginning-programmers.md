@@ -150,12 +150,11 @@ I asked the chair of the department why, and the two main points from the respon
 * The course is largely a service course for engineering students, as those programs require their students to use C throughout their curriculum.  
 * The course is subject to Engineering program accreditation standards.
 
-<br><br>
 I obviously disagree with the first point enough to have spent the time to write this article. 
 I think it's a big deal to start students with the language that will give them the most promise in their future.   
 To the second reason of accreditation standards, I don't know where this comes from. 
 Maybe good intentions, maybe good overall guidance; I'm skeptical about its merits in this decision for a couple reasons.
-The most convincing reason is to glance at what some of the top universities in the U.S. teach new students:
+The most convincing reason might be to glance at what some of the top universities in the U.S. teach new students:
 
 | School | Language |
 | --- | --- |

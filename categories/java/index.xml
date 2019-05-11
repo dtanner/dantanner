@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Java on Dan Tanner</title>
-    <link>https://dantanner.com/categories/java/index.xml</link>
-    <description>Recent content in Java on Dan Tanner</description>
+    <title>java on Dan Tanner</title>
+    <link>https://dantanner.com/categories/java/</link>
+    <description>Recent content in java on Dan Tanner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://dantanner.com/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Apr 2016 02:26:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://dantanner.com/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>java.time for the extremely impatient</title>
@@ -14,124 +17,8 @@
       <pubDate>Wed, 13 Apr 2016 02:26:00 +0000</pubDate>
       
       <guid>https://dantanner.com/post/javatime-for-impatient/</guid>
-      <description>
-
-&lt;p&gt;This is a super quick history and primer for those familiar with java, but unfamiliar with &lt;a href=&#34;http://www.joda.org/joda-time/&#34;&gt;Joda-Time&lt;/a&gt;.
-Java’s original date and time handling had some issues that could make it cumbersome and error-prone to work with. Then came the Joda-Time library, which is a fantastic replacement for pretty much everything date and time related. It’s intuitive, clean, fully-featured, and performant.&lt;/p&gt;
-
-&lt;p&gt;Starting with Java 8, the library was folded into the core JDK, with very few modifications to the Joda API.&lt;/p&gt;
-
-&lt;p&gt;In short, if you’re not on Java 8 yet, you should probably be using the joda-time library. If you are on Java 8, you should use the java.time classes.&lt;/p&gt;
-
-&lt;p&gt;There’s much more to the package than what I’ll show, and you’ll eventually want to dive deeper, but this article shows you some of the most frequently used techniques I’ve experienced on the last few projects. I’m using groovy for the code snippets, but they’re just java without the semicolons.&lt;/p&gt;
-
-&lt;h4 id=&#34;91-83-of-the-time-you-ll-work-with-localdate-or-zoneddatetime&#34;&gt;91.83% of the time, you’ll work with LocalDate or ZonedDateTime.&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;import java.time.LocalDate
-import java.time.ZonedDateTime
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
-import java.time.temporal.TemporalAdjusters
-
-// If you have a date without time information, use a LocalDate. e.g. someone&#39;s birthday
-LocalDate localDate = new LocalDate(2016, 4, 12)
-println localDate.toString()  // 2016-04-12
-
-// If you need to include time in the date, use ZonedDateTime
-ZonedDateTime zdt = ZonedDateTime.now() 
-
-// when formatting a ZonedDateTime for API communication, you&#39;ll typically use the DateTimeFormatter.ISO_INSTANT format
-println zdt.format(DateTimeFormatter.ISO_INSTANT)
-// 2016-04-12T19:20:45.539Z
-
-// some more examples of formatters
-println zdt.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
-// 2016-04-12T14:20:45.539
-
-println zdt.format(DateTimeFormatter.RFC_1123_DATE_TIME)
-// Tue, 12 Apr 2016 14:20:45 -0500
-
-println zdt.format(DateTimeFormatter.ISO_ZONED_DATE_TIME)
-// 2016-04-12T14:20:45.539-05:00[America/Chicago]
-
-// you can also create a custom formatter
-DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&amp;quot;MMM dd yyyy GG&amp;quot;)
-println zdt.format(formatter)
-// Apr 12 2016 AD
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;date-manipulation-is-fluent-and-intuitive&#34;&gt;Date manipulation is fluent and intuitive.&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;import java.time.LocalDate
-import java.time.temporal.TemporalAdjusters
-
-LocalDate localDate = LocalDate.now()
-println localDate 
-// 2016-04-12
-
-println localDate.plusMonths(1).withDayOfMonth(1)
-// 2016-05-01
-
-println localDate.minusMonths(1).with(TemporalAdjusters.lastDayOfMonth())
-// 2016-03-31
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;prefer-to-work-in-utc-if-you-can-logs-database-timestamps-consistency-helps-avoid-mistakes&#34;&gt;Prefer to work in UTC if you can - logs, database timestamps…consistency helps avoid mistakes.&lt;/h4&gt;
-
-&lt;p&gt;In a startup class: &lt;code&gt;TimeZone.setDefault(TimeZone.getTimeZone(&amp;quot;UTC&amp;quot;))&lt;/code&gt;&lt;br /&gt;
-or as a JVM flag: &lt;code&gt;-Duser.timezone=UTC&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;when-working-with-a-point-in-time-always-be-aware-of-timezone&#34;&gt;When working with a point in time, always be aware of timezone!!!!&lt;/h4&gt;
-
-&lt;p&gt;Even when working with objects like LocalDate, you must be timezone aware if you’re using a point-in-time operation. And by point-in-time, 99.273% of the time I’m referring to the now() method.
-For example, given the following scenario:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The default JVM timezone is &lt;code&gt;UTC&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;At &lt;code&gt;2016-04-12 3:10 PM&lt;/code&gt; in &lt;code&gt;America/Chicago&lt;/code&gt; (which is GMT-6), a call to println &lt;code&gt;LocalDate.now()&lt;/code&gt; will result in &lt;code&gt;2016-04-12&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;But at &lt;code&gt;2016-04-12 6:10 PM&lt;/code&gt; in &lt;code&gt;America/Chicago&lt;/code&gt;, the same call will result in &lt;code&gt;2016-04-13&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;If you’re in Chicago, that looks like tomorrow, and might be a bug for what you’re trying to do! The code is doing precisely what it’s told though; the date in London is April 13th at the time the LocalDate is created for the UTC timezone.&lt;/p&gt;
-
-&lt;p&gt;So to repeat, when working with specific points in time, be aware of the timezone you’re working with. For example, if you want to set a date 30 days out from now according to your business location, you could say &lt;code&gt;LocalDate.now(ZoneId.of(&#39;America/Chicago&#39;)).plusDays(30)&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h4 id=&#34;further-reading&#34;&gt;Further Reading&lt;/h4&gt;
-
-&lt;p&gt;The &lt;a href=&#34;https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html&#34;&gt;java.time javadocs&lt;/a&gt; are actually really good, so read them for more detailed information. Wrapping up the whirlwind tour, here’s a quick table to help get you started with a few objects and their example uses:&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Object&lt;/th&gt;
-&lt;th&gt;Example Usage and Notes&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;LocalDate&lt;/td&gt;
-&lt;td&gt;Birthday, Contract date where no time or timezone is needed&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;ZonedDateTime&lt;/td&gt;
-&lt;td&gt;Most points in time, like some startDateTime, endDateTime&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;YearMonth&lt;/td&gt;
-&lt;td&gt;When you only want to work with a year/month combination. Less commonly used, but handy for date comparisons if you don’t want granularity to the day. e.g. Credit Card Expiration Month&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;LocalTime&lt;/td&gt;
-&lt;td&gt;e.g. Chris’s hardware store opens at 8 am. This date is irrespective of timezone (i.e. you wouldn’t change the opening time when daylight savings rolls around.)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-</description>
+      <description>This is a super quick history and primer for those familiar with java, but unfamiliar with Joda-Time. Java’s original date and time handling had some issues that could make it cumbersome and error-prone to work with. Then came the Joda-Time library, which is a fantastic replacement for pretty much everything date and time related. It’s intuitive, clean, fully-featured, and performant.
+Starting with Java 8, the library was folded into the core JDK, with very few modifications to the Joda API.</description>
     </item>
     
   </channel>

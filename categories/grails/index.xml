@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Grails on Dan Tanner</title>
-    <link>https://dantanner.com/categories/grails/index.xml</link>
-    <description>Recent content in Grails on Dan Tanner</description>
+    <title>grails on Dan Tanner</title>
+    <link>https://dantanner.com/categories/grails/</link>
+    <description>Recent content in grails on Dan Tanner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://dantanner.com/categories/grails/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 Apr 2015 06:05:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://dantanner.com/categories/grails/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Dynamic Grails Tomcat datasource configuration with Etcd</title>
@@ -14,198 +17,8 @@
       <pubDate>Thu, 30 Apr 2015 06:05:00 +0000</pubDate>
       
       <guid>https://dantanner.com/post/dynamic-grails-tomcat-datasource/</guid>
-      <description>
-
-&lt;p&gt;Ever wonder if you could modify a Grails datasource while the app is running?
-Probably not, and that&amp;rsquo;s totally fine&amp;hellip;most people don&amp;rsquo;t need to. We had a couple reasons though:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;During a disaster recovery situation where a non-clustered database goes down, you want to point all the apps at a failover database.  By default this means you have to update the config and restart all the apps.  On a typical AWS instance, this means at least a minute of downtime for a bigger Grails app.  Not the end of the world, but not great.&lt;/li&gt;
-&lt;li&gt;One of our databases is a catalog of product information that can be drastically changed.  We wanted to be able to clone the catalog, apply massive data changes to it (this can take a minute or so), and then point all the apps in the cluster to this new database without downtime.  And we also want to be able to revert to the old database if something goes wrong.&lt;br /&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&#34;first-question-how-can-you-change-a-tomcat-datasource-while-the-app-is-running&#34;&gt;First question - how can you change a Tomcat datasource while the app is running?&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;package com.foo.util
-
-import groovy.util.logging.Log4j
-import org.apache.tomcat.jdbc.pool.ConnectionPool
-import org.codehaus.groovy.grails.commons.GrailsApplication
-
-@Log4j
-class TomcatDatasourceUtil {
-
-    static void ensureCurrentDatasources(GrailsApplication application, List datasourceNames) {
-        log.debug &amp;quot;Ensuring datasources are current&amp;quot;
-        datasourceNames.each { String datasourceName -&amp;gt;
-            ConnectionPool connectionPool = application.mainContext.getBean(datasourceName).targetDataSource.targetDataSource.pool
-
-            def dataSourceFileConfig = application.config.&amp;quot;$datasourceName&amp;quot;
-
-            // discover the properties we want to potentially change. if changed, update and purge the pool
-            List propertyNames = [&#39;url&#39;, &#39;username&#39;, &#39;password&#39;]
-            if (propertyNames.any { String propertyName -&amp;gt;
-                connectionPool.poolProperties.&amp;quot;${propertyName}&amp;quot; != dataSourceFileConfig.&amp;quot;${propertyName}&amp;quot;
-            }) {
-                connectionPool.poolProperties.url = dataSourceFileConfig.url
-                connectionPool.poolProperties.username = dataSourceFileConfig.username
-                connectionPool.poolProperties.password = dataSourceFileConfig.password
-                connectionPool.purge()
-                log.info(&amp;quot;${datasourceName} was modified and refreshed&amp;quot;)
-            } else {
-                log.info(&amp;quot;${datasourceName} didn&#39;t change&amp;quot;)
-            }
-        }
-    }
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Grails version 2.3 and onwards uses the &lt;a href=&#34;https://tomcat.apache.org/tomcat-8.0-doc/jdbc-pool.html&#34;&gt;Tomcat Connection Pool&lt;/a&gt; as its datasource provider by default.  If you&amp;rsquo;re not using Grails 2.3+ yet, you&amp;rsquo;re probably using the Apache Commons DBCP, and can switch by using &lt;a href=&#34;http://grails.org/plugin/jdbc-pool&#34;&gt;this plugin&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Basically, you pass the &lt;code&gt;ensureCurrentDatasources&lt;/code&gt; method your grailsApplication and a list of datasource names you want to inspect for changes and potentially refresh.  The datasource name(s) are typically defined in your DataSource.groovy.  e.g. If you only have one datasource, it&amp;rsquo;ll be named &amp;ldquo;dataSource&amp;rdquo;.  If you&amp;rsquo;re using multiple datasources, they might be named &amp;ldquo;dataSource_auditing&amp;rdquo; or whatever you&amp;rsquo;ve specified.&lt;/p&gt;
-
-&lt;p&gt;The method is implemented to compare the current Tomcat connection pool values for the username, password, and url against the current Grails configuration values.  If any settings have changed, it&amp;rsquo;ll update those connection pool settings and call the purge() method in the connection pool.  purge() will basically perform a graceful reset of all the connections so that they establish their next connection with the updated configuration.  I chose username, password, and url because those are the things that we might change.  There are more properties in the pool that you could possibly change, but you probably don&amp;rsquo;t want to change much else, since there is some critical state being managed by some of the properties.&lt;/p&gt;
-
-&lt;p&gt;OK, so you know a way to dynamically update a datasource while the app is running.&lt;/p&gt;
-
-&lt;h4 id=&#34;next-question-how-should-i-wire-in-this-dynamic-update-capability&#34;&gt;Next question: How should I wire in this dynamic update capability?&lt;/h4&gt;
-
-&lt;p&gt;The short answer is, whatever works best for you.  Here&amp;rsquo;s the path we went down&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;The initial approach:&lt;/strong&gt;&lt;br /&gt;
-Our application has the following attributes:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;It uses an inline plugin where we keep our domain classes and services.&lt;/li&gt;
-&lt;li&gt;We use &lt;a href=&#34;https://saltstack.com/&#34;&gt;Salt&lt;/a&gt; to manage our external config files&lt;/li&gt;
-&lt;li&gt;It uses the &lt;a href=&#34;https://github.com/bluesliverx/grails-external-config-reload&#34;&gt;External Config Reload&lt;/a&gt; plugin to allow us to dynamically update the app config when we change the config files.&lt;br /&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;With those attributes, we initially implemented a hook into the TomcatDatasourceUtil by defining the onConfigChange event in our plugin&amp;rsquo;s Config.groovy, like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def onConfigChange = { event -&amp;gt;
-    TomcatDatasourceUtil.ensureCurrentDatasources(
-            application, 
-            [&#39;dataSource&#39;, &#39;dataSource_auditing&#39;])
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This worked fine, but seemed like a clunky solution.  For the catalog database update scenario, the application essentially needs to remotely communicate with salt, so that salt could remotely update all of the application&amp;rsquo;s configuration files.  We keep all our salt configurations in source control, which didn&amp;rsquo;t really fit the model of what we wanted to do.&lt;/p&gt;
-
-&lt;h4 id=&#34;the-better-approach-or-at-least-this-has-been-working-well-for-us-so-far&#34;&gt;The better approach&amp;hellip;or at least this has been working well for us so far:&lt;/h4&gt;
-
-&lt;p&gt;Rather than use a tool to constantly push out config file changes on the fly to our cluster of apps, we thought it would be better if we inverted the technique&amp;hellip;i.e. have all the applications get their configuration from a central location.  This is where &lt;a href=&#34;https://github.com/coreos/etcd&#34;&gt;etcd&lt;/a&gt; comes in.  The summary of etcd is that it&amp;rsquo;s &amp;ldquo;a distributed, consistent key value store for shared configuration and service discovery with a focus on being simple, secure, fast, and reliable.&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;You can run just about any groovy code in your Config.groovy and Datasource.groovy.  So rather than have the application get its datasource config info from a file, we have it load the datasource URL from etcd.  e.g. Here&amp;rsquo;s a snippet from our external config file:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;import groovy.json.JsonSlurper
-
-dataSource {
-    // most properties are directly set
-    pooled = true
-    // ...
-    
-    // the url is retrieved from etcd...make sure the etcd resource is properly protected
-    def jsonSlurper = new JsonSlurper()
-    def catalogUrlConfig = jsonSlurper.parseText(new URL(&amp;quot;http://etcdlocation:2379/v2/keys/dataSource/url&amp;quot;).text)
-    url = catalogUrlConfig.node.value
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This will take care of your app getting its initial url value from etcd.  You can put whatever else in etcd that you want&amp;hellip;for our case we only need to dynamically change the url.&lt;/p&gt;
-
-&lt;h4 id=&#34;so-now-how-do-you-update-the-datasource-for-a-cluster-of-applications&#34;&gt;So now how do you update the datasource for a cluster of applications?&lt;/h4&gt;
-
-&lt;p&gt;In your application&amp;rsquo;s Bootstrap.groovy init, make a call to a class like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;package com.foo.config
-
-import com.foog.util.TomcatDatasourceUtil
-import grails.plugins.rest.client.RestBuilder
-import groovy.json.JsonSlurper
-
-/**
- * Application service to get and set values from a centralized remote configuration service.
- */
-class RemoteConfigService {
-    def grailsApplication
-
-    public static final String CATALOG_DB_URL_KEY = &amp;quot;dataSource/url&amp;quot;
-    protected static final int INITIAL_RETRY_TIMEOUT_SECS = 5
-
-    /**
-     * Runs a process to watch for configuration changes to the plancatalog datasource URL.
-     * If the URL value changes, call the datasource utility to update the connections to point at the new database.
-     */
-    void watchForChanges() {
-        if (!grailsApplication.config.remoteConfig.enabled) {
-            log.info &amp;quot;remoteConfigBaseUrl not configured - will not watch for config changes&amp;quot;
-            return
-        }
-        log.debug(&amp;quot;watching for changes&amp;quot;)
-
-        Thread.startDaemon {
-            int secondsToWait = INITIAL_RETRY_TIMEOUT_SECS
-            while (true) {
-                try {
-                    String url = get(&amp;quot;${CATALOG_DB_URL_KEY}?wait=true&amp;quot;)
-                    if (url) {
-                        grailsApplication.config.dataSource_plancatalog.url = url
-                        TomcatDatasourceUtil.ensureCurrentDatasources(grailsApplication, [&#39;dataSource_plancatalog&#39;])
-                    }
-                    secondsToWait = INITIAL_RETRY_TIMEOUT_SECS
-                } catch (Exception e) {
-                    log.warn(&amp;quot;Exception occurred while watching for config changes. Will wait ${secondsToWait} seconds and continue watching&amp;quot;, e)
-                    Thread.sleep(1000 * secondsToWait)
-                    // double the length of the time to wait before retrying, up to a maximum of 30 minutes
-                    secondsToWait = [60 * 30, 2 * secondsToWait].min()
-                }
-            }
-        }
-    }
-
-    /**
-     * Get the configured value for the given key
-     * @param key
-     * @return the current value
-     */
-    String get(String key) {
-        def jsonSlurper = new JsonSlurper()
-        def json = jsonSlurper.parseText(new URL(&amp;quot;${grailsApplication.config.remoteConfig.baseUrl}/${key}&amp;quot;).text)
-        return json?.node?.value
-    }
-
-    /**
-     * Set the given key to the given value in the centralized configuration service
-     * @param key
-     * @param valueArg
-     */
-    void set(String key, String valueArg) {
-        RestBuilder rest = new RestBuilder()
-        def resp = rest.put(&amp;quot;${grailsApplication.config.remoteConfig.baseUrl}/${key}&amp;quot;) {
-            value = valueArg
-        }
-        if (resp.status != 200) {
-            throw new Exception(&amp;quot;Error setting configuration value for key=${key}. Response=${resp.body}&amp;quot;)
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This is a very basic implementation of an etcd client that can watch for changes, update the grails configuration upon change, and also allow the app to update an etcd value.  There are more robust etcd clients available, but we didn&amp;rsquo;t need (at least not yet) the added dependencies and complexity.&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s pretty fun to watch once you get it all working.  Essentially this is the flow:&lt;br /&gt;
-1. A cluster of grails applications start up, configure their datasource URL using the etcd config, and watch for changes.&lt;br /&gt;
-2. Some time later, one of the applications clones the database, makes changes to it, and then sets the new URL value in etcd.&lt;br /&gt;
-3. All the applications are then notified of the updated etcd value and dynamically update their datasource to point at the new URL.&lt;br /&gt;
-4. &amp;ldquo;dataSource was modified and refreshed&amp;rdquo;!&lt;/p&gt;
-
-&lt;p&gt;Does this actually work?
-Yup - extremely well.  I actually expected the initial implementation to be a little brittle (e.g. maybe needing a more robust etcd client), but it didn&amp;rsquo;t need any changes in the 6 months I watched it in production.&lt;/p&gt;
-</description>
+      <description>Ever wonder if you could modify a Grails datasource while the app is running? Probably not, and that&amp;rsquo;s totally fine&amp;hellip;most people don&amp;rsquo;t need to. We had a couple reasons though:
+ During a disaster recovery situation where a non-clustered database goes down, you want to point all the apps at a failover database. By default this means you have to update the config and restart all the apps. On a typical AWS instance, this means at least a minute of downtime for a bigger Grails app.</description>
     </item>
     
     <item>
@@ -214,34 +27,8 @@ Yup - extremely well.  I actually expected the initial implementation to be a li
       <pubDate>Sat, 15 Nov 2014 23:17:00 +0000</pubDate>
       
       <guid>https://dantanner.com/post/groovy-collect-vs-spread-dot-operator/</guid>
-      <description>&lt;p&gt;Yesterday I was doing some Groovy code cleanup with the wonderful &lt;a href=&#34;http://codenarc.sourceforge.net/&#34;&gt;CodeNarc&lt;/a&gt; static analysis tool. One of the violations it found was &lt;a href=&#34;http://codenarc.sourceforge.net/codenarc-rules-unnecessary.html#UnnecessaryCollectCall&#34;&gt;UnnecessaryCollectCall&lt;/a&gt;.
-The summary of the rule is &amp;ldquo;Some method calls to Object.collect(Closure) can be replaced with the spread operator.&amp;rdquo;
-e.g. Replace things.collect { it.name } with things*.name, or even things.name if what you&amp;rsquo;re after is a property.&lt;/p&gt;
-
-&lt;p&gt;But when I performed that refactoring and ran all the tests, some failed! Here&amp;rsquo;s why:&lt;/p&gt;
-
-&lt;p&gt;I made the mistake of assuming that the spread operator behavior is always identical to the collect method. For a &lt;strong&gt;non-null&lt;/strong&gt; collection, it is. e.g. The following code will produce the same result regardless of the technique you use:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def things = [ [a: 1], [a: 2] ]
-
-things.collect { it.a } // returns [1, 2]
-things*.a               // returns [1, 2]
-things.a                // returns [1, 2]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;But if the collection you&amp;rsquo;re operating on is &lt;strong&gt;null&lt;/strong&gt;, the three techniques will result in different outcomes:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def things = null
-
-things.collect { it.a }   // returns []
-things*.a                 // returns null
-things.a                  // throws a NullPointerException
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;What this means is that if you&amp;rsquo;re working with Collections that can potentially be null, you need to think about the consequences of the dot operations before using them. i.e. Don&amp;rsquo;t ever use the implicit spread operator (things.a) if the collection can be null. And only use *. if it&amp;rsquo;s ok for the result to be null.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;tl;dr;&lt;/em&gt; Explicit and implicit spread operations are great, but be aware that they are less forgiving than the collect method.&lt;/p&gt;
-</description>
+      <description>Yesterday I was doing some Groovy code cleanup with the wonderful CodeNarc static analysis tool. One of the violations it found was UnnecessaryCollectCall. The summary of the rule is &amp;ldquo;Some method calls to Object.collect(Closure) can be replaced with the spread operator.&amp;rdquo; e.g. Replace things.collect { it.name } with things*.name, or even things.name if what you&amp;rsquo;re after is a property.
+But when I performed that refactoring and ran all the tests, some failed!</description>
     </item>
     
   </channel>

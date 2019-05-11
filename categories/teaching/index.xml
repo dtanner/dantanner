@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Teaching on Dan Tanner</title>
+    <link>https://dantanner.com/categories/teaching/</link>
+    <description>Recent content in Teaching on Dan Tanner</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 May 2019 20:09:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://dantanner.com/categories/teaching/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Please Don&#39;t Teach C to Beginning Programmers</title>
+      <link>https://dantanner.com/post/please-dont-teach-c-to-beginning-programmers/</link>
+      <pubDate>Sun, 05 May 2019 20:09:00 +0000</pubDate>
+      
+      <guid>https://dantanner.com/post/please-dont-teach-c-to-beginning-programmers/</guid>
+      <description>The Student I have a niece in her first year at a local university. She&amp;rsquo;s never done any programming before, and thinking of becoming an actuary. That means she should learn at least a little bit of programming in a tool like R or Python, right? Those seem like good high-level languages in 2019 that are also applicable in that field.
+The Phone Call A few weeks ago I got a call from her Dad asking for some help with homework on an introductory (100-level) programming course titled &amp;ldquo;Problem Solving in the Natural Sciences (using C and Matlab)&amp;rdquo;.</description>
+    </item>
+    
+  </channel>
+</rss>

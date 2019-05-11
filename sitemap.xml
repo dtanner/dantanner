@@ -1,9 +1,69 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://dantanner.com/categories/c/</loc>
+    <lastmod>2019-05-05T20:09:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/categories/</loc>
+    <lastmod>2019-05-05T20:09:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/</loc>
+    <lastmod>2019-05-05T20:09:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/categories/kotlin/</loc>
+    <lastmod>2019-05-05T20:09:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/post/please-dont-teach-c-to-beginning-programmers/</loc>
+    <lastmod>2019-05-05T20:09:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/post/</loc>
+    <lastmod>2019-05-05T20:09:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/categories/python/</loc>
+    <lastmod>2019-05-05T20:09:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/categories/teaching/</loc>
+    <lastmod>2019-05-05T20:09:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
   
   <url>
     <loc>https://dantanner.com/post/meteorologists-urged-to-stop-giving-100-percent/</loc>
     <lastmod>2017-10-15T10:59:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/categories/data-science/</loc>
+    <lastmod>2017-10-15T10:59:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/categories/weather/</loc>
+    <lastmod>2017-10-15T10:59:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -12,8 +72,38 @@
   </url>
   
   <url>
+    <loc>https://dantanner.com/categories/camping/</loc>
+    <lastmod>2017-08-30T11:09:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/categories/lottery/</loc>
+    <lastmod>2017-08-30T11:09:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://dantanner.com/post/frame-hydration/</loc>
     <lastmod>2017-08-11T13:09:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/categories/hydration/</loc>
+    <lastmod>2017-08-11T13:09:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/categories/mountain-biking/</loc>
+    <lastmod>2017-08-11T13:09:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/categories/water/</loc>
+    <lastmod>2017-08-11T13:09:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -22,8 +112,32 @@
   </url>
   
   <url>
+    <loc>https://dantanner.com/categories/memory-less/</loc>
+    <lastmod>2017-07-16T20:09:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/categories/productivity/</loc>
+    <lastmod>2017-07-16T20:09:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/categories/curl/</loc>
+    <lastmod>2017-07-15T13:09:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://dantanner.com/post/curl-saves-the-day/</loc>
     <lastmod>2017-07-15T13:09:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/categories/networking/</loc>
+    <lastmod>2017-07-15T13:09:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -37,8 +151,26 @@
   </url>
   
   <url>
+    <loc>https://dantanner.com/categories/java/</loc>
+    <lastmod>2016-04-13T02:26:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/categories/java.time/</loc>
+    <lastmod>2016-04-13T02:26:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://dantanner.com/post/javatime-for-impatient/</loc>
     <lastmod>2016-04-13T02:26:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/categories/joda-time/</loc>
+    <lastmod>2016-04-13T02:26:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -47,63 +179,9 @@
   </url>
   
   <url>
-    <loc>https://dantanner.com/post/groovy-collect-vs-spread-dot-operator/</loc>
-    <lastmod>2014-11-15T23:17:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dantanner.com/post/playhouse/</loc>
-    <lastmod>2010-10-16T19:17:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dantanner.com/categories/camping/</loc>
-    <lastmod>2017-08-30T11:09:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dantanner.com/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dantanner.com/categories/codenarc/</loc>
-    <lastmod>2014-11-15T23:17:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dantanner.com/categories/curl/</loc>
-    <lastmod>2017-07-15T13:09:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dantanner.com/</loc>
-    <lastmod>2017-10-15T10:59:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dantanner.com/categories/data-science/</loc>
-    <lastmod>2017-10-15T10:59:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://dantanner.com/categories/datasource/</loc>
     <lastmod>2015-04-30T06:05:00+00:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dantanner.com/categories/domain-names/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dantanner.com/post/domain-names-for-daughters/</loc>
   </url>
   
   <url>
@@ -119,57 +197,25 @@
   </url>
   
   <url>
+    <loc>https://dantanner.com/post/groovy-collect-vs-spread-dot-operator/</loc>
+    <lastmod>2014-11-15T23:17:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/categories/codenarc/</loc>
+    <lastmod>2014-11-15T23:17:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://dantanner.com/categories/groovy/</loc>
     <lastmod>2014-11-15T23:17:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://dantanner.com/categories/hydration/</loc>
-    <lastmod>2017-08-11T13:09:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dantanner.com/categories/java/</loc>
-    <lastmod>2016-04-13T02:26:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dantanner.com/categories/java/index.time/</loc>
-    <lastmod>2016-04-13T02:26:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dantanner.com/categories/joda-time/</loc>
-    <lastmod>2016-04-13T02:26:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dantanner.com/categories/lottery/</loc>
-    <lastmod>2017-08-30T11:09:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dantanner.com/categories/memory-less/</loc>
-    <lastmod>2017-07-16T20:09:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dantanner.com/categories/mountain-biking/</loc>
-    <lastmod>2017-08-11T13:09:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dantanner.com/categories/networking/</loc>
-    <lastmod>2017-07-15T13:09:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://dantanner.com/post/playhouse/</loc>
+    <lastmod>2010-10-16T19:17:00+00:00</lastmod>
   </url>
   
   <url>
@@ -179,26 +225,16 @@
   </url>
   
   <url>
-    <loc>https://dantanner.com/post/</loc>
-    <lastmod>2017-10-15T10:59:00+00:00</lastmod>
+    <loc>https://dantanner.com/post/domain-names-for-daughters/</loc>
+  </url>
+  
+  <url>
+    <loc>https://dantanner.com/tags/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://dantanner.com/categories/productivity/</loc>
-    <lastmod>2017-07-16T20:09:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dantanner.com/categories/water/</loc>
-    <lastmod>2017-08-11T13:09:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dantanner.com/categories/weather/</loc>
-    <lastmod>2017-10-15T10:59:00+00:00</lastmod>
+    <loc>https://dantanner.com/categories/domain-names/</loc>
     <priority>0</priority>
   </url>
   

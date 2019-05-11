@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Curl on Dan Tanner</title>
-    <link>https://dantanner.com/categories/curl/index.xml</link>
-    <description>Recent content in Curl on Dan Tanner</description>
+    <title>curl on Dan Tanner</title>
+    <link>https://dantanner.com/categories/curl/</link>
+    <description>Recent content in curl on Dan Tanner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://dantanner.com/categories/curl/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Jul 2017 13:09:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://dantanner.com/categories/curl/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>curl saves the day</title>
@@ -14,159 +17,9 @@
       <pubDate>Sat, 15 Jul 2017 13:09:00 +0000</pubDate>
       
       <guid>https://dantanner.com/post/curl-saves-the-day/</guid>
-      <description>
-
-&lt;p&gt;Every developer should be comfortable with &lt;a href=&#34;https://curl.haxx.se&#34;&gt;curl&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;For the same reason that you should at least be conversational in tools like sed, awk, and vi, you should be able to quickly type in something like
-like &lt;code&gt;curl -v localhost:8080&lt;/code&gt; to see what&amp;rsquo;s going on.  It&amp;rsquo;s available on just about every unix-based box for a good reason.&lt;/p&gt;
-
-&lt;p&gt;Like its man page states, the number of features will make your head spin.  That&amp;rsquo;s probably the most discussed reason people are turned off by it.
-You don&amp;rsquo;t have to understand all its features though; learn five of them and you&amp;rsquo;ll be able to quickly solve problems you couldn&amp;rsquo;t before.&lt;/p&gt;
-
-&lt;p&gt;Memorize the basics, and keep notes of the more advanced problems you solve with it for the future.&lt;/p&gt;
-
-&lt;h1 id=&#34;the-basics&#34;&gt;The Basics&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;GET something&lt;/strong&gt;&lt;br /&gt;
-&lt;code&gt;curl https://jsonplaceholder.typicode.com/posts/1&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Verbose output [-v]&lt;/strong&gt; (e.g. show response status, headers, etc..):&lt;br /&gt;
-&lt;code&gt;curl -v https://jsonplaceholder.typicode.com/posts/1&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Allow insecure SSL connections [-k]&lt;/strong&gt; (useful for self-signed certs):&lt;br /&gt;
-&lt;code&gt;curl -k https://untrusted-root.badssl.com/&lt;/code&gt; (try it without &lt;code&gt;-k&lt;/code&gt;)&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Add a header [-H name: value]&lt;/strong&gt;:&lt;br /&gt;
-&lt;code&gt;curl -H &amp;quot;Content-Type: application/json&amp;quot; https://jsonplaceholder.typicode.com/posts/1&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;POST a file [-X POST and -d @file-path]&lt;/strong&gt;:&lt;br /&gt;
-&lt;code&gt;curl -X POST -d @/tmp/foo.json https://jsonplaceholder.typicode.com/posts/1&lt;/code&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;more-advanced-usage&#34;&gt;More Advanced Usage&lt;/h1&gt;
-
-&lt;p&gt;If you leave with nothing but the knowledge of what&amp;rsquo;s above, you&amp;rsquo;ll be in great shape.
-You&amp;rsquo;ll be able to quickly solve situations with minimal effort and tooling.  But keep reading to get a glimpse of advanced features.&lt;/p&gt;
-
-&lt;p&gt;Below are examples of commands I keep in my /notes/curl.md file.&lt;/p&gt;
-
-&lt;h3 id=&#34;get-a-service-100-times-and-get-a-count-of-the-response-codes-returned&#34;&gt;Get a service 100 times, and get a count of the response codes returned&lt;/h3&gt;
-
-&lt;p&gt;This is really handy when you have a service that is misbehaving, and you want to get a quick idea of how it&amp;rsquo;s responding beyond a single request.
-For example, you might find that 25% of requests fail, then discover that &lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;4&lt;/sub&gt; of your servers are misconfigured.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;curl -sL -w &amp;quot;%{http_code}\\n&amp;quot; -o /dev/null &amp;quot;https://foo.com/?[1-100]&amp;quot; | sort | uniq -c
-     23 200
-     77 503
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Explanation of the arguments:&lt;br /&gt;
-&lt;code&gt;-s&lt;/code&gt;: silent/quiet mode.  don&amp;rsquo;t show progress meter or error messages.&lt;br /&gt;
-&lt;code&gt;-L&lt;/code&gt;: follow redirects&lt;br /&gt;
-&lt;code&gt;-w &amp;quot;%{http_code}\\n&amp;quot;&lt;/code&gt;: make curl write out the http code of the response, followed by a new line&lt;br /&gt;
-&lt;code&gt;-o /dev/null&lt;/code&gt;: write the response to a file (in this /dev/null, meaning we don&amp;rsquo;t care)&lt;br /&gt;
-&lt;code&gt;?[1-100]&lt;/code&gt;: [] is a range specifier.  In this case, execute a request for every value in the range.  e.g. foo.com?1, foo.com?2, etc&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;Then we pipe the response code output to &lt;code&gt;sort&lt;/code&gt; and &lt;code&gt;uniq -c&lt;/code&gt;, which gives us a count of each response code.
-From the above sample output, there were 23 responses with a 200 response code, and 77 responses with a 503 response code.  Not good!&lt;/p&gt;
-
-&lt;p&gt;Also note that the URL in this example is quoted.  This enables us to use special characters like the &lt;code&gt;?&lt;/code&gt; query parameter without having to escape them.&lt;/p&gt;
-
-&lt;p&gt;Similar to the range specifier is the sequence operator, e.g. &lt;code&gt;{a, b}&lt;/code&gt;.&lt;br /&gt;
-e.g. Type one curl command, but have it use a few different argument values, or have it hit each of your servers individually.&lt;/p&gt;
-
-&lt;h3 id=&#34;get-response-time&#34;&gt;Get response time&lt;/h3&gt;
-
-&lt;p&gt;Similar to the above example, but just returns the total response time in seconds.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;curl -sL -w &amp;quot;%{time_total}\\n&amp;quot; -o /dev/null &amp;quot;https://jsonplaceholder.typicode.com/posts/1&amp;quot;
-
-1.412
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;measure-network-performance-for-the-request-segments&#34;&gt;Measure network performance for the request segments&lt;/h3&gt;
-
-&lt;p&gt;The following example is really useful when want to quickly see where your request is taking its time.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl -sL -w &#39;   namelookup: %{time_namelookup}\n      connect: %{time_connect}\n   appconnect: %{time_appconnect}\n  pretransfer: %{time_pretransfer}\n     redirect: %{time_redirect}\nstarttransfer: %{time_starttransfer}\n        total: %{time_total}\n\n&#39; -o /dev/null &amp;quot;https://jsonplaceholder.typicode.com/posts/1&amp;quot;
-
-   namelookup: 0.071
-      connect: 0.109
-   appconnect: 0.349
-  pretransfer: 0.349
-     redirect: 0.000
-starttransfer: 0.379
-        total: 0.379
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;a-case-of-curl-saving-my-bacon&#34;&gt;A case of curl saving my bacon&lt;/h1&gt;
-
-&lt;p&gt;Recently our team deployed a new mobile app, to a new company warehouse, using a new network provider, in a new server infrastructure.&lt;br /&gt;
-The users reported occasional slow response times in the application. ugh - so many variables.&lt;br /&gt;
-Our server API stats were all consistently fast.  Load testing our services showed adequate performance, both from the warehouse and from headquarters.
-What also made this difficult was that during the alpha testing, initial actual usage was so low that our initial performance metrics didn&amp;rsquo;t show any patterns.&lt;/p&gt;
-
-&lt;p&gt;Given that we couldn&amp;rsquo;t reproduce the issue internally, but could see it was only happening in the warehouse on the warehouse mobile device network, implied a network issue.
-But the network support staff couldn&amp;rsquo;t find any issues, so we were stumped for a little while.&lt;/p&gt;
-
-&lt;p&gt;I went to the warehouse to help support the rollout and used the above examples to eventually find the problem.&lt;br /&gt;
-This was the first command that pointed me toward the real issue:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;while true; do curl -sL -w &amp;quot;%{time_total}\\n&amp;quot; -o /dev/null &#39;https://oursite.com/health&#39;; sleep 5; done
-0.293
-0.298
-0.426
-0.292
-0.833
-5.823
-0.283
-0.296
-0.296
-0.293
-0.295
-0.553
-0.294
-0.817
-0.289
-0.295
-0.300
-5.828
-0.364
-0.300
-...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Notice any pattern?  Every minute we got a slow response!  That smells like a lookup or a caching issue.
-So I issued this command to measure network segment performance:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl -sL -w &#39;   namelookup: %{time_namelookup}\n      connect: %{time_connect}\n   appconnect: %{time_appconnect}\n  pretransfer: %{time_pretransfer}\n     redirect: %{time_redirect}\nstarttransfer: %{time_starttransfer}\n        total: %{time_total}\n\n&#39; -o /dev/null &amp;quot;https://oursite.com/health&amp;quot;
-   namelookup: 5.543
-      connect: 5.588
-   appconnect: 5.770
-  pretransfer: 5.770
-     redirect: 0.000
-starttransfer: 5.823
-        total: 5.823
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;namelookup&lt;/code&gt; indicates the amount of time it took to do a DNS name lookup.  i.e. The primary DNS server configured for the device was failing to find the server.
-The backup server &lt;em&gt;was&lt;/em&gt; working though.  The device cached the IP address of the server for a minute, and when the cache expired, the process repeated itself.
-Boom!  Using a different DNS server while we fixed the underlying DNS issue solved the problem.&lt;/p&gt;
-
-&lt;h1 id=&#34;summary&#34;&gt;Summary&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;curl&amp;rsquo;s basic and most common features are easy to use and memorize&lt;/li&gt;
-&lt;li&gt;it has a huge feature list&lt;/li&gt;
-&lt;li&gt;it will almost always be available on the *nix server you&amp;rsquo;re shelled in to&lt;/li&gt;
-&lt;li&gt;it integrates beautifully with other shell commands to build up your desired solution&lt;br /&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;curl has dozens of arguments for its features, and it&amp;rsquo;s easy to get lost in its man pages, but it&amp;rsquo;s good stuff.
-And since curl is available on just about every system I use, it&amp;rsquo;s been worth the small investment of time for me.
-Here&amp;rsquo;s the official page for its &lt;a href=&#34;https://ec.haxx.se/cmdline-options.html&#34;&gt;command line options&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <description>Every developer should be comfortable with curl.
+For the same reason that you should at least be conversational in tools like sed, awk, and vi, you should be able to quickly type in something like like curl -v localhost:8080 to see what&amp;rsquo;s going on. It&amp;rsquo;s available on just about every unix-based box for a good reason.
+Like its man page states, the number of features will make your head spin.</description>
     </item>
     
   </channel>

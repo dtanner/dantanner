@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Water on Dan Tanner</title>
-    <link>https://dantanner.com/categories/water/index.xml</link>
-    <description>Recent content in Water on Dan Tanner</description>
+    <title>water on Dan Tanner</title>
+    <link>https://dantanner.com/categories/water/</link>
+    <description>Recent content in water on Dan Tanner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://dantanner.com/categories/water/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 11 Aug 2017 13:09:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://dantanner.com/categories/water/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Mountain Bike Frame Hydration Hack</title>
@@ -14,49 +17,7 @@
       <pubDate>Fri, 11 Aug 2017 13:09:00 +0000</pubDate>
       
       <guid>https://dantanner.com/post/frame-hydration/</guid>
-      <description>
-
-&lt;p&gt;I&amp;rsquo;ve been carrying water on my frame using a custom solution the last couple seasons.
-I originally googled for a solution and didn&amp;rsquo;t find anything commercially available, but found lots of helpful posts in various
-forums explaining what folks have done.  It&amp;rsquo;s worked really well, so thought I&amp;rsquo;d share a bundle of details in case anyone else is interested.
-If you know of an existing commercial solution that does all this, let me know and I&amp;rsquo;ll update the post.&lt;/p&gt;
-
-&lt;h1 id=&#34;where-this-works-well&#34;&gt;Where This Works Well&lt;/h1&gt;
-
-&lt;p&gt;The target audience is people that want to carry up to 70 oz of water on trails, but don&amp;rsquo;t want to use a backpack.
-70 oz is perfect for most rides up to a few hours.
-Backpacks aren&amp;rsquo;t ideal because they&amp;rsquo;re heavy and sweaty.
-Bottles on a rough trail are terrible because it&amp;rsquo;s a great way to crash.  A couple bottles can only carry at most 50 oz anyway.&lt;br /&gt;
-This solution also presumes your frame can fit a pack.
-In this example I&amp;rsquo;m using a hardtail, but many full suspension bikes can use a similar solution.&lt;/p&gt;
-
-&lt;h1 id=&#34;parts&#34;&gt;Parts&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://banjobrothers.com/products/current/frame-packs/frame-pack-medium/&#34;&gt;Banjo Brothers Medium Frame Pack&lt;/a&gt; - $35. Or use whatever frame pack you like.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.platy.com/catalog/product/view/id/16837/s/hoser/category/45&#34;&gt;Platypus Hoser Hydration System - 2 Liter&lt;/a&gt; - $25. When full it just barely fits in the medium frame pack.
-The key to this bladder is that it has a small cap. A &lt;a href=&#34;https://dantanner.com/hydration/camelbak-bladder-annot.jpg&#34;&gt;CamelBak bladder&lt;/a&gt; won&amp;rsquo;t fit in this pack because of its giant cap.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Camelbak-Quick-LinkTM-Conversion-Kit/dp/B006IB9TSE&#34;&gt;CambelBak Quick Link Conversion Kit&lt;/a&gt; - $10. Lets you easily remove the bladder and leave the hose in place.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Retractable-Carabiner-Keychain-Fishing-Translucent/dp/B01EIQXG66&#34;&gt;Retractable Badge Holder&lt;/a&gt; - $10 for 4, or free if your employer will give you one. They last about a season.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.rei.com/product/637547/camelbak-big-bite-valve&#34;&gt;CamelBak Big Bite Valve&lt;/a&gt; - $6. The flow of the &lt;a href=&#34;https://dantanner.com/hydration/platypus-bite-valve-annot.jpg&#34;&gt;Platypus bite valve&lt;/a&gt; that comes with the kit is ridiculously slow. Maybe they&amp;rsquo;ve improved it since I bought one, but the CamelBak valve works great.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;steps&#34;&gt;Steps&lt;/h1&gt;
-
-&lt;ol&gt;
-&lt;li&gt;If you&amp;rsquo;re using the Banjo Brothers frame pack, you&amp;rsquo;ll need to cut a little hole in the front for the hose before installing it.
-I also used a lighter to singe/seal the hole edges to prevent fraying.&lt;br /&gt;
-&lt;img src=&#34;https://dantanner.com/hydration/hole.jpg&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
-&lt;li&gt;If you&amp;rsquo;re using the quick link, install it so it fits in the frame pack. Here&amp;rsquo;s a picture of where I placed it in the line.
-The image also shows the orientation of how the bladder sits in the pack.
-&lt;img src=&#34;https://dantanner.com/hydration/quick-link.jpg&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
-&lt;li&gt;Install the frame pack.&lt;/li&gt;
-&lt;li&gt;Fasten the badge holder onto the bars so the line is facing you as you&amp;rsquo;re riding. I used gorilla tape. Use whatever works.&lt;/li&gt;
-&lt;li&gt;Route the tubing, and mount it to the badge holder like this.&lt;br /&gt;
-&lt;img src=&#34;https://dantanner.com/hydration/tube-holder.jpg&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Profit!  Well, actually cost you around $80.  But sure beats carrying water on your back or eating dirt.&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+      <description>I&amp;rsquo;ve been carrying water on my frame using a custom solution the last couple seasons. I originally googled for a solution and didn&amp;rsquo;t find anything commercially available, but found lots of helpful posts in various forums explaining what folks have done. It&amp;rsquo;s worked really well, so thought I&amp;rsquo;d share a bundle of details in case anyone else is interested. If you know of an existing commercial solution that does all this, let me know and I&amp;rsquo;ll update the post.</description>
     </item>
     
   </channel>

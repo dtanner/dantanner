@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Groovy on Dan Tanner</title>
-    <link>https://dantanner.com/categories/groovy/index.xml</link>
-    <description>Recent content in Groovy on Dan Tanner</description>
+    <title>groovy on Dan Tanner</title>
+    <link>https://dantanner.com/categories/groovy/</link>
+    <description>Recent content in groovy on Dan Tanner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://dantanner.com/categories/groovy/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Nov 2014 23:17:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://dantanner.com/categories/groovy/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Groovy collect vs spread-dot operator</title>
@@ -14,34 +17,8 @@
       <pubDate>Sat, 15 Nov 2014 23:17:00 +0000</pubDate>
       
       <guid>https://dantanner.com/post/groovy-collect-vs-spread-dot-operator/</guid>
-      <description>&lt;p&gt;Yesterday I was doing some Groovy code cleanup with the wonderful &lt;a href=&#34;http://codenarc.sourceforge.net/&#34;&gt;CodeNarc&lt;/a&gt; static analysis tool. One of the violations it found was &lt;a href=&#34;http://codenarc.sourceforge.net/codenarc-rules-unnecessary.html#UnnecessaryCollectCall&#34;&gt;UnnecessaryCollectCall&lt;/a&gt;.
-The summary of the rule is &amp;ldquo;Some method calls to Object.collect(Closure) can be replaced with the spread operator.&amp;rdquo;
-e.g. Replace things.collect { it.name } with things*.name, or even things.name if what you&amp;rsquo;re after is a property.&lt;/p&gt;
-
-&lt;p&gt;But when I performed that refactoring and ran all the tests, some failed! Here&amp;rsquo;s why:&lt;/p&gt;
-
-&lt;p&gt;I made the mistake of assuming that the spread operator behavior is always identical to the collect method. For a &lt;strong&gt;non-null&lt;/strong&gt; collection, it is. e.g. The following code will produce the same result regardless of the technique you use:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def things = [ [a: 1], [a: 2] ]
-
-things.collect { it.a } // returns [1, 2]
-things*.a               // returns [1, 2]
-things.a                // returns [1, 2]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;But if the collection you&amp;rsquo;re operating on is &lt;strong&gt;null&lt;/strong&gt;, the three techniques will result in different outcomes:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def things = null
-
-things.collect { it.a }   // returns []
-things*.a                 // returns null
-things.a                  // throws a NullPointerException
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;What this means is that if you&amp;rsquo;re working with Collections that can potentially be null, you need to think about the consequences of the dot operations before using them. i.e. Don&amp;rsquo;t ever use the implicit spread operator (things.a) if the collection can be null. And only use *. if it&amp;rsquo;s ok for the result to be null.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;tl;dr;&lt;/em&gt; Explicit and implicit spread operations are great, but be aware that they are less forgiving than the collect method.&lt;/p&gt;
-</description>
+      <description>Yesterday I was doing some Groovy code cleanup with the wonderful CodeNarc static analysis tool. One of the violations it found was UnnecessaryCollectCall. The summary of the rule is &amp;ldquo;Some method calls to Object.collect(Closure) can be replaced with the spread operator.&amp;rdquo; e.g. Replace things.collect { it.name } with things*.name, or even things.name if what you&amp;rsquo;re after is a property.
+But when I performed that refactoring and ran all the tests, some failed!</description>
     </item>
     
   </channel>

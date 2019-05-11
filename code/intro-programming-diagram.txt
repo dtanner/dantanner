@@ -1,0 +1,8 @@
+digraph G {
+  intro_to_programming -> intro_to_data_science;
+  intro_to_programming -> graphic_design;
+  graphic_design -> photography -> i_make_memes;
+  intro_to_data_science -> gobs_of_math -> i_make_skynet;
+  intro_to_data_science -> business_classes -> i_maximize_skynet_profits;
+  intro_to_programming -> operating_systems -> electrical_engineering -> i_make_terminators;
+}

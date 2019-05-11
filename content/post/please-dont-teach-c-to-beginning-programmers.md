@@ -102,8 +102,8 @@ A lot of the time was spent correcting code in the try-it-now stage rather than 
 
 
 ### Kotlin Observations
-Before writing the Kotlin implementation, I expected it to be more verbose and less readable than Python. 
-But IMO it's cleaner in some ways, like better lambda support and types.
+Before writing the Kotlin implementation, I expected it to be more verbose and less readable than Python, because Java.
+But IMO it's actually cleaner.
 
 * **Lambdas in Kotlin are a little cleaner than Python**. And even though they're a higher-level concept that doesn't exist in C, they both make for more readable code than the C equivalent. 
 e.g. Compare these two one-liners in Python and Kotin:
@@ -114,7 +114,7 @@ return sum((get_card_value(card) - get_suit_number(card)) for card in cards)
 return cards.sumBy { getCardValue(it) - getSuitNumber(it) }
 {{< /highlight >}}
 Kotlin is the newest language of the bunch, so had more time to incorporate the best design features from the latest languages. 
-That said, I wasn't taught lambdas when I was first learning, so don't know if this would be a handy feature or just one more thing to learn for most beginners.  
+That said, I wasn't taught lambdas when I was first learning, so don't know if this would be a handy feature or just one more thing to learn for most beginners.   
 * **Kotlin expands Java's already good Collection support for concise code**. e.g. `cards.sumBy` and `cards.count` are one-liners that intuitively implement the function.
 In C's syntactic brevity, you write more code, and this makes it arguably less readable:
 {{< highlight C "style=arduino" >}}
@@ -147,15 +147,15 @@ They're excellent for production use, and IDEs make this a smaller issue, but Py
 I don't know how many schools still teach C to beginners or why they still teach it to beginners. 
 I asked the chair of the department why, and the two main points from the response were:
 
-* The course is largely a service course for engineering students, as those programs require their students to use C throughout their curriculum.
+* The course is largely a service course for engineering students, as those programs require their students to use C throughout their curriculum.  
 * The course is subject to Engineering program accreditation standards.
 
-To the first point, I think even engineering students might be better off starting with a different language. 
-It's all those non-engineering students that I'm especially concerned for.
-To the second point, I don't know what's involved so don't have an opinion.
-The skeptic in me wonders how many schools start students with C because that's what they've taught for the last 25 or more years.
-
-### What are some of the top-rated schools teaching beginners?
+<br><br>
+I obviously disagree with the first point enough to have spent the time to write this article. 
+I think it's a big deal to start students with the language that will give them the most promise in their future.   
+To the second reason of accreditation standards, I don't know where this comes from. 
+Maybe good intentions, maybe good overall guidance; I'm skeptical about its merits in this decision for a couple reasons.
+The most convincing reason is to glance at what some of the top universities in the U.S. teach new students:
 
 | School | Language |
 | --- | --- |
@@ -165,8 +165,13 @@ The skeptic in me wonders how many schools start students with C because that's 
 | Cornell | [Python](http://www.cs.cornell.edu/courses/cs1110/2019sp/) |
 | University of Washington | [Java](https://courses.cs.washington.edu/courses/cse142/)
 
-The best schools have already made the switch.  
-todo - mention java vs groovy/kotlin
-todo summarize recommendation 
+These are some of our best schools, and they all teach either Python or Java to their new students.  Java's no Kotlin, but I get that Kotlin is a relatively new language,
+and it takes time to make a major switch even when the language is in the same family. 
 
+# Summary and Suggestion
+
+These are some of the typical paths in today's landscape. 
+In only one of them do I think knowledge of a low-level language like C is important (embedded systems).
+The rest would be better off using other specialized or higher-level general languages.
+![](/intro-programming/language-track.svg)
 

@@ -12,7 +12,7 @@ e.g. Replace things.collect { it.name } with things*.name, or even things.name i
 But when I performed that refactoring and ran all the tests, some failed! Here's why: 
 
 I made the mistake of assuming that the spread operator behavior is always identical to the collect method. For a **non-null** collection, it is. e.g. The following code will produce the same result regardless of the technique you use:
-```
+``` groovy
 def things = [ [a: 1], [a: 2] ]
 
 things.collect { it.a } // returns [1, 2]
@@ -20,7 +20,7 @@ things*.a               // returns [1, 2]
 things.a                // returns [1, 2]
 ```
 But if the collection you're operating on is **null**, the three techniques will result in different outcomes:
-```
+``` groovy
 def things = null
 
 things.collect { it.a }   // returns []

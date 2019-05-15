@@ -42,7 +42,7 @@ Below are examples of commands I keep in my /notes/curl.md file.
 ### Get a service 100 times, and get a count of the response codes returned
 This is really handy when you have a service that is misbehaving, and you want to get a quick idea of how it's responding beyond a single request.
 For example, you might find that 25% of requests fail, then discover that 1/4 of your servers are misconfigured.
-```
+``` bash
 curl -sL -w "%{http_code}\\n" -o /dev/null "https://foo.com/?[1-100]" | sort | uniq -c
      23 200
      77 503
@@ -64,7 +64,7 @@ e.g. Type one curl command, but have it use a few different argument values, or 
 
 ### Get response time
 Similar to the above example, but just returns the total response time in seconds.  
-```
+``` bash
 curl -sL -w "%{time_total}\\n" -o /dev/null "https://jsonplaceholder.typicode.com/posts/1"
 
 1.412

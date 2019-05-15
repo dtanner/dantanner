@@ -15,7 +15,7 @@ When I first saw Venkat Subramaniam gliding through his beautiful java to groovy
 Little things were nice, like being able to use `println 'hello'` instead of `System.out.println("hello");`.  
 
 Even better was reading a file line by line.  It went from this:
-```
+``` groovy
 BufferedReader br = new BufferedReader(new FileReader("file.txt"));
 try {
     StringBuilder sb = new StringBuilder();
@@ -35,8 +35,9 @@ try {
 ```
 
 to this:
-
-    new File("file.txt").eachLine { println "line = $it" }
+``` groovy
+new File("file.txt").eachLine { println "line = $it" }
+```
 
 _Look Ma, a one-liner!_ That got me hooked.
 
@@ -47,7 +48,7 @@ There's basic stuff like `10.times { println it }`, and
 
 Then there's commonly useful but more powerful improvements like `collect()`, where you iterate through a collection of things, creating a new collection based on a function. e.g. going from this pre-Java 8 code:
 
-```
+``` groovy
 List<Integer> input = Arrays.asList(1, 2, 3);
 List results = new ArrayList();
 for (Iterator<Integer> iterator = input.iterator(); iterator.hasNext(); ) {
@@ -56,11 +57,12 @@ for (Iterator<Integer> iterator = input.iterator(); iterator.hasNext(); ) {
 }
 ```
 to:
-
-    List results = [1, 2, 3].collect { it * 2 }
+``` groovy
+List results = [1, 2, 3].collect { it * 2 }
+```
 
 Filtering a collection is a similar improvement, where you start with a collection and filter it down based on a condition applied to each element.  e.g. going from (once again, pre-Java 8):
-```
+``` groovy
 List<Integer> input = Arrays.asList(1, 2, 3, 4);
 List evenNumbers = new ArrayList();
 for (Iterator<Integer> iterator = input.iterator(); iterator.hasNext(); ) {
@@ -71,8 +73,9 @@ for (Iterator<Integer> iterator = input.iterator(); iterator.hasNext(); ) {
 }
 ```
 to:
-
-    List evenNumbers = [1, 2, 3, 4].findAll { it % 2 == 0 }
+``` groovy 
+List evenNumbers = [1, 2, 3, 4].findAll { it % 2 == 0 }
+```
 
 It gets even more concise and powerful with methods like `collectMany` and `inject`.  They're slightly more complicated, but worth the couple minutes of time it takes to understand.  If I were to give one piece of advice to people new to Groovy, it would be to thoroughly explore that interface. 
 
@@ -80,7 +83,7 @@ Lispers may smugly remark, "oh, how cute; you're learning functional programming
 The pragmatic functional features of Groovy provide a gentle transition from object-oriented to more pure functional programming for many developers.  
 
 Fast-forward a bunch of years, and things have changed. Even though Java hasn't been progressing as fast as many would like, they've made some significant changes to include features introduced by Groovy, and pioneered by other languages; most notably lambdas and streaming.  For example, the above Java examples can now be written like this:
-```
+``` groovy
 // read each line in a file
 try (Stream<String> stream = Files.lines(Paths.get("file.txt"))) {
     stream.forEach(System.out::println);
@@ -112,13 +115,14 @@ I wasn't excited about writing the java version, but:
 - I'd be able to have a current and relevant opinion on Groovy's usefulness compared to Java   
   
 An example line in the Groovy code is this:
-
-    Map<String, String> envOverridesMap = getenv().findAll { it.key.startsWith(environmentPrefix) }
+``` groovy
+Map<String, String> envOverridesMap = getenv().findAll { it.key.startsWith(environmentPrefix) }
+```
     
 The above line populates a Map from all system environment variables that match a given environment prefix.  I wanted to avoid dependencies if possible to limit the transitive dependencies needed by consumers of the library; the only compile dependency is logback-classic.
 
 On the java side, I also tried building the tool without any dependencies, but it got ugly pretty fast.  Replicating the above Groovy wasn't too bad; you've basically seen what it looks like in the earlier collect example:
-```
+``` groovy
 Map<String, String> envOverridesMap = new HashMap<>();
 for (String envKey : envVars.keySet()) {
     if (envKey.startsWith(environmentPrefix)) {
@@ -128,7 +132,7 @@ for (String envKey : envVars.keySet()) {
 ```
 
 Isn't there a more concise way?  IntelliJ suggested this alternative syntax:
-```
+``` groovy
 Map<String, String> envOverridesMap = new HashMap<>();
 envVars.keySet().stream().filter(envKey -> 
     envKey.startsWith(environmentPrefix)).forEach(envKey -> 
@@ -137,7 +141,7 @@ envVars.keySet().stream().filter(envKey ->
 ...but that just made me sad.  I enjoy the new streaming capabilities, but it didn't add value in for me in this case.  It could've been much cleaner if Map were iterable in java, but it's not and probably won't ever be.
 
 Things got ugly when I tried cloning an arbitrary object, and also dynamically setting properties on an object.  In Java `clone()` is a protected method, so you can't call it unless you extend from that object.  I tried to hack something together like this:
-```
+``` groovy
 private static <T> T cloneObject(T obj) {
     try {
         T clone = (T) obj.getClass().newInstance();
@@ -155,7 +159,7 @@ private static <T> T cloneObject(T obj) {
 }
 ```
 but there were exceptional cases I hadn't handled yet, so eventually gave up and added the commons BeanUtils library so I could use the `cloneBean()` method.  Even uglier was going down the path of dynamic property value overrides.  I had started to toy with this monstrosity:
-```
+``` groovy
 private static boolean setProperty(Object object, String fieldName, String fieldValueString) {
     Class<?> clazz = object.getClass();
     try {

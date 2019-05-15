@@ -15,7 +15,7 @@ In short, if you’re not on Java 8 yet, you should probably be using the joda-t
 There’s much more to the package than what I’ll show, and you’ll eventually want to dive deeper, but this article shows you some of the most frequently used techniques I’ve experienced on the last few projects. I’m using groovy for the code snippets, but they’re just java without the semicolons.
 
 #### 91.83% of the time, you’ll work with LocalDate or ZonedDateTime.
-```
+``` java
 import java.time.LocalDate
 import java.time.ZonedDateTime
 import java.time.ZoneId
@@ -50,7 +50,7 @@ println zdt.format(formatter)
 ```
 
 #### Date manipulation is fluent and intuitive.
-```
+``` java
 import java.time.LocalDate
 import java.time.temporal.TemporalAdjusters
 

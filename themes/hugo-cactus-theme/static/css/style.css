@@ -415,8 +415,6 @@ pre {
     font-size: 13px;
     line-height: 1.5em;
     font-weight: 500;
-    color: #d0d4d7;
-
 }
 
 table {
@@ -795,7 +793,7 @@ a.symbol:hover {
 }
 
 code {
-    background-color:#fcfcfc; font-size:14px;
+    font-size:14px;
     font-family: Menlo, Monaco, Courier;
     padding-top: 4px;
     padding-right: 0px;
@@ -804,6 +802,3 @@ code {
 
 }
 
-code.span {
-    padding: 4px;
-}

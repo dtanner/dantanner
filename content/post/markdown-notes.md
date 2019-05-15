@@ -50,7 +50,7 @@ I use dropbox, and keep my notes in `/Dropbox/code/notes`.
 # Step 3 - Organization
 Now it's just a matter of creating your files and filling them up as you go along.  
 I have a file per tool or concept, and keep project-specific notes in their folder. e.g.:
-```
+``` bash
 ➜  notes tree
 .
 ├── cassandra.md

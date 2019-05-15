@@ -122,12 +122,9 @@ You&rsquo;ll be able to quickly solve situations with minimal effort and tooling
 
 <p>This is really handy when you have a service that is misbehaving, and you want to get a quick idea of how it&rsquo;s responding beyond a single request.
 For example, you might find that 25% of requests fail, then discover that <sup>1</sup>&frasl;<sub>4</sub> of your servers are misconfigured.</p>
-
-<pre><code>curl -sL -w &quot;%{http_code}\\n&quot; -o /dev/null &quot;https://foo.com/?[1-100]&quot; | sort | uniq -c
-     23 200
-     77 503
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -sL -w <span class="s2">&#34;%{http_code}\\n&#34;</span> -o /dev/null <span class="s2">&#34;https://foo.com/?[1-100]&#34;</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c
+     <span class="m">23</span> <span class="m">200</span>
+     <span class="m">77</span> <span class="m">503</span></code></pre></div>
 <p>Explanation of the arguments:<br />
 <code>-s</code>: silent/quiet mode.  don&rsquo;t show progress meter or error messages.<br />
 <code>-L</code>: follow redirects<br />
@@ -146,12 +143,9 @@ e.g. Type one curl command, but have it use a few different argument values, or 
 <h3 id="get-response-time">Get response time</h3>
 
 <p>Similar to the above example, but just returns the total response time in seconds.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -sL -w <span class="s2">&#34;%{time_total}\\n&#34;</span> -o /dev/null <span class="s2">&#34;https://jsonplaceholder.typicode.com/posts/1&#34;</span>
 
-<pre><code>curl -sL -w &quot;%{time_total}\\n&quot; -o /dev/null &quot;https://jsonplaceholder.typicode.com/posts/1&quot;
-
-1.412
-</code></pre>
-
+<span class="m">1</span>.412</code></pre></div>
 <h3 id="measure-network-performance-for-the-request-segments">Measure network performance for the request segments</h3>
 
 <p>The following example is really useful when want to quickly see where your request is taking its time.</p>
@@ -276,7 +270,7 @@ Here&rsquo;s the official page for its <a href="https://ec.haxx.se/cmdline-optio
         </li>
     
         <li>
-            <a href="/post/take-note/">Markdown Notes<aside class="dates">Jul 16 2017</aside></a>
+            <a href="/post/markdown-notes/">Markdown Notes<aside class="dates">Jul 16 2017</aside></a>
         </li>
     
         <li>
@@ -333,9 +327,6 @@ Here&rsquo;s the official page for its <a href="https://ec.haxx.se/cmdline-optio
     </section>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://dantanner.com/js/main.js"></script>
-<script src="https://dantanner.com/js/highlight.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
 
 
 

@@ -97,30 +97,24 @@ Crap, it&rsquo;s been almost ten years.  <em>dan feels his bones creaking&hellip
 <p>Little things were nice, like being able to use <code>println 'hello'</code> instead of <code>System.out.println(&quot;hello&quot;);</code>.</p>
 
 <p>Even better was reading a file line by line.  It went from this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nf">FileReader</span><span class="o">(</span><span class="s2">&#34;file.txt&#34;</span><span class="o">));</span>
+<span class="k">try</span> <span class="o">{</span>
+    <span class="n">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">StringBuilder</span><span class="o">();</span>
+    <span class="n">String</span> <span class="n">line</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
 
-<pre><code>BufferedReader br = new BufferedReader(new FileReader(&quot;file.txt&quot;));
-try {
-    StringBuilder sb = new StringBuilder();
-    String line = br.readLine();
-
-    while (line != null) {
-        sb.append(line);
-        sb.append(System.lineSeparator());
-        line = br.readLine();
-        System.out.println(&quot;line = &quot; + line);
-    }
-} finally {
-    if (br != null) {
-        br.close();
-    }
-}
-</code></pre>
-
+    <span class="k">while</span> <span class="o">(</span><span class="n">line</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">line</span><span class="o">);</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">lineSeparator</span><span class="o">());</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s2">&#34;line = &#34;</span> <span class="o">+</span> <span class="n">line</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">br</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
 <p>to this:</p>
-
-<pre><code>new File(&quot;file.txt&quot;).eachLine { println &quot;line = $it&quot; }
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="k">new</span> <span class="nf">File</span><span class="o">(</span><span class="s2">&#34;file.txt&#34;</span><span class="o">).</span><span class="na">eachLine</span> <span class="o">{</span> <span class="n">println</span> <span class="s2">&#34;line = $it&#34;</span> <span class="o">}</span></code></pre></div>
 <p><em>Look Ma, a one-liner!</em> That got me hooked.</p>
 
 <p>The <strong>biggest</strong> thing though, which I&rsquo;ve grown to appreciate even more over the years, is the <a href="http://docs.groovy-lang.org/latest/html/groovy-jdk/java/util/Collection.html">Collection</a> interface. The intrinsic power it gives to collection-like objects is immense.  And hey, c&rsquo;mon over here <a href="http://groovy-lang.org/groovy-dev-kit.html#_iterating_on_maps">Map</a> - you&rsquo;re iterable too as far as we&rsquo;re concerned.</p>
@@ -129,58 +123,43 @@ try {
 <code>someCollection.each { println it }</code>, which shaves a few lines of code from the existing java iteration techniques.</p>
 
 <p>Then there&rsquo;s commonly useful but more powerful improvements like <code>collect()</code>, where you iterate through a collection of things, creating a new collection based on a function. e.g. going from this pre-Java 8 code:</p>
-
-<pre><code>List&lt;Integer&gt; input = Arrays.asList(1, 2, 3);
-List results = new ArrayList();
-for (Iterator&lt;Integer&gt; iterator = input.iterator(); iterator.hasNext(); ) {
-    Integer integer = iterator.next();
-    results.add(integer * 2);
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">input</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+<span class="n">List</span> <span class="n">results</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ArrayList</span><span class="o">();</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span> <span class="n">iterator</span><span class="o">.</span><span class="na">hasNext</span><span class="o">();</span> <span class="o">)</span> <span class="o">{</span>
+    <span class="n">Integer</span> <span class="n">integer</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+    <span class="n">results</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">integer</span> <span class="o">*</span> <span class="mi">2</span><span class="o">);</span>
+<span class="o">}</span></code></pre></div>
 <p>to:</p>
-
-<pre><code>List results = [1, 2, 3].collect { it * 2 }
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">List</span> <span class="n">results</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">].</span><span class="na">collect</span> <span class="o">{</span> <span class="n">it</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">}</span></code></pre></div>
 <p>Filtering a collection is a similar improvement, where you start with a collection and filter it down based on a condition applied to each element.  e.g. going from (once again, pre-Java 8):</p>
-
-<pre><code>List&lt;Integer&gt; input = Arrays.asList(1, 2, 3, 4);
-List evenNumbers = new ArrayList();
-for (Iterator&lt;Integer&gt; iterator = input.iterator(); iterator.hasNext(); ) {
-    Integer integer = iterator.next();
-    if (integer % 2 == 0) {
-       evenNumbers.add(integer);
-    }
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">input</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span>
+<span class="n">List</span> <span class="n">evenNumbers</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ArrayList</span><span class="o">();</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span> <span class="n">iterator</span><span class="o">.</span><span class="na">hasNext</span><span class="o">();</span> <span class="o">)</span> <span class="o">{</span>
+    <span class="n">Integer</span> <span class="n">integer</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">integer</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+       <span class="n">evenNumbers</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">integer</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
 <p>to:</p>
-
-<pre><code>List evenNumbers = [1, 2, 3, 4].findAll { it % 2 == 0 }
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">List</span> <span class="n">evenNumbers</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">].</span><span class="na">findAll</span> <span class="o">{</span> <span class="n">it</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">}</span></code></pre></div>
 <p>It gets even more concise and powerful with methods like <code>collectMany</code> and <code>inject</code>.  They&rsquo;re slightly more complicated, but worth the couple minutes of time it takes to understand.  If I were to give one piece of advice to people new to Groovy, it would be to thoroughly explore that interface.</p>
 
 <p>Lispers may smugly remark, &ldquo;oh, how cute; you&rsquo;re learning functional programming&rdquo;.  And they&rsquo;re right!
 The pragmatic functional features of Groovy provide a gentle transition from object-oriented to more pure functional programming for many developers.</p>
 
 <p>Fast-forward a bunch of years, and things have changed. Even though Java hasn&rsquo;t been progressing as fast as many would like, they&rsquo;ve made some significant changes to include features introduced by Groovy, and pioneered by other languages; most notably lambdas and streaming.  For example, the above Java examples can now be written like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="c1">// read each line in a file
+</span><span class="c1"></span><span class="k">try</span> <span class="o">(</span><span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">Files</span><span class="o">.</span><span class="na">lines</span><span class="o">(</span><span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">&#34;file.txt&#34;</span><span class="o">)))</span> <span class="o">{</span>
+    <span class="n">stream</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span>
 
-<pre><code>// read each line in a file
-try (Stream&lt;String&gt; stream = Files.lines(Paths.get(&quot;file.txt&quot;))) {
-    stream.forEach(System.out::println);
-} catch (IOException e) {
-    e.printStackTrace();
-}
+<span class="c1">// collect
+</span><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">results</span> <span class="o">=</span> <span class="n">Stream</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="n">v</span> <span class="o">-&gt;</span> <span class="n">v</span> <span class="o">*</span> <span class="mi">2</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>  
 
-// collect
-List&lt;Integer&gt; results = Stream.of(1, 2, 3).map(v -&gt; v * 2).collect(Collectors.toList());  
-
-// filter
-List&lt;Integer&gt; evenNumbers = Stream.of(1, 2, 3, 4).filter(v -&gt; v % 2 == 0).collect(Collectors.toList());
-</code></pre>
-
+<span class="c1">// filter
+</span><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">evenNumbers</span> <span class="o">=</span> <span class="n">Stream</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">).</span><span class="na">filter</span><span class="o">(</span><span class="n">v</span> <span class="o">-&gt;</span> <span class="n">v</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span></code></pre></div>
 <p>&hellip;<strong>much</strong> improved over the old Java syntax. Still not as concise or elegant as Groovy, but fairly close.</p>
 
 <h3 id="back-to-the-original-question">Back to the original question&hellip;</h3>
@@ -202,82 +181,67 @@ So I created a pure java version of the env-config-loader tool as well: <a href=
 </ul>
 
 <p>An example line in the Groovy code is this:</p>
-
-<pre><code>Map&lt;String, String&gt; envOverridesMap = getenv().findAll { it.key.startsWith(environmentPrefix) }
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">envOverridesMap</span> <span class="o">=</span> <span class="n">getenv</span><span class="o">().</span><span class="na">findAll</span> <span class="o">{</span> <span class="n">it</span><span class="o">.</span><span class="na">key</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="n">environmentPrefix</span><span class="o">)</span> <span class="o">}</span></code></pre></div>
 <p>The above line populates a Map from all system environment variables that match a given environment prefix.  I wanted to avoid dependencies if possible to limit the transitive dependencies needed by consumers of the library; the only compile dependency is logback-classic.</p>
 
 <p>On the java side, I also tried building the tool without any dependencies, but it got ugly pretty fast.  Replicating the above Groovy wasn&rsquo;t too bad; you&rsquo;ve basically seen what it looks like in the earlier collect example:</p>
-
-<pre><code>Map&lt;String, String&gt; envOverridesMap = new HashMap&lt;&gt;();
-for (String envKey : envVars.keySet()) {
-    if (envKey.startsWith(environmentPrefix)) {
-        envOverridesMap.put(envKey, envVars.get(envKey));
-    }
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">envOverridesMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">envKey</span> <span class="o">:</span> <span class="n">envVars</span><span class="o">.</span><span class="na">keySet</span><span class="o">())</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">envKey</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="n">environmentPrefix</span><span class="o">))</span> <span class="o">{</span>
+        <span class="n">envOverridesMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">envKey</span><span class="o">,</span> <span class="n">envVars</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">envKey</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
 <p>Isn&rsquo;t there a more concise way?  IntelliJ suggested this alternative syntax:</p>
-
-<pre><code>Map&lt;String, String&gt; envOverridesMap = new HashMap&lt;&gt;();
-envVars.keySet().stream().filter(envKey -&gt; 
-    envKey.startsWith(environmentPrefix)).forEach(envKey -&gt; 
-        envOverridesMap.put(envKey, envVars.get(envKey)));
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">envOverridesMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="n">envVars</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">envKey</span> <span class="o">-&gt;</span> 
+    <span class="n">envKey</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="n">environmentPrefix</span><span class="o">)).</span><span class="na">forEach</span><span class="o">(</span><span class="n">envKey</span> <span class="o">-&gt;</span> 
+        <span class="n">envOverridesMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">envKey</span><span class="o">,</span> <span class="n">envVars</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">envKey</span><span class="o">)));</span></code></pre></div>
 <p>&hellip;but that just made me sad.  I enjoy the new streaming capabilities, but it didn&rsquo;t add value in for me in this case.  It could&rsquo;ve been much cleaner if Map were iterable in java, but it&rsquo;s not and probably won&rsquo;t ever be.</p>
 
 <p>Things got ugly when I tried cloning an arbitrary object, and also dynamically setting properties on an object.  In Java <code>clone()</code> is a protected method, so you can&rsquo;t call it unless you extend from that object.  I tried to hack something together like this:</p>
-
-<pre><code>private static &lt;T&gt; T cloneObject(T obj) {
-    try {
-        T clone = (T) obj.getClass().newInstance();
-        for (Field field : obj.getClass().getDeclaredFields()) {
-            if (Modifier.isFinal(field.getModifiers())) {
-                continue;
-            }
-            field.setAccessible(true);
-            field.set(clone, field.get(obj));
-        }
-        return clone;
-    } catch (Exception e) {
-        throw new RuntimeException(e);
-    }
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kd">private</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="nf">cloneObject</span><span class="o">(</span><span class="n">T</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">T</span> <span class="n">clone</span> <span class="o">=</span> <span class="o">(</span><span class="n">T</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">newInstance</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">Field</span> <span class="n">field</span> <span class="o">:</span> <span class="n">obj</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getDeclaredFields</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">Modifier</span><span class="o">.</span><span class="na">isFinal</span><span class="o">(</span><span class="n">field</span><span class="o">.</span><span class="na">getModifiers</span><span class="o">()))</span> <span class="o">{</span>
+                <span class="k">continue</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="n">field</span><span class="o">.</span><span class="na">setAccessible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+            <span class="n">field</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">clone</span><span class="o">,</span> <span class="n">field</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">obj</span><span class="o">));</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">clone</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
 <p>but there were exceptional cases I hadn&rsquo;t handled yet, so eventually gave up and added the commons BeanUtils library so I could use the <code>cloneBean()</code> method.  Even uglier was going down the path of dynamic property value overrides.  I had started to toy with this monstrosity:</p>
-
-<pre><code>private static boolean setProperty(Object object, String fieldName, String fieldValueString) {
-    Class&lt;?&gt; clazz = object.getClass();
-    try {
-        Field field = clazz.getDeclaredField(fieldName);
-        field.setAccessible(true);
-        Class fieldType = field.getType();
-            if (fieldType.equals(Integer.class) || fieldType.equals(Integer.TYPE)) {
-                field.setInt(object, Integer.parseInt(fieldValueString));
-            } else if (fieldType.equals(Long.class) || fieldType.equals(Long.TYPE)) {
-                field.setLong(object, Long.parseLong(fieldValueString));
-            } else if (fieldType.equals(Boolean.class) || fieldType.equals(Boolean.TYPE)) {
-                field.setBoolean(object, Boolean.parseBoolean(fieldValueString));
-            } else if (fieldType.equals(Long.class) || fieldType.equals(Long.TYPE)) {
-                field.set(object, Long.parseLong(fieldValueString));
-            } else {
-                Class.forName(field.getDeclaringClass().getName());
-                field.getDeclaringClass().getConstructor(String.class).newInstance(fieldValueString);
-                field.set(object, field.getType().getConstructor(String.class).newInstance(fieldValueString));
-            }
-        return true;
-    } catch (NoSuchFieldException e) {
-        log.warn(&quot;Environment override for property &quot; + fieldName + &quot; found, but no matching property exists.&quot;);
-    } catch (Exception e) {
-        throw new IllegalStateException(e);
-    }
-    return false;
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kd">private</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">setProperty</span><span class="o">(</span><span class="n">Object</span> <span class="n">object</span><span class="o">,</span> <span class="n">String</span> <span class="n">fieldName</span><span class="o">,</span> <span class="n">String</span> <span class="n">fieldValueString</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">clazz</span> <span class="o">=</span> <span class="n">object</span><span class="o">.</span><span class="na">getClass</span><span class="o">();</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">Field</span> <span class="n">field</span> <span class="o">=</span> <span class="n">clazz</span><span class="o">.</span><span class="na">getDeclaredField</span><span class="o">(</span><span class="n">fieldName</span><span class="o">);</span>
+        <span class="n">field</span><span class="o">.</span><span class="na">setAccessible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="n">Class</span> <span class="n">fieldType</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="na">getType</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">class</span><span class="o">)</span> <span class="o">||</span> <span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">TYPE</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">field</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="n">object</span><span class="o">,</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">fieldValueString</span><span class="o">));</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Long</span><span class="o">.</span><span class="na">class</span><span class="o">)</span> <span class="o">||</span> <span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Long</span><span class="o">.</span><span class="na">TYPE</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">field</span><span class="o">.</span><span class="na">setLong</span><span class="o">(</span><span class="n">object</span><span class="o">,</span> <span class="n">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">fieldValueString</span><span class="o">));</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Boolean</span><span class="o">.</span><span class="na">class</span><span class="o">)</span> <span class="o">||</span> <span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Boolean</span><span class="o">.</span><span class="na">TYPE</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">field</span><span class="o">.</span><span class="na">setBoolean</span><span class="o">(</span><span class="n">object</span><span class="o">,</span> <span class="n">Boolean</span><span class="o">.</span><span class="na">parseBoolean</span><span class="o">(</span><span class="n">fieldValueString</span><span class="o">));</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Long</span><span class="o">.</span><span class="na">class</span><span class="o">)</span> <span class="o">||</span> <span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Long</span><span class="o">.</span><span class="na">TYPE</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">field</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">object</span><span class="o">,</span> <span class="n">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">fieldValueString</span><span class="o">));</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="n">field</span><span class="o">.</span><span class="na">getDeclaringClass</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
+                <span class="n">field</span><span class="o">.</span><span class="na">getDeclaringClass</span><span class="o">().</span><span class="na">getConstructor</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">).</span><span class="na">newInstance</span><span class="o">(</span><span class="n">fieldValueString</span><span class="o">);</span>
+                <span class="n">field</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">object</span><span class="o">,</span> <span class="n">field</span><span class="o">.</span><span class="na">getType</span><span class="o">().</span><span class="na">getConstructor</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">).</span><span class="na">newInstance</span><span class="o">(</span><span class="n">fieldValueString</span><span class="o">));</span>
+            <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NoSuchFieldException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">warn</span><span class="o">(</span><span class="s2">&#34;Environment override for property &#34;</span> <span class="o">+</span> <span class="n">fieldName</span> <span class="o">+</span> <span class="s2">&#34; found, but no matching property exists.&#34;</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalStateException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span></code></pre></div>
 <p>&hellip;before punting.  Since I had already accepted the BeanUtils dependency, I was able to use the <code>copyProperty</code> method and delete a lot of potentially brittle code.</p>
 
 <h3 id="summary">Summary</h3>
@@ -343,7 +307,7 @@ As to the question of when it&rsquo;s appropriate to write Java over Groovy, the
         </li>
     
         <li>
-            <a href="/post/take-note/">Markdown Notes<aside class="dates">Jul 16 2017</aside></a>
+            <a href="/post/markdown-notes/">Markdown Notes<aside class="dates">Jul 16 2017</aside></a>
         </li>
     
         <li>
@@ -400,9 +364,6 @@ As to the question of when it&rsquo;s appropriate to write Java over Groovy, the
     </section>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://dantanner.com/js/main.js"></script>
-<script src="https://dantanner.com/js/highlight.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
 
 
 

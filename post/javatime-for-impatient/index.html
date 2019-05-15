@@ -91,56 +91,50 @@ Java’s original date and time handling had some issues that could make it cumb
 <p>There’s much more to the package than what I’ll show, and you’ll eventually want to dive deeper, but this article shows you some of the most frequently used techniques I’ve experienced on the last few projects. I’m using groovy for the code snippets, but they’re just java without the semicolons.</p>
 
 <h4 id="91-83-of-the-time-you-ll-work-with-localdate-or-zoneddatetime">91.83% of the time, you’ll work with LocalDate or ZonedDateTime.</h4>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.time.LocalDate</span>
+<span class="kn">import</span> <span class="nn">java.time.ZonedDateTime</span>
+<span class="kn">import</span> <span class="nn">java.time.ZoneId</span>
+<span class="kn">import</span> <span class="nn">java.time.format.DateTimeFormatter</span>
+<span class="kn">import</span> <span class="nn">java.time.temporal.TemporalAdjusters</span>
 
-<pre><code>import java.time.LocalDate
-import java.time.ZonedDateTime
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
-import java.time.temporal.TemporalAdjusters
+<span class="c1">// If you have a date without time information, use a LocalDate. e.g. someone&#39;s birthday
+</span><span class="c1"></span><span class="n">LocalDate</span> <span class="n">localDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LocalDate</span><span class="o">(</span><span class="n">2016</span><span class="o">,</span> <span class="n">4</span><span class="o">,</span> <span class="n">12</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">localDate</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span>  <span class="c1">// 2016-04-12
+</span><span class="c1"></span>
+<span class="c1">// If you need to include time in the date, use ZonedDateTime
+</span><span class="c1"></span><span class="n">ZonedDateTime</span> <span class="n">zdt</span> <span class="o">=</span> <span class="n">ZonedDateTime</span><span class="o">.</span><span class="na">now</span><span class="o">()</span> 
 
-// If you have a date without time information, use a LocalDate. e.g. someone's birthday
-LocalDate localDate = new LocalDate(2016, 4, 12)
-println localDate.toString()  // 2016-04-12
-
-// If you need to include time in the date, use ZonedDateTime
-ZonedDateTime zdt = ZonedDateTime.now() 
-
-// when formatting a ZonedDateTime for API communication, you'll typically use the DateTimeFormatter.ISO_INSTANT format
-println zdt.format(DateTimeFormatter.ISO_INSTANT)
-// 2016-04-12T19:20:45.539Z
-
-// some more examples of formatters
-println zdt.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
-// 2016-04-12T14:20:45.539
-
-println zdt.format(DateTimeFormatter.RFC_1123_DATE_TIME)
-// Tue, 12 Apr 2016 14:20:45 -0500
-
-println zdt.format(DateTimeFormatter.ISO_ZONED_DATE_TIME)
-// 2016-04-12T14:20:45.539-05:00[America/Chicago]
-
-// you can also create a custom formatter
-DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&quot;MMM dd yyyy GG&quot;)
-println zdt.format(formatter)
-// Apr 12 2016 AD
-</code></pre>
-
+<span class="c1">// when formatting a ZonedDateTime for API communication, you&#39;ll typically use the DateTimeFormatter.ISO_INSTANT format
+</span><span class="c1"></span><span class="n">println</span> <span class="n">zdt</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">DateTimeFormatter</span><span class="o">.</span><span class="na">ISO_INSTANT</span><span class="o">)</span>
+<span class="c1">// 2016-04-12T19:20:45.539Z
+</span><span class="c1"></span>
+<span class="c1">// some more examples of formatters
+</span><span class="c1"></span><span class="n">println</span> <span class="n">zdt</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">DateTimeFormatter</span><span class="o">.</span><span class="na">ISO_LOCAL_DATE_TIME</span><span class="o">)</span>
+<span class="c1">// 2016-04-12T14:20:45.539
+</span><span class="c1"></span>
+<span class="n">println</span> <span class="n">zdt</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">DateTimeFormatter</span><span class="o">.</span><span class="na">RFC_1123_DATE_TIME</span><span class="o">)</span>
+<span class="c1">// Tue, 12 Apr 2016 14:20:45 -0500
+</span><span class="c1"></span>
+<span class="n">println</span> <span class="n">zdt</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">DateTimeFormatter</span><span class="o">.</span><span class="na">ISO_ZONED_DATE_TIME</span><span class="o">)</span>
+<span class="c1">// 2016-04-12T14:20:45.539-05:00[America/Chicago]
+</span><span class="c1"></span>
+<span class="c1">// you can also create a custom formatter
+</span><span class="c1"></span><span class="n">DateTimeFormatter</span> <span class="n">formatter</span> <span class="o">=</span> <span class="n">DateTimeFormatter</span><span class="o">.</span><span class="na">ofPattern</span><span class="o">(</span><span class="s">&#34;MMM dd yyyy GG&#34;</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">zdt</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">formatter</span><span class="o">)</span>
+<span class="o">//</span> <span class="n">Apr</span> <span class="n">12</span> <span class="n">2016</span> <span class="n">AD</span></code></pre></div>
 <h4 id="date-manipulation-is-fluent-and-intuitive">Date manipulation is fluent and intuitive.</h4>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.time.LocalDate</span>
+<span class="kn">import</span> <span class="nn">java.time.temporal.TemporalAdjusters</span>
 
-<pre><code>import java.time.LocalDate
-import java.time.temporal.TemporalAdjusters
-
-LocalDate localDate = LocalDate.now()
-println localDate 
-// 2016-04-12
-
-println localDate.plusMonths(1).withDayOfMonth(1)
-// 2016-05-01
-
-println localDate.minusMonths(1).with(TemporalAdjusters.lastDayOfMonth())
-// 2016-03-31
-</code></pre>
-
+<span class="n">LocalDate</span> <span class="n">localDate</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">()</span>
+<span class="n">println</span> <span class="n">localDate</span> 
+<span class="c1">// 2016-04-12
+</span><span class="c1"></span>
+<span class="n">println</span> <span class="n">localDate</span><span class="o">.</span><span class="na">plusMonths</span><span class="o">(</span><span class="n">1</span><span class="o">).</span><span class="na">withDayOfMonth</span><span class="o">(</span><span class="n">1</span><span class="o">)</span>
+<span class="c1">// 2016-05-01
+</span><span class="c1"></span>
+<span class="n">println</span> <span class="n">localDate</span><span class="o">.</span><span class="na">minusMonths</span><span class="o">(</span><span class="n">1</span><span class="o">).</span><span class="na">with</span><span class="o">(</span><span class="n">TemporalAdjusters</span><span class="o">.</span><span class="na">lastDayOfMonth</span><span class="o">())</span>
+<span class="o">//</span> <span class="n">2016</span><span class="o">-</span><span class="n">03</span><span class="o">-</span><span class="n">31</span></code></pre></div>
 <h4 id="prefer-to-work-in-utc-if-you-can-logs-database-timestamps-consistency-helps-avoid-mistakes">Prefer to work in UTC if you can - logs, database timestamps…consistency helps avoid mistakes.</h4>
 
 <p>In a startup class: <code>TimeZone.setDefault(TimeZone.getTimeZone(&quot;UTC&quot;))</code><br />
@@ -247,7 +241,7 @@ For example, given the following scenario:</p>
         </li>
     
         <li>
-            <a href="/post/take-note/">Markdown Notes<aside class="dates">Jul 16 2017</aside></a>
+            <a href="/post/markdown-notes/">Markdown Notes<aside class="dates">Jul 16 2017</aside></a>
         </li>
     
         <li>
@@ -304,9 +298,6 @@ For example, given the following scenario:</p>
     </section>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://dantanner.com/js/main.js"></script>
-<script src="https://dantanner.com/js/highlight.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
 
 
 

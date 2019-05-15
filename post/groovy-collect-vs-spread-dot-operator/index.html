@@ -86,23 +86,17 @@ e.g. Replace things.collect { it.name } with things*.name, or even things.name i
 <p>But when I performed that refactoring and ran all the tests, some failed! Here&rsquo;s why:</p>
 
 <p>I made the mistake of assuming that the spread operator behavior is always identical to the collect method. For a <strong>non-null</strong> collection, it is. e.g. The following code will produce the same result regardless of the technique you use:</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kt">def</span> <span class="n">things</span> <span class="o">=</span> <span class="o">[</span> <span class="o">[</span><span class="nl">a:</span> <span class="mi">1</span><span class="o">],</span> <span class="o">[</span><span class="nl">a:</span> <span class="mi">2</span><span class="o">]</span> <span class="o">]</span>
 
-<pre><code>def things = [ [a: 1], [a: 2] ]
-
-things.collect { it.a } // returns [1, 2]
-things*.a               // returns [1, 2]
-things.a                // returns [1, 2]
-</code></pre>
-
+<span class="n">things</span><span class="o">.</span><span class="na">collect</span> <span class="o">{</span> <span class="n">it</span><span class="o">.</span><span class="na">a</span> <span class="o">}</span> <span class="c1">// returns [1, 2]
+</span><span class="c1"></span><span class="n">things</span><span class="o">*.</span><span class="na">a</span>               <span class="c1">// returns [1, 2]
+</span><span class="c1"></span><span class="n">things</span><span class="o">.</span><span class="na">a</span>                <span class="s">//</span> <span class="n">returns</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">]</span></code></pre></div>
 <p>But if the collection you&rsquo;re operating on is <strong>null</strong>, the three techniques will result in different outcomes:</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kt">def</span> <span class="n">things</span> <span class="o">=</span> <span class="kc">null</span>
 
-<pre><code>def things = null
-
-things.collect { it.a }   // returns []
-things*.a                 // returns null
-things.a                  // throws a NullPointerException
-</code></pre>
-
+<span class="n">things</span><span class="o">.</span><span class="na">collect</span> <span class="o">{</span> <span class="n">it</span><span class="o">.</span><span class="na">a</span> <span class="o">}</span>   <span class="c1">// returns []
+</span><span class="c1"></span><span class="n">things</span><span class="o">*.</span><span class="na">a</span>                 <span class="c1">// returns null
+</span><span class="c1"></span><span class="n">things</span><span class="o">.</span><span class="na">a</span>                  <span class="s">//</span> <span class="kd">throws</span> <span class="n">a</span> <span class="n">NullPointerException</span></code></pre></div>
 <p>What this means is that if you&rsquo;re working with Collections that can potentially be null, you need to think about the consequences of the dot operations before using them. i.e. Don&rsquo;t ever use the implicit spread operator (things.a) if the collection can be null. And only use *. if it&rsquo;s ok for the result to be null.</p>
 
 <p><em>tl;dr;</em> Explicit and implicit spread operations are great, but be aware that they are less forgiving than the collect method.</p>
@@ -157,7 +151,7 @@ things.a                  // throws a NullPointerException
         </li>
     
         <li>
-            <a href="/post/take-note/">Markdown Notes<aside class="dates">Jul 16 2017</aside></a>
+            <a href="/post/markdown-notes/">Markdown Notes<aside class="dates">Jul 16 2017</aside></a>
         </li>
     
         <li>
@@ -214,9 +208,6 @@ things.a                  // throws a NullPointerException
     </section>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://dantanner.com/js/main.js"></script>
-<script src="https://dantanner.com/js/highlight.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
 
 
 

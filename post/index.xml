@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Dan Tanner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 May 2019 20:09:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Apr 2020 20:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://dantanner.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Chaperone</title>
+      <link>https://dantanner.com/post/chaperone/</link>
+      <pubDate>Sun, 12 Apr 2020 20:00:00 +0000</pubDate>
+      
+      <guid>https://dantanner.com/post/chaperone/</guid>
+      <description>I built a basic but extensible monitoring tool to help people watch their systems. It&amp;rsquo;s called Chaperone, and it&amp;rsquo;s open-sourced on github. It&amp;rsquo;s simple and powerful, letting you execute arbitrary scripts to determine health.
+Why? A couple years ago, a bright colleague of mine whipped up a quick and elegant solution to watch and alert on a bunch of things running in our apps. We didn&amp;rsquo;t want a big overblown solution, but it also needed to be customizable.</description>
+    </item>
     
     <item>
       <title>Please Don&#39;t Teach C to Beginning Programmers</title>

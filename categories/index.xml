@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Dan Tanner</title>
@@ -6,17 +6,31 @@
     <description>Recent content in Categories on Dan Tanner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Apr 2020 20:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://dantanner.com/categories/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sat, 06 Feb 2021 10:00:00 +0000</lastBuildDate><atom:link href="https://dantanner.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>essential</title>
+      <link>https://dantanner.com/categories/essential/</link>
+      <pubDate>Sat, 06 Feb 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://dantanner.com/categories/essential/</guid>
+      <description></description>
+    </item>
     
     <item>
-      <title>Kotlin</title>
-      <link>https://dantanner.com/categories/kotlin/</link>
-      <pubDate>Sun, 12 Apr 2020 20:00:00 +0000</pubDate>
+      <title>homeowner</title>
+      <link>https://dantanner.com/categories/homeowner/</link>
+      <pubDate>Sat, 06 Feb 2021 10:00:00 +0000</pubDate>
       
-      <guid>https://dantanner.com/categories/kotlin/</guid>
+      <guid>https://dantanner.com/categories/homeowner/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tools</title>
+      <link>https://dantanner.com/categories/tools/</link>
+      <pubDate>Sat, 06 Feb 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://dantanner.com/categories/tools/</guid>
       <description></description>
     </item>
     
@@ -35,6 +49,15 @@
       <pubDate>Sun, 12 Apr 2020 20:00:00 +0000</pubDate>
       
       <guid>https://dantanner.com/categories/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kotlin</title>
+      <link>https://dantanner.com/categories/kotlin/</link>
+      <pubDate>Sun, 12 Apr 2020 20:00:00 +0000</pubDate>
+      
+      <guid>https://dantanner.com/categories/kotlin/</guid>
       <description></description>
     </item>
     

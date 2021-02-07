@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Dan Tanner">
 <meta name="description" content="Personal and Semi-Professional Blog">
-<meta name="generator" content="Hugo 0.55.5" />
+<meta name="generator" content="Hugo 0.80.0" />
 <title>Dynamic Grails Tomcat datasource configuration with Etcd</title>
 <link rel="shortcut icon" href="https://dantanner.com/images/favicon.ico">
 <link rel="stylesheet" href="https://dantanner.com/css/style.css">
@@ -26,19 +26,16 @@
  During a disaster recovery situation where a non-clustered database goes down, you want to point all the apps at a failover database. By default this means you have to update the config and restart all the apps. On a typical AWS instance, this means at least a minute of downtime for a bigger Grails app." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dantanner.com/post/dynamic-grails-tomcat-datasource/" />
-<meta property="article:published_time" content="2015-04-30T06:05:00&#43;00:00"/>
-<meta property="article:modified_time" content="2015-04-30T06:05:00&#43;00:00"/>
-
+<meta property="article:published_time" content="2015-04-30T06:05:00+00:00" />
+<meta property="article:modified_time" content="2015-04-30T06:05:00+00:00" />
 
 
 <meta itemprop="name" content="Dynamic Grails Tomcat datasource configuration with Etcd">
 <meta itemprop="description" content="Ever wonder if you could modify a Grails datasource while the app is running? Probably not, and that&rsquo;s totally fine&hellip;most people don&rsquo;t need to. We had a couple reasons though:
  During a disaster recovery situation where a non-clustered database goes down, you want to point all the apps at a failover database. By default this means you have to update the config and restart all the apps. On a typical AWS instance, this means at least a minute of downtime for a bigger Grails app.">
-
-
-<meta itemprop="datePublished" content="2015-04-30T06:05:00&#43;00:00" />
-<meta itemprop="dateModified" content="2015-04-30T06:05:00&#43;00:00" />
-<meta itemprop="wordCount" content="1364">
+<meta itemprop="datePublished" content="2015-04-30T06:05:00+00:00" />
+<meta itemprop="dateModified" content="2015-04-30T06:05:00+00:00" />
+<meta itemprop="wordCount" content="1360">
 
 
 
@@ -79,19 +76,13 @@
         </h2>
     </header>
     <section id="post-body">
-        
-
-<p>Ever wonder if you could modify a Grails datasource while the app is running?
+        <p>Ever wonder if you could modify a Grails datasource while the app is running?
 Probably not, and that&rsquo;s totally fine&hellip;most people don&rsquo;t need to. We had a couple reasons though:</p>
-
 <ol>
 <li>During a disaster recovery situation where a non-clustered database goes down, you want to point all the apps at a failover database.  By default this means you have to update the config and restart all the apps.  On a typical AWS instance, this means at least a minute of downtime for a bigger Grails app.  Not the end of the world, but not great.</li>
-<li>One of our databases is a catalog of product information that can be drastically changed.  We wanted to be able to clone the catalog, apply massive data changes to it (this can take a minute or so), and then point all the apps in the cluster to this new database without downtime.  And we also want to be able to revert to the old database if something goes wrong.<br />
-<br /></li>
+<li>One of our databases is a catalog of product information that can be drastically changed.  We wanted to be able to clone the catalog, apply massive data changes to it (this can take a minute or so), and then point all the apps in the cluster to this new database without downtime.  And we also want to be able to revert to the old database if something goes wrong.</li>
 </ol>
-
-<h4 id="first-question-how-can-you-change-a-tomcat-datasource-while-the-app-is-running">First question - how can you change a Tomcat datasource while the app is running?</h4>
-
+<h4 id="first-question---how-can-you-change-a-tomcat-datasource-while-the-app-is-running">First question - how can you change a Tomcat datasource while the app is running?</h4>
 <pre><code>package com.foo.util
 
 import groovy.util.logging.Log4j
@@ -125,47 +116,29 @@ class TomcatDatasourceUtil {
     }
 
 }
-</code></pre>
-
-<p>Grails version 2.3 and onwards uses the <a href="https://tomcat.apache.org/tomcat-8.0-doc/jdbc-pool.html">Tomcat Connection Pool</a> as its datasource provider by default.  If you&rsquo;re not using Grails 2.3+ yet, you&rsquo;re probably using the Apache Commons DBCP, and can switch by using <a href="http://grails.org/plugin/jdbc-pool">this plugin</a>.</p>
-
+</code></pre><p>Grails version 2.3 and onwards uses the <a href="https://tomcat.apache.org/tomcat-8.0-doc/jdbc-pool.html">Tomcat Connection Pool</a> as its datasource provider by default.  If you&rsquo;re not using Grails 2.3+ yet, you&rsquo;re probably using the Apache Commons DBCP, and can switch by using <a href="http://grails.org/plugin/jdbc-pool">this plugin</a>.</p>
 <p>Basically, you pass the <code>ensureCurrentDatasources</code> method your grailsApplication and a list of datasource names you want to inspect for changes and potentially refresh.  The datasource name(s) are typically defined in your DataSource.groovy.  e.g. If you only have one datasource, it&rsquo;ll be named &ldquo;dataSource&rdquo;.  If you&rsquo;re using multiple datasources, they might be named &ldquo;dataSource_auditing&rdquo; or whatever you&rsquo;ve specified.</p>
-
 <p>The method is implemented to compare the current Tomcat connection pool values for the username, password, and url against the current Grails configuration values.  If any settings have changed, it&rsquo;ll update those connection pool settings and call the purge() method in the connection pool.  purge() will basically perform a graceful reset of all the connections so that they establish their next connection with the updated configuration.  I chose username, password, and url because those are the things that we might change.  There are more properties in the pool that you could possibly change, but you probably don&rsquo;t want to change much else, since there is some critical state being managed by some of the properties.</p>
-
 <p>OK, so you know a way to dynamically update a datasource while the app is running.</p>
-
 <h4 id="next-question-how-should-i-wire-in-this-dynamic-update-capability">Next question: How should I wire in this dynamic update capability?</h4>
-
 <p>The short answer is, whatever works best for you.  Here&rsquo;s the path we went down&hellip;</p>
-
-<p><strong>The initial approach:</strong><br />
+<p><strong>The initial approach:</strong><br>
 Our application has the following attributes:</p>
-
 <ul>
 <li>It uses an inline plugin where we keep our domain classes and services.</li>
 <li>We use <a href="https://saltstack.com/">Salt</a> to manage our external config files</li>
-<li>It uses the <a href="https://github.com/bluesliverx/grails-external-config-reload">External Config Reload</a> plugin to allow us to dynamically update the app config when we change the config files.<br />
-<br /></li>
+<li>It uses the <a href="https://github.com/bluesliverx/grails-external-config-reload">External Config Reload</a> plugin to allow us to dynamically update the app config when we change the config files.</li>
 </ul>
-
 <p>With those attributes, we initially implemented a hook into the TomcatDatasourceUtil by defining the onConfigChange event in our plugin&rsquo;s Config.groovy, like this:</p>
-
 <pre><code>def onConfigChange = { event -&gt;
     TomcatDatasourceUtil.ensureCurrentDatasources(
             application, 
             ['dataSource', 'dataSource_auditing'])
 }
-</code></pre>
-
-<p>This worked fine, but seemed like a clunky solution.  For the catalog database update scenario, the application essentially needs to remotely communicate with salt, so that salt could remotely update all of the application&rsquo;s configuration files.  We keep all our salt configurations in source control, which didn&rsquo;t really fit the model of what we wanted to do.</p>
-
-<h4 id="the-better-approach-or-at-least-this-has-been-working-well-for-us-so-far">The better approach&hellip;or at least this has been working well for us so far:</h4>
-
+</code></pre><p>This worked fine, but seemed like a clunky solution.  For the catalog database update scenario, the application essentially needs to remotely communicate with salt, so that salt could remotely update all of the application&rsquo;s configuration files.  We keep all our salt configurations in source control, which didn&rsquo;t really fit the model of what we wanted to do.</p>
+<h4 id="the-better-approachor-at-least-this-has-been-working-well-for-us-so-far">The better approach&hellip;or at least this has been working well for us so far:</h4>
 <p>Rather than use a tool to constantly push out config file changes on the fly to our cluster of apps, we thought it would be better if we inverted the technique&hellip;i.e. have all the applications get their configuration from a central location.  This is where <a href="https://github.com/coreos/etcd">etcd</a> comes in.  The summary of etcd is that it&rsquo;s &ldquo;a distributed, consistent key value store for shared configuration and service discovery with a focus on being simple, secure, fast, and reliable.&rdquo;</p>
-
 <p>You can run just about any groovy code in your Config.groovy and Datasource.groovy.  So rather than have the application get its datasource config info from a file, we have it load the datasource URL from etcd.  e.g. Here&rsquo;s a snippet from our external config file:</p>
-
 <pre><code>import groovy.json.JsonSlurper
 
 dataSource {
@@ -178,14 +151,9 @@ dataSource {
     def catalogUrlConfig = jsonSlurper.parseText(new URL(&quot;http://etcdlocation:2379/v2/keys/dataSource/url&quot;).text)
     url = catalogUrlConfig.node.value
 }
-</code></pre>
-
-<p>This will take care of your app getting its initial url value from etcd.  You can put whatever else in etcd that you want&hellip;for our case we only need to dynamically change the url.</p>
-
+</code></pre><p>This will take care of your app getting its initial url value from etcd.  You can put whatever else in etcd that you want&hellip;for our case we only need to dynamically change the url.</p>
 <h4 id="so-now-how-do-you-update-the-datasource-for-a-cluster-of-applications">So now how do you update the datasource for a cluster of applications?</h4>
-
 <p>In your application&rsquo;s Bootstrap.groovy init, make a call to a class like this:</p>
-
 <pre><code>package com.foo.config
 
 import com.foog.util.TomcatDatasourceUtil
@@ -258,16 +226,14 @@ class RemoteConfigService {
         }
     }
 }
-</code></pre>
-
-<p>This is a very basic implementation of an etcd client that can watch for changes, update the grails configuration upon change, and also allow the app to update an etcd value.  There are more robust etcd clients available, but we didn&rsquo;t need (at least not yet) the added dependencies and complexity.</p>
-
-<p>It&rsquo;s pretty fun to watch once you get it all working.  Essentially this is the flow:<br />
-1. A cluster of grails applications start up, configure their datasource URL using the etcd config, and watch for changes.<br />
-2. Some time later, one of the applications clones the database, makes changes to it, and then sets the new URL value in etcd.<br />
-3. All the applications are then notified of the updated etcd value and dynamically update their datasource to point at the new URL.<br />
-4. &ldquo;dataSource was modified and refreshed&rdquo;!</p>
-
+</code></pre><p>This is a very basic implementation of an etcd client that can watch for changes, update the grails configuration upon change, and also allow the app to update an etcd value.  There are more robust etcd clients available, but we didn&rsquo;t need (at least not yet) the added dependencies and complexity.</p>
+<p>It&rsquo;s pretty fun to watch once you get it all working.  Essentially this is the flow:</p>
+<ol>
+<li>A cluster of grails applications start up, configure their datasource URL using the etcd config, and watch for changes.</li>
+<li>Some time later, one of the applications clones the database, makes changes to it, and then sets the new URL value in etcd.</li>
+<li>All the applications are then notified of the updated etcd value and dynamically update their datasource to point at the new URL.</li>
+<li>&ldquo;dataSource was modified and refreshed&rdquo;!</li>
+</ol>
 <p>Does this actually work?
 Yup - extremely well.  I actually expected the initial implementation to be a little brittle (e.g. maybe needing a more robust etcd client), but it didn&rsquo;t need any changes in the 6 months I watched it in production.</p>
 
@@ -305,6 +271,10 @@ Yup - extremely well.  I actually expected the initial implementation to be a li
     
     
         <li>
+            <a href="/post/essential-homeowner-tools/">50 Million Essential Homeowner Tools<aside class="dates">Feb 6 2021</aside></a>
+        </li>
+    
+        <li>
             <a href="/post/chaperone/">Chaperone<aside class="dates">Apr 12 2020</aside></a>
         </li>
     
@@ -340,10 +310,6 @@ Yup - extremely well.  I actually expected the initial implementation to be a li
             <a href="/post/javatime-for-impatient/">java.time for the extremely impatient<aside class="dates">Apr 13 2016</aside></a>
         </li>
     
-        <li>
-            <a href="/post/groovy-collect-vs-spread-dot-operator/">Groovy collect vs spread-dot operator<aside class="dates">Nov 15 2014</aside></a>
-        </li>
-    
 </ul>
 
 
@@ -370,7 +336,7 @@ Yup - extremely well.  I actually expected the initial implementation to be a li
     
     <p class="small">
     
-        © Copyright 2020 Dan Tanner
+        © Copyright 2021 Dan Tanner
     
     </p>
 </footer>

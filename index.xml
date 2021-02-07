@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dan Tanner</title>
@@ -6,10 +6,16 @@
     <description>Recent content on Dan Tanner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Apr 2020 20:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://dantanner.com/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sat, 06 Feb 2021 10:00:00 +0000</lastBuildDate><atom:link href="https://dantanner.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>50 Million Essential Homeowner Tools</title>
+      <link>https://dantanner.com/post/essential-homeowner-tools/</link>
+      <pubDate>Sat, 06 Feb 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://dantanner.com/post/essential-homeowner-tools/</guid>
+      <description>Overview This article summarizes what I think of as essential homeowner tools for people interested in basic maintenance and improvements. With the amount of information available online today, it&amp;rsquo;s easier than ever to learn. For example, I love Project Farm. Unfortunately there&amp;rsquo;s also a lot of incomplete and just plain bad information out there.
+So this my attempt to condense twenty years of home ownership experience into a concise but complete starting point.</description>
+    </item>
     
     <item>
       <title>Chaperone</title>
@@ -80,7 +86,7 @@ Because of the dozens of tools I need to juggle, because I forget things, and be
       <guid>https://dantanner.com/post/curl-saves-the-day/</guid>
       <description>Every developer should be comfortable with curl.
 For the same reason that you should at least be conversational in tools like sed, awk, and vi, you should be able to quickly type in something like like curl -v localhost:8080 to see what&amp;rsquo;s going on. It&amp;rsquo;s available on just about every unix-based box for a good reason.
-Like its man page states, the number of features will make your head spin.</description>
+Like its man page states, the number of features will make your head spin. That&amp;rsquo;s probably the most discussed reason people are turned off by it.</description>
     </item>
     
     <item>

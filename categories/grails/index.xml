@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>grails on Dan Tanner</title>
@@ -6,11 +6,7 @@
     <description>Recent content in grails on Dan Tanner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Apr 2015 06:05:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://dantanner.com/categories/grails/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 30 Apr 2015 06:05:00 +0000</lastBuildDate><atom:link href="https://dantanner.com/categories/grails/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Dynamic Grails Tomcat datasource configuration with Etcd</title>
       <link>https://dantanner.com/post/dynamic-grails-tomcat-datasource/</link>

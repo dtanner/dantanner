@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Dan Tanner">
 <meta name="description" content="Personal and Semi-Professional Blog">
-<meta name="generator" content="Hugo 0.55.5" />
+<meta name="generator" content="Hugo 0.80.0" />
 <title>Chaperone</title>
 <link rel="shortcut icon" href="https://dantanner.com/images/favicon.ico">
 <link rel="stylesheet" href="https://dantanner.com/css/style.css">
@@ -26,18 +26,15 @@
 Why? A couple years ago, a bright colleague of mine whipped up a quick and elegant solution to watch and alert on a bunch of things running in our apps. We didn&rsquo;t want a big overblown solution, but it also needed to be customizable." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dantanner.com/post/chaperone/" />
-<meta property="article:published_time" content="2020-04-12T20:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2020-04-12T20:00:00&#43;00:00"/>
-
+<meta property="article:published_time" content="2020-04-12T20:00:00+00:00" />
+<meta property="article:modified_time" content="2020-04-12T20:00:00+00:00" />
 
 
 <meta itemprop="name" content="Chaperone">
 <meta itemprop="description" content="I built a basic but extensible monitoring tool to help people watch their systems. It&rsquo;s called Chaperone, and it&rsquo;s open-sourced on github. It&rsquo;s simple and powerful, letting you execute arbitrary scripts to determine health.
 Why? A couple years ago, a bright colleague of mine whipped up a quick and elegant solution to watch and alert on a bunch of things running in our apps. We didn&rsquo;t want a big overblown solution, but it also needed to be customizable.">
-
-
-<meta itemprop="datePublished" content="2020-04-12T20:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-04-12T20:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2020-04-12T20:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-04-12T20:00:00+00:00" />
 <meta itemprop="wordCount" content="1197">
 
 
@@ -79,52 +76,37 @@ Why? A couple years ago, a bright colleague of mine whipped up a quick and elega
         </h2>
     </header>
     <section id="post-body">
-        
-
-<p>I built a basic but extensible monitoring tool to help people watch their systems.  It&rsquo;s called <em>Chaperone</em>, and it&rsquo;s <a href="https://github.com/dtanner/chaperone">open-sourced on github</a>.
+        <p>I built a basic but extensible monitoring tool to help people watch their systems.  It&rsquo;s called <em>Chaperone</em>, and it&rsquo;s <a href="https://github.com/dtanner/chaperone">open-sourced on github</a>.
 It&rsquo;s simple and powerful, letting you execute arbitrary scripts to determine health.</p>
-
 <h1 id="why">Why?</h1>
-
 <p>A couple years ago, a bright colleague of mine whipped up a quick and elegant solution to watch and alert on a bunch of things running in our apps.
 We didn&rsquo;t want a big overblown solution, but it also needed to be customizable.  I helped out a little.
 When the next suite of projects rolled around, I needed something similar.  I could&rsquo;ve reused the tool we had, but here&rsquo;s why I wanted to create something new:</p>
-
 <ul>
 <li>Almost every project needs something that can make basic monitoring easy, and custom monitoring possible. I was willing to make an investment of my own time to make something I loved for the long-term.</li>
 <li>Just about everyone these days is writing apps that are deployed as containers. Existing monitoring tools available were not built for this style of deployment, and didn&rsquo;t meet my goals. They&rsquo;re all built as these big centralized and costly to operate long-term installations, which doesn&rsquo;t fit in a decentralized app model where each team is reponsible for building and administering their own monitoring.</li>
 <li>The original tool was written in a language that isn&rsquo;t my favorite; this one&rsquo;s written in Kotlin, and my fondness for it encourages me to write more features with it.</li>
 </ul>
-
 <h1 id="what-does-it-do">What does it do?</h1>
-
 <p>In a nutshell, you define a bunch of checks, and when the app starts up, it runs them periodically and sends the results to various places you configure.</p>
-
 <p>More specifically, it runs every check you define as a bash command, and if the exit code of the command is zero, things are good. If it&rsquo;s non-zero, things are not good.</p>
-
-<h1 id="isn-t-that-what-some-other-tool-does">Isn&rsquo;t that what $SOME_OTHER_TOOL does?</h1>
-
+<h1 id="isnt-that-what-some_other_tool-does">Isn&rsquo;t that what $SOME_OTHER_TOOL does?</h1>
 <p>Yeahhhh&hellip;some tools do precisely that, some have a ton more features, some provide a giant user interface, and some cost a bunch of money.
 But whenever I looked for a tool, they all suffered from one of these flaws:</p>
-
 <ul>
 <li>too opinionated in how they worked</li>
 <li>a giant PITA to configure or run</li>
 <li>couldn&rsquo;t be configured to live alongside my project&rsquo;s source code</li>
 <li>too hard or confusing to configure and run as a docker container</li>
 </ul>
-
 <h1 id="what-are-the-highlights-of-its-features">What are the highlights of its features?</h1>
-
 <h3 id="defining-checks">Defining checks</h3>
-
 <p>See the docs for the full list of features with examples, but basically you configure a <code>check</code> as a TOML config file and put that in a directory. If you&rsquo;re not familiar with <a href="https://github.com/toml-lang/toml">TOML</a>, it&rsquo;s a simple and obvious configuration file format.  Here&rsquo;s the most basic example:</p>
 <div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;basic example&#34;</span>
 <span class="nx">command</span> <span class="p">=</span> <span class="s2">&#34;ls&#34;</span>
 <span class="nx">interval</span> <span class="p">=</span> <span class="s2">&#34;1m&#34;</span>
-<span class="nx">timeout</span> <span class="p">=</span> <span class="s2">&#34;5s&#34;</span></code></pre></div>
-<p>This example runs <code>ls</code> every minute. A more realistic example would be figurately stated as &ldquo;curl some url and see if it returns a 200&rdquo;, which can easily be written as a one-liner. You don&rsquo;t need an HTTP-specific application for that.</p>
-
+<span class="nx">timeout</span> <span class="p">=</span> <span class="s2">&#34;5s&#34;</span>
+</code></pre></div><p>This example runs <code>ls</code> every minute. A more realistic example would be figurately stated as &ldquo;curl some url and see if it returns a 200&rdquo;, which can easily be written as a one-liner. You don&rsquo;t need an HTTP-specific application for that.</p>
 <p>A more advanced example is a templated check, where you run a &ldquo;template&rdquo; command that builds a list of dynamic checks, like &ldquo;get a list of our running apps in the cluster&rdquo;, then &ldquo;hit each app&rsquo;s health check url&rdquo;.  e.g. Here&rsquo;s a real example we use in our project:</p>
 <div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">description</span> <span class="p">=</span> <span class="s2">&#34;app instance health&#34;</span>
 <span class="c"># template will output $app-name $env $instance-id $health-check-url</span>
@@ -133,53 +115,41 @@ But whenever I looked for a tool, they all suffered from one of these flaws:</p>
 <span class="nx">command</span> <span class="p">=</span> <span class="s2">&#34;../scripts/check-instance.sh&#34;</span> <span class="c"># call this command for each result from the template</span>
 <span class="nx">interval</span> <span class="p">=</span> <span class="s2">&#34;1m&#34;</span>
 <span class="nx">timeout</span> <span class="p">=</span> <span class="s2">&#34;1m&#34;</span>
-<span class="nx">tags</span> <span class="p">=</span> <span class="err">{</span><span class="nx">app</span><span class="p">=</span><span class="s2">&#34;$1&#34;</span><span class="p">,</span> <span class="nx">env</span><span class="p">=</span><span class="s2">&#34;$2&#34;</span><span class="p">,</span> <span class="nx">cat</span><span class="p">=</span><span class="s2">&#34;app&#34;</span><span class="err">}</span></code></pre></div>
-<p>The above example uses the concept of bash positional arguments as variables passed from the template to the command. If we had 10 instances running, it would dynamically execute 10 checks. It also uses tags to help organize our health check results.</p>
-
+<span class="nx">tags</span> <span class="p">=</span> <span class="p">{</span><span class="nx">app</span><span class="p">=</span><span class="s2">&#34;$1&#34;</span><span class="p">,</span> <span class="nx">env</span><span class="p">=</span><span class="s2">&#34;$2&#34;</span><span class="p">,</span> <span class="nx">cat</span><span class="p">=</span><span class="s2">&#34;app&#34;</span><span class="p">}</span>
+</code></pre></div><p>The above example uses the concept of bash positional arguments as variables passed from the template to the command. If we had 10 instances running, it would dynamically execute 10 checks. It also uses tags to help organize our health check results.</p>
 <p>Another real world template use case is &ldquo;from our list of kafka topics, check if we can consume from each topic&rdquo;.</p>
-
 <h3 id="outputting-the-results">Outputting the results</h3>
-
 <p>Result output capabilities is a pluggable model. There&rsquo;s a result OutputWriter interface with a single function <code>fun write(checkResult: CheckResult)</code>, and so far two output destinations have been implemented:</p>
-
 <ul>
 <li>stdout - sends the results to stdout in a human-readable format</li>
-<li>InfluxDB - sends the results to InfluxDB.  I&rsquo;m currently using influx + grafana for our dashboarding and alerting, and it&rsquo;s been a great way to use tools we&rsquo;re already relying heavily on.  For example, here&rsquo;s a sample grafana dashboard showing the results of some checks. You can find it and a sample grafana dashboard export in the <a href="https://github.com/dtanner/chaperone/tree/master/example-usage">example-usage</a> section of the project.<br />
-<img src="/chaperone/sample-check-dashboard.png" alt="" /><br /></li>
+<li>InfluxDB - sends the results to InfluxDB.  I&rsquo;m currently using influx + grafana for our dashboarding and alerting, and it&rsquo;s been a great way to use tools we&rsquo;re already relying heavily on.  For example, here&rsquo;s a sample grafana dashboard showing the results of some checks. You can find it and a sample grafana dashboard export in the <a href="https://github.com/dtanner/chaperone/tree/master/example-usage">example-usage</a> section of the project.<br>
+<img src="/chaperone/sample-check-dashboard.png" alt=""></li>
 </ul>
-
 <p>You choose the output options via a global config file that looks like this:</p>
 <div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">outputs</span><span class="p">.</span><span class="nx">stdout</span><span class="p">]</span>
 
 <span class="p">[</span><span class="nx">outputs</span><span class="p">.</span><span class="nx">influxdb</span><span class="p">]</span>
 <span class="nx">db</span><span class="p">=</span><span class="s2">&#34;metrics&#34;</span>
-<span class="nx">defaultTags</span><span class="p">=</span><span class="err">{</span><span class="nx">app</span><span class="p">=</span><span class="s2">&#34;myapp-chaperone&#34;</span><span class="err">}</span>
-<span class="nx">uri</span><span class="p">=</span><span class="s2">&#34;http://localhost:8086&#34;</span></code></pre></div>
-<p>Some other ideas that haven&rsquo;t been built yet but would be pretty easy are destinations like:</p>
-
+<span class="nx">defaultTags</span><span class="p">={</span><span class="nx">app</span><span class="p">=</span><span class="s2">&#34;myapp-chaperone&#34;</span><span class="p">}</span>
+<span class="nx">uri</span><span class="p">=</span><span class="s2">&#34;http://localhost:8086&#34;</span>
+</code></pre></div><p>Some other ideas that haven&rsquo;t been built yet but would be pretty easy are destinations like:</p>
 <ul>
 <li>CSV file</li>
 <li>Common repositories like relational databases, other time series stores, etc&hellip;</li>
 <li>Custom destination - e.g. a script you&rsquo;ve defined that accepts the results and does whatever with it, like put it in some crazy proprietary database you have.</li>
 </ul>
-
 <h1 id="how-is-it-run">How is it run?</h1>
-
 <p>Chaperone itself is built and published as a docker image on <a href="https://hub.docker.com/r/edgescope/chaperone">docker hub</a>.
-That&rsquo;s really just the shell though - the expectation is that you create your own docker container based on it, adding in your checks and then deploying that to your environment(s).  Documentation on exactly how with a sample docker-compose file is included in the <a href="https://github.com/dtanner/chaperone/tree/master/example-usage">example-usage</a>.<br />
+That&rsquo;s really just the shell though - the expectation is that you create your own docker container based on it, adding in your checks and then deploying that to your environment(s).  Documentation on exactly how with a sample docker-compose file is included in the <a href="https://github.com/dtanner/chaperone/tree/master/example-usage">example-usage</a>.<br>
 Our team&rsquo;s naming convention for each checks source repository is $projectname-chaperone.  Each chaperone definition project lives within the org it&rsquo;s watching, so it&rsquo;s version-controlled and happily living alongside the other org&rsquo;s applications.</p>
-
 <p>Again, see the docs to try it out yourself. I made it with the intention that it&rsquo;s really easy to get going and use.
 I also tried to make it easy to debug your checks as you build them, knowing that sometimes validation can get complicated. You can add a <code>debug = true</code> option to a check and it&rsquo;ll log out the commands as they&rsquo;re executed via the <code>bash -x</code> flag.
 Feedback and ideas are greatly appreciated.  As of this writing, there&rsquo;s a couple minor bugs and a few enhancement ideas in the backlog, but we&rsquo;ve been using it in production for a while without major issue so far.
 I plan to keep extending and investing in this project as long as it&rsquo;s useful to myself and others.</p>
-
 <h1 id="thanks">Thanks</h1>
-
 <p>Thanks to Nathan Hartwell for his original ideas on the app. Even though I wrote it from scratch in a different language, I started with a lot of his ideas.
-Thanks to Ted Naleid for a great idea on how to make templated checks slicker.<br />
+Thanks to Ted Naleid for a great idea on how to make templated checks slicker.<br>
 I also discovered some really nice utility libraries in this project; thanks to everyone that has contributed to them:</p>
-
 <ul>
 <li><a href="https://ajalt.github.io/clikt/">CLIKT</a> - kotlin command line interface handling</li>
 <li><a href="https://github.com/uchuhimo/konf">Konf</a> - This made parsing YAML configs super easy. It&rsquo;s a big and powerful project, and normally for smaller apps I&rsquo;ll use my own <a href="https://github.com/dtanner/env-override">env-override</a>, but Konf is really powerful and elegant.</li>
@@ -220,6 +190,10 @@ I also discovered some really nice utility libraries in this project; thanks to 
     
     
         <li>
+            <a href="/post/essential-homeowner-tools/">50 Million Essential Homeowner Tools<aside class="dates">Feb 6 2021</aside></a>
+        </li>
+    
+        <li>
             <a href="/post/please-dont-teach-c-to-beginning-programmers/">Please Don&#39;t Teach C to Beginning Programmers<aside class="dates">May 5 2019</aside></a>
         </li>
     
@@ -255,10 +229,6 @@ I also discovered some really nice utility libraries in this project; thanks to 
             <a href="/post/dynamic-grails-tomcat-datasource/">Dynamic Grails Tomcat datasource configuration with Etcd<aside class="dates">Apr 30 2015</aside></a>
         </li>
     
-        <li>
-            <a href="/post/groovy-collect-vs-spread-dot-operator/">Groovy collect vs spread-dot operator<aside class="dates">Nov 15 2014</aside></a>
-        </li>
-    
 </ul>
 
 
@@ -285,7 +255,7 @@ I also discovered some really nice utility libraries in this project; thanks to 
     
     <p class="small">
     
-        © Copyright 2020 Dan Tanner
+        © Copyright 2021 Dan Tanner
     
     </p>
 </footer>

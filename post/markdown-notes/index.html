@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Dan Tanner">
 <meta name="description" content="Personal and Semi-Professional Blog">
-<meta name="generator" content="Hugo 0.55.5" />
+<meta name="generator" content="Hugo 0.80.0" />
 <title>Markdown Notes</title>
 <link rel="shortcut icon" href="https://dantanner.com/images/favicon.ico">
 <link rel="stylesheet" href="https://dantanner.com/css/style.css">
@@ -27,19 +27,16 @@ I&rsquo;ve been doing more devops work the last couple years, which requires a b
 Because of the dozens of tools I need to juggle, because I forget things, and because I forget things, keeping good notes is essential." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dantanner.com/post/markdown-notes/" />
-<meta property="article:published_time" content="2017-07-16T20:09:00&#43;00:00"/>
-<meta property="article:modified_time" content="2017-07-16T20:09:00&#43;00:00"/>
-
+<meta property="article:published_time" content="2017-07-16T20:09:00+00:00" />
+<meta property="article:modified_time" content="2017-07-16T20:09:00+00:00" />
 
 
 <meta itemprop="name" content="Markdown Notes">
 <meta itemprop="description" content="tl;dr; markdown files &#43; file syncing &#43; built-in OS file searching = easy organized notes
 I&rsquo;ve been doing more devops work the last couple years, which requires a broader and shallow level of knowledge vs. writing code in one or two languages for months at a time.
 Because of the dozens of tools I need to juggle, because I forget things, and because I forget things, keeping good notes is essential.">
-
-
-<meta itemprop="datePublished" content="2017-07-16T20:09:00&#43;00:00" />
-<meta itemprop="dateModified" content="2017-07-16T20:09:00&#43;00:00" />
+<meta itemprop="datePublished" content="2017-07-16T20:09:00+00:00" />
+<meta itemprop="dateModified" content="2017-07-16T20:09:00+00:00" />
 <meta itemprop="wordCount" content="408">
 
 
@@ -82,33 +79,21 @@ Because of the dozens of tools I need to juggle, because I forget things, and be
         </h2>
     </header>
     <section id="post-body">
-        
-
-<p><strong>tl;dr; markdown files + file syncing + built-in OS file searching = easy organized notes</strong></p>
-
+        <p><strong>tl;dr; markdown files + file syncing + built-in OS file searching = easy organized notes</strong></p>
 <p>I&rsquo;ve been doing more devops work the last couple years,
 which requires a broader and shallow level of knowledge vs. writing code in one or two languages for months at a time.</p>
-
 <p>Because of the dozens of tools I need to juggle, because I forget things, and because I forget things, keeping good notes is essential.</p>
-
 <p>I&rsquo;m surprised at how many programmers don&rsquo;t keep any notes at all, so hopefully this will convince a couple people to invest a little in their flow.
 Thanks to <a href="http://naleid.com/">Ted Naleid</a> for showing me his workflow; it motivated me to properly organize my notes.</p>
-
 <h1 id="history">History</h1>
-
 <p>I&rsquo;ve used a few different combination of styles for keeping programming notes over the years:</p>
-
 <ul>
 <li>whatever notepads were available in the office supply cabinet</li>
 <li>moleskine notebook + space pen during my hipster Getting Things Done phase</li>
 <li>.txt files semi-randomly organized on my computer</li>
-<li>various notes programs like OneNote, Evernote, and Google Keep
-<br />
-<br /></li>
+<li>various notes programs like OneNote, Evernote, and Google Keep</li>
 </ul>
-
 <p>I&rsquo;ve never been content with any of them.  None of them had all these features:</p>
-
 <ul>
 <li>easy</li>
 <li>fast</li>
@@ -116,27 +101,18 @@ Thanks to <a href="http://naleid.com/">Ted Naleid</a> for showing me his workflo
 <li>reliable</li>
 <li>flexible</li>
 <li>durable</li>
-<li>portable
-<br />
-<br /></li>
+<li>portable</li>
 </ul>
-
 <p>Here&rsquo;s what works for me:</p>
-
-<h1 id="step-1-choose-your-file-format">Step 1 - Choose Your File Format</h1>
-
-<p>I use markdown.  I would suggest that unless you really like some competing but similarly simple format.<br />
-Don&rsquo;t use a binary format.<br />
-Don&rsquo;t use HTML.<br />
+<h1 id="step-1---choose-your-file-format">Step 1 - Choose Your File Format</h1>
+<p>I use markdown.  I would suggest that unless you really like some competing but similarly simple format.<br>
+Don&rsquo;t use a binary format.<br>
+Don&rsquo;t use HTML.<br>
 Don&rsquo;t use a format that will be hard to programmatically convert from ten years from now when it becomes obsolete.</p>
-
-<h1 id="step-2-choose-your-file-syncing-tool">Step 2 - Choose Your File Syncing Tool</h1>
-
+<h1 id="step-2---choose-your-file-syncing-tool">Step 2 - Choose Your File Syncing Tool</h1>
 <p>I use dropbox, and keep my notes in <code>/Dropbox/code/notes</code>.</p>
-
-<h1 id="step-3-organization">Step 3 - Organization</h1>
-
-<p>Now it&rsquo;s just a matter of creating your files and filling them up as you go along.<br />
+<h1 id="step-3---organization">Step 3 - Organization</h1>
+<p>Now it&rsquo;s just a matter of creating your files and filling them up as you go along.<br>
 I have a file per tool or concept, and keep project-specific notes in their folder. e.g.:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">➜  notes tree
 .
@@ -150,17 +126,13 @@ I have a file per tool or concept, and keep project-specific notes in their fold
 ...
 ├── weatherbane
     ├── weatherbane-notes.md
-...</code></pre></div>
-<h1 id="step-4-workflow-notes">Step 4 - Workflow Notes</h1>
-
+...
+</code></pre></div><h1 id="step-4---workflow-notes">Step 4 - Workflow Notes</h1>
 <p>I can usually remember the name of the file I want to open, and that&rsquo;s how I usually access the files.
-e.g. with Alfred on OS X, where Cmd-Space is the hotkey to bring up the search box:<br />
+e.g. with Alfred on OS X, where Cmd-Space is the hotkey to bring up the search box:<br>
 <em>Cmd-Space</em> <code>open postg</code> and then the tool will autocomplete to postgres.md, and I&rsquo;ll hit enter to open the file in my favorite text editor.</p>
-
 <p>On my Android phone, I use JotterPad to view and (rarely) edit notes.</p>
-
 <h1 id="more-ideas">More Ideas</h1>
-
 <p><a href="https://www.reddit.com/r/archlinux/comments/3a0ibj/notetaking_and_markdown/">https://www.reddit.com/r/archlinux/comments/3a0ibj/notetaking_and_markdown/</a>
 <a href="http://lifehacker.com/5943320/what-is-markdown-and-why-is-it-better-for-my-to-do-lists-and-notes">http://lifehacker.com/5943320/what-is-markdown-and-why-is-it-better-for-my-to-do-lists-and-notes</a></p>
 
@@ -198,6 +170,10 @@ e.g. with Alfred on OS X, where Cmd-Space is the hotkey to bring up the search b
     
     
         <li>
+            <a href="/post/essential-homeowner-tools/">50 Million Essential Homeowner Tools<aside class="dates">Feb 6 2021</aside></a>
+        </li>
+    
+        <li>
             <a href="/post/chaperone/">Chaperone<aside class="dates">Apr 12 2020</aside></a>
         </li>
     
@@ -233,10 +209,6 @@ e.g. with Alfred on OS X, where Cmd-Space is the hotkey to bring up the search b
             <a href="/post/dynamic-grails-tomcat-datasource/">Dynamic Grails Tomcat datasource configuration with Etcd<aside class="dates">Apr 30 2015</aside></a>
         </li>
     
-        <li>
-            <a href="/post/groovy-collect-vs-spread-dot-operator/">Groovy collect vs spread-dot operator<aside class="dates">Nov 15 2014</aside></a>
-        </li>
-    
 </ul>
 
 
@@ -263,7 +235,7 @@ e.g. with Alfred on OS X, where Cmd-Space is the hotkey to bring up the search b
     
     <p class="small">
     
-        © Copyright 2020 Dan Tanner
+        © Copyright 2021 Dan Tanner
     
     </p>
 </footer>

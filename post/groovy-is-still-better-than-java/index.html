@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Dan Tanner">
 <meta name="description" content="Personal and Semi-Professional Blog">
-<meta name="generator" content="Hugo 0.55.5" />
+<meta name="generator" content="Hugo 0.80.0" />
 <title>Groovy is still better than Java</title>
 <link rel="shortcut icon" href="https://dantanner.com/images/favicon.ico">
 <link rel="stylesheet" href="https://dantanner.com/css/style.css">
@@ -28,9 +28,8 @@ Crap, it&rsquo;s been almost ten years. dan feels his bones creaking&hellip;
 When I first saw Venkat Subramaniam gliding through his beautiful java to groovy idioms at a conference, I was impressed." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dantanner.com/post/groovy-is-still-better-than-java/" />
-<meta property="article:published_time" content="2017-01-25T01:20:43-06:00"/>
-<meta property="article:modified_time" content="2017-01-25T01:20:43-06:00"/>
-
+<meta property="article:published_time" content="2017-01-25T01:20:43-06:00" />
+<meta property="article:modified_time" content="2017-01-25T01:20:43-06:00" />
 
 
 <meta itemprop="name" content="Groovy is still better than Java">
@@ -38,8 +37,6 @@ When I first saw Venkat Subramaniam gliding through his beautiful java to groovy
 For the last five years, when it comes to writing for the JVM, it&rsquo;s been mostly Groovy for me.
 Crap, it&rsquo;s been almost ten years. dan feels his bones creaking&hellip;
 When I first saw Venkat Subramaniam gliding through his beautiful java to groovy idioms at a conference, I was impressed.">
-
-
 <meta itemprop="datePublished" content="2017-01-25T01:20:43-06:00" />
 <meta itemprop="dateModified" content="2017-01-25T01:20:43-06:00" />
 <meta itemprop="wordCount" content="1467">
@@ -85,21 +82,15 @@ When I first saw Venkat Subramaniam gliding through his beautiful java to groovy
         </h2>
     </header>
     <section id="post-body">
-        
-
-<p>The idea for this post started last week when a gifted teammate, whose experience lies outside JVM languages, asked me if it was still worth it to write Groovy over Java.  Good question&hellip;</p>
-
-<p>For the last five years, when it comes to writing for the JVM, it&rsquo;s been mostly Groovy for me.<br />
+        <p>The idea for this post started last week when a gifted teammate, whose experience lies outside JVM languages, asked me if it was still worth it to write Groovy over Java.  Good question&hellip;</p>
+<p>For the last five years, when it comes to writing for the JVM, it&rsquo;s been mostly Groovy for me.<br>
 Crap, it&rsquo;s been almost ten years.  <em>dan feels his bones creaking&hellip;</em></p>
-
 <p>When I first saw Venkat Subramaniam gliding through his beautiful java to groovy idioms at a conference, I was impressed.</p>
-
 <p>Little things were nice, like being able to use <code>println 'hello'</code> instead of <code>System.out.println(&quot;hello&quot;);</code>.</p>
-
 <p>Even better was reading a file line by line.  It went from this:</p>
-<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nf">FileReader</span><span class="o">(</span><span class="s2">&#34;file.txt&#34;</span><span class="o">));</span>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span><span class="s2">&#34;file.txt&#34;</span><span class="o">));</span>
 <span class="k">try</span> <span class="o">{</span>
-    <span class="n">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">StringBuilder</span><span class="o">();</span>
+    <span class="n">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
     <span class="n">String</span> <span class="n">line</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
 
     <span class="k">while</span> <span class="o">(</span><span class="n">line</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
@@ -112,41 +103,36 @@ Crap, it&rsquo;s been almost ten years.  <em>dan feels his bones creaking&hellip
     <span class="k">if</span> <span class="o">(</span><span class="n">br</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
-<p>to this:</p>
-<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="k">new</span> <span class="nf">File</span><span class="o">(</span><span class="s2">&#34;file.txt&#34;</span><span class="o">).</span><span class="na">eachLine</span> <span class="o">{</span> <span class="n">println</span> <span class="s2">&#34;line = $it&#34;</span> <span class="o">}</span></code></pre></div>
-<p><em>Look Ma, a one-liner!</em> That got me hooked.</p>
-
+<span class="o">}</span>
+</code></pre></div><p>to this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="k">new</span> <span class="nf">File</span><span class="o">(</span><span class="s2">&#34;file.txt&#34;</span><span class="o">).</span><span class="na">eachLine</span> <span class="o">{</span> <span class="n">println</span> <span class="s2">&#34;line = $it&#34;</span> <span class="o">}</span>
+</code></pre></div><p><em>Look Ma, a one-liner!</em> That got me hooked.</p>
 <p>The <strong>biggest</strong> thing though, which I&rsquo;ve grown to appreciate even more over the years, is the <a href="http://docs.groovy-lang.org/latest/html/groovy-jdk/java/util/Collection.html">Collection</a> interface. The intrinsic power it gives to collection-like objects is immense.  And hey, c&rsquo;mon over here <a href="http://groovy-lang.org/groovy-dev-kit.html#_iterating_on_maps">Map</a> - you&rsquo;re iterable too as far as we&rsquo;re concerned.</p>
-
 <p>There&rsquo;s basic stuff like <code>10.times { println it }</code>, and
 <code>someCollection.each { println it }</code>, which shaves a few lines of code from the existing java iteration techniques.</p>
-
 <p>Then there&rsquo;s commonly useful but more powerful improvements like <code>collect()</code>, where you iterate through a collection of things, creating a new collection based on a function. e.g. going from this pre-Java 8 code:</p>
 <div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">input</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
-<span class="n">List</span> <span class="n">results</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ArrayList</span><span class="o">();</span>
+<span class="n">List</span> <span class="n">results</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">();</span>
 <span class="k">for</span> <span class="o">(</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span> <span class="n">iterator</span><span class="o">.</span><span class="na">hasNext</span><span class="o">();</span> <span class="o">)</span> <span class="o">{</span>
     <span class="n">Integer</span> <span class="n">integer</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
     <span class="n">results</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">integer</span> <span class="o">*</span> <span class="mi">2</span><span class="o">);</span>
-<span class="o">}</span></code></pre></div>
-<p>to:</p>
-<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">List</span> <span class="n">results</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">].</span><span class="na">collect</span> <span class="o">{</span> <span class="n">it</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">}</span></code></pre></div>
-<p>Filtering a collection is a similar improvement, where you start with a collection and filter it down based on a condition applied to each element.  e.g. going from (once again, pre-Java 8):</p>
+<span class="o">}</span>
+</code></pre></div><p>to:</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">List</span> <span class="n">results</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">].</span><span class="na">collect</span> <span class="o">{</span> <span class="n">it</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">}</span>
+</code></pre></div><p>Filtering a collection is a similar improvement, where you start with a collection and filter it down based on a condition applied to each element.  e.g. going from (once again, pre-Java 8):</p>
 <div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">input</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span>
-<span class="n">List</span> <span class="n">evenNumbers</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ArrayList</span><span class="o">();</span>
+<span class="n">List</span> <span class="n">evenNumbers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">();</span>
 <span class="k">for</span> <span class="o">(</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span> <span class="n">iterator</span><span class="o">.</span><span class="na">hasNext</span><span class="o">();</span> <span class="o">)</span> <span class="o">{</span>
     <span class="n">Integer</span> <span class="n">integer</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">integer</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
        <span class="n">evenNumbers</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">integer</span><span class="o">);</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
-<p>to:</p>
-<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">List</span> <span class="n">evenNumbers</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">].</span><span class="na">findAll</span> <span class="o">{</span> <span class="n">it</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">}</span></code></pre></div>
-<p>It gets even more concise and powerful with methods like <code>collectMany</code> and <code>inject</code>.  They&rsquo;re slightly more complicated, but worth the couple minutes of time it takes to understand.  If I were to give one piece of advice to people new to Groovy, it would be to thoroughly explore that interface.</p>
-
+<span class="o">}</span>
+</code></pre></div><p>to:</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">List</span> <span class="n">evenNumbers</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">].</span><span class="na">findAll</span> <span class="o">{</span> <span class="n">it</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">}</span>
+</code></pre></div><p>It gets even more concise and powerful with methods like <code>collectMany</code> and <code>inject</code>.  They&rsquo;re slightly more complicated, but worth the couple minutes of time it takes to understand.  If I were to give one piece of advice to people new to Groovy, it would be to thoroughly explore that interface.</p>
 <p>Lispers may smugly remark, &ldquo;oh, how cute; you&rsquo;re learning functional programming&rdquo;.  And they&rsquo;re right!
 The pragmatic functional features of Groovy provide a gentle transition from object-oriented to more pure functional programming for many developers.</p>
-
 <p>Fast-forward a bunch of years, and things have changed. Even though Java hasn&rsquo;t been progressing as fast as many would like, they&rsquo;ve made some significant changes to include features introduced by Groovy, and pioneered by other languages; most notably lambdas and streaming.  For example, the above Java examples can now be written like this:</p>
 <div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="c1">// read each line in a file
 </span><span class="c1"></span><span class="k">try</span> <span class="o">(</span><span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">Files</span><span class="o">.</span><span class="na">lines</span><span class="o">(</span><span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">&#34;file.txt&#34;</span><span class="o">)))</span> <span class="o">{</span>
@@ -159,47 +145,37 @@ The pragmatic functional features of Groovy provide a gentle transition from obj
 </span><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">results</span> <span class="o">=</span> <span class="n">Stream</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="n">v</span> <span class="o">-&gt;</span> <span class="n">v</span> <span class="o">*</span> <span class="mi">2</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>  
 
 <span class="c1">// filter
-</span><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">evenNumbers</span> <span class="o">=</span> <span class="n">Stream</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">).</span><span class="na">filter</span><span class="o">(</span><span class="n">v</span> <span class="o">-&gt;</span> <span class="n">v</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span></code></pre></div>
-<p>&hellip;<strong>much</strong> improved over the old Java syntax. Still not as concise or elegant as Groovy, but fairly close.</p>
-
+</span><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">evenNumbers</span> <span class="o">=</span> <span class="n">Stream</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">).</span><span class="na">filter</span><span class="o">(</span><span class="n">v</span> <span class="o">-&gt;</span> <span class="n">v</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+</code></pre></div><p>&hellip;<strong>much</strong> improved over the old Java syntax. Still not as concise or elegant as Groovy, but fairly close.</p>
 <h3 id="back-to-the-original-question">Back to the original question&hellip;</h3>
-
 <p>Is it still worth it to write groovy? Fortunately, I had a chance to make a direct comparison that same week.</p>
-
 <p>It started with a little bake-off we&rsquo;re doing to compare a couple different application design techniques.  I wrote a small service in plain groovy, and my teammate wrote one in java.  Our apps are running in a container that will have their environment-specific overrides specified as environment variables.  I strongly prefer typed configuration objects in the code, rather than things like generic Maps or JSON objects.  Ten minutes of googling, and I couldn&rsquo;t find a utility to let me override typed configuration object values with environment variables.  So I created this project in groovy: <a href="https://github.com/dtanner/env-config-loader-groovy">https://github.com/dtanner/env-config-loader-groovy</a></p>
-
 <p>My teammate initially used the <a href="https://github.com/typesafehub/config">typesafe/config</a> project to do his configuration overrides.  But its environment overrides are a little verbose IMO, we didn&rsquo;t need its additional complexity, and solving the same problem with different tools adds to the maintenance costs for the team.
 So I created a pure java version of the env-config-loader tool as well: <a href="https://github.com/dtanner/env-override">https://github.com/dtanner/env-override</a></p>
-
 <p>I wasn&rsquo;t excited about writing the java version, but:</p>
-
 <ul>
 <li>A pure java implementation can be used by other JVM languages</li>
 <li>It seemed like a useful tool for the community</li>
-<li>I&rsquo;d be able to have a current and relevant opinion on Groovy&rsquo;s usefulness compared to Java<br />
-<br /></li>
+<li>I&rsquo;d be able to have a current and relevant opinion on Groovy&rsquo;s usefulness compared to Java</li>
 </ul>
-
 <p>An example line in the Groovy code is this:</p>
-<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">envOverridesMap</span> <span class="o">=</span> <span class="n">getenv</span><span class="o">().</span><span class="na">findAll</span> <span class="o">{</span> <span class="n">it</span><span class="o">.</span><span class="na">key</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="n">environmentPrefix</span><span class="o">)</span> <span class="o">}</span></code></pre></div>
-<p>The above line populates a Map from all system environment variables that match a given environment prefix.  I wanted to avoid dependencies if possible to limit the transitive dependencies needed by consumers of the library; the only compile dependency is logback-classic.</p>
-
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">envOverridesMap</span> <span class="o">=</span> <span class="n">getenv</span><span class="o">().</span><span class="na">findAll</span> <span class="o">{</span> <span class="n">it</span><span class="o">.</span><span class="na">key</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="n">environmentPrefix</span><span class="o">)</span> <span class="o">}</span>
+</code></pre></div><p>The above line populates a Map from all system environment variables that match a given environment prefix.  I wanted to avoid dependencies if possible to limit the transitive dependencies needed by consumers of the library; the only compile dependency is logback-classic.</p>
 <p>On the java side, I also tried building the tool without any dependencies, but it got ugly pretty fast.  Replicating the above Groovy wasn&rsquo;t too bad; you&rsquo;ve basically seen what it looks like in the earlier collect example:</p>
 <div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">envOverridesMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
 <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">envKey</span> <span class="o">:</span> <span class="n">envVars</span><span class="o">.</span><span class="na">keySet</span><span class="o">())</span> <span class="o">{</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">envKey</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="n">environmentPrefix</span><span class="o">))</span> <span class="o">{</span>
         <span class="n">envOverridesMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">envKey</span><span class="o">,</span> <span class="n">envVars</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">envKey</span><span class="o">));</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
-<p>Isn&rsquo;t there a more concise way?  IntelliJ suggested this alternative syntax:</p>
+<span class="o">}</span>
+</code></pre></div><p>Isn&rsquo;t there a more concise way?  IntelliJ suggested this alternative syntax:</p>
 <div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">envOverridesMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
 <span class="n">envVars</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">envKey</span> <span class="o">-&gt;</span> 
     <span class="n">envKey</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="n">environmentPrefix</span><span class="o">)).</span><span class="na">forEach</span><span class="o">(</span><span class="n">envKey</span> <span class="o">-&gt;</span> 
-        <span class="n">envOverridesMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">envKey</span><span class="o">,</span> <span class="n">envVars</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">envKey</span><span class="o">)));</span></code></pre></div>
-<p>&hellip;but that just made me sad.  I enjoy the new streaming capabilities, but it didn&rsquo;t add value in for me in this case.  It could&rsquo;ve been much cleaner if Map were iterable in java, but it&rsquo;s not and probably won&rsquo;t ever be.</p>
-
+        <span class="n">envOverridesMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">envKey</span><span class="o">,</span> <span class="n">envVars</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">envKey</span><span class="o">)));</span>
+</code></pre></div><p>&hellip;but that just made me sad.  I enjoy the new streaming capabilities, but it didn&rsquo;t add value in for me in this case.  It could&rsquo;ve been much cleaner if Map were iterable in java, but it&rsquo;s not and probably won&rsquo;t ever be.</p>
 <p>Things got ugly when I tried cloning an arbitrary object, and also dynamically setting properties on an object.  In Java <code>clone()</code> is a protected method, so you can&rsquo;t call it unless you extend from that object.  I tried to hack something together like this:</p>
-<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kd">private</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="nf">cloneObject</span><span class="o">(</span><span class="n">T</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kd">private</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="n">cloneObject</span><span class="o">(</span><span class="n">T</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">try</span> <span class="o">{</span>
         <span class="n">T</span> <span class="n">clone</span> <span class="o">=</span> <span class="o">(</span><span class="n">T</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">newInstance</span><span class="o">();</span>
         <span class="k">for</span> <span class="o">(</span><span class="n">Field</span> <span class="n">field</span> <span class="o">:</span> <span class="n">obj</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getDeclaredFields</span><span class="o">())</span> <span class="o">{</span>
@@ -213,8 +189,8 @@ So I created a pure java version of the env-config-loader tool as well: <a href=
     <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
-<p>but there were exceptional cases I hadn&rsquo;t handled yet, so eventually gave up and added the commons BeanUtils library so I could use the <code>cloneBean()</code> method.  Even uglier was going down the path of dynamic property value overrides.  I had started to toy with this monstrosity:</p>
+<span class="o">}</span>
+</code></pre></div><p>but there were exceptional cases I hadn&rsquo;t handled yet, so eventually gave up and added the commons BeanUtils library so I could use the <code>cloneBean()</code> method.  Even uglier was going down the path of dynamic property value overrides.  I had started to toy with this monstrosity:</p>
 <div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kd">private</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">setProperty</span><span class="o">(</span><span class="n">Object</span> <span class="n">object</span><span class="o">,</span> <span class="n">String</span> <span class="n">fieldName</span><span class="o">,</span> <span class="n">String</span> <span class="n">fieldValueString</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">clazz</span> <span class="o">=</span> <span class="n">object</span><span class="o">.</span><span class="na">getClass</span><span class="o">();</span>
     <span class="k">try</span> <span class="o">{</span>
@@ -223,11 +199,11 @@ So I created a pure java version of the env-config-loader tool as well: <a href=
         <span class="n">Class</span> <span class="n">fieldType</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="na">getType</span><span class="o">();</span>
             <span class="k">if</span> <span class="o">(</span><span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">class</span><span class="o">)</span> <span class="o">||</span> <span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">TYPE</span><span class="o">))</span> <span class="o">{</span>
                 <span class="n">field</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="n">object</span><span class="o">,</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">fieldValueString</span><span class="o">));</span>
-            <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Long</span><span class="o">.</span><span class="na">class</span><span class="o">)</span> <span class="o">||</span> <span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Long</span><span class="o">.</span><span class="na">TYPE</span><span class="o">))</span> <span class="o">{</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Long</span><span class="o">.</span><span class="na">class</span><span class="o">)</span> <span class="o">||</span> <span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Long</span><span class="o">.</span><span class="na">TYPE</span><span class="o">))</span> <span class="o">{</span>
                 <span class="n">field</span><span class="o">.</span><span class="na">setLong</span><span class="o">(</span><span class="n">object</span><span class="o">,</span> <span class="n">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">fieldValueString</span><span class="o">));</span>
-            <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Boolean</span><span class="o">.</span><span class="na">class</span><span class="o">)</span> <span class="o">||</span> <span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Boolean</span><span class="o">.</span><span class="na">TYPE</span><span class="o">))</span> <span class="o">{</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Boolean</span><span class="o">.</span><span class="na">class</span><span class="o">)</span> <span class="o">||</span> <span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Boolean</span><span class="o">.</span><span class="na">TYPE</span><span class="o">))</span> <span class="o">{</span>
                 <span class="n">field</span><span class="o">.</span><span class="na">setBoolean</span><span class="o">(</span><span class="n">object</span><span class="o">,</span> <span class="n">Boolean</span><span class="o">.</span><span class="na">parseBoolean</span><span class="o">(</span><span class="n">fieldValueString</span><span class="o">));</span>
-            <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Long</span><span class="o">.</span><span class="na">class</span><span class="o">)</span> <span class="o">||</span> <span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Long</span><span class="o">.</span><span class="na">TYPE</span><span class="o">))</span> <span class="o">{</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Long</span><span class="o">.</span><span class="na">class</span><span class="o">)</span> <span class="o">||</span> <span class="n">fieldType</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Long</span><span class="o">.</span><span class="na">TYPE</span><span class="o">))</span> <span class="o">{</span>
                 <span class="n">field</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">object</span><span class="o">,</span> <span class="n">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">fieldValueString</span><span class="o">));</span>
             <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
                 <span class="n">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="n">field</span><span class="o">.</span><span class="na">getDeclaringClass</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
@@ -241,20 +217,14 @@ So I created a pure java version of the env-config-loader tool as well: <a href=
         <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalStateException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
     <span class="o">}</span>
     <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-<span class="o">}</span></code></pre></div>
-<p>&hellip;before punting.  Since I had already accepted the BeanUtils dependency, I was able to use the <code>copyProperty</code> method and delete a lot of potentially brittle code.</p>
-
+<span class="o">}</span>
+</code></pre></div><p>&hellip;before punting.  Since I had already accepted the BeanUtils dependency, I was able to use the <code>copyProperty</code> method and delete a lot of potentially brittle code.</p>
 <h3 id="summary">Summary</h3>
-
 <p>You probably enjoyed reading the java code as much as I enjoyed writing it.  It&rsquo;s not the semicolons or the verbose exception handling.  It was that I could do in a single line of Groovy what took an entire method in the equivalent Java.  This is a big deal in terms of productivity, maintenance, and code quality.</p>
-
 <p>There are other advantages to using Groovy, for example listed by Peter Ledbrook <a href="http://blog.cacoethes.co.uk/groovyandgrails/groovy-in-light-of-java-8">here</a>.
 As to the question of when it&rsquo;s appropriate to write Java over Groovy, there&rsquo;s really only a couple reasons in my opinion:</p>
-
 <p>The first is the reason I just insulted the java code I wrote, but still intend to promote and deprecate the groovy version; it&rsquo;s a library that can be run on any JVM language.  The Groovy library is limited to Groovy usage.  It&rsquo;s worth it for that situation.</p>
-
 <p>The second is if you&rsquo;re using a framework or library that doesn&rsquo;t let you easily use Groovy.  If you&rsquo;re going down this path, I think you&rsquo;ll know it when you see it.  e.g. If you want to write a lot of RxJava, you might want to stick with Java, at least for now.</p>
-
 <p>tl;dr; I still think Groovy is still generally a better Java.</p>
 
     </section>
@@ -289,6 +259,10 @@ As to the question of when it&rsquo;s appropriate to write Java over Groovy, the
 
     
     
+    
+        <li>
+            <a href="/post/essential-homeowner-tools/">50 Million Essential Homeowner Tools<aside class="dates">Feb 6 2021</aside></a>
+        </li>
     
         <li>
             <a href="/post/chaperone/">Chaperone<aside class="dates">Apr 12 2020</aside></a>
@@ -326,10 +300,6 @@ As to the question of when it&rsquo;s appropriate to write Java over Groovy, the
             <a href="/post/dynamic-grails-tomcat-datasource/">Dynamic Grails Tomcat datasource configuration with Etcd<aside class="dates">Apr 30 2015</aside></a>
         </li>
     
-        <li>
-            <a href="/post/groovy-collect-vs-spread-dot-operator/">Groovy collect vs spread-dot operator<aside class="dates">Nov 15 2014</aside></a>
-        </li>
-    
 </ul>
 
 
@@ -356,7 +326,7 @@ As to the question of when it&rsquo;s appropriate to write Java over Groovy, the
     
     <p class="small">
     
-        © Copyright 2020 Dan Tanner
+        © Copyright 2021 Dan Tanner
     
     </p>
 </footer>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Dan Tanner">
 <meta name="description" content="Personal and Semi-Professional Blog">
-<meta name="generator" content="Hugo 0.55.5" />
+<meta name="generator" content="Hugo 0.80.0" />
 <title>java.time for the extremely impatient</title>
 <link rel="shortcut icon" href="https://dantanner.com/images/favicon.ico">
 <link rel="stylesheet" href="https://dantanner.com/css/style.css">
@@ -26,18 +26,15 @@
 Starting with Java 8, the library was folded into the core JDK, with very few modifications to the Joda API." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dantanner.com/post/javatime-for-impatient/" />
-<meta property="article:published_time" content="2016-04-13T02:26:00&#43;00:00"/>
-<meta property="article:modified_time" content="2016-04-13T02:26:00&#43;00:00"/>
-
+<meta property="article:published_time" content="2016-04-13T02:26:00+00:00" />
+<meta property="article:modified_time" content="2016-04-13T02:26:00+00:00" />
 
 
 <meta itemprop="name" content="java.time for the extremely impatient">
 <meta itemprop="description" content="This is a super quick history and primer for those familiar with java, but unfamiliar with Joda-Time. Java’s original date and time handling had some issues that could make it cumbersome and error-prone to work with. Then came the Joda-Time library, which is a fantastic replacement for pretty much everything date and time related. It’s intuitive, clean, fully-featured, and performant.
 Starting with Java 8, the library was folded into the core JDK, with very few modifications to the Joda API.">
-
-
-<meta itemprop="datePublished" content="2016-04-13T02:26:00&#43;00:00" />
-<meta itemprop="dateModified" content="2016-04-13T02:26:00&#43;00:00" />
+<meta itemprop="datePublished" content="2016-04-13T02:26:00+00:00" />
+<meta itemprop="dateModified" content="2016-04-13T02:26:00+00:00" />
 <meta itemprop="wordCount" content="632">
 
 
@@ -79,18 +76,12 @@ Starting with Java 8, the library was folded into the core JDK, with very few mo
         </h2>
     </header>
     <section id="post-body">
-        
-
-<p>This is a super quick history and primer for those familiar with java, but unfamiliar with <a href="http://www.joda.org/joda-time/">Joda-Time</a>.
+        <p>This is a super quick history and primer for those familiar with java, but unfamiliar with <a href="http://www.joda.org/joda-time/">Joda-Time</a>.
 Java’s original date and time handling had some issues that could make it cumbersome and error-prone to work with. Then came the Joda-Time library, which is a fantastic replacement for pretty much everything date and time related. It’s intuitive, clean, fully-featured, and performant.</p>
-
 <p>Starting with Java 8, the library was folded into the core JDK, with very few modifications to the Joda API.</p>
-
 <p>In short, if you’re not on Java 8 yet, you should probably be using the joda-time library. If you are on Java 8, you should use the java.time classes.</p>
-
 <p>There’s much more to the package than what I’ll show, and you’ll eventually want to dive deeper, but this article shows you some of the most frequently used techniques I’ve experienced on the last few projects. I’m using groovy for the code snippets, but they’re just java without the semicolons.</p>
-
-<h4 id="91-83-of-the-time-you-ll-work-with-localdate-or-zoneddatetime">91.83% of the time, you’ll work with LocalDate or ZonedDateTime.</h4>
+<h4 id="9183-of-the-time-youll-work-with-localdate-or-zoneddatetime">91.83% of the time, you’ll work with LocalDate or ZonedDateTime.</h4>
 <div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.time.LocalDate</span>
 <span class="kn">import</span> <span class="nn">java.time.ZonedDateTime</span>
 <span class="kn">import</span> <span class="nn">java.time.ZoneId</span>
@@ -121,8 +112,8 @@ Java’s original date and time handling had some issues that could make it cumb
 <span class="c1">// you can also create a custom formatter
 </span><span class="c1"></span><span class="n">DateTimeFormatter</span> <span class="n">formatter</span> <span class="o">=</span> <span class="n">DateTimeFormatter</span><span class="o">.</span><span class="na">ofPattern</span><span class="o">(</span><span class="s">&#34;MMM dd yyyy GG&#34;</span><span class="o">)</span>
 <span class="n">println</span> <span class="n">zdt</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">formatter</span><span class="o">)</span>
-<span class="o">//</span> <span class="n">Apr</span> <span class="n">12</span> <span class="n">2016</span> <span class="n">AD</span></code></pre></div>
-<h4 id="date-manipulation-is-fluent-and-intuitive">Date manipulation is fluent and intuitive.</h4>
+<span class="c1">// Apr 12 2016 AD
+</span></code></pre></div><h4 id="date-manipulation-is-fluent-and-intuitive">Date manipulation is fluent and intuitive.</h4>
 <div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.time.LocalDate</span>
 <span class="kn">import</span> <span class="nn">java.time.temporal.TemporalAdjusters</span>
 
@@ -134,32 +125,22 @@ Java’s original date and time handling had some issues that could make it cumb
 <span class="c1">// 2016-05-01
 </span><span class="c1"></span>
 <span class="n">println</span> <span class="n">localDate</span><span class="o">.</span><span class="na">minusMonths</span><span class="o">(</span><span class="n">1</span><span class="o">).</span><span class="na">with</span><span class="o">(</span><span class="n">TemporalAdjusters</span><span class="o">.</span><span class="na">lastDayOfMonth</span><span class="o">())</span>
-<span class="o">//</span> <span class="n">2016</span><span class="o">-</span><span class="n">03</span><span class="o">-</span><span class="n">31</span></code></pre></div>
-<h4 id="prefer-to-work-in-utc-if-you-can-logs-database-timestamps-consistency-helps-avoid-mistakes">Prefer to work in UTC if you can - logs, database timestamps…consistency helps avoid mistakes.</h4>
-
-<p>In a startup class: <code>TimeZone.setDefault(TimeZone.getTimeZone(&quot;UTC&quot;))</code><br />
+<span class="c1">// 2016-03-31
+</span></code></pre></div><h4 id="prefer-to-work-in-utc-if-you-can---logs-database-timestampsconsistency-helps-avoid-mistakes">Prefer to work in UTC if you can - logs, database timestamps…consistency helps avoid mistakes.</h4>
+<p>In a startup class: <code>TimeZone.setDefault(TimeZone.getTimeZone(&quot;UTC&quot;))</code><br>
 or as a JVM flag: <code>-Duser.timezone=UTC</code></p>
-
 <h4 id="when-working-with-a-point-in-time-always-be-aware-of-timezone">When working with a point in time, always be aware of timezone!!!!</h4>
-
 <p>Even when working with objects like LocalDate, you must be timezone aware if you’re using a point-in-time operation. And by point-in-time, 99.273% of the time I’m referring to the now() method.
 For example, given the following scenario:</p>
-
 <ul>
 <li>The default JVM timezone is <code>UTC</code>.</li>
 <li>At <code>2016-04-12 3:10 PM</code> in <code>America/Chicago</code> (which is GMT-6), a call to println <code>LocalDate.now()</code> will result in <code>2016-04-12</code>.</li>
 </ul>
-
 <p>But at <code>2016-04-12 6:10 PM</code> in <code>America/Chicago</code>, the same call will result in <code>2016-04-13</code>.</p>
-
 <p>If you’re in Chicago, that looks like tomorrow, and might be a bug for what you’re trying to do! The code is doing precisely what it’s told though; the date in London is April 13th at the time the LocalDate is created for the UTC timezone.</p>
-
 <p>So to repeat, when working with specific points in time, be aware of the timezone you’re working with. For example, if you want to set a date 30 days out from now according to your business location, you could say <code>LocalDate.now(ZoneId.of('America/Chicago')).plusDays(30)</code>.</p>
-
 <h4 id="further-reading">Further Reading</h4>
-
 <p>The <a href="https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html">java.time javadocs</a> are actually really good, so read them for more detailed information. Wrapping up the whirlwind tour, here’s a quick table to help get you started with a few objects and their example uses:</p>
-
 <table>
 <thead>
 <tr>
@@ -167,23 +148,19 @@ For example, given the following scenario:</p>
 <th>Example Usage and Notes</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>LocalDate</td>
 <td>Birthday, Contract date where no time or timezone is needed</td>
 </tr>
-
 <tr>
 <td>ZonedDateTime</td>
 <td>Most points in time, like some startDateTime, endDateTime</td>
 </tr>
-
 <tr>
 <td>YearMonth</td>
 <td>When you only want to work with a year/month combination. Less commonly used, but handy for date comparisons if you don’t want granularity to the day. e.g. Credit Card Expiration Month</td>
 </tr>
-
 <tr>
 <td>LocalTime</td>
 <td>e.g. Chris’s hardware store opens at 8 am. This date is irrespective of timezone (i.e. you wouldn’t change the opening time when daylight savings rolls around.)</td>
@@ -225,6 +202,10 @@ For example, given the following scenario:</p>
     
     
         <li>
+            <a href="/post/essential-homeowner-tools/">50 Million Essential Homeowner Tools<aside class="dates">Feb 6 2021</aside></a>
+        </li>
+    
+        <li>
             <a href="/post/chaperone/">Chaperone<aside class="dates">Apr 12 2020</aside></a>
         </li>
     
@@ -260,10 +241,6 @@ For example, given the following scenario:</p>
             <a href="/post/dynamic-grails-tomcat-datasource/">Dynamic Grails Tomcat datasource configuration with Etcd<aside class="dates">Apr 30 2015</aside></a>
         </li>
     
-        <li>
-            <a href="/post/groovy-collect-vs-spread-dot-operator/">Groovy collect vs spread-dot operator<aside class="dates">Nov 15 2014</aside></a>
-        </li>
-    
 </ul>
 
 
@@ -290,7 +267,7 @@ For example, given the following scenario:</p>
     
     <p class="small">
     
-        © Copyright 2020 Dan Tanner
+        © Copyright 2021 Dan Tanner
     
     </p>
 </footer>

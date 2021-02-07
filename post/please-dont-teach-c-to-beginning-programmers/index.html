@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Dan Tanner">
 <meta name="description" content="Personal and Semi-Professional Blog">
-<meta name="generator" content="Hugo 0.55.5" />
+<meta name="generator" content="Hugo 0.80.0" />
 <title>Please Don&#39;t Teach C to Beginning Programmers</title>
 <link rel="shortcut icon" href="https://dantanner.com/images/favicon.ico">
 <link rel="stylesheet" href="https://dantanner.com/css/style.css">
@@ -26,19 +26,16 @@
 The Phone Call A few weeks ago I got a call from her Dad asking for some help with homework on an introductory (100-level) programming course titled &ldquo;Problem Solving in the Natural Sciences (using C and Matlab)&rdquo;." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dantanner.com/post/please-dont-teach-c-to-beginning-programmers/" />
-<meta property="article:published_time" content="2019-05-05T20:09:00&#43;00:00"/>
-<meta property="article:modified_time" content="2019-05-05T20:09:00&#43;00:00"/>
-
+<meta property="article:published_time" content="2019-05-05T20:09:00+00:00" />
+<meta property="article:modified_time" content="2019-05-05T20:09:00+00:00" />
 
 
 <meta itemprop="name" content="Please Don&#39;t Teach C to Beginning Programmers">
 <meta itemprop="description" content="The Student I have a niece in her first year at a local university. She&rsquo;s never done any programming before, and thinking of becoming an actuary. That means she should learn at least a little bit of programming in a tool like R or Python, right? Those seem like good high-level languages in 2019 that are also applicable in that field.
 The Phone Call A few weeks ago I got a call from her Dad asking for some help with homework on an introductory (100-level) programming course titled &ldquo;Problem Solving in the Natural Sciences (using C and Matlab)&rdquo;.">
-
-
-<meta itemprop="datePublished" content="2019-05-05T20:09:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-05-05T20:09:00&#43;00:00" />
-<meta itemprop="wordCount" content="1754">
+<meta itemprop="datePublished" content="2019-05-05T20:09:00+00:00" />
+<meta itemprop="dateModified" content="2019-05-05T20:09:00+00:00" />
+<meta itemprop="wordCount" content="1751">
 
 
 
@@ -79,78 +76,61 @@ The Phone Call A few weeks ago I got a call from her Dad asking for some help wi
         </h2>
     </header>
     <section id="post-body">
-        
-
-<h1 id="the-student">The Student</h1>
-
+        <h1 id="the-student">The Student</h1>
 <p>I have a niece in her first year at a local university.  She&rsquo;s never done any programming before, and thinking of becoming an actuary.
 That means she should learn at least a little bit of programming in a tool like <code>R</code> or <code>Python</code>, right?
 Those seem like good high-level languages in 2019 that are also applicable in that field.</p>
-
 <h1 id="the-phone-call">The Phone Call</h1>
-
 <p>A few weeks ago I got a call from her Dad asking for some help with homework on an introductory (100-level) programming course titled &ldquo;Problem Solving in the Natural Sciences (using C and Matlab)&rdquo;.
 They were on the <code>C</code> portion of the class.  My reaction was, <em>some schools still teach C as an introduction to programming?</em>
 My niece was currently stuck on the portion of the program where you read a number from the command line.
-It had also been 20 years since I wrote any C myself.<br />
-<br>
-Her: <em>When I read a number and print it, the code prints out a different number.</em><br />
-Me: <em>What function are you calling to get the number?</em><br />
-Her: <em>get char</em><br />
-Me: <em>Oh, you&rsquo;re reading in an ascii character.</em><br />
-Her: <em>What&rsquo;s an ascii character?</em><br />
+It had also been 20 years since I wrote any C myself.<br>
+<!-- raw HTML omitted -->
+Her: <em>When I read a number and print it, the code prints out a different number.</em><br>
+Me: <em>What function are you calling to get the number?</em><br>
+Her: <em>get char</em><br>
+Me: <em>Oh, you&rsquo;re reading in an ascii character.</em><br>
+Her: <em>What&rsquo;s an ascii character?</em><br>
 Me: <em>Uhhh, don&rsquo;t worry about that for now. (Starts looking up how to read a decimal from the command line.)</em></p>
-
 <h1 id="we-want-more-programmers">We Want More Programmers</h1>
-
-<p>There are many fields currently filled with technology-averse people, when those roles would be much better performed by people with at least conversational coding abilities.<br />
+<p>There are many fields currently filled with technology-averse people, when those roles would be much better performed by people with at least conversational coding abilities.<br>
 Think about jobs where people do a lot of data analysis using Excel.  Many of them could really benefit from some coding skills, even if it&rsquo;s just some scripting.
 The book <a href="https://www.amazon.com/Data-Smart-Science-Transform-Information-ebook/dp/B00F0WRXI0">Data Smart</a> was pretty eye-opening for me in terms of power and simplicity.
 It shows some really neat ways to discover information about data, and optimize business problems in ways I didn&rsquo;t know were possible.
 And these tools are usable with dozens of hours of training, not thousands.
-<br></p>
-
+<!-- raw HTML omitted --></p>
 <h1 id="why-is-c-such-a-bad-starter-language">Why is C such a bad starter language?</h1>
-
 <p>Before I begin bashing C in this context, let me clarify: <strong>C is a great language for its correct purpose.</strong>
 When you need to build a program that is fast and very efficient with resources, C is still a good language candidate.
 All computer science students should learn C (or maybe Rust now?) when learning closer to the metal.</p>
-
-<p><strong>But new students should learn the basics using a friendlier language.</strong><br />
+<p><strong>But new students should learn the basics using a friendlier language.</strong><br>
 C is too low-level and has too many sharp edges.
 Many university students might just have one or two programming courses total.
 Teaching that group of students C will leave many of them thinking all programming sucks, and they won&rsquo;t ever want to be near a compiler again.</p>
-
-<h1 id="let-s-show-some-examples">Let&rsquo;s Show Some Examples</h1>
-
+<h1 id="lets-show-some-examples">Let&rsquo;s Show Some Examples</h1>
 <p>After helping my niece work through her homework lab, I implemented the assignment myself in three languages: <code>C</code>, <code>Python</code>, and <code>Kotlin</code>.
 Python because I&rsquo;m guessing it&rsquo;s the most common initial language taught in schools, and I think it&rsquo;s a really good teaching language.
 Kotlin because I wanted a typed language in the comparison, and I know Java&rsquo;s a popular language taught in schools.
 I didn&rsquo;t choose Java because no one ever wants to touch Java after they&rsquo;ve used Kotlin.</p>
-
 <h1 id="the-assignment">The Assignment</h1>
-
 <p>The assignment is to make a little program that reads input from the user representing cards in a deck.
 The user enters a number to represent each card/suit, then when the user enters -1, the program displays the hand and calculates a score
 based on arbitray scoring rules meant to exercise basic logic and programming.
 Implementations open in new tabs here:
-<a href="https://gist.github.com/dtanner/b3cf09c59b0fd7e1389f635d817facd6" target="_new">C</a> |
-<a href="https://gist.github.com/dtanner/a7a154a12600519cb1fda47723c3e1f1" target="_new">Python</a> |
-<a href="https://gist.github.com/dtanner/54a8dc0e111d9b62d44fff6501266d1c" target="_new">Kotlin</a>
-<br></p>
-
+<!-- raw HTML omitted -->C<!-- raw HTML omitted --> |
+<!-- raw HTML omitted -->Python<!-- raw HTML omitted --> |
+<!-- raw HTML omitted -->Kotlin<!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
 <h1 id="observations">Observations</h1>
-
 <h3 id="c-observations">C Observations</h3>
-
 <ul>
-<li><strong>Pointers and Addresses are an unnecessary concept for new programmers</strong>. It&rsquo;s not a trivial concept for most beginners, and doesn&rsquo;t need to exist when learning the basics.<br />
+<li><strong>Pointers and Addresses are an unnecessary concept for new programmers</strong>. It&rsquo;s not a trivial concept for most beginners, and doesn&rsquo;t need to exist when learning the basics.<br>
 I think this <a href="https://stackoverflow.com/questions/4025768/what-do-people-find-difficult-about-c-pointers">stackoverflow post</a> illustrates the difficulties well.</li>
 <li><strong>Line of code count</strong>. The C implementation is about 60% more lines (143) than either the Python (92) or Kotlin (85) implementations.
 Some of it is unnecessary cruft to learners, like function headers.  Some of it is due to a smaller language feature set like no collection functions.
 A smaller feature set is easier to learn, but I love collection functions because they help make the code more readable and concise.</li>
 <li><strong>Testing is an afterthought</strong>.  Writing simple automated tests in Python and Kotlin is trivial. e.g. This is a passing test using tooling built into my IDE:
-<div class="highlight"><pre class="chroma"><code class="language-Kotlin" data-lang="Kotlin"><span class="n">@Test</span>
+<div class="highlight"><pre class="chroma"><code class="language-Kotlin" data-lang="Kotlin"><span class="nd">@Test</span>
 <span class="k">fun</span> <span class="nf">calculateHandValue</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">assertEquals</span><span class="p">(</span><span class="m">22</span><span class="p">,</span> <span class="n">calculateHandValue</span><span class="p">(</span><span class="n">listOf</span><span class="p">(</span><span class="m">22</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">16</span><span class="p">,</span> <span class="m">45</span><span class="p">,</span> <span class="m">2</span><span class="p">)))</span>
     <span class="n">assertEquals</span><span class="p">(</span><span class="m">1232</span><span class="p">,</span> <span class="n">calculateHandValue</span><span class="p">(</span><span class="n">listOf</span><span class="p">(</span><span class="m">47</span><span class="p">,</span><span class="m">9</span><span class="p">,</span><span class="m">40</span><span class="p">,</span><span class="m">48</span><span class="p">)))</span>
@@ -166,29 +146,24 @@ It&rsquo;s practically required though.
 Compare this to the same functions in Python and Kotlin:
 <div class="highlight"><pre class="chroma"><code class="language-Python" data-lang="Python"><span class="k">def</span> <span class="nf">display_cards</span><span class="p">(</span><span class="n">cards</span><span class="p">):</span></code></pre></div>
 <div class="highlight"><pre class="chroma"><code class="language-Kotlin" data-lang="Kotlin"><span class="k">fun</span> <span class="nf">displayCards</span><span class="p">(</span><span class="n">cards</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;)</span> <span class="p">{</span></code></pre></div></li>
-<li><strong>No strings</strong>.  It had been so long I had forgotten C doesn&rsquo;t have strings.<br />
+<li><strong>No strings</strong>.  It had been so long I had forgotten C doesn&rsquo;t have strings.<br>
 <code>strncpy(suit, &quot;Clubs&quot;, 10);</code> ugh. i&rsquo;m probably not even doing that right, much less worrying about buffer overflow risks.</li>
 </ul>
-
 <h3 id="python-observations">Python observations</h3>
-
 <p>It&rsquo;s pretty dang intuitive IMO, even for first-time programmers.
 You won&rsquo;t accidentally use <code>getchar()</code> and be left scratching your head.
 One thing I missed was static typing.  I&rsquo;m not fluent in Python, and it took me twice as long to write the exercise in Python as it did in Kotlin.
 A lot of the time was spent correcting code in the try-it-now stage rather than being highlighted by the editor during the typing stage.</p>
-
 <h3 id="kotlin-observations">Kotlin Observations</h3>
-
 <p>Before writing the Kotlin implementation, I expected it to be more verbose and less readable than Python, because Java.
 But IMO it&rsquo;s actually cleaner in some ways.</p>
-
 <ul>
 <li><strong>Lambdas in Kotlin are a little cleaner than Python</strong>. And even though they&rsquo;re a higher-level concept that doesn&rsquo;t exist in C, they both make for more readable code than the C equivalent.
 e.g. compare these two one-liners in Python and Kotin:
 <div class="highlight"><pre class="chroma"><code class="language-Python" data-lang="Python"><span class="k">return</span> <span class="nb">sum</span><span class="p">((</span><span class="n">get_card_value</span><span class="p">(</span><span class="n">card</span><span class="p">)</span> <span class="o">-</span> <span class="n">get_suit_number</span><span class="p">(</span><span class="n">card</span><span class="p">))</span> <span class="k">for</span> <span class="n">card</span> <span class="ow">in</span> <span class="n">cards</span><span class="p">)</span></code></pre></div>
-<div class="highlight"><pre class="chroma"><code class="language-Kotlin" data-lang="Kotlin"><span class="k">return</span> <span class="n">cards</span><span class="p">.</span><span class="n">sumBy</span> <span class="p">{</span> <span class="n">getCardValue</span><span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="p">-</span> <span class="n">getSuitNumber</span><span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="p">}</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-Kotlin" data-lang="Kotlin"><span class="k">return</span> <span class="n">cards</span><span class="p">.</span><span class="n">sumBy</span> <span class="p">{</span> <span class="n">getCardValue</span><span class="p">(</span><span class="k">it</span><span class="p">)</span> <span class="p">-</span> <span class="n">getSuitNumber</span><span class="p">(</span><span class="k">it</span><span class="p">)</span> <span class="p">}</span></code></pre></div>
 Kotlin is the newest language of the bunch, so had more time to incorporate design features from the latest languages.
-That said, I wasn&rsquo;t taught lambdas when I was first learning, so don&rsquo;t know if this would be a handy feature or just one more thing to learn for most beginners.<br /></li>
+That said, I wasn&rsquo;t taught lambdas when I was first learning, so don&rsquo;t know if this would be a handy feature or just one more thing to learn for most beginners.</li>
 <li><strong>Kotlin expands Java&rsquo;s already good Collection support for concise code</strong>. e.g. <code>cards.sumBy</code> and <code>cards.count</code> are one-liners that intuitively implement the function.
 In C&rsquo;s syntactic brevity, you write more code and have to manage more state. I speculate this code is harder to read for a beginner compared to the Kotlin equivalent.
 <div class="highlight"><pre class="chroma"><code class="language-C" data-lang="C"><span class="kt">int</span> <span class="nf">hasThreeOrMoreNonNumberCards</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">numCards</span><span class="p">)</span> <span class="p">{</span>
@@ -201,33 +176,28 @@ In C&rsquo;s syntactic brevity, you write more code and have to manage more stat
     <span class="k">return</span> <span class="n">count</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
 <div class="highlight"><pre class="chroma"><code class="language-Kotlin" data-lang="Kotlin"><span class="k">fun</span> <span class="nf">hasThreeOrMoreNonNumberCards</span><span class="p">(</span><span class="n">cards</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;):</span> <span class="n">Boolean</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">cards</span><span class="p">.</span><span class="n">count</span> <span class="p">{</span> <span class="n">getCardValue</span><span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="p">&gt;=</span> <span class="m">11</span> <span class="p">||</span> <span class="n">getCardValue</span><span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="p">==</span> <span class="m">1</span> <span class="p">}</span> <span class="p">&gt;=</span> <span class="m">3</span>
+    <span class="k">return</span> <span class="n">cards</span><span class="p">.</span><span class="n">count</span> <span class="p">{</span> <span class="n">getCardValue</span><span class="p">(</span><span class="k">it</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="m">11</span> <span class="o">||</span> <span class="n">getCardValue</span><span class="p">(</span><span class="k">it</span><span class="p">)</span> <span class="o">==</span> <span class="m">1</span> <span class="p">}</span> <span class="o">&gt;=</span> <span class="m">3</span>
 <span class="p">}</span></code></pre></div></li>
 <li><strong>Kotlin forces the programmer to think about production scenarios</strong>.  This adds a little bit of extra work up front for the programmer,
 but saves time in the end with less debugging and errors.
-Explicit null awareness and immutability by default are enormous improvements. My C implementation is littered with vulnerabilities and bugs.<br />
+Explicit null awareness and immutability by default are enormous improvements. My C implementation is littered with vulnerabilities and bugs.<br>
 One might argue Python is a better introductory language because you can ignore a lot more when focusing on learning and not making a production app. I think this is true.
 That said, Kotlin does make it easy to ignore yet still be obvious when you&rsquo;re working with a nullable variables.
-The <code>!!</code> in <code>readLine()!!.toInt()</code> indicates we know the input could be null, but we&rsquo;re gonna assume it&rsquo;s not.<br /></li>
+The <code>!!</code> in <code>readLine()!!.toInt()</code> indicates we know the input could be null, but we&rsquo;re gonna assume it&rsquo;s not.</li>
 <li><strong>Kotlin (a JVM language) requires ceremony</strong>: Without an IDE and Gradle/Maven, things like dependency management and classpaths are burdensome to a beginner.
 They&rsquo;re excellent for production use, and IDEs make this a smaller issue, but Python has the least baggage of the bunch.</li>
 </ul>
-
 <h1 id="obstacles-and-comparison">Obstacles and Comparison</h1>
-
 <p>I don&rsquo;t know how many schools still teach C to beginners, or what their reasons are.
 I asked the chair of the department for my niece&rsquo;s class, and the two main points from the response were:</p>
-
 <ul>
-<li>The course is largely a service course for engineering students, as those programs require their students to use C throughout their curriculum.<br /></li>
+<li>The course is largely a service course for engineering students, as those programs require their students to use C throughout their curriculum.</li>
 <li>The course is subject to Engineering program accreditation standards.</li>
 </ul>
-
 <p>I obviously disagree with the first point enough to have spent the time to write this article.
-I think it&rsquo;s a big deal to start students with the language that will give them the most promise in their future.<br />
+I think it&rsquo;s a big deal to start students with the language that will give them the most promise in their future.<br>
 To the second reason of accreditation standards, I don&rsquo;t know exactly what this means, but I&rsquo;d be surprised language choice is a factor in accreditation.
 For comparison, here&rsquo;s what some of the top universities in the U.S. teach new students:</p>
-
 <table>
 <thead>
 <tr>
@@ -235,47 +205,37 @@ For comparison, here&rsquo;s what some of the top universities in the U.S. teach
 <th>Language</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>MIT</td>
 <td><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/">Python</a></td>
 </tr>
-
 <tr>
 <td>Carnegie Mellon</td>
 <td><a href="https://www.cs.cmu.edu/~15110/syllabus.html">Python</a></td>
 </tr>
-
 <tr>
 <td>Stanford</td>
 <td><a href="https://web.stanford.edu/class/cs106a/">Java</a></td>
 </tr>
-
 <tr>
 <td>Cornell</td>
 <td><a href="http://www.cs.cornell.edu/courses/cs1110/2019sp/">Python</a></td>
 </tr>
-
 <tr>
 <td>University of Washington</td>
 <td><a href="https://courses.cs.washington.edu/courses/cse142/">Java</a></td>
 </tr>
 </tbody>
 </table>
-
 <p>These are some of our best schools, and they all teach either Python or Java to their new students.</p>
-
 <h1 id="many-paths">Many Paths</h1>
-
 <p>This chart shows some typical career paths in today&rsquo;s schools.
 In only one of them do I think knowledge of a low-level language like C is important (embedded systems).</p>
-
-<p><img src="/intro-programming/language-track.svg" alt="" /></p>
-
+<p><img src="/intro-programming/language-track.svg" alt=""></p>
 <p>I used to have a much narrower view of what constitutes a programmer.
 It was a few flavors of people that programmed things like robots, games, and other complete software applications.
-Regardless of the field, they all spent most of their time thinking about the programming problem or writing code.<br />
+Regardless of the field, they all spent most of their time thinking about the programming problem or writing code.<br>
 Today the role of programmer includes a broader set of fields.
 For example, the deep learning specialist that knows how to build and optimize a model, but doesn&rsquo;t know how to productionize it.
 Or the business analyst that knows how to make data-driven predictions with a domain-specific language.
@@ -320,6 +280,10 @@ and encourage them to keep forging those paths.</p>
     
     
         <li>
+            <a href="/post/essential-homeowner-tools/">50 Million Essential Homeowner Tools<aside class="dates">Feb 6 2021</aside></a>
+        </li>
+    
+        <li>
             <a href="/post/chaperone/">Chaperone<aside class="dates">Apr 12 2020</aside></a>
         </li>
     
@@ -355,10 +319,6 @@ and encourage them to keep forging those paths.</p>
             <a href="/post/dynamic-grails-tomcat-datasource/">Dynamic Grails Tomcat datasource configuration with Etcd<aside class="dates">Apr 30 2015</aside></a>
         </li>
     
-        <li>
-            <a href="/post/groovy-collect-vs-spread-dot-operator/">Groovy collect vs spread-dot operator<aside class="dates">Nov 15 2014</aside></a>
-        </li>
-    
 </ul>
 
 
@@ -385,7 +345,7 @@ and encourage them to keep forging those paths.</p>
     
     <p class="small">
     
-        © Copyright 2020 Dan Tanner
+        © Copyright 2021 Dan Tanner
     
     </p>
 </footer>

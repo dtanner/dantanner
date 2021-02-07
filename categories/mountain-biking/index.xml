@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>mountain biking on Dan Tanner</title>
@@ -6,11 +6,7 @@
     <description>Recent content in mountain biking on Dan Tanner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 11 Aug 2017 13:09:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://dantanner.com/categories/mountain-biking/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 11 Aug 2017 13:09:00 +0000</lastBuildDate><atom:link href="https://dantanner.com/categories/mountain-biking/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mountain Bike Frame Hydration Hack</title>
       <link>https://dantanner.com/post/frame-hydration/</link>

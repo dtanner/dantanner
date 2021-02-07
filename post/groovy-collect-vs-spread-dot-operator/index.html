@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Dan Tanner">
 <meta name="description" content="Personal and Semi-Professional Blog">
-<meta name="generator" content="Hugo 0.55.5" />
+<meta name="generator" content="Hugo 0.80.0" />
 <title>Groovy collect vs spread-dot operator</title>
 <link rel="shortcut icon" href="https://dantanner.com/images/favicon.ico">
 <link rel="stylesheet" href="https://dantanner.com/css/style.css">
@@ -26,18 +26,15 @@
 But when I performed that refactoring and ran all the tests, some failed!" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dantanner.com/post/groovy-collect-vs-spread-dot-operator/" />
-<meta property="article:published_time" content="2014-11-15T23:17:00&#43;00:00"/>
-<meta property="article:modified_time" content="2014-11-15T23:17:00&#43;00:00"/>
-
+<meta property="article:published_time" content="2014-11-15T23:17:00+00:00" />
+<meta property="article:modified_time" content="2014-11-15T23:17:00+00:00" />
 
 
 <meta itemprop="name" content="Groovy collect vs spread-dot operator">
 <meta itemprop="description" content="Yesterday I was doing some Groovy code cleanup with the wonderful CodeNarc static analysis tool. One of the violations it found was UnnecessaryCollectCall. The summary of the rule is &ldquo;Some method calls to Object.collect(Closure) can be replaced with the spread operator.&rdquo; e.g. Replace things.collect { it.name } with things*.name, or even things.name if what you&rsquo;re after is a property.
 But when I performed that refactoring and ran all the tests, some failed!">
-
-
-<meta itemprop="datePublished" content="2014-11-15T23:17:00&#43;00:00" />
-<meta itemprop="dateModified" content="2014-11-15T23:17:00&#43;00:00" />
+<meta itemprop="datePublished" content="2014-11-15T23:17:00+00:00" />
+<meta itemprop="dateModified" content="2014-11-15T23:17:00+00:00" />
 <meta itemprop="wordCount" content="254">
 
 
@@ -82,23 +79,20 @@ But when I performed that refactoring and ran all the tests, some failed!"/>
         <p>Yesterday I was doing some Groovy code cleanup with the wonderful <a href="http://codenarc.sourceforge.net/">CodeNarc</a> static analysis tool. One of the violations it found was <a href="http://codenarc.sourceforge.net/codenarc-rules-unnecessary.html#UnnecessaryCollectCall">UnnecessaryCollectCall</a>.
 The summary of the rule is &ldquo;Some method calls to Object.collect(Closure) can be replaced with the spread operator.&rdquo;
 e.g. Replace things.collect { it.name } with things*.name, or even things.name if what you&rsquo;re after is a property.</p>
-
 <p>But when I performed that refactoring and ran all the tests, some failed! Here&rsquo;s why:</p>
-
 <p>I made the mistake of assuming that the spread operator behavior is always identical to the collect method. For a <strong>non-null</strong> collection, it is. e.g. The following code will produce the same result regardless of the technique you use:</p>
 <div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kt">def</span> <span class="n">things</span> <span class="o">=</span> <span class="o">[</span> <span class="o">[</span><span class="nl">a:</span> <span class="mi">1</span><span class="o">],</span> <span class="o">[</span><span class="nl">a:</span> <span class="mi">2</span><span class="o">]</span> <span class="o">]</span>
 
 <span class="n">things</span><span class="o">.</span><span class="na">collect</span> <span class="o">{</span> <span class="n">it</span><span class="o">.</span><span class="na">a</span> <span class="o">}</span> <span class="c1">// returns [1, 2]
 </span><span class="c1"></span><span class="n">things</span><span class="o">*.</span><span class="na">a</span>               <span class="c1">// returns [1, 2]
-</span><span class="c1"></span><span class="n">things</span><span class="o">.</span><span class="na">a</span>                <span class="s">//</span> <span class="n">returns</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">]</span></code></pre></div>
-<p>But if the collection you&rsquo;re operating on is <strong>null</strong>, the three techniques will result in different outcomes:</p>
+</span><span class="c1"></span><span class="n">things</span><span class="o">.</span><span class="na">a</span>                <span class="c1">// returns [1, 2]
+</span></code></pre></div><p>But if the collection you&rsquo;re operating on is <strong>null</strong>, the three techniques will result in different outcomes:</p>
 <div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kt">def</span> <span class="n">things</span> <span class="o">=</span> <span class="kc">null</span>
 
 <span class="n">things</span><span class="o">.</span><span class="na">collect</span> <span class="o">{</span> <span class="n">it</span><span class="o">.</span><span class="na">a</span> <span class="o">}</span>   <span class="c1">// returns []
 </span><span class="c1"></span><span class="n">things</span><span class="o">*.</span><span class="na">a</span>                 <span class="c1">// returns null
-</span><span class="c1"></span><span class="n">things</span><span class="o">.</span><span class="na">a</span>                  <span class="s">//</span> <span class="kd">throws</span> <span class="n">a</span> <span class="n">NullPointerException</span></code></pre></div>
-<p>What this means is that if you&rsquo;re working with Collections that can potentially be null, you need to think about the consequences of the dot operations before using them. i.e. Don&rsquo;t ever use the implicit spread operator (things.a) if the collection can be null. And only use *. if it&rsquo;s ok for the result to be null.</p>
-
+</span><span class="c1"></span><span class="n">things</span><span class="o">.</span><span class="na">a</span>                  <span class="c1">// throws a NullPointerException
+</span></code></pre></div><p>What this means is that if you&rsquo;re working with Collections that can potentially be null, you need to think about the consequences of the dot operations before using them. i.e. Don&rsquo;t ever use the implicit spread operator (things.a) if the collection can be null. And only use *. if it&rsquo;s ok for the result to be null.</p>
 <p><em>tl;dr;</em> Explicit and implicit spread operations are great, but be aware that they are less forgiving than the collect method.</p>
 
     </section>
@@ -133,6 +127,10 @@ e.g. Replace things.collect { it.name } with things*.name, or even things.name i
 
     
     
+    
+        <li>
+            <a href="/post/essential-homeowner-tools/">50 Million Essential Homeowner Tools<aside class="dates">Feb 6 2021</aside></a>
+        </li>
     
         <li>
             <a href="/post/chaperone/">Chaperone<aside class="dates">Apr 12 2020</aside></a>
@@ -170,10 +168,6 @@ e.g. Replace things.collect { it.name } with things*.name, or even things.name i
             <a href="/post/javatime-for-impatient/">java.time for the extremely impatient<aside class="dates">Apr 13 2016</aside></a>
         </li>
     
-        <li>
-            <a href="/post/dynamic-grails-tomcat-datasource/">Dynamic Grails Tomcat datasource configuration with Etcd<aside class="dates">Apr 30 2015</aside></a>
-        </li>
-    
 </ul>
 
 
@@ -200,7 +194,7 @@ e.g. Replace things.collect { it.name } with things*.name, or even things.name i
     
     <p class="small">
     
-        © Copyright 2020 Dan Tanner
+        © Copyright 2021 Dan Tanner
     
     </p>
 </footer>

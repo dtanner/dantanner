@@ -8,7 +8,7 @@ draft: false
 # Overview
 This article summarizes what I think of as essential homeowner tools for people interested in basic maintenance and improvements. With the amount of information available online today, it's easier than ever to learn. For example, I love [Project Farm](https://www.youtube.com/channel/UC2rzsm1Qi6N1X-wuOg_p0Ng).  Unfortunately there's also a lot of incomplete and just plain bad information out there.  
 
-So this my attempt to condense twenty years of home ownership experience into a concise but complete starting point.  I made it by walking around my garage and basement, taking pictures of all my tools, then narrowed it down to the things I consider essential. 
+So this my attempt to condense twenty years of home ownership experience into a concise but complete starting point.  I made it by walking around my garage and basement, taking pictures of all my tools, then narrowed it down to the things I consider essential.  Then I showed this list to a few friends, and they gave me some more great ideas.
 
 This is by no means a complete list. A person's list of tools will grow over time as they tackle more specific and larger projects. For example, I have a cordless nail gun that I really like, but it's not on this list. I used it when I installed trim in my basement remodel. I don't use it often though, and don't consider it an essential tool that everyone needs.
 
@@ -28,10 +28,11 @@ You'll probably use all of these within your first year of home ownership.
 | ![](/homeowner-tools/tape-measure.png)  | **Tape&nbsp;Measure** | Start with one, and buy another when you can't remember where the first one went. There's a particular brand and model that I really like - the FastCap Standard Reverse 25'. It's called reverse because its measurements are written in both directions, so you never have to read the numbers upside-down. It has other some nice features built-in like an erasable notepad, better belt clip, and a pencil sharpener. |
 | ![](/homeowner-tools/screwdrivers.png)  | **Screw&nbsp;Drivers** | Some tools come in assortments of essential sizes that are cheaper to buy in sets. Screwdrivers are one of them.  A 6-piece or larger set containing Standard and Slot heads in common sizes is a good starting point. |
 | ![](/homeowner-tools/cordless-drill.png)  | **Cordless&nbsp;Drill/Driver**  | Everyone needs a general purpose cordless drill/driver. I recommend getting a Ridgid 18V for this tool because they have a crazy awesome lifetime warranty THAT INCLUDES BATTERIES!  Down the road you might also want to get a lightweight 12V drill; they're half the weight and easier to use for small tasks. |
+| ![](/homeowner-tools/impact-driver.png)  | **Impact&nbsp;Driver** | Impact drivers are essential for fastening larger items like lag bolts and big screws. Plus they're faster and easier on your wrist. |
 | ![](/homeowner-tools/screwdriver-bits.png)  |  **Screwdriver&nbsp;Bits** | You don't need a ton, but an assortment is nice. |
-| ![](/homeowner-tools/drill-bits.png)  | **Drill&nbsp;Bits** | Again, a small assortment is a good place to start. |
-| ![](/homeowner-tools/adjustable-wrench.png)  | **Adjustable&nbsp;Wrench** | Handy when you don't know the size needed, or need multiple sizes and don't want to grab the whole kit. |
-| ![](/homeowner-tools/ratchet-wrench.png)  | **Ratchet&nbsp;Socket Wrench Set** | I don't actually have these, but I want them. I have a bunch of standard wrenches and sockets, so having a kit like this could essentially replace two sets of tools with one. You might eventually need a traditional socket set too. |
+| ![](/homeowner-tools/drill-bits.png)  | **Drill&nbsp;Bits** | Again, a small assortment is a good place to start.  Make sure to include some spade bits in the kit for making larger holes when you need. |
+| ![](/homeowner-tools/vise-grip-pliers.png)  | **Vise-Grip Locking&nbsp;Pliers** | These usually come in assorted sizes, for example a set of 3. They're great when you can't use an exact fit wrench or socket, and won't strip the nut like an adjustable wrench can. |
+| ![](/homeowner-tools/ratchet-wrench.png)  | **Ratchet&nbsp;Socket Wrench Set** | I don't actually have these, but I want them. I have a bunch of standard wrenches and sockets, so having a kit like this could essentially replace two sets of tools with one. You might eventually need a traditional socket set too, in both US and Metric sizes. |
 | ![](/homeowner-tools/pliers.png)  | **Plier&nbsp;Set** | You want all of these pliers. This kit is the Channellock HD-1 kit, which includes Tongue & Groove pliers, Long-nose pliers, Slip Join pliers, and Cutting pliers. |
 | ![](/homeowner-tools/level.png)  | **Level** | I recommend a short (12" or so) and a long level (4-6 feet). The short one is good for small stuff like hanging pictures, while the the long is good for basic construction tasks. |
 | ![](/homeowner-tools/utility-knife.png)  | **Utility&nbsp;Knife** | In case you didn't already know, most of them can carry a few replacement blades inside the case. |
@@ -42,6 +43,7 @@ You'll probably use all of these within your first year of home ownership.
 | ![](/homeowner-tools/safety-glasses.png)  | **Safety&nbsp;Glasses** | Please use them when you should. They used to be awful; today they're much better. I bought these 3M Virtua CCS glasses after I had dust in my eye for 2 days while branch trimming despite wearing glasses.  |
 | ![](/homeowner-tools/hearing-protection.png)  | **Hearing&nbsp;Protection**  | I have the big ear muff things too, but these are easier to use. Or you could be an idiot and not notice the hearing loss that occurs when you run a saw over a weekend project. |
 | ![](/homeowner-tools/tool-belt.png)  | **Tool&nbsp;Belt** | The more basic and non-intrusive the better in my opinion. They're also kinda hot. |
+| ![](/homeowner-tools/headlamp.png)  | **Headlamp** | You probably already have one, but if you don't, get one. You actually don't need top of the line for these, since they're all really bright these days. They beat flashlights because the light is always pointed where you need it, they can illuminate small spaces, and they free both hands. |
 
 # General Repair and Construction
 |  |  |  |
@@ -65,6 +67,7 @@ You'll probably use all of these within your first year of home ownership.
 | ![](/homeowner-tools/circular-saw.png)  | **Circular&nbsp;Saw** | This is for long straight cuts in large boards like plywood. |
 | ![tool](/homeowner-tools/jig-saw.png)  | **Jig&nbsp;Saw** | When you need to make hand-guided angle cuts. You can use guides to help you make straight cuts with jig saws as well. |
 | ![](/homeowner-tools/dremel.png)  | **Dremel** | The swiss army knife for small cutting and sanding jobs. For the love of Bob Ross please use your safety glasses because these things spin at 35,000 RPMs, and the cutting discs can and do break.  I really like the cordless models. |
+| ![](/homeowner-tools/block-plane.png)  | **Block&nbsp;Plane** | Another commonly used woodworking tool for shaving and trimming wood. |
 
 # Plumbing
 |  |  |  |
@@ -77,7 +80,7 @@ You'll probably use all of these within your first year of home ownership.
 |---|---|---|
 | ![](/homeowner-tools/outlet-tester.png)  | **Outlet&nbsp;Tester** | These tell you if an outlet is wired correctly. Things can get a little confusing, and former homeowners can make some really dumb decisions that don't make sense. Plus sometimes I just screw up, and these things help keep you passing inspection. |
 | ![](/homeowner-tools/voltage-tester.png)  | **Voltage&nbsp;Tester** | There are more complex tools, but at the very basic these will tell you if wiring is hot or not. It can be a lifesaver.  |
-| ![](/homeowner-tools/wire-stripper.png)  | **Wire&nbsp;Stripper** | I recommend a specific tool for this - the Klein 11045 10-18 AWG solid wire stripper. This one has good ergonomics and quality, and is useful for the vast majority of home wiring repairs. |
+| ![](/homeowner-tools/wire-stripper.png)  | **Wire&nbsp;Stripper** | I originally recommended the Klein 11045 10-18 AWG solid wire stripper for this. I've found it to be better than other wire strippers I've used. But after a friend's recommendation I learned there are more advanced and ergonomic tools like the Klein 11063W that will grip and strip the wire to the correct length in a single action.  |
 
 # Drywall
 |  |  |  |

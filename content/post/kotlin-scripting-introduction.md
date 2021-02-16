@@ -8,7 +8,15 @@ draft: true
 # kotlin scripting notes and progress
 ### basics
 - scripts must not go in a "source" directory. e.g. put them in a scripts directory that is not part of the project classpath
+- scripts must be named `something.main.kts`.  Not `something.kts`. i.e. they must have the suffix `.main.kts`    
+- search results as of this writing are really bad. (reference bad-kotlinscript-search-results.png)
+- if using intellij, you'll know when it's working because of the gradle-like context notification
 
+
+other little notes...might need to revise the original words i wrote:
+- #!/usr/bin/env kotlin  - don't need the extra stuff as of that link i reference in the bottom
+- tweak all these example scripts
+- grab the example from the toolshed 
 
 
 https://github.com/Kotlin/KEEP/blob/master/proposals/scripting-support.md#kotlin-main-kts

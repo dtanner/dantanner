@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Dan Tanner">
 <meta name="description" content="Personal and Semi-Professional Blog">
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.86.1" />
 <title>Chaperone</title>
 <link rel="shortcut icon" href="https://dantanner.com/images/favicon.ico">
 <link rel="stylesheet" href="https://dantanner.com/css/style.css">
@@ -25,22 +25,18 @@
 <meta property="og:description" content="I built a basic but extensible monitoring tool to help people watch their systems. It&rsquo;s called Chaperone, and it&rsquo;s open-sourced on github. It&rsquo;s simple and powerful, letting you execute arbitrary scripts to determine health.
 Why? A couple years ago, a bright colleague of mine whipped up a quick and elegant solution to watch and alert on a bunch of things running in our apps. We didn&rsquo;t want a big overblown solution, but it also needed to be customizable." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dantanner.com/post/chaperone/" />
+<meta property="og:url" content="https://dantanner.com/post/chaperone/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-04-12T20:00:00+00:00" />
 <meta property="article:modified_time" content="2020-04-12T20:00:00+00:00" />
 
 
+
 <meta itemprop="name" content="Chaperone">
 <meta itemprop="description" content="I built a basic but extensible monitoring tool to help people watch their systems. It&rsquo;s called Chaperone, and it&rsquo;s open-sourced on github. It&rsquo;s simple and powerful, letting you execute arbitrary scripts to determine health.
-Why? A couple years ago, a bright colleague of mine whipped up a quick and elegant solution to watch and alert on a bunch of things running in our apps. We didn&rsquo;t want a big overblown solution, but it also needed to be customizable.">
-<meta itemprop="datePublished" content="2020-04-12T20:00:00+00:00" />
+Why? A couple years ago, a bright colleague of mine whipped up a quick and elegant solution to watch and alert on a bunch of things running in our apps. We didn&rsquo;t want a big overblown solution, but it also needed to be customizable."><meta itemprop="datePublished" content="2020-04-12T20:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-04-12T20:00:00+00:00" />
 <meta itemprop="wordCount" content="1197">
-
-
-
 <meta itemprop="keywords" content="" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Chaperone"/>
 <meta name="twitter:description" content="I built a basic but extensible monitoring tool to help people watch their systems. It&rsquo;s called Chaperone, and it&rsquo;s open-sourced on github. It&rsquo;s simple and powerful, letting you execute arbitrary scripts to determine health.
@@ -102,13 +98,13 @@ But whenever I looked for a tool, they all suffered from one of these flaws:</p>
 <h1 id="what-are-the-highlights-of-its-features">What are the highlights of its features?</h1>
 <h3 id="defining-checks">Defining checks</h3>
 <p>See the docs for the full list of features with examples, but basically you configure a <code>check</code> as a TOML config file and put that in a directory. If you&rsquo;re not familiar with <a href="https://github.com/toml-lang/toml">TOML</a>, it&rsquo;s a simple and obvious configuration file format.  Here&rsquo;s the most basic example:</p>
-<div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;basic example&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;basic example&#34;</span>
 <span class="nx">command</span> <span class="p">=</span> <span class="s2">&#34;ls&#34;</span>
 <span class="nx">interval</span> <span class="p">=</span> <span class="s2">&#34;1m&#34;</span>
 <span class="nx">timeout</span> <span class="p">=</span> <span class="s2">&#34;5s&#34;</span>
 </code></pre></div><p>This example runs <code>ls</code> every minute. A more realistic example would be figurately stated as &ldquo;curl some url and see if it returns a 200&rdquo;, which can easily be written as a one-liner. You don&rsquo;t need an HTTP-specific application for that.</p>
 <p>A more advanced example is a templated check, where you run a &ldquo;template&rdquo; command that builds a list of dynamic checks, like &ldquo;get a list of our running apps in the cluster&rdquo;, then &ldquo;hit each app&rsquo;s health check url&rdquo;.  e.g. Here&rsquo;s a real example we use in our project:</p>
-<div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">description</span> <span class="p">=</span> <span class="s2">&#34;app instance health&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">description</span> <span class="p">=</span> <span class="s2">&#34;app instance health&#34;</span>
 <span class="c"># template will output $app-name $env $instance-id $health-check-url</span>
 <span class="nx">template</span> <span class="p">=</span> <span class="s2">&#34;../scripts/list-instances.sh&#34;</span>
 <span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;$2 - $3&#34;</span> <span class="c"># the name of each check will be $app-name - $env. e.g. foo - dev</span>
@@ -126,7 +122,7 @@ But whenever I looked for a tool, they all suffered from one of these flaws:</p>
 <img src="/chaperone/sample-check-dashboard.png" alt=""></li>
 </ul>
 <p>You choose the output options via a global config file that looks like this:</p>
-<div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">outputs</span><span class="p">.</span><span class="nx">stdout</span><span class="p">]</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">outputs</span><span class="p">.</span><span class="nx">stdout</span><span class="p">]</span>
 
 <span class="p">[</span><span class="nx">outputs</span><span class="p">.</span><span class="nx">influxdb</span><span class="p">]</span>
 <span class="nx">db</span><span class="p">=</span><span class="s2">&#34;metrics&#34;</span>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Dan Tanner">
 <meta name="description" content="Personal and Semi-Professional Blog">
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.86.1" />
 <title>curl saves the day</title>
 <link rel="shortcut icon" href="https://dantanner.com/images/favicon.ico">
 <link rel="stylesheet" href="https://dantanner.com/css/style.css">
@@ -26,23 +26,19 @@
 For the same reason that you should at least be conversational in tools like sed, awk, and vi, you should be able to quickly type in something like like curl -v localhost:8080 to see what&rsquo;s going on. It&rsquo;s available on just about every unix-based box for a good reason.
 Like its man page states, the number of features will make your head spin. That&rsquo;s probably the most discussed reason people are turned off by it." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dantanner.com/post/curl-saves-the-day/" />
+<meta property="og:url" content="https://dantanner.com/post/curl-saves-the-day/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2017-07-15T13:09:00+00:00" />
 <meta property="article:modified_time" content="2017-07-15T13:09:00+00:00" />
+
 
 
 <meta itemprop="name" content="curl saves the day">
 <meta itemprop="description" content="Every developer should be comfortable with curl.
 For the same reason that you should at least be conversational in tools like sed, awk, and vi, you should be able to quickly type in something like like curl -v localhost:8080 to see what&rsquo;s going on. It&rsquo;s available on just about every unix-based box for a good reason.
-Like its man page states, the number of features will make your head spin. That&rsquo;s probably the most discussed reason people are turned off by it.">
-<meta itemprop="datePublished" content="2017-07-15T13:09:00+00:00" />
+Like its man page states, the number of features will make your head spin. That&rsquo;s probably the most discussed reason people are turned off by it."><meta itemprop="datePublished" content="2017-07-15T13:09:00+00:00" />
 <meta itemprop="dateModified" content="2017-07-15T13:09:00+00:00" />
 <meta itemprop="wordCount" content="1012">
-
-
-
 <meta itemprop="keywords" content="" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="curl saves the day"/>
 <meta name="twitter:description" content="Every developer should be comfortable with curl.
@@ -103,7 +99,7 @@ You&rsquo;ll be able to quickly solve situations with minimal effort and tooling
 <h3 id="get-a-service-100-times-and-get-a-count-of-the-response-codes-returned">Get a service 100 times, and get a count of the response codes returned</h3>
 <p>This is really handy when you have a service that is misbehaving, and you want to get a quick idea of how it&rsquo;s responding beyond a single request.
 For example, you might find that 25% of requests fail, then discover that 1/4 of your servers are misconfigured.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -sL -w <span class="s2">&#34;%{http_code}\\n&#34;</span> -o /dev/null <span class="s2">&#34;https://foo.com/?[1-100]&#34;</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -sL -w <span class="s2">&#34;%{http_code}\\n&#34;</span> -o /dev/null <span class="s2">&#34;https://foo.com/?[1-100]&#34;</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c
      <span class="m">23</span> <span class="m">200</span>
      <span class="m">77</span> <span class="m">503</span>
 </code></pre></div><p>Explanation of the arguments:<br>
@@ -119,12 +115,12 @@ From the above sample output, there were 23 responses with a 200 response code, 
 e.g. Type one curl command, but have it use a few different argument values, or have it hit each of your servers individually.</p>
 <h3 id="get-response-time">Get response time</h3>
 <p>Similar to the above example, but just returns the total response time in seconds.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -sL -w <span class="s2">&#34;%{time_total}\\n&#34;</span> -o /dev/null <span class="s2">&#34;https://jsonplaceholder.typicode.com/posts/1&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -sL -w <span class="s2">&#34;%{time_total}\\n&#34;</span> -o /dev/null <span class="s2">&#34;https://jsonplaceholder.typicode.com/posts/1&#34;</span>
 
 1.412
 </code></pre></div><h3 id="measure-network-performance-for-the-request-segments">Measure network performance for the request segments</h3>
 <p>The following example is really useful when want to quickly see where your request is taking its time.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -sL -w <span class="s1">&#39;   namelookup: %{time_namelookup}\n      connect: %{time_connect}\n   appconnect: %{time_appconnect}\n  pretransfer: %{time_pretransfer}\n     redirect: %{time_redirect}\nstarttransfer: %{time_starttransfer}\n        total: %{time_total}\n\n&#39;</span> -o /dev/null <span class="s2">&#34;https://jsonplaceholder.typicode.com/posts/1&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -sL -w <span class="s1">&#39;   namelookup: %{time_namelookup}\n      connect: %{time_connect}\n   appconnect: %{time_appconnect}\n  pretransfer: %{time_pretransfer}\n     redirect: %{time_redirect}\nstarttransfer: %{time_starttransfer}\n        total: %{time_total}\n\n&#39;</span> -o /dev/null <span class="s2">&#34;https://jsonplaceholder.typicode.com/posts/1&#34;</span>
 
    namelookup: 0.071
       connect: 0.109
@@ -142,7 +138,7 @@ What also made this difficult was that during the alpha testing, initial actual 
 But the network support staff couldn&rsquo;t find any issues, so we were stumped for a little while.</p>
 <p>I went to the warehouse to help support the rollout and used the above examples to eventually find the problem.<br>
 This was the first command that pointed me toward the real issue:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="k">while</span> true<span class="p">;</span> <span class="k">do</span> curl -sL -w <span class="s2">&#34;%{time_total}\\n&#34;</span> -o /dev/null <span class="s1">&#39;https://oursite.com/health&#39;</span><span class="p">;</span> sleep 5<span class="p">;</span> <span class="k">done</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="k">while</span> true<span class="p">;</span> <span class="k">do</span> curl -sL -w <span class="s2">&#34;%{time_total}\\n&#34;</span> -o /dev/null <span class="s1">&#39;https://oursite.com/health&#39;</span><span class="p">;</span> sleep 5<span class="p">;</span> <span class="k">done</span>
 0.293
 0.298
 0.426
@@ -166,7 +162,7 @@ This was the first command that pointed me toward the real issue:</p>
 ...
 </code></pre></div><p>Notice any pattern?  Every minute we got a slow response!  That smells like a lookup or a caching issue.
 So I issued this command to measure network segment performance:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -sL -w <span class="s1">&#39;   namelookup: %{time_namelookup}\n      connect: %{time_connect}\n   appconnect: %{time_appconnect}\n  pretransfer: %{time_pretransfer}\n     redirect: %{time_redirect}\nstarttransfer: %{time_starttransfer}\n        total: %{time_total}\n\n&#39;</span> -o /dev/null <span class="s2">&#34;https://oursite.com/health&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -sL -w <span class="s1">&#39;   namelookup: %{time_namelookup}\n      connect: %{time_connect}\n   appconnect: %{time_appconnect}\n  pretransfer: %{time_pretransfer}\n     redirect: %{time_redirect}\nstarttransfer: %{time_starttransfer}\n        total: %{time_total}\n\n&#39;</span> -o /dev/null <span class="s2">&#34;https://oursite.com/health&#34;</span>
    namelookup: 5.543
       connect: 5.588
    appconnect: 5.770

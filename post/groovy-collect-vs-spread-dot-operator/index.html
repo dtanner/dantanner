@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Dan Tanner">
 <meta name="description" content="Personal and Semi-Professional Blog">
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.86.1" />
 <title>Groovy collect vs spread-dot operator</title>
 <link rel="shortcut icon" href="https://dantanner.com/images/favicon.ico">
 <link rel="stylesheet" href="https://dantanner.com/css/style.css">
@@ -25,22 +25,18 @@
 <meta property="og:description" content="Yesterday I was doing some Groovy code cleanup with the wonderful CodeNarc static analysis tool. One of the violations it found was UnnecessaryCollectCall. The summary of the rule is &ldquo;Some method calls to Object.collect(Closure) can be replaced with the spread operator.&rdquo; e.g. Replace things.collect { it.name } with things*.name, or even things.name if what you&rsquo;re after is a property.
 But when I performed that refactoring and ran all the tests, some failed!" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dantanner.com/post/groovy-collect-vs-spread-dot-operator/" />
+<meta property="og:url" content="https://dantanner.com/post/groovy-collect-vs-spread-dot-operator/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2014-11-15T23:17:00+00:00" />
 <meta property="article:modified_time" content="2014-11-15T23:17:00+00:00" />
 
 
+
 <meta itemprop="name" content="Groovy collect vs spread-dot operator">
 <meta itemprop="description" content="Yesterday I was doing some Groovy code cleanup with the wonderful CodeNarc static analysis tool. One of the violations it found was UnnecessaryCollectCall. The summary of the rule is &ldquo;Some method calls to Object.collect(Closure) can be replaced with the spread operator.&rdquo; e.g. Replace things.collect { it.name } with things*.name, or even things.name if what you&rsquo;re after is a property.
-But when I performed that refactoring and ran all the tests, some failed!">
-<meta itemprop="datePublished" content="2014-11-15T23:17:00+00:00" />
+But when I performed that refactoring and ran all the tests, some failed!"><meta itemprop="datePublished" content="2014-11-15T23:17:00+00:00" />
 <meta itemprop="dateModified" content="2014-11-15T23:17:00+00:00" />
 <meta itemprop="wordCount" content="254">
-
-
-
 <meta itemprop="keywords" content="" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Groovy collect vs spread-dot operator"/>
 <meta name="twitter:description" content="Yesterday I was doing some Groovy code cleanup with the wonderful CodeNarc static analysis tool. One of the violations it found was UnnecessaryCollectCall. The summary of the rule is &ldquo;Some method calls to Object.collect(Closure) can be replaced with the spread operator.&rdquo; e.g. Replace things.collect { it.name } with things*.name, or even things.name if what you&rsquo;re after is a property.
@@ -81,13 +77,13 @@ The summary of the rule is &ldquo;Some method calls to Object.collect(Closure) c
 e.g. Replace things.collect { it.name } with things*.name, or even things.name if what you&rsquo;re after is a property.</p>
 <p>But when I performed that refactoring and ran all the tests, some failed! Here&rsquo;s why:</p>
 <p>I made the mistake of assuming that the spread operator behavior is always identical to the collect method. For a <strong>non-null</strong> collection, it is. e.g. The following code will produce the same result regardless of the technique you use:</p>
-<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kt">def</span> <span class="n">things</span> <span class="o">=</span> <span class="o">[</span> <span class="o">[</span><span class="nl">a:</span> <span class="mi">1</span><span class="o">],</span> <span class="o">[</span><span class="nl">a:</span> <span class="mi">2</span><span class="o">]</span> <span class="o">]</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kt">def</span> <span class="n">things</span> <span class="o">=</span> <span class="o">[</span> <span class="o">[</span><span class="nl">a:</span> <span class="mi">1</span><span class="o">],</span> <span class="o">[</span><span class="nl">a:</span> <span class="mi">2</span><span class="o">]</span> <span class="o">]</span>
 
 <span class="n">things</span><span class="o">.</span><span class="na">collect</span> <span class="o">{</span> <span class="n">it</span><span class="o">.</span><span class="na">a</span> <span class="o">}</span> <span class="c1">// returns [1, 2]
 </span><span class="c1"></span><span class="n">things</span><span class="o">*.</span><span class="na">a</span>               <span class="c1">// returns [1, 2]
 </span><span class="c1"></span><span class="n">things</span><span class="o">.</span><span class="na">a</span>                <span class="c1">// returns [1, 2]
 </span></code></pre></div><p>But if the collection you&rsquo;re operating on is <strong>null</strong>, the three techniques will result in different outcomes:</p>
-<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kt">def</span> <span class="n">things</span> <span class="o">=</span> <span class="kc">null</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kt">def</span> <span class="n">things</span> <span class="o">=</span> <span class="kc">null</span>
 
 <span class="n">things</span><span class="o">.</span><span class="na">collect</span> <span class="o">{</span> <span class="n">it</span><span class="o">.</span><span class="na">a</span> <span class="o">}</span>   <span class="c1">// returns []
 </span><span class="c1"></span><span class="n">things</span><span class="o">*.</span><span class="na">a</span>                 <span class="c1">// returns null

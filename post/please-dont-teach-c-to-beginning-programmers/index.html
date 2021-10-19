@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Dan Tanner">
 <meta name="description" content="Personal and Semi-Professional Blog">
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.86.1" />
 <title>Please Don&#39;t Teach C to Beginning Programmers</title>
 <link rel="shortcut icon" href="https://dantanner.com/images/favicon.ico">
 <link rel="stylesheet" href="https://dantanner.com/css/style.css">
@@ -25,22 +25,18 @@
 <meta property="og:description" content="The Student I have a niece in her first year at a local university. She&rsquo;s never done any programming before, and thinking of becoming an actuary. That means she should learn at least a little bit of programming in a tool like R or Python, right? Those seem like good high-level languages in 2019 that are also applicable in that field.
 The Phone Call A few weeks ago I got a call from her Dad asking for some help with homework on an introductory (100-level) programming course titled &ldquo;Problem Solving in the Natural Sciences (using C and Matlab)&rdquo;." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dantanner.com/post/please-dont-teach-c-to-beginning-programmers/" />
+<meta property="og:url" content="https://dantanner.com/post/please-dont-teach-c-to-beginning-programmers/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-05-05T20:09:00+00:00" />
 <meta property="article:modified_time" content="2019-05-05T20:09:00+00:00" />
 
 
+
 <meta itemprop="name" content="Please Don&#39;t Teach C to Beginning Programmers">
 <meta itemprop="description" content="The Student I have a niece in her first year at a local university. She&rsquo;s never done any programming before, and thinking of becoming an actuary. That means she should learn at least a little bit of programming in a tool like R or Python, right? Those seem like good high-level languages in 2019 that are also applicable in that field.
-The Phone Call A few weeks ago I got a call from her Dad asking for some help with homework on an introductory (100-level) programming course titled &ldquo;Problem Solving in the Natural Sciences (using C and Matlab)&rdquo;.">
-<meta itemprop="datePublished" content="2019-05-05T20:09:00+00:00" />
+The Phone Call A few weeks ago I got a call from her Dad asking for some help with homework on an introductory (100-level) programming course titled &ldquo;Problem Solving in the Natural Sciences (using C and Matlab)&rdquo;."><meta itemprop="datePublished" content="2019-05-05T20:09:00+00:00" />
 <meta itemprop="dateModified" content="2019-05-05T20:09:00+00:00" />
-<meta itemprop="wordCount" content="1751">
-
-
-
+<meta itemprop="wordCount" content="1750">
 <meta itemprop="keywords" content="" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Please Don&#39;t Teach C to Beginning Programmers"/>
 <meta name="twitter:description" content="The Student I have a niece in her first year at a local university. She&rsquo;s never done any programming before, and thinking of becoming an actuary. That means she should learn at least a little bit of programming in a tool like R or Python, right? Those seem like good high-level languages in 2019 that are also applicable in that field.
@@ -116,11 +112,10 @@ I didn&rsquo;t choose Java because no one ever wants to touch Java after they&rs
 <p>The assignment is to make a little program that reads input from the user representing cards in a deck.
 The user enters a number to represent each card/suit, then when the user enters -1, the program displays the hand and calculates a score
 based on arbitray scoring rules meant to exercise basic logic and programming.
-Implementations open in new tabs here:
-<!-- raw HTML omitted -->C<!-- raw HTML omitted --> |
-<!-- raw HTML omitted -->Python<!-- raw HTML omitted --> |
-<!-- raw HTML omitted -->Kotlin<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+Implementations here:
+<a href="https://gist.github.com/dtanner/b3cf09c59b0fd7e1389f635d817facd6">C</a> |
+<a href="https://gist.github.com/dtanner/a7a154a12600519cb1fda47723c3e1f1">Python</a> |
+<a href="https://gist.github.com/dtanner/54a8dc0e111d9b62d44fff6501266d1c">Kotlin</a></p>
 <h1 id="observations">Observations</h1>
 <h3 id="c-observations">C Observations</h3>
 <ul>
@@ -130,7 +125,7 @@ I think this <a href="https://stackoverflow.com/questions/4025768/what-do-people
 Some of it is unnecessary cruft to learners, like function headers.  Some of it is due to a smaller language feature set like no collection functions.
 A smaller feature set is easier to learn, but I love collection functions because they help make the code more readable and concise.</li>
 <li><strong>Testing is an afterthought</strong>.  Writing simple automated tests in Python and Kotlin is trivial. e.g. This is a passing test using tooling built into my IDE:
-<div class="highlight"><pre class="chroma"><code class="language-Kotlin" data-lang="Kotlin"><span class="nd">@Test</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Kotlin" data-lang="Kotlin"><span class="nd">@Test</span>
 <span class="k">fun</span> <span class="nf">calculateHandValue</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">assertEquals</span><span class="p">(</span><span class="m">22</span><span class="p">,</span> <span class="n">calculateHandValue</span><span class="p">(</span><span class="n">listOf</span><span class="p">(</span><span class="m">22</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">16</span><span class="p">,</span> <span class="m">45</span><span class="p">,</span> <span class="m">2</span><span class="p">)))</span>
     <span class="n">assertEquals</span><span class="p">(</span><span class="m">1232</span><span class="p">,</span> <span class="n">calculateHandValue</span><span class="p">(</span><span class="n">listOf</span><span class="p">(</span><span class="m">47</span><span class="p">,</span><span class="m">9</span><span class="p">,</span><span class="m">40</span><span class="p">,</span><span class="m">48</span><span class="p">)))</span>
@@ -142,10 +137,10 @@ a confusing number of choices, and platform incompatibilities will ward off begi
 <li><strong>Language constraints dilute quality of code</strong>.
 For example, passing around the array of cards along with its size as a separate parameter in the C implementation makes it less readable and maintainable.
 It&rsquo;s practically required though.
-<div class="highlight"><pre class="chroma"><code class="language-C" data-lang="C"><span class="kt">void</span> <span class="nf">displayCards</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="kt">void</span> <span class="nf">displayCards</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span></code></pre></div>
 Compare this to the same functions in Python and Kotlin:
-<div class="highlight"><pre class="chroma"><code class="language-Python" data-lang="Python"><span class="k">def</span> <span class="nf">display_cards</span><span class="p">(</span><span class="n">cards</span><span class="p">):</span></code></pre></div>
-<div class="highlight"><pre class="chroma"><code class="language-Kotlin" data-lang="Kotlin"><span class="k">fun</span> <span class="nf">displayCards</span><span class="p">(</span><span class="n">cards</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;)</span> <span class="p">{</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="k">def</span> <span class="nf">display_cards</span><span class="p">(</span><span class="n">cards</span><span class="p">):</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Kotlin" data-lang="Kotlin"><span class="k">fun</span> <span class="nf">displayCards</span><span class="p">(</span><span class="n">cards</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;)</span> <span class="p">{</span></code></pre></div></li>
 <li><strong>No strings</strong>.  It had been so long I had forgotten C doesn&rsquo;t have strings.<br>
 <code>strncpy(suit, &quot;Clubs&quot;, 10);</code> ugh. i&rsquo;m probably not even doing that right, much less worrying about buffer overflow risks.</li>
 </ul>
@@ -160,13 +155,13 @@ But IMO it&rsquo;s actually cleaner in some ways.</p>
 <ul>
 <li><strong>Lambdas in Kotlin are a little cleaner than Python</strong>. And even though they&rsquo;re a higher-level concept that doesn&rsquo;t exist in C, they both make for more readable code than the C equivalent.
 e.g. compare these two one-liners in Python and Kotin:
-<div class="highlight"><pre class="chroma"><code class="language-Python" data-lang="Python"><span class="k">return</span> <span class="nb">sum</span><span class="p">((</span><span class="n">get_card_value</span><span class="p">(</span><span class="n">card</span><span class="p">)</span> <span class="o">-</span> <span class="n">get_suit_number</span><span class="p">(</span><span class="n">card</span><span class="p">))</span> <span class="k">for</span> <span class="n">card</span> <span class="ow">in</span> <span class="n">cards</span><span class="p">)</span></code></pre></div>
-<div class="highlight"><pre class="chroma"><code class="language-Kotlin" data-lang="Kotlin"><span class="k">return</span> <span class="n">cards</span><span class="p">.</span><span class="n">sumBy</span> <span class="p">{</span> <span class="n">getCardValue</span><span class="p">(</span><span class="k">it</span><span class="p">)</span> <span class="p">-</span> <span class="n">getSuitNumber</span><span class="p">(</span><span class="k">it</span><span class="p">)</span> <span class="p">}</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="k">return</span> <span class="nb">sum</span><span class="p">((</span><span class="n">get_card_value</span><span class="p">(</span><span class="n">card</span><span class="p">)</span> <span class="o">-</span> <span class="n">get_suit_number</span><span class="p">(</span><span class="n">card</span><span class="p">))</span> <span class="k">for</span> <span class="n">card</span> <span class="ow">in</span> <span class="n">cards</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Kotlin" data-lang="Kotlin"><span class="k">return</span> <span class="n">cards</span><span class="p">.</span><span class="n">sumBy</span> <span class="p">{</span> <span class="n">getCardValue</span><span class="p">(</span><span class="k">it</span><span class="p">)</span> <span class="p">-</span> <span class="n">getSuitNumber</span><span class="p">(</span><span class="k">it</span><span class="p">)</span> <span class="p">}</span></code></pre></div>
 Kotlin is the newest language of the bunch, so had more time to incorporate design features from the latest languages.
 That said, I wasn&rsquo;t taught lambdas when I was first learning, so don&rsquo;t know if this would be a handy feature or just one more thing to learn for most beginners.</li>
 <li><strong>Kotlin expands Java&rsquo;s already good Collection support for concise code</strong>. e.g. <code>cards.sumBy</code> and <code>cards.count</code> are one-liners that intuitively implement the function.
 In C&rsquo;s syntactic brevity, you write more code and have to manage more state. I speculate this code is harder to read for a beginner compared to the Kotlin equivalent.
-<div class="highlight"><pre class="chroma"><code class="language-C" data-lang="C"><span class="kt">int</span> <span class="nf">hasThreeOrMoreNonNumberCards</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">numCards</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="kt">int</span> <span class="nf">hasThreeOrMoreNonNumberCards</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">numCards</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numCards</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">getCardValue</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="mi">11</span> <span class="o">||</span> <span class="n">getCardValue</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
@@ -175,7 +170,7 @@ In C&rsquo;s syntactic brevity, you write more code and have to manage more stat
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">count</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
-<div class="highlight"><pre class="chroma"><code class="language-Kotlin" data-lang="Kotlin"><span class="k">fun</span> <span class="nf">hasThreeOrMoreNonNumberCards</span><span class="p">(</span><span class="n">cards</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;):</span> <span class="n">Boolean</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Kotlin" data-lang="Kotlin"><span class="k">fun</span> <span class="nf">hasThreeOrMoreNonNumberCards</span><span class="p">(</span><span class="n">cards</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;):</span> <span class="n">Boolean</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">cards</span><span class="p">.</span><span class="n">count</span> <span class="p">{</span> <span class="n">getCardValue</span><span class="p">(</span><span class="k">it</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="m">11</span> <span class="o">||</span> <span class="n">getCardValue</span><span class="p">(</span><span class="k">it</span><span class="p">)</span> <span class="o">==</span> <span class="m">1</span> <span class="p">}</span> <span class="o">&gt;=</span> <span class="m">3</span>
 <span class="p">}</span></code></pre></div></li>
 <li><strong>Kotlin forces the programmer to think about production scenarios</strong>.  This adds a little bit of extra work up front for the programmer,

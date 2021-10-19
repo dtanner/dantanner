@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Dan Tanner">
 <meta name="description" content="Personal and Semi-Professional Blog">
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.86.1" />
 <title>Dynamic Grails Tomcat datasource configuration with Etcd</title>
 <link rel="shortcut icon" href="https://dantanner.com/images/favicon.ico">
 <link rel="stylesheet" href="https://dantanner.com/css/style.css">
@@ -25,22 +25,18 @@
 <meta property="og:description" content="Ever wonder if you could modify a Grails datasource while the app is running? Probably not, and that&rsquo;s totally fine&hellip;most people don&rsquo;t need to. We had a couple reasons though:
  During a disaster recovery situation where a non-clustered database goes down, you want to point all the apps at a failover database. By default this means you have to update the config and restart all the apps. On a typical AWS instance, this means at least a minute of downtime for a bigger Grails app." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dantanner.com/post/dynamic-grails-tomcat-datasource/" />
+<meta property="og:url" content="https://dantanner.com/post/dynamic-grails-tomcat-datasource/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2015-04-30T06:05:00+00:00" />
 <meta property="article:modified_time" content="2015-04-30T06:05:00+00:00" />
 
 
+
 <meta itemprop="name" content="Dynamic Grails Tomcat datasource configuration with Etcd">
 <meta itemprop="description" content="Ever wonder if you could modify a Grails datasource while the app is running? Probably not, and that&rsquo;s totally fine&hellip;most people don&rsquo;t need to. We had a couple reasons though:
- During a disaster recovery situation where a non-clustered database goes down, you want to point all the apps at a failover database. By default this means you have to update the config and restart all the apps. On a typical AWS instance, this means at least a minute of downtime for a bigger Grails app.">
-<meta itemprop="datePublished" content="2015-04-30T06:05:00+00:00" />
+ During a disaster recovery situation where a non-clustered database goes down, you want to point all the apps at a failover database. By default this means you have to update the config and restart all the apps. On a typical AWS instance, this means at least a minute of downtime for a bigger Grails app."><meta itemprop="datePublished" content="2015-04-30T06:05:00+00:00" />
 <meta itemprop="dateModified" content="2015-04-30T06:05:00+00:00" />
 <meta itemprop="wordCount" content="1360">
-
-
-
 <meta itemprop="keywords" content="" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Dynamic Grails Tomcat datasource configuration with Etcd"/>
 <meta name="twitter:description" content="Ever wonder if you could modify a Grails datasource while the app is running? Probably not, and that&rsquo;s totally fine&hellip;most people don&rsquo;t need to. We had a couple reasons though:

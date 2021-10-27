@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bikes on Dan Tanner</title>
+    <link>https://dantanner.com/categories/bikes/</link>
+    <description>Recent content in bikes on Dan Tanner</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 26 Oct 2021 20:00:00 +0000</lastBuildDate><atom:link href="https://dantanner.com/categories/bikes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kotlin vs Java in 2021</title>
+      <link>https://dantanner.com/post/kotlin-v-java/</link>
+      <pubDate>Tue, 26 Oct 2021 20:00:00 +0000</pubDate>
+      
+      <guid>https://dantanner.com/post/kotlin-v-java/</guid>
+      <description>Since the arrival of Java 17, I&amp;rsquo;ve heard a few people wonder &amp;ldquo;Does Kotlin Still Make Sense, or Should I just use Java?&amp;rdquo;
+Short answer: Kotlin is still a far better language in terms of features, and its critical advantages will probably never come to Java.
+What do I consider critical advantages?
+Null Safety and Immutability Kotlin lets you write elegant null-safe code, and forces you to be explicit about null-safety.</description>
+    </item>
+    
+  </channel>
+</rss>

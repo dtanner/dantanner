@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Dan Tanner">
+<meta name="description" content="Personal and Semi-Professional Blog">
+<meta name="generator" content="Hugo 0.86.1" />
+<title>Kotlin vs Java in 2021</title>
+<link rel="shortcut icon" href="https://dantanner.com/images/favicon.ico">
+<link rel="stylesheet" href="https://dantanner.com/css/style.css">
+<link rel="stylesheet" href="https://dantanner.com/css/highlight.css">
+
+
+
+<link rel="stylesheet" href="https://dantanner.com/css/monosocialiconsfont.css">
+
+
+
+<link href="https://dantanner.com/index.xml" rel="alternate" type="application/rss+xml" title="Dan Tanner" />
+
+
+<meta property="og:title" content="Kotlin vs Java in 2021" />
+<meta property="og:description" content="Since the arrival of Java 17, I&rsquo;ve heard a few people wonder &ldquo;Does Kotlin Still Make Sense, or Should I just use Java?&rdquo;
+Short answer: Kotlin is still a far better language in terms of features, and its critical advantages will probably never come to Java.
+What do I consider critical advantages?
+Null Safety and Immutability Kotlin lets you write elegant null-safe code, and forces you to be explicit about null-safety." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dantanner.com/post/kotlin-v-java/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-10-26T20:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-26T20:00:00+00:00" />
+
+
+
+<meta itemprop="name" content="Kotlin vs Java in 2021">
+<meta itemprop="description" content="Since the arrival of Java 17, I&rsquo;ve heard a few people wonder &ldquo;Does Kotlin Still Make Sense, or Should I just use Java?&rdquo;
+Short answer: Kotlin is still a far better language in terms of features, and its critical advantages will probably never come to Java.
+What do I consider critical advantages?
+Null Safety and Immutability Kotlin lets you write elegant null-safe code, and forces you to be explicit about null-safety."><meta itemprop="datePublished" content="2021-10-26T20:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-10-26T20:00:00+00:00" />
+<meta itemprop="wordCount" content="1289">
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Kotlin vs Java in 2021"/>
+<meta name="twitter:description" content="Since the arrival of Java 17, I&rsquo;ve heard a few people wonder &ldquo;Does Kotlin Still Make Sense, or Should I just use Java?&rdquo;
+Short answer: Kotlin is still a far better language in terms of features, and its critical advantages will probably never come to Java.
+What do I consider critical advantages?
+Null Safety and Immutability Kotlin lets you write elegant null-safe code, and forces you to be explicit about null-safety."/>
+<meta name="twitter:site" content="@https://www.twitter.com/edgescope"/>
+
+
+    </head>
+<body>
+    <nav class="main-nav">
+	
+		<a href='https://dantanner.com/'> <span class="arrow">←</span>Home</a>
+	
+
+	
+
+	
+		<a class="cta" href="https://dantanner.com/index.xml">Subscribe</a>
+	
+</nav>
+
+    <section id="wrapper">
+        
+        
+<article class="post">
+    <header>
+        <h1>Kotlin vs Java in 2021</h1>
+        <h2 class="subtitle"></h2>
+        <h2 class="headline">
+        October 26, 2021
+        <br>
+        
+        </h2>
+    </header>
+    <section id="post-body">
+        <p>Since the arrival of Java 17, I&rsquo;ve heard a few people wonder &ldquo;Does Kotlin Still Make Sense, or Should I just use Java?&rdquo;</p>
+<p>Short answer: Kotlin is still a far better language in terms of features, and its critical advantages will probably
+never come to Java.</p>
+<p>What do I consider critical advantages?</p>
+<h1 id="null-safety-and-immutability">Null Safety and Immutability</h1>
+<p>Kotlin lets you write elegant null-safe code, and forces you to be explicit about null-safety.</p>
+<p>For example, consider this data class:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">data</span> <span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="k">val</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span>
+</code></pre></div><p>Because of the <code>val</code> keyword, you can&rsquo;t forget to set name when instantiating a Person, and you can&rsquo;t set it to null later.<br>
+That&rsquo;s an entire class of nasty bugs wiped out with a single elegant language design.</p>
+<p>Conversely, when something <em>can</em> be null, the compiler foreces you to explicitly handle it in a concise manner, also
+giving you an escape hatch if you choose to be unsafe about it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">var</span> <span class="py">b</span><span class="p">:</span> <span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="s2">&#34;abc&#34;</span>
+<span class="n">b</span><span class="p">.</span><span class="n">length</span> <span class="c1">// compile error: variable &#39;b&#39; can be null
+</span><span class="c1"></span>
+<span class="c1">// you must use a null-safe operator
+</span><span class="c1"></span><span class="n">b</span><span class="o">?.</span><span class="n">length</span> <span class="c1">// which evaluates to null if &#39;b&#39; is null, or the length of &#39;b&#39; if it is not null
+</span></code></pre></div><p>Java bolted on the <code>Optional</code> container to try to solve this problem, but it&rsquo;s clumsy and rarely used in the code I&rsquo;ve
+seen.  That&rsquo;s a recurring theme in many of the features; Kotlin makes it easy to write concise and stable code.
+This one&rsquo;s just really really important in my opinion, and is worth the price of admission on its own.</p>
+<p>Official docs <a href="https://kotlinlang.org/docs/null-safety.html">here</a>.</p>
+<h1 id="some-of-my-favorite-features">Some of my favorite features</h1>
+<p>Now for the reasons I really enjoy writing Kotlin.
+There are plenty of other features I&rsquo;m not mentioning, but these are the favorites that come to mind.</p>
+<h3 id="collection-functions">Collection functions</h3>
+<p>There&rsquo;s a <em>ton</em> of them, and they&rsquo;re powerful and pragmatic.
+Full docs <a href="https://kotlinlang.org/docs/collections-overview.html">here</a>; some commonly used examples:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">numbersGreaterThanOne</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">).</span><span class="n">filter</span> <span class="p">{</span> <span class="k">it</span> <span class="p">&gt;</span> <span class="m">1</span> <span class="p">}</span> <span class="c1">// [2]
+</span><span class="c1">// for more advanced versions, see filterIndexed or filterNotNull
+</span><span class="c1"></span>
+<span class="k">val</span> <span class="py">stringLengths</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="s2">&#34;bear&#34;</span><span class="p">,</span> <span class="s2">&#34;cat&#34;</span><span class="p">).</span><span class="n">map</span> <span class="p">{</span> <span class="k">it</span><span class="p">.</span><span class="n">length</span> <span class="p">}</span> <span class="c1">// [4, 3]
+</span><span class="c1"></span>
+<span class="k">val</span> <span class="py">firstTwoElements</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">6</span><span class="p">).</span><span class="n">take</span><span class="p">(</span><span class="m">2</span><span class="p">)</span> <span class="c1">// [2, 4]
+</span><span class="c1"></span>
+<span class="k">val</span> <span class="py">sum</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">5</span><span class="p">).</span><span class="n">sumOf</span> <span class="p">{</span> <span class="k">it</span> <span class="p">}</span> <span class="c1">// 6
+</span><span class="c1"></span>
+</code></pre></div><h3 id="ide-support">IDE Support</h3>
+<p>I already had IDE support listed as one of the things I was going to highlight in this article, but something
+awesome just happened that caused me to place it here.  I&rsquo;m using markdown to author this content in IntelliJ, and
+while I was typing the above code snippets, this happened:
+<img src="/kotlin-2021/ide-support-markdown.png" alt=""></p>
+<p>Syntax highlighting is pretty cool, but type-ahead support in markdown?  That&rsquo;s really cool.  There are lighter weight
+editors out there, but none more powerful in my opinion. JetBrains authoring the language makes for tight IDE
+support.</p>
+<h3 id="extension-functions">Extension functions</h3>
+<p>From the <a href="https://kotlinlang.org/docs/extensions.html">docs</a>:</p>
+<blockquote>
+<p>Kotlin provides the ability to extend a class with new functionality without having to inherit from the class or
+use design patterns such as Decorator. This is done via special declarations called extensions.</p>
+</blockquote>
+<p>For example, add a utility function to Date that converts it to a UTC ZonedDateTime:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">Date</span><span class="p">.</span><span class="n">toUtcZonedDateTime</span><span class="p">():</span> <span class="n">ZonedDateTime</span> <span class="p">=</span> <span class="n">ZonedDateTime</span><span class="p">.</span><span class="n">ofInstant</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">toInstant</span><span class="p">(),</span> <span class="n">ZoneOffset</span><span class="p">.</span><span class="n">UTC</span><span class="p">)</span>
+
+<span class="k">val</span> <span class="py">date</span> <span class="p">=</span> <span class="n">Date</span><span class="p">()</span>
+<span class="k">val</span> <span class="py">zonedDateTime</span> <span class="p">=</span> <span class="n">date</span><span class="p">.</span><span class="n">toUtcZonedDateTime</span><span class="p">()</span>
+</code></pre></div><p>Another example, encapsulating a standard choice for a hashing algorithm so that usage is concise and
+easily refactorable:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">import</span> <span class="nn">com.google.common.hash.Hashing</span>
+<span class="k">fun</span> <span class="nf">ByteArray</span><span class="p">.</span><span class="n">hash</span><span class="p">():</span> <span class="n">ByteArray</span> <span class="p">=</span> <span class="n">Hashing</span><span class="p">.</span><span class="n">murmur3_128</span><span class="p">().</span><span class="n">hashBytes</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="n">asBytes</span><span class="p">()</span>
+
+<span class="k">val</span> <span class="py">hashedBytes</span> <span class="p">=</span> <span class="s2">&#34;abc&#34;</span><span class="p">.</span><span class="n">toByteArray</span><span class="p">().</span><span class="n">hash</span><span class="p">()</span>
+</code></pre></div><h3 id="default-and-named-arguments">Default and named arguments</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">makeHttpCall</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">timeoutSeconds</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">10</span><span class="p">)</span> <span class="p">{</span> <span class="o">..</span><span class="p">.</span> <span class="p">}</span>
+
+<span class="c1">// both of these work
+</span><span class="c1"></span><span class="n">makeHttpCall</span><span class="p">(</span><span class="n">url</span> <span class="p">=</span> <span class="s2">&#34;http://foo.com&#34;</span><span class="p">,</span> <span class="n">timeoutSeconds</span> <span class="p">=</span> <span class="m">30</span><span class="p">)</span>
+<span class="n">makeHttpCall</span><span class="p">(</span><span class="n">url</span> <span class="p">=</span> <span class="s2">&#34;http://foo.com&#34;</span><span class="p">)</span>
+</code></pre></div><p>Named arguments become especially handy for functions with lots of similarly typed parameters.</p>
+<h3 id="string-interpolation">String interpolation</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">score</span> <span class="p">=</span> <span class="m">1</span>
+<span class="n">println</span><span class="p">(</span><span class="s2">&#34;the score is </span><span class="si">$score</span><span class="s2">.  The score minus one is </span><span class="si">${score - 1}</span><span class="s2">&#34;</span><span class="p">)</span>
+</code></pre></div><h3 id="data-classes-and-copy">Data classes and .copy()</h3>
+<p>Java finally has records now. Something I use all the time though, especially when combined with
+immutable data structures, is the <code>copy</code> function. For example a common test data setup
+pattern looks something like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="c1">// in Person.kt
+</span><span class="c1"></span><span class="k">data</span> <span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="k">val</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span>
+
+<span class="c1">// in PersonTest.kt
+</span><span class="c1"></span><span class="k">fun</span> <span class="nf">randomPerson</span><span class="p">():</span> <span class="n">Person</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Person</span><span class="p">(</span><span class="n">name</span> <span class="p">=</span> <span class="n">someRandomString</span><span class="p">,</span> <span class="n">age</span> <span class="p">=</span> <span class="n">someRandomAge</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nd">@Test</span> <span class="k">fun</span> <span class="nf">testPerson</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">val</span> <span class="py">bob</span> <span class="p">=</span> <span class="n">randomPerson</span><span class="p">().</span><span class="n">copy</span><span class="p">(</span><span class="n">name</span> <span class="p">=</span> <span class="s2">&#34;bob&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="function-types-as-class-parameters">Function types as class parameters</h3>
+<p>This is a really powerful and flexible capability.  It does come at a slight cost in clarity, and IDE support is
+limited, but is preferred by myself and many others I&rsquo;ve worked with.<br>
+First off, what&rsquo;s a function type?  Docs <a href="https://kotlinlang.org/docs/lambdas.html#function-types">here</a>, but the
+most common form I use looks like this:</p>
+<p><code>(Int) -&gt; String</code></p>
+<p>which can be broken down like this:<br>
+<img src="/kotlin-2021/function-type.png" alt=""></p>
+<p>An example function type that takes two Int parameters and return a String would be:<br>
+<code>(Int, Int) -&gt; String</code></p>
+<p>A function with no parameters that returns a String would be:<br>
+<code>() -&gt; String</code></p>
+<p>A function that doesn&rsquo;t return a useful value must specify <code>Unit</code>. e.g.:<br>
+<code>(Int) -&gt; Unit</code></p>
+<p>OK great - you can define functions that have a signature but don&rsquo;t have a name. What can we do with that?
+How about pure dependency injection without the need for mocks?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="c1">// a &#34;real&#34; DataRepository that saves data to a repository
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">DataRepository</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">saveStatus</span><span class="p">(</span><span class="n">status</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">Boolean</span> <span class="p">{</span>
+        <span class="c1">// save the name to the database and return true if it was updated
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// a &#34;real&#34; Publisher
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">Publisher</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">publishStatus</span><span class="p">(</span><span class="n">status</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// a service that performs complex logic that needs to be unit tested
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">FooService</span><span class="p">(</span>
+    <span class="n">saveStatus</span><span class="p">:</span> <span class="p">(</span><span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Boolean</span><span class="p">,</span>
+    <span class="n">publishStatus</span><span class="p">:</span> <span class="p">(</span><span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Unit</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">handleStatus</span><span class="p">(</span><span class="n">status</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">saveStatus</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+        <span class="n">publishStatus</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// the class wiring up the real stuff together
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    
+    <span class="k">private</span> <span class="k">val</span> <span class="py">dataRepository</span> <span class="p">=</span> <span class="n">DataRepository</span><span class="p">()</span>
+    <span class="k">private</span> <span class="k">val</span> <span class="py">publisher</span> <span class="p">=</span> <span class="n">Publisher</span><span class="p">()</span>
+    
+    <span class="k">private</span> <span class="k">val</span> <span class="py">fooService</span> <span class="p">=</span> <span class="n">FooService</span><span class="p">(</span>
+        <span class="n">saveStatus</span> <span class="p">=</span> <span class="n">dataRepository</span><span class="o">::</span><span class="n">saveStatus</span><span class="p">,</span>
+        <span class="n">publishStatus</span> <span class="p">=</span> <span class="n">publisher</span><span class="o">::</span><span class="n">publishStatus</span>
+    <span class="p">)</span>
+    
+    <span class="c1">// whatever else the application needs to do to get wired up and run
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="c1">// the service unit tests
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">FooServiceTest</span> <span class="p">{</span>
+    
+    <span class="nd">@Test</span> <span class="k">fun</span> <span class="nf">`everything works great`</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">val</span> <span class="py">fooService</span> <span class="p">=</span> <span class="n">FooService</span><span class="p">(</span>
+            <span class="c1">// set the saveStatus parameter to a lambda that ignores the String parameter and returns true
+</span><span class="c1"></span>            <span class="n">saveStatus</span> <span class="p">=</span> <span class="p">{</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="k">true</span> <span class="p">},</span>
+            <span class="c1">// set the publishStatus parameter to a lambda that ignores everything and returns Unit implicitly 
+</span><span class="c1"></span>            <span class="n">publishStatus</span> <span class="p">=</span> <span class="p">{</span> <span class="p">}</span>
+        <span class="p">)</span>
+        
+        <span class="n">fooService</span><span class="p">.</span><span class="n">handleStatus</span><span class="p">(</span><span class="s2">&#34;yay&#34;</span><span class="p">)</span>  <span class="c1">// along with whatever assertions you want
+</span><span class="c1"></span>    <span class="p">}</span>
+
+    <span class="nd">@Test</span> <span class="k">fun</span> <span class="nf">`saveStatus failure should do the right thing`</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">val</span> <span class="py">fooService</span> <span class="p">=</span> <span class="n">FooService</span><span class="p">(</span>
+            <span class="c1">// set the saveStatus parameter to a lambda that blows up, simulating a problem in the repository
+</span><span class="c1"></span>            <span class="n">saveStatus</span> <span class="p">=</span> <span class="p">{</span> <span class="n">_</span> <span class="o">-&gt;</span> <span class="k">throw</span> <span class="n">RuntimeException</span><span class="p">(</span><span class="s2">&#34;the sky is falling&#34;</span><span class="p">)</span> <span class="p">},</span>
+            <span class="c1">// set the publishStatus parameter to a lambda that ignores everything and returns Unit implicitly 
+</span><span class="c1"></span>            <span class="n">publishStatus</span> <span class="p">=</span> <span class="p">{</span> <span class="p">}</span>
+        <span class="p">)</span>
+
+        <span class="c1">// shouldThrow is an example feature of the fantastic kotest assertion library
+</span><span class="c1"></span>        <span class="c1">// i.e. we&#39;ve injected behavior into the service indicating a failure should happen
+</span><span class="c1"></span>        <span class="c1">// and we should handle it properly
+</span><span class="c1"></span>        <span class="n">shouldThrow</span><span class="p">&lt;</span><span class="n">RuntimeException</span><span class="p">&gt;</span> <span class="p">{</span>
+            <span class="n">fooService</span><span class="p">.</span><span class="n">handleStatus</span><span class="p">(</span><span class="s2">&#34;yay&#34;</span><span class="p">)</span>  
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>No DI frameworks needed. No mocking needed. Just pure function signatures with full precise control of the contract
+behaviors you&rsquo;re building and testing.<br>
+This works great for situations like this where you need to wire up a single production implementation and want one
+or more test implementations.  The compiler will keep the code honest.  But, one caveat is that the <code>Find Usages</code>
+functionality of the IDE doesn&rsquo;t work because the functions are too ambiguous for the current versions of IntelliJ.
+That does add a little more mental overhead to maintenance, along with the mental overhead of the function type as a
+parameter itself.  But in practice this hasn&rsquo;t been an issue on my projects, and the benefits outweigh the drawbacks
+in my opinion.</p>
+<p>All that said, interfaces and regular old functions obviously still have their place and should be used where
+appropriate.</p>
+<h3 id="lots-more-common-idioms">Lots more common idioms</h3>
+<p>The Kotlin docs maintain a list of frequenty used idioms <a href="https://kotlinlang.org/docs/idioms.html">here</a>.
+Check it out for more examples of pragmatic and clean code.</p>
+
+    </section>
+</article>
+
+<footer id="post-meta" class="clearfix">
+    <a href="https://twitter.com/edgescope">
+    <img class="avatar" src="https://dantanner.com/images/avatar.png">
+    <div>
+        <span class="dark">Dan Tanner</span>
+        <span></span>
+    </div>
+    </a>
+    <section id="sharing">
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fdantanner.com%2fpost%2fkotlin-v-java%2f - Kotlin%20vs%20Java%20in%202021 by @edgescope"><span class="icon-twitter"> tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+    </section>
+</footer>
+
+
+
+<ul id="post-list" class="archive readmore">
+    <h3>Read more</h3>
+
+    
+    
+    
+        <li>
+            <a href="/post/essential-homeowner-tools/">50 Million Essential Homeowner Tools<aside class="dates">Feb 6 2021</aside></a>
+        </li>
+    
+        <li>
+            <a href="/post/chaperone/">Chaperone<aside class="dates">Apr 12 2020</aside></a>
+        </li>
+    
+        <li>
+            <a href="/post/please-dont-teach-c-to-beginning-programmers/">Please Don&#39;t Teach C to Beginning Programmers<aside class="dates">May 5 2019</aside></a>
+        </li>
+    
+        <li>
+            <a href="/post/meteorologists-urged-to-stop-giving-100-percent/">Meteorologists Urged To Stop Giving 100%<aside class="dates">Oct 15 2017</aside></a>
+        </li>
+    
+        <li>
+            <a href="/post/camp-lotto/">Camp Lotto<aside class="dates">Aug 30 2017</aside></a>
+        </li>
+    
+        <li>
+            <a href="/post/frame-hydration/">Mountain Bike Frame Hydration Hack<aside class="dates">Aug 11 2017</aside></a>
+        </li>
+    
+        <li>
+            <a href="/post/markdown-notes/">Markdown Notes<aside class="dates">Jul 16 2017</aside></a>
+        </li>
+    
+        <li>
+            <a href="/post/curl-saves-the-day/">curl saves the day<aside class="dates">Jul 15 2017</aside></a>
+        </li>
+    
+        <li>
+            <a href="/post/groovy-is-still-better-than-java/">Groovy is still better than Java<aside class="dates">Jan 25 2017</aside></a>
+        </li>
+    
+        <li>
+            <a href="/post/javatime-for-impatient/">java.time for the extremely impatient<aside class="dates">Apr 13 2016</aside></a>
+        </li>
+    
+</ul>
+
+
+
+        <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    
+    <a class="symbol" href="https://www.github.com/dtanner">
+        circlegithub
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/edgescope">
+        circletwitterbird
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+        © Copyright 2021 Dan Tanner
+    
+    </p>
+</footer>
+
+    </section>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://dantanner.com/js/main.js"></script>
+
+
+
+
+</body>
+</html>

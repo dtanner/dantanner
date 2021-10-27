@@ -87,7 +87,7 @@ Java.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">data</span> <span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="k">val</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span>
 </code></pre></div><p>Because of the <code>val</code> keyword, you can&rsquo;t forget to set name when instantiating a Person, and you can&rsquo;t set it to null later.<br>
 That&rsquo;s an entire class of nasty bugs wiped out with a single elegant language design.</p>
-<p>Conversely, when something <em>can</em> be null, the compiler foreces you to explicitly handle it in a concise manner, also
+<p>Conversely, when something <em>can</em> be null, the compiler forces you to explicitly handle it in a concise manner, also
 giving you an escape hatch if you choose to be unsafe about it.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">var</span> <span class="py">b</span><span class="p">:</span> <span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="s2">&#34;abc&#34;</span>
 <span class="n">b</span><span class="p">.</span><span class="n">length</span> <span class="c1">// compile error: variable &#39;b&#39; can be null

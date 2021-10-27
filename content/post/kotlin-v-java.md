@@ -1,15 +1,14 @@
 ---
 title: "Kotlin vs Java in 2021"
+description:
 date: "2021-10-26 20:00:00"
 categories: [bikes, telemetry]
 ---
 
 Since the arrival of Java 17, I've heard a few people wonder "Does Kotlin Still Make Sense, or Should I just use Java?"
 
-Short answer: Kotlin is still a far better language in terms of features, and its critical advantages will probably
-never come to Java.
-
-What do I consider critical advantages?
+Short answer: Kotlin is still a far better language, and some of its critical design features will never be matched in 
+Java.
 
 # Null Safety and Immutability
 Kotlin lets you write elegant null-safe code, and forces you to be explicit about null-safety.
@@ -29,16 +28,19 @@ b.length // compile error: variable 'b' can be null
 
 // you must use a null-safe operator
 b?.length // which evaluates to null if 'b' is null, or the length of 'b' if it is not null
+
+// or you can add the `!!` operator to a call if you're willing to accept the possibility of a null pointer situation.
+b!!.length
 ```
 
 Java bolted on the `Optional` container to try to solve this problem, but it's clumsy and rarely used in the code I've
 seen.  That's a recurring theme in many of the features; Kotlin makes it easy to write concise and stable code.
 This one's just really really important in my opinion, and is worth the price of admission on its own.
 
-Official docs [here](https://kotlinlang.org/docs/null-safety.html).
+Official docs on null safety [here](https://kotlinlang.org/docs/null-safety.html).
 
 # Some of my favorite features
-Now for the reasons I really enjoy writing Kotlin.
+Now for some reasons I really enjoy writing Kotlin.
 There are plenty of other features I'm not mentioning, but these are the favorites that come to mind.
 
 ### Collection functions
@@ -46,25 +48,50 @@ There's a _ton_ of them, and they're powerful and pragmatic.
 Full docs [here](https://kotlinlang.org/docs/collections-overview.html); some commonly used examples:
 ```kotlin
 val numbersGreaterThanOne = listOf(1, 2).filter { it > 1 } // [2]
-// for more advanced versions, see filterIndexed or filterNotNull
 
 val stringLengths = listOf("bear", "cat").map { it.length } // [4, 3]
 
 val firstTwoElements = listOf(2, 4, 6).take(2) // [2, 4]
 
 val sum = listOf(1, 5).sumOf { it } // 6
-
 ```
+
+Java has streams, but its a small fraction of what's available in Kotlin, and is again a bolt-on rather than 
+integral part of the language. Java has dozens; Kotlin has hundreds.
+
 
 ### IDE Support
 I already had IDE support listed as one of the things I was going to highlight in this article, but something
-awesome just happened that caused me to place it here.  I'm using markdown to author this content in IntelliJ, and
+awesome just happened that caused me to place it here.  I'm using markdown to write this content in IntelliJ, and
 while I was typing the above code snippets, this happened:
 ![](/kotlin-2021/ide-support-markdown.png)
 
-Syntax highlighting is pretty cool, but type-ahead support in markdown?  That's really cool.  There are lighter weight
+Syntax highlighting is pretty cool, but type-ahead support in markdown?  How neat is that?  There are lighter weight
 editors out there, but none more powerful in my opinion. JetBrains authoring the language makes for tight IDE
-support.
+support.  There are a ton of lesser known features like this available for the language.  Another example is 
+the ability to paste Java code into a Kotlin project and have it automatically converted into Kotlin.
+
+```java
+public void printNames(List<String> names) {
+    for (String name : names) {
+        System.out.println("name = " + name);
+    }
+} 
+```
+
+Paste the above into a Kotlin project in IntelliJ, and it'll be converted to this:
+```kotlin
+fun printNames(names: List<String>) {
+    for (name in names) {
+        println("name = $name")
+    }
+}
+```
+
+If you alt/option-click on the for, you'll see refactorings available for different styles of code. 
+![](/kotlin-2021/refactor-function.gif)
+
+These are basic examples. They get more substantial and useful as the code complexity grows.
 
 ### Extension functions
 From the [docs](https://kotlinlang.org/docs/extensions.html):
@@ -88,16 +115,50 @@ fun ByteArray.hash(): ByteArray = Hashing.murmur3_128().hashBytes(this).asBytes(
 val hashedBytes = "abc".toByteArray().hash()
 ```
 
-### Default and named arguments
-```kotlin
-fun makeHttpCall(url: String, timeoutSeconds: Int = 10) { ... }
+Once you start using them, you'll find all sorts of ways to make your code cleaner. You can create DSLs effortlessly, 
+and add missing features to code while keeping it readable and easily testable. 
 
-// both of these work
+### Default and named arguments
+
+Default arguments are all about more compact, readable, and refactorable code.
+Named arguments give you readability when you want, and also reduce bugs in the case of multiple 
+arguments with the same type.
+
+```kotlin
+fun makeHttpCall(url: String, timeoutSeconds: Int = 10, retries: Int = 3) { ... }
+
+// all of these work
+makeHttpCall(url = "http://foo.com", timeoutSeconds = 30, retries = 10)
 makeHttpCall(url = "http://foo.com", timeoutSeconds = 30)
+makeHttpCall(url = "http://foo.com", retries = 0)
 makeHttpCall(url = "http://foo.com")
 ```
 
-Named arguments become especially handy for functions with lots of similarly typed parameters.
+With Java, you still need gobs of overloads or builders, and even then without named arguments usage gets tricky.
+```java
+public void makeHttpCall(String url) {
+    makeHttpCall(url, 30);
+}
+
+public void makeHttpCall(String url, int timeoutSeconds) {
+    makeHttpCall(url, timeoutSeconds, 3);
+}
+
+public void makeHttpCall(String url, int timeoutSeconds, int retries) {
+    // ...
+}
+
+
+makeHttpCall("http://foo.com", 30, 10);
+// which arg is the timeout? hope i didn't screw up.
+makeHttpCall("http://foo.com", 10); 
+makeHttpCall("http://foo.com"); 
+// how do we call with just a url and retries? 
+// we'd need a new method that doesn't conflict with the 
+// existing method that takes a String and int.
+```
+
+Docs [here](https://kotlinlang.org/docs/functions.html#named-arguments)
 
 ### String interpolation
 
@@ -105,6 +166,8 @@ Named arguments become especially handy for functions with lots of similarly typ
 val score = 1
 println("the score is $score.  The score minus one is ${score - 1}")
 ```
+
+It doesn't get any cleaner than that.  
 
 ### Data classes and .copy()
 Java finally has records now. Something I use all the time though, especially when combined with
@@ -124,8 +187,6 @@ fun randomPerson(): Person {
 }
 ```
 
-
-
 ### Function types as class parameters
 This is a really powerful and flexible capability.  It does come at a slight cost in clarity, and IDE support is
 limited, but is preferred by myself and many others I've worked with.   
@@ -137,7 +198,7 @@ most common form I use looks like this:
 which can be broken down like this:  
 ![](/kotlin-2021/function-type.png)
 
-An example function type that takes two Int parameters and return a String would be:  
+An example function type that takes two Int parameters and returns a String would be:  
 `(Int, Int) -> String`
 
 A function with no parameters that returns a String would be:  
@@ -159,7 +220,9 @@ class DataRepository {
 
 // a "real" Publisher
 class Publisher {
-    fun publishStatus(status: String)
+    fun publishStatus(status: String) {
+        // publish the status via some integration
+    }
 }
 
 // a service that performs complex logic that needs to be unit tested
@@ -213,7 +276,7 @@ class FooServiceTest {
         // i.e. we've injected behavior into the service indicating a failure should happen
         // and we should handle it properly
         shouldThrow<RuntimeException> {
-            fooService.handleStatus("yay")  
+            fooService.handleStatus("should fail")  
         }
     }
 }
@@ -233,6 +296,4 @@ appropriate.
 
 ### Lots more common idioms
 The Kotlin docs maintain a list of frequenty used idioms [here](https://kotlinlang.org/docs/idioms.html).
-Check it out for more examples of pragmatic and clean code.  
-
-
+It's a great place for practical examples of good code.

@@ -23,9 +23,9 @@
 
 <meta property="og:title" content="Kotlin vs Java in 2021" />
 <meta property="og:description" content="Since the arrival of Java 17, I&rsquo;ve heard a few people wonder &ldquo;Does Kotlin Still Make Sense, or Should I just use Java?&rdquo;
-Short answer: Kotlin is still a far better language in terms of features, and its critical advantages will probably never come to Java.
-What do I consider critical advantages?
-Null Safety and Immutability Kotlin lets you write elegant null-safe code, and forces you to be explicit about null-safety." />
+Short answer: Kotlin is still a far better language, and some of its critical design features will never be matched in Java.
+Null Safety and Immutability Kotlin lets you write elegant null-safe code, and forces you to be explicit about null-safety.
+For example, consider this data class:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dantanner.com/post/kotlin-v-java/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-10-26T20:00:00+00:00" />
@@ -35,18 +35,18 @@ Null Safety and Immutability Kotlin lets you write elegant null-safe code, and f
 
 <meta itemprop="name" content="Kotlin vs Java in 2021">
 <meta itemprop="description" content="Since the arrival of Java 17, I&rsquo;ve heard a few people wonder &ldquo;Does Kotlin Still Make Sense, or Should I just use Java?&rdquo;
-Short answer: Kotlin is still a far better language in terms of features, and its critical advantages will probably never come to Java.
-What do I consider critical advantages?
-Null Safety and Immutability Kotlin lets you write elegant null-safe code, and forces you to be explicit about null-safety."><meta itemprop="datePublished" content="2021-10-26T20:00:00+00:00" />
+Short answer: Kotlin is still a far better language, and some of its critical design features will never be matched in Java.
+Null Safety and Immutability Kotlin lets you write elegant null-safe code, and forces you to be explicit about null-safety.
+For example, consider this data class:"><meta itemprop="datePublished" content="2021-10-26T20:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-10-26T20:00:00+00:00" />
-<meta itemprop="wordCount" content="1289">
+<meta itemprop="wordCount" content="1632">
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Kotlin vs Java in 2021"/>
 <meta name="twitter:description" content="Since the arrival of Java 17, I&rsquo;ve heard a few people wonder &ldquo;Does Kotlin Still Make Sense, or Should I just use Java?&rdquo;
-Short answer: Kotlin is still a far better language in terms of features, and its critical advantages will probably never come to Java.
-What do I consider critical advantages?
-Null Safety and Immutability Kotlin lets you write elegant null-safe code, and forces you to be explicit about null-safety."/>
+Short answer: Kotlin is still a far better language, and some of its critical design features will never be matched in Java.
+Null Safety and Immutability Kotlin lets you write elegant null-safe code, and forces you to be explicit about null-safety.
+For example, consider this data class:"/>
 <meta name="twitter:site" content="@https://www.twitter.com/edgescope"/>
 
 
@@ -79,9 +79,8 @@ Null Safety and Immutability Kotlin lets you write elegant null-safe code, and f
     </header>
     <section id="post-body">
         <p>Since the arrival of Java 17, I&rsquo;ve heard a few people wonder &ldquo;Does Kotlin Still Make Sense, or Should I just use Java?&rdquo;</p>
-<p>Short answer: Kotlin is still a far better language in terms of features, and its critical advantages will probably
-never come to Java.</p>
-<p>What do I consider critical advantages?</p>
+<p>Short answer: Kotlin is still a far better language, and some of its critical design features will never be matched in
+Java.</p>
 <h1 id="null-safety-and-immutability">Null Safety and Immutability</h1>
 <p>Kotlin lets you write elegant null-safe code, and forces you to be explicit about null-safety.</p>
 <p>For example, consider this data class:</p>
@@ -95,33 +94,51 @@ giving you an escape hatch if you choose to be unsafe about it.</p>
 </span><span class="c1"></span>
 <span class="c1">// you must use a null-safe operator
 </span><span class="c1"></span><span class="n">b</span><span class="o">?.</span><span class="n">length</span> <span class="c1">// which evaluates to null if &#39;b&#39; is null, or the length of &#39;b&#39; if it is not null
-</span></code></pre></div><p>Java bolted on the <code>Optional</code> container to try to solve this problem, but it&rsquo;s clumsy and rarely used in the code I&rsquo;ve
+</span><span class="c1"></span>
+<span class="c1">// or you can add the `!!` operator to a call if you&#39;re willing to accept the possibility of a null pointer situation.
+</span><span class="c1"></span><span class="n">b</span><span class="o">!!</span><span class="p">.</span><span class="n">length</span>
+</code></pre></div><p>Java bolted on the <code>Optional</code> container to try to solve this problem, but it&rsquo;s clumsy and rarely used in the code I&rsquo;ve
 seen.  That&rsquo;s a recurring theme in many of the features; Kotlin makes it easy to write concise and stable code.
 This one&rsquo;s just really really important in my opinion, and is worth the price of admission on its own.</p>
-<p>Official docs <a href="https://kotlinlang.org/docs/null-safety.html">here</a>.</p>
+<p>Official docs on null safety <a href="https://kotlinlang.org/docs/null-safety.html">here</a>.</p>
 <h1 id="some-of-my-favorite-features">Some of my favorite features</h1>
-<p>Now for the reasons I really enjoy writing Kotlin.
+<p>Now for some reasons I really enjoy writing Kotlin.
 There are plenty of other features I&rsquo;m not mentioning, but these are the favorites that come to mind.</p>
 <h3 id="collection-functions">Collection functions</h3>
 <p>There&rsquo;s a <em>ton</em> of them, and they&rsquo;re powerful and pragmatic.
 Full docs <a href="https://kotlinlang.org/docs/collections-overview.html">here</a>; some commonly used examples:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">numbersGreaterThanOne</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">).</span><span class="n">filter</span> <span class="p">{</span> <span class="k">it</span> <span class="p">&gt;</span> <span class="m">1</span> <span class="p">}</span> <span class="c1">// [2]
-</span><span class="c1">// for more advanced versions, see filterIndexed or filterNotNull
 </span><span class="c1"></span>
 <span class="k">val</span> <span class="py">stringLengths</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="s2">&#34;bear&#34;</span><span class="p">,</span> <span class="s2">&#34;cat&#34;</span><span class="p">).</span><span class="n">map</span> <span class="p">{</span> <span class="k">it</span><span class="p">.</span><span class="n">length</span> <span class="p">}</span> <span class="c1">// [4, 3]
 </span><span class="c1"></span>
 <span class="k">val</span> <span class="py">firstTwoElements</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">6</span><span class="p">).</span><span class="n">take</span><span class="p">(</span><span class="m">2</span><span class="p">)</span> <span class="c1">// [2, 4]
 </span><span class="c1"></span>
 <span class="k">val</span> <span class="py">sum</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">5</span><span class="p">).</span><span class="n">sumOf</span> <span class="p">{</span> <span class="k">it</span> <span class="p">}</span> <span class="c1">// 6
-</span><span class="c1"></span>
-</code></pre></div><h3 id="ide-support">IDE Support</h3>
+</span></code></pre></div><p>Java has streams, but its a small fraction of what&rsquo;s available in Kotlin, and is again a bolt-on rather than
+integral part of the language. Java has dozens; Kotlin has hundreds.</p>
+<h3 id="ide-support">IDE Support</h3>
 <p>I already had IDE support listed as one of the things I was going to highlight in this article, but something
-awesome just happened that caused me to place it here.  I&rsquo;m using markdown to author this content in IntelliJ, and
+awesome just happened that caused me to place it here.  I&rsquo;m using markdown to write this content in IntelliJ, and
 while I was typing the above code snippets, this happened:
 <img src="/kotlin-2021/ide-support-markdown.png" alt=""></p>
-<p>Syntax highlighting is pretty cool, but type-ahead support in markdown?  That&rsquo;s really cool.  There are lighter weight
+<p>Syntax highlighting is pretty cool, but type-ahead support in markdown?  How neat is that?  There are lighter weight
 editors out there, but none more powerful in my opinion. JetBrains authoring the language makes for tight IDE
-support.</p>
+support.  There are a ton of lesser known features like this available for the language.  Another example is
+the ability to paste Java code into a Kotlin project and have it automatically converted into Kotlin.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">printNames</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">names</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">name</span> <span class="o">:</span> <span class="n">names</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;name = &#34;</span> <span class="o">+</span> <span class="n">name</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span> 
+</code></pre></div><p>Paste the above into a Kotlin project in IntelliJ, and it&rsquo;ll be converted to this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">printNames</span><span class="p">(</span><span class="n">names</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">name</span> <span class="k">in</span> <span class="n">names</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">println</span><span class="p">(</span><span class="s2">&#34;name = </span><span class="si">$name</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>If you alt/option-click on the for, you&rsquo;ll see refactorings available for different styles of code.
+<img src="/kotlin-2021/refactor-function.gif" alt=""></p>
+<p>These are basic examples. They get more substantial and useful as the code complexity grows.</p>
 <h3 id="extension-functions">Extension functions</h3>
 <p>From the <a href="https://kotlinlang.org/docs/extensions.html">docs</a>:</p>
 <blockquote>
@@ -139,17 +156,46 @@ easily refactorable:</p>
 <span class="k">fun</span> <span class="nf">ByteArray</span><span class="p">.</span><span class="n">hash</span><span class="p">():</span> <span class="n">ByteArray</span> <span class="p">=</span> <span class="n">Hashing</span><span class="p">.</span><span class="n">murmur3_128</span><span class="p">().</span><span class="n">hashBytes</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="n">asBytes</span><span class="p">()</span>
 
 <span class="k">val</span> <span class="py">hashedBytes</span> <span class="p">=</span> <span class="s2">&#34;abc&#34;</span><span class="p">.</span><span class="n">toByteArray</span><span class="p">().</span><span class="n">hash</span><span class="p">()</span>
-</code></pre></div><h3 id="default-and-named-arguments">Default and named arguments</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">makeHttpCall</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">timeoutSeconds</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">10</span><span class="p">)</span> <span class="p">{</span> <span class="o">..</span><span class="p">.</span> <span class="p">}</span>
+</code></pre></div><p>Once you start using them, you&rsquo;ll find all sorts of ways to make your code cleaner. You can create DSLs effortlessly,
+and add missing features to code while keeping it readable and easily testable.</p>
+<h3 id="default-and-named-arguments">Default and named arguments</h3>
+<p>Default arguments are all about more compact, readable, and refactorable code.
+Named arguments give you readability when you want, and also reduce bugs in the case of multiple
+arguments with the same type.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">makeHttpCall</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">timeoutSeconds</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">10</span><span class="p">,</span> <span class="n">retries</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">3</span><span class="p">)</span> <span class="p">{</span> <span class="o">..</span><span class="p">.</span> <span class="p">}</span>
 
-<span class="c1">// both of these work
-</span><span class="c1"></span><span class="n">makeHttpCall</span><span class="p">(</span><span class="n">url</span> <span class="p">=</span> <span class="s2">&#34;http://foo.com&#34;</span><span class="p">,</span> <span class="n">timeoutSeconds</span> <span class="p">=</span> <span class="m">30</span><span class="p">)</span>
+<span class="c1">// all of these work
+</span><span class="c1"></span><span class="n">makeHttpCall</span><span class="p">(</span><span class="n">url</span> <span class="p">=</span> <span class="s2">&#34;http://foo.com&#34;</span><span class="p">,</span> <span class="n">timeoutSeconds</span> <span class="p">=</span> <span class="m">30</span><span class="p">,</span> <span class="n">retries</span> <span class="p">=</span> <span class="m">10</span><span class="p">)</span>
+<span class="n">makeHttpCall</span><span class="p">(</span><span class="n">url</span> <span class="p">=</span> <span class="s2">&#34;http://foo.com&#34;</span><span class="p">,</span> <span class="n">timeoutSeconds</span> <span class="p">=</span> <span class="m">30</span><span class="p">)</span>
+<span class="n">makeHttpCall</span><span class="p">(</span><span class="n">url</span> <span class="p">=</span> <span class="s2">&#34;http://foo.com&#34;</span><span class="p">,</span> <span class="n">retries</span> <span class="p">=</span> <span class="m">0</span><span class="p">)</span>
 <span class="n">makeHttpCall</span><span class="p">(</span><span class="n">url</span> <span class="p">=</span> <span class="s2">&#34;http://foo.com&#34;</span><span class="p">)</span>
-</code></pre></div><p>Named arguments become especially handy for functions with lots of similarly typed parameters.</p>
+</code></pre></div><p>With Java, you still need gobs of overloads or builders, and even then without named arguments usage gets tricky.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">makeHttpCall</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">makeHttpCall</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">30</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">makeHttpCall</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="kt">int</span> <span class="n">timeoutSeconds</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">makeHttpCall</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">timeoutSeconds</span><span class="o">,</span> <span class="n">3</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">makeHttpCall</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="kt">int</span> <span class="n">timeoutSeconds</span><span class="o">,</span> <span class="kt">int</span> <span class="n">retries</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// ...
+</span><span class="c1"></span><span class="o">}</span>
+
+
+<span class="n">makeHttpCall</span><span class="o">(</span><span class="s">&#34;http://foo.com&#34;</span><span class="o">,</span> <span class="n">30</span><span class="o">,</span> <span class="n">10</span><span class="o">);</span>
+<span class="c1">// which arg is the timeout? hope i didn&#39;t screw up.
+</span><span class="c1"></span><span class="n">makeHttpCall</span><span class="o">(</span><span class="s">&#34;http://foo.com&#34;</span><span class="o">,</span> <span class="n">10</span><span class="o">);</span> 
+<span class="n">makeHttpCall</span><span class="o">(</span><span class="s">&#34;http://foo.com&#34;</span><span class="o">);</span> 
+<span class="c1">// how do we call with just a url and retries? 
+</span><span class="c1">// we&#39;d need a new method that doesn&#39;t conflict with the 
+</span><span class="c1">// existing method that takes a String and int.
+</span></code></pre></div><p>Docs <a href="https://kotlinlang.org/docs/functions.html#named-arguments">here</a></p>
 <h3 id="string-interpolation">String interpolation</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">score</span> <span class="p">=</span> <span class="m">1</span>
 <span class="n">println</span><span class="p">(</span><span class="s2">&#34;the score is </span><span class="si">$score</span><span class="s2">.  The score minus one is </span><span class="si">${score - 1}</span><span class="s2">&#34;</span><span class="p">)</span>
-</code></pre></div><h3 id="data-classes-and-copy">Data classes and .copy()</h3>
+</code></pre></div><p>It doesn&rsquo;t get any cleaner than that.</p>
+<h3 id="data-classes-and-copy">Data classes and .copy()</h3>
 <p>Java finally has records now. Something I use all the time though, especially when combined with
 immutable data structures, is the <code>copy</code> function. For example a common test data setup
 pattern looks something like this:</p>
@@ -172,7 +218,7 @@ most common form I use looks like this:</p>
 <p><code>(Int) -&gt; String</code></p>
 <p>which can be broken down like this:<br>
 <img src="/kotlin-2021/function-type.png" alt=""></p>
-<p>An example function type that takes two Int parameters and return a String would be:<br>
+<p>An example function type that takes two Int parameters and returns a String would be:<br>
 <code>(Int, Int) -&gt; String</code></p>
 <p>A function with no parameters that returns a String would be:<br>
 <code>() -&gt; String</code></p>
@@ -189,7 +235,9 @@ How about pure dependency injection without the need for mocks?</p>
 
 <span class="c1">// a &#34;real&#34; Publisher
 </span><span class="c1"></span><span class="k">class</span> <span class="nc">Publisher</span> <span class="p">{</span>
-    <span class="k">fun</span> <span class="nf">publishStatus</span><span class="p">(</span><span class="n">status</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span>
+    <span class="k">fun</span> <span class="nf">publishStatus</span><span class="p">(</span><span class="n">status</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// publish the status via some integration
+</span><span class="c1"></span>    <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// a service that performs complex logic that needs to be unit tested
@@ -243,7 +291,7 @@ How about pure dependency injection without the need for mocks?</p>
 </span><span class="c1"></span>        <span class="c1">// i.e. we&#39;ve injected behavior into the service indicating a failure should happen
 </span><span class="c1"></span>        <span class="c1">// and we should handle it properly
 </span><span class="c1"></span>        <span class="n">shouldThrow</span><span class="p">&lt;</span><span class="n">RuntimeException</span><span class="p">&gt;</span> <span class="p">{</span>
-            <span class="n">fooService</span><span class="p">.</span><span class="n">handleStatus</span><span class="p">(</span><span class="s2">&#34;yay&#34;</span><span class="p">)</span>  
+            <span class="n">fooService</span><span class="p">.</span><span class="n">handleStatus</span><span class="p">(</span><span class="s2">&#34;should fail&#34;</span><span class="p">)</span>  
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -259,7 +307,7 @@ in my opinion.</p>
 appropriate.</p>
 <h3 id="lots-more-common-idioms">Lots more common idioms</h3>
 <p>The Kotlin docs maintain a list of frequenty used idioms <a href="https://kotlinlang.org/docs/idioms.html">here</a>.
-Check it out for more examples of pragmatic and clean code.</p>
+It&rsquo;s a great place for practical examples of good code.</p>
 
     </section>
 </article>

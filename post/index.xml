@@ -14,9 +14,9 @@
       
       <guid>https://dantanner.com/post/kotlin-v-java/</guid>
       <description>Since the arrival of Java 17, I&amp;rsquo;ve heard a few people wonder &amp;ldquo;Does Kotlin Still Make Sense, or Should I just use Java?&amp;rdquo;
-Short answer: Kotlin is still a far better language in terms of features, and its critical advantages will probably never come to Java.
-What do I consider critical advantages?
-Null Safety and Immutability Kotlin lets you write elegant null-safe code, and forces you to be explicit about null-safety.</description>
+Short answer: Kotlin is still a far better language, and some of its critical design features will never be matched in Java.
+Null Safety and Immutability Kotlin lets you write elegant null-safe code, and forces you to be explicit about null-safety.
+For example, consider this data class:</description>
     </item>
     
     <item>

@@ -60,39 +60,6 @@ Java has streams, but its a small fraction of what's available in Kotlin, and is
 integral part of the language. Java has dozens; Kotlin has hundreds.
 
 
-### IDE Support
-I already had IDE support listed as one of the things I was going to highlight in this article, but something
-awesome just happened that caused me to place it here.  I'm using markdown to write this content in IntelliJ, and
-while I was typing the above code snippets, this happened:
-![](/kotlin-2021/ide-support-markdown.png)
-
-Syntax highlighting is pretty cool, but type-ahead support in markdown?  How neat is that?  There are lighter weight
-editors out there, but none more powerful in my opinion. JetBrains authoring the language makes for tight IDE
-support.  There are a ton of lesser known features like this available for the language.  Another example is 
-the ability to paste Java code into a Kotlin project and have it automatically converted into Kotlin.
-
-```java
-public void printNames(List<String> names) {
-    for (String name : names) {
-        System.out.println("name = " + name);
-    }
-} 
-```
-
-Paste the above into a Kotlin project in IntelliJ, and it'll be converted to this:
-```kotlin
-fun printNames(names: List<String>) {
-    for (name in names) {
-        println("name = $name")
-    }
-}
-```
-
-If you alt/option-click on the for, you'll see refactorings available for different styles of code. 
-![](/kotlin-2021/refactor-function.gif)
-
-These are basic examples. They get more substantial and useful as the code complexity grows.
-
 ### Extension functions
 From the [docs](https://kotlinlang.org/docs/extensions.html):
 > Kotlin provides the ability to extend a class with new functionality without having to inherit from the class or

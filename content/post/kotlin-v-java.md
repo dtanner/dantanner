@@ -20,7 +20,7 @@ data class Person(val name: String)
 Because of the `val` keyword, you can't forget to set name when instantiating a Person, and you can't set it to null later.  
 That's an entire class of nasty bugs wiped out with a single elegant language design.
 
-Conversely, when something _can_ be null, the compiler foreces you to explicitly handle it in a concise manner, also
+Conversely, when something _can_ be null, the compiler forces you to explicitly handle it in a concise manner, also
 giving you an escape hatch if you choose to be unsafe about it.
 ```kotlin
 var b: String? = "abc"

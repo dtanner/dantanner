@@ -17,6 +17,7 @@ it means there are more things you need to understand.
 you have to know how things work when they break and when you need to make changes. Being tied to a framework 
 without control also means you don't have the power to fix some things, like critical security flaws from one of the 
 many dependencies you may not even know exist.
+(show what dependencies tree looks like)
 
 state that i want you to make a conscious note every time a framework gets in the way of the core problem you're solving. i want you to feel unease when you come across unnecessary complexity.
 
@@ -24,7 +25,7 @@ remind of its history and why it was useful back then (scan original book for it
 remark that it's now 2022 and we have languages like Kotlin, Scala, and Clojure on the JVM
 masks the essential complexity
 makes it both easier and more complex
-every team using a magical framework needs to have at least ine orrson tgat understands the framework in depth
+every team using a magical framework needs to have at least one person that understands the framework in depth
 there are classes of problems to be solved. eg business workflow, performance, scalability, configuration, others. 
 some are essential, some are waste
 

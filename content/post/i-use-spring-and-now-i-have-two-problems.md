@@ -1,19 +1,36 @@
 ---
-title: "I Use Spring And Now I Have Two Problems"
+title: "Annotation Infestation"
 date: "2022-01-26 20:00:00"
 categories: [spring, java]
 draft: true
 ---
 
+image prompts: https://clipdrop.co/stable-diffusion
+- an infestation of parasitic bugs surrounding a piece of paper with words on it
 
-titles:
-the ceremony of spring
-java developers and their addiction to unnecessary complexity
-the strange cult of spring
-the spring religion
+negative prompts:
+ugly, tiling, poorly drawn hands, poorly drawn feet, poorly drawn face, out of frame, extra limbs, disfigured, deformed, body out of frame, bad anatomy, watermark, signature, cut off, low contrast, underexposed, overexposed, bad art, beginner, amateur, distorted face, blurry, draft, grainy
+
+# titles
+annotation infestation
+spring rituals
+annotation fixation
+enterprise industrial complex
+with annotation frameworks, you get more
+
+
+
+# one idea - bad sell
+- attack vector? more like paying homage to decades of early internet experience
+- ORMs 
+
+
 
 using frameworks like spring doesn't mean there are less things you need to understand. 
 it means there are more things you need to understand.
+spring + apache http client
+spring + apache kafka
+spring + netty
 you have to know how things work when they break and when you need to make changes. Being tied to a framework 
 without control also means you don't have the power to fix some things, like critical security flaws from one of the 
 many dependencies you may not even know exist.
@@ -47,4 +64,80 @@ configuration
 dependency injection and testing
     pure DI
 
+| Benefits of Annotation Frameworks in 2003   |
+|---------------------------------------------|
+| helps me unit test my code more easily      |
+| helps me configure my application           |
+| reduces application server vendor lock-in   |
+| helps me manage my large monolithic app     |
+| provides a productive MVC patterns          |
+| reduces dependency management issues        |
+| helps me package my application more easily |
 
+Remember that Spring was created as a lighter weight alternative to the bloated, vendor-driven standards at the time.
+Back then, projects succeeded DESPITE the technology available.
+This was before Ruby on Rails, Django, JSON, Redis, Elasticsearch, nginx, AWS, GCP, SSDs, and so many other of the tools and technologies that let us *easily* integrate and scale today.
+
+
+# The fall of XML
+verbose
+
+# The rise of annotations
+AOP was popular at the time
+
+# email rant
+what is the most touted feature of spring? the inversion of control.
+what was the bug selling point? it enabled you to separate concerns, and let you unit test your code.  what was the configuration language? xml
+what happened to xml? it fell out of favor due to its verbosity, replaced by annotations.
+but with annotations, you don't unit test your code any more....
+
+but annotations make your code easier to reason about, like the combination of bean config annotations.
+
+easier to debug? like trying to figure out why @transactional isn't working the way you expect.
+
+"it works for me."
+so does the cobol running in your mainframe.
+this isn't an insult to cobol. it's an insult to the lethargic attitude of advanced beginners that ignore the fact that the problems spring was origin invented to solve don't exist any more.
+
+don't like being considered a legacy programmer? too bad; your continued support for anotation based code  is repelling experienced and new programmers of other languages upon seeing "enterprise java".
+from a recent polll in my company's go and puthon channels, here's how programmers of those languagesanswered the question "what do you strongly dislike about java?"
+...
+
+languages with popular annotations frameworks, languages in the most loved list
+
+people that have used ktor, http4k, and spring. people that prefer annotation frameworks.
+
+oh but micronaut fixed all that!
+replace your web server's startup time from 10 seconds to a half second. congratulations. you still have all the same problems as spring.
+
+twice a week i hear:
+tried to upgrade and it looks like vomit
+get an error configuring some bean
+
+to go along with "why can't i make my ORM do what i want it to do?" but that's a different problem
+
+### it represents a larger threat to the long term popularity of java than many people realize
+
+### qualified opinions
+i had this idea last night trying to correlate language and tool preference along with a person's level of qualification:
+create a survey, asking people to to give a recommendation score to each tool/technique along with indicating how much experience they have with each option. e.g. something like:
+Technique   Recommendation  Production Experience Amount
+----------          -----------------          --------------------
+Spring              do not use                over 10 years
+Micronaut       do not use                < 1 month
+Vanilla Kotlin  Recommended         5-10 years
+
+
+### IDE complexities
+Also note that annotation processing is supported during the compilation process. However, there are some edge cases that are quite difficult to handle when the code is compiled by IntelliJ IDEA, for example, when the annotation processor is defined in one of the Gradle subprojects.
+
+So, this is the point we are at right now. We’re still experimenting with Spring and Micronaut run configurations in delegated mode and are working constantly on improving the Gradle delegation process in the IDE.
+
+# on learning and change
+- boring tech
+- fundamental knowledge
+- fads
+- no silver bullets
+- but there are genuine, improvements
+- humans are resistant to change
+- our industry is immature and in massive flux

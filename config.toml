@@ -16,8 +16,7 @@ pygmentsUseClasses = true
     name = "Dan Tanner"
     description = "Personal and Semi-Professional Blog"
     bio = ""
-	# Enter optionally your twitter account
-    twitter = "edgescope"
+    twitter = ""
 	enableRSS = true
 
 	# Integrate Javascript files or stylesheets by adding the url to the external assets or by
@@ -51,5 +50,4 @@ pygmentsUseClasses = true
     socialIconStyle = "circle"
 
 [social]
-    twitter  = "https://www.twitter.com/edgescope"
     github   = "https://www.github.com/dtanner"

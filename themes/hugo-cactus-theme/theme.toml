@@ -3,8 +3,8 @@ license = "MIT"
 licenselink = "https://github.com/digitalcraftsman/hugo-cactus-theme/blob/master/License.md"
 description = "A minimalistic and responsive theme for bloggers."
 homepage = "https://github.com/digitalcraftsman/hugo-cactus-theme"
-tags = ["blog", "disqus", "google analytics", "rss", "syntax highlighting"]
-features = ["disqus", "google analytics", "rss", "syntax highlighting", "blog", "pagination", "sharing options"]
+tags = ["blog", "rss", "syntax highlighting"]
+features = ["rss", "syntax highlighting", "blog", "pagination", "sharing options"]
 min_version = 0.20
 
 [author]

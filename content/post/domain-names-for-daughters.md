@@ -1,6 +1,6 @@
 ---
 title: "Domain names for daughters"
-updated: "2009-06-29 04:36:53"
+date: "2009-06-29 04:36:53"
 description: 
 categories: [domain-names]
 ---

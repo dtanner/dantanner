@@ -54,7 +54,7 @@ I didn't choose Java because no one ever wants to touch Java after they've used 
 # The Assignment
 The assignment is to make a little program that reads input from the user representing cards in a deck. 
 The user enters a number to represent each card/suit, then when the user enters -1, the program displays the hand and calculates a score
-based on arbitray scoring rules meant to exercise basic logic and programming.
+based on arbitrary scoring rules meant to exercise basic logic and programming.
 Implementations here:
 [C](https://gist.github.com/dtanner/b3cf09c59b0fd7e1389f635d817facd6) | 
 [Python](https://gist.github.com/dtanner/a7a154a12600519cb1fda47723c3e1f1) | 

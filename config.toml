@@ -1,53 +1,83 @@
 # Site settings
 baseurl = "https://dantanner.com/"
-languageCode = "en-us"
 title = "Dan Tanner"
 themesDir = "themes"
-theme = "hugo-cactus-theme"
+theme = "hermit-v2"
+
+languageCode = "en-us"
+#defaultContentLanguage = "en"
+#defaultContentLanguageInSubdir = true
+
 # Enter your tracking code to enable Google Analytics
 googleAnalytics = ""
+
 # Disable comments by leaving disqusShortname empty
 disqusShortname = ""
+
 PygmentsCodeFences = true
-PygmentsStyle = "arduino"
+#PygmentsStyle = "arduino"
 pygmentsUseClasses = true
 
+rssLimit = 10
+
+copyright = ""
+enableEmoji = true
+
+[params.author]
+  name = "Dan Tanner"
+  about = "Personal and Semi-Professional Blog"
+
+[taxonomies]
+  tag = "tags"
+
 [params]
-    name = "Dan Tanner"
-    description = "Personal and Semi-Professional Blog"
-    bio = ""
-    twitter = ""
-	enableRSS = true
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04 -0700"
 
-	# Integrate Javascript files or stylesheets by adding the url to the external assets or by
-	# linking local files with their path relative to the static folder, e.g. "css/styles.css"
-	customCSS = []
-	customJS  = []
+  # description = "CHANGE ME SITE DESCRIPTION"
+  # images = [""]
+  themeColor = "#494f5c"
 
-	# The variables below are optionally too and can be used to
-	# translate or customize each string of the theme.
+  #homeSubtitle = "CHANGE ME HOME SUBTITLE"
+  footerCopyright = ""
+  # bgImg = ""
+  # gitUrl = "https://github.com/1bl4z3r/hermit-V2/tree/staging"
 
-	# Navigation links
-	home = ""
-    about = ""
-	subscribe = ""
-	# Pagination links
-	olderPosts = ""
-	newerPosts = ""
-	readMore = ""
-	copyright = ""
-	# Sharing options and author information in posts
-	aboutAuthor = ""
-	tweet = ""
-	share = ""
-	# 404 page
-	title404 = ""
-	subtitle404 = ""
+  justifyContent = false
 
-	# Choose a font for the social icons in the footer. Either "mono-social" or "font-awesome"
-	iconFont = "mono-social"
-    # The social icons can be styled differently if you use mono as font - circle, rounded, or empty
-    socialIconStyle = "circle"
+  relatedPosts = true
+  code_copy_button = true
 
-[social]
-    github   = "https://www.github.com/dtanner"
+  homeSubtitlePrinter = true
+  scrollToTop = true
+  global_mathjax = false
+  readTime = true
+  readTimeSeparator = " | "
+  # legacyLayout = false
+  shareSocial = true
+  # googleTagManager = "GTM-XXXXXXXX"
+  # tagSymbol = "#"
+  # categorySymbol = "⊲"
+
+  [[params.socialLinks]]
+    name = "github"
+    url = "https://www.github.com/dtanner"
+
+  [[params.socialLinks]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/omgdan/"
+
+[menu]
+
+  [[menu.main]]
+    name = "Posts"
+    url = "post/"
+    weight = 10
+
+  [[menu.main]]
+    name = "About"
+    url = "about/"
+    weight = 20
+

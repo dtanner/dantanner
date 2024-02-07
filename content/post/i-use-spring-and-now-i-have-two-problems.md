@@ -123,7 +123,7 @@ AOP was popular at the time
 
 # email rant
 what is the most touted feature of spring? the inversion of control.
-what was the bug selling point? it enabled you to separate concerns, and let you unit test your code.  what was the configuration language? xml
+what was the big selling point? it enabled you to separate concerns, and let you unit test your code.  what was the configuration language? xml
 what happened to xml? it fell out of favor due to its verbosity, replaced by annotations.
 but with annotations, you don't unit test your code any more....
 
@@ -167,6 +167,7 @@ Spring              do not use                over 10 years
 Micronaut       do not use                < 1 month
 Vanilla Kotlin  Recommended         5-10 years
 
+what are the age ranges of people that work on spring code vs other mainstream languages?
 
 ### IDE complexities
 Also note that annotation processing is supported during the compilation process. However, there are some edge cases that are quite difficult to handle when the code is compiled by IntelliJ IDEA, for example, when the annotation processor is defined in one of the Gradle subprojects.

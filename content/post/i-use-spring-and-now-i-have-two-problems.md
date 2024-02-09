@@ -13,7 +13,7 @@ ugly, tiling, poorly drawn hands, poorly drawn feet, poorly drawn face, out of f
 
 # titles
 annotation infestation
-spring rituals
+spring rites
 annotation fixation
 enterprise industrial complex
 with annotation frameworks, you get more

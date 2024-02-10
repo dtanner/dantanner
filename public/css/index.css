@@ -6,12 +6,17 @@
 
 /* Theme colors */
 :root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+
 	--color-gray-20: #e0e0e0;
 	--default-text-color: #444;
 	--faint-text-color: #666;
 	--alternate-table-row-color: #fcfcfc;
 
 	--background-color: #fff;
+
+	--code-fence-background-color: #e8eff7;
 
 	--text-color: var(--default-text-color);
 	--text-color-link: #285CA2FF;
@@ -25,6 +30,8 @@
 		--default-text-color: #e0e0e0;
 		--faint-text-color: #888;
 		--alternate-table-row-color: #333;
+
+		--code-fence-background-color: #313328;
 
 		--text-color: var(--default-text-color);
 		--text-color-link: #82A3C7FF;
@@ -124,6 +131,7 @@ table tr:nth-child(odd) {
 pre,
 code {
 	font-family: var(--font-family-monospace);
+	background-color: var(--code-fence-background-color);
 }
 pre:not([class*="language-"]) {
 	margin: .5em 0;
@@ -142,7 +150,6 @@ pre:not([class*="language-"]) {
 }
 code {
 	word-break: break-all;
-	/*background-color: var(--color-gray-20);*/
 }
 
 /* Header */

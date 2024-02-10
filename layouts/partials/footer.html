@@ -1,7 +1,0 @@
-<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-	<p>
-		&copy; {{ now.Format "2006" }} <a href="{{ .Site.BaseURL }}">{{ .Site.Params.author.name }}</a>
-		&#183; <a href="{{ "post/index.xml" | absLangURL }}" target="_blank" title="rss">{{ partial "svg.html" (dict "context" . "name" "rss") }}</a>
-	</p>
-
-</footer>

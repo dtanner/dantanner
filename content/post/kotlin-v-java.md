@@ -1,17 +1,16 @@
 ---
 title: "Kotlin vs Java in 2021"
-description:
-date: "2021-10-26 20:00:00"
-tags: 
+description: "A brief comparison of Kotlin and Java in 2021"
+date: 2021-10-26
+tags:
   - kotlin
   - java
-toc: true
-scrolltotop: true
+  - productivity
 ---
 
 Since the arrival of Java 17, I've heard a few people wonder "Does Kotlin still make sense, or should I just use Java?"
 
-Short answer: Kotlin is still a far better language, and some of its critical design features will never be matched in 
+My opinion: Kotlin is still a far better language, and some of its critical design features will never be matched in
 Java.
 
 ## Null Safety and Immutability
@@ -21,7 +20,7 @@ For example, consider this data class:
 ```kotlin
 data class Person(val name: String)
 ```
-Because of the `val` keyword, you can't forget to set name when instantiating a Person, and you can't set it to null later.  
+Because of the `val` keyword, you can't forget to set name when instantiating a Person, and you can't set it to null later.
 That's an entire class of nasty bugs wiped out with a single elegant language design.
 
 Conversely, when something _can_ be null, the compiler forces you to explicitly handle it in a concise manner, also
@@ -60,7 +59,7 @@ val firstTwoElements = listOf(2, 4, 6).take(2) // [2, 4]
 val sum = listOf(1, 5).sumOf { it } // 6
 ```
 
-Java has streams, but its a small fraction of what's available in Kotlin, and is again a bolt-on rather than 
+Java has streams, but its a small fraction of what's available in Kotlin, and is again a bolt-on rather than
 integral part of the language. Java has dozens; Kotlin has hundreds.
 
 
@@ -86,13 +85,13 @@ fun ByteArray.hash(): ByteArray = Hashing.murmur3_128().hashBytes(this).asBytes(
 val hashedBytes = "abc".toByteArray().hash()
 ```
 
-Once you start using them, you'll find all sorts of ways to make your code cleaner. You can create DSLs effortlessly, 
-and add missing features to code while keeping it readable and easily testable. 
+Once you start using them, you'll find all sorts of ways to make your code cleaner. You can create DSLs effortlessly,
+and add missing features to code while keeping it readable and easily testable.
 
 ### Default and named arguments
 
 Default arguments are all about more compact, readable, and refactorable code.
-Named arguments give you readability when you want, and also reduce bugs in the case of multiple 
+Named arguments give you readability when you want, and also reduce bugs in the case of multiple
 arguments with the same type.
 
 ```kotlin
@@ -122,10 +121,10 @@ public void makeHttpCall(String url, int timeoutSeconds, int retries) {
 
 makeHttpCall("http://foo.com", 30, 10);
 // which arg is the timeout? hope i didn't screw up.
-makeHttpCall("http://foo.com", 10); 
-makeHttpCall("http://foo.com"); 
-// how do we call with just a url and retries? 
-// we'd need a new method that doesn't conflict with the 
+makeHttpCall("http://foo.com", 10);
+makeHttpCall("http://foo.com");
+// how do we call with just a url and retries?
+// we'd need a new method that doesn't conflict with the
 // existing method that takes a String and int.
 ```
 
@@ -138,7 +137,7 @@ val score = 1
 println("the score is $score.  The score minus one is ${score - 1}")
 ```
 
-It doesn't get any cleaner than that.  
+It doesn't get any cleaner than that.
 
 ### Data classes and .copy()
 Java finally has records now. Something I use all the time though, especially when combined with
@@ -160,22 +159,22 @@ fun randomPerson(): Person {
 
 ### Function types as class parameters
 This is a really powerful and flexible capability.  It does come at a slight cost in clarity, and IDE support is
-limited, but is preferred by myself and many others I've worked with.   
+limited, but is preferred by myself and many others I've worked with.
 First off, what's a function type?  Docs [here](https://kotlinlang.org/docs/lambdas.html#function-types), but the
 most common form I use looks like this:
 
 `(Int) -> String`
 
-which can be broken down like this:  
+which can be broken down like this:
 ![](/kotlin-2021/function-type.png)
 
-An example function type that takes two Int parameters and returns a String would be:  
+An example function type that takes two Int parameters and returns a String would be:
 `(Int, Int) -> String`
 
-A function with no parameters that returns a String would be:  
+A function with no parameters that returns a String would be:
 `() -> String`
 
-A function that doesn't return a useful value must specify `Unit`. e.g.:  
+A function that doesn't return a useful value must specify `Unit`. e.g.:
 `(Int) -> Unit`
 
 OK great - you can define functions that have a signature but don't have a name. What can we do with that?
@@ -209,29 +208,29 @@ class FooService(
 
 // the class wiring up the real stuff together
 class Application {
-    
+
     private val dataRepository = DataRepository()
     private val publisher = Publisher()
-    
+
     private val fooService = FooService(
         saveStatus = dataRepository::saveStatus,
         publishStatus = publisher::publishStatus
     )
-    
+
     // whatever else the application needs to do to get wired up and run
 }
 
 // the service unit tests
 class FooServiceTest {
-    
+
     @Test fun `everything works great`() {
         val fooService = FooService(
             // set the saveStatus parameter to a lambda that ignores the String parameter and returns true
             saveStatus = { _ -> true },
-            // set the publishStatus parameter to a lambda that ignores everything and returns Unit implicitly 
+            // set the publishStatus parameter to a lambda that ignores everything and returns Unit implicitly
             publishStatus = { }
         )
-        
+
         fooService.handleStatus("yay")  // along with whatever assertions you want
     }
 
@@ -239,7 +238,7 @@ class FooServiceTest {
         val fooService = FooService(
             // set the saveStatus parameter to a lambda that blows up, simulating a problem in the repository
             saveStatus = { _ -> throw RuntimeException("the sky is falling") },
-            // set the publishStatus parameter to a lambda that ignores everything and returns Unit implicitly 
+            // set the publishStatus parameter to a lambda that ignores everything and returns Unit implicitly
             publishStatus = { }
         )
 
@@ -247,14 +246,14 @@ class FooServiceTest {
         // i.e. we've injected behavior into the service indicating a failure should happen
         // and we should handle it properly
         shouldThrow<RuntimeException> {
-            fooService.handleStatus("should fail")  
+            fooService.handleStatus("should fail")
         }
     }
 }
 ```
 
 No DI frameworks needed. No mocking needed. Just pure function signatures with full precise control of the contract
-behaviors you're building and testing.  
+behaviors you're building and testing.
 This works great for situations like this where you need to wire up a single production implementation and want one
 or more test implementations.  The compiler will keep the code honest.  But, one caveat is that the `Find Usages`
 functionality of the IDE doesn't work because the functions are too ambiguous for the current versions of IntelliJ.

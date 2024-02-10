@@ -1,18 +1,21 @@
 ---
 title: "50 Million Essential Homeowner Tools"
-date: "2021-02-06 10:00:00"
-categories: [homeowner, essential, tools]
-draft: false
+description: "Some essential homeowner tools for basic maintenance and improvements."
+date: 2021-02-06
+tags:
+  - home
+  - tools
+  - productivity
 ---
 
 # Overview
-This article summarizes what I think of as essential homeowner tools for people interested in basic maintenance and improvements. With the amount of information available online today, it's easier than ever to learn. For example, I love [Project Farm](https://www.youtube.com/channel/UC2rzsm1Qi6N1X-wuOg_p0Ng).  Unfortunately there's also a lot of incomplete and just plain bad information out there.  
+This article summarizes what I think of as essential homeowner tools for people interested in basic maintenance and improvements. With the amount of information available online today, it's easier than ever to learn. For example, I love [Project Farm](https://www.youtube.com/channel/UC2rzsm1Qi6N1X-wuOg_p0Ng).  Unfortunately there's also a lot of incomplete and just plain bad information out there.
 
 So this my attempt to condense twenty years of home ownership experience into a concise but complete starting point.  I made it by walking around my garage and basement, taking pictures of all my tools, then narrowed it down to the things I consider essential.  Then I showed this list to a few friends, and they gave me some more great ideas.
 
 This is by no means a complete list. A person's list of tools will grow over time as they tackle more specific and larger projects. For example, I have a cordless nail gun that I really like, but it's not on this list. I used it when I installed trim in my basement remodel. I don't use it often though, and don't consider it an essential tool that everyone needs.
 
-I've also tried to categorize tools. This is useful for organization and what interests you. For example, tiling a kitchen backsplash is easier than you might think, but mudding drywall is really hard to do well without experience. 
+I've also tried to categorize tools. This is useful for organization and what interests you. For example, tiling a kitchen backsplash is easier than you might think, but mudding drywall is really hard to do well without experience.
 
 # What You Don't Need
 I mention this up front because in a perfect world, we'd be able to look for a "high quality home tool kit" online or at a local hardware store, and be presented with some good options.  Unfortunately I have never seen a decent home tool kit. They're cheap and low quality. Only buy one if you can't afford to get better tools, and then replace them as you can over time.  On the other hand, don't waste your money with a 10-piece cordless combo power tool kit. While it's useful to have a single type of battery for multiple tools, you should spend your money on tools you'll actually use.
@@ -50,7 +53,7 @@ You'll probably use all of these within your first year of home ownership.
 |---|---|---|
 | ![](/homeowner-tools/caulk-gun.png)  | **Caulk&nbsp;Gun** | Once again, get a good one; it costs $5 more than a cheap one. You'll use it for decades. |
 | ![](/homeowner-tools/mason-chisel.png)  | **Mason's&nbsp;Chisel** | I say masonry, and it is good for cutting that, but it's also good for smashing against anything you don't want to use a finer tool for. WEAR SAFETY GLASSES! |
-| ![](/homeowner-tools/hacksaw.png)  | **Hacksaw** | Good for cutting plastic and metal pipes. 
+| ![](/homeowner-tools/hacksaw.png)  | **Hacksaw** | Good for cutting plastic and metal pipes.
 | ![](/homeowner-tools/staple-gun.png)  | **Staple&nbsp;Gun** | Useful for stuff like screen repair. I like the ones made of aluminum because they're much lighter than steel. |
 | ![](/homeowner-tools/air-compressor.png)  | **Small&nbsp;Air&nbsp;Compressor** | These aren't required, but are handy for filling things up with air and running small air-driven tools. I used to have a giant one but got rid of it because its space-to-usefulness ratio was bad. |
 | ![](/homeowner-tools/shop-vac.png)  | **Shop&nbsp;Vac** | I have a big one for project cleanup, and a cheap little one for cleaning out the car. |
@@ -97,7 +100,7 @@ You'll probably use all of these within your first year of home ownership.
 | ![](/homeowner-tools/brushes.png)  | **Brushes** | Again, use high quality brushes because you'll have better results and they'll last longer. Clean these using a brush cleaning tool immediately when you're done. There are different sizes and shapes depending on the type of job you're doing, so if you're not sure ask for help at the paint desk.  |
 
 # Storage
-When you first start out, you don't need to think too much about storage because you don't have that much stuff. It's helpful to be organized from the start, and grow your storage solutions as you accumulate more.  
+When you first start out, you don't need to think too much about storage because you don't have that much stuff. It's helpful to be organized from the start, and grow your storage solutions as you accumulate more.
 |  |  |  |
 |---|---|---|
 | ![](/homeowner-tools/shelving.png)  | **Shelving** | I started with using cheap plastic shelving, and it was ok. What I'm currently using is Gladiator shelving from Home Depot. I like it because it's strong, deep, and easy to assemble. I had also bought some cheaper shelving from Northern Tool at the time, and there's a pretty big difference in quality and durability. Get the deepest shelving you can fit. |
@@ -106,10 +109,10 @@ When you first start out, you don't need to think too much about storage because
 | ![](/homeowner-tools/tool-bag.png)  | **Tool&nbsp;Bag** | I use a tool holder accessory that goes over a 5-gallon bucket to hold my most-often used tools. I'd rather have a nice little tool bag though. |
 
 # A Note On Corded vs. Electric and Gas
-Cordless electric tools have come a long way, and they're my first choice if I don't absolutely need a corded or gas-powered tool.  Leaf blower, weed trimmer, lawn mower, even snowblower; they're all electric now and so much better in terms of maintenance and ease of use.  
+Cordless electric tools have come a long way, and they're my first choice if I don't absolutely need a corded or gas-powered tool.  Leaf blower, weed trimmer, lawn mower, even snowblower; they're all electric now and so much better in terms of maintenance and ease of use.
 
 # Where To Buy
-Buy at your local small shop if you can. Not only because it's supporting a smaller business, but because they can often help you better.  Don't be surprised if they have the thing you need that you couldn't find at the big box store too, especially if you need to get creative with a solution. 
+Buy at your local small shop if you can. Not only because it's supporting a smaller business, but because they can often help you better.  Don't be surprised if they have the thing you need that you couldn't find at the big box store too, especially if you need to get creative with a solution.
 
 
 Hope it helps! Once again, please protect your fingers and eyes, read the manual, watch a video from someone that looks like they know what they're doing, and ask for help when you need it.

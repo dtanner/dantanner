@@ -1,8 +1,10 @@
 ---
 title: "java.time for the extremely impatient"
-description:
-date: "2016-04-13 02:26:00"
-categories: [joda-time, java.time, java]
+description: "A quick primer on the java.time package"
+date: 2016-04-13
+tags: 
+  - java
+  - time
 ---
 
 This is a super quick history and primer for those familiar with java, but unfamiliar with [Joda-Time](http://www.joda.org/joda-time/).

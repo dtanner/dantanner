@@ -1,8 +1,12 @@
 ---
 title: "Chaperone"
-date: "2020-04-12 20:00:00"
-categories: [kotlin, bash, monitor, docker]
-draft: false
+description: "A simple and extensible monitoring tool"
+date: 2020-04-12
+tags:
+  - monitoring
+  - docker
+  - kotlin
+  - bash
 ---
 
 I built a basic but extensible monitoring tool to help people watch their systems.  It's called *Chaperone*, and it's [open-sourced on github](https://github.com/dtanner/chaperone). 

@@ -1,19 +1,8 @@
+.idea
 
-# Created by https://www.gitignore.io/api/osx,vim,hugo
-# Edit at https://www.gitignore.io/?templates=osx,vim,hugo
-
-### Hugo ###
-# gitginore template for Hugo projects
-# website: https://gohugo.io
-
-# generated files by hugo
-/public/
-/resources/_gen/
-
-# executable may be added to repository
-hugo.exe
-hugo.darwin
-hugo.linux
+_site/
+node_modules/
+package-lock.json
 
 ### OSX ###
 # General
@@ -62,6 +51,3 @@ tags
 # Persistent undo
 [._]*.un~
 
-.hugo_build.lock
-
-# End of https://www.gitignore.io/api/osx,vim,hugo

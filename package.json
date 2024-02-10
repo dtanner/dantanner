@@ -1,0 +1,37 @@
+{
+	"name": "dantanner",
+	"version": "8.0.0",
+	"description": "Personal blog",
+	"scripts": {
+		"build": "npx @11ty/eleventy",
+		"build-ghpages": "npx @11ty/eleventy",
+		"start": "npx @11ty/eleventy --serve",
+		"debug": "DEBUG=Eleventy* npx @11ty/eleventy",
+		"debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
+		"benchmark": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/dtanner/dantanner.git"
+	},
+	"author": {
+		"name": "Dan Tanner",
+		"email": "dan@dantanner.com",
+		"url": "https://dantanner.com"
+	},
+	"license": "MIT",
+	"engines": {
+		"node": ">=14"
+	},
+	"homepage": "https://dantanner.com",
+	"devDependencies": {
+		"@11ty/eleventy": "^2.0.1",
+		"@11ty/eleventy-img": "^3.1.1",
+		"@11ty/eleventy-navigation": "^0.3.5",
+		"@11ty/eleventy-plugin-bundle": "^1.0.4",
+		"@11ty/eleventy-plugin-rss": "^1.2.0",
+		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+		"luxon": "^3.3.0",
+		"markdown-it-anchor": "^8.6.7"
+	}
+}

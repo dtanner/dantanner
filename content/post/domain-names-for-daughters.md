@@ -1,8 +1,10 @@
 ---
 title: "Domain names for daughters"
-date: "2009-06-29 04:36:53"
-description: 
-categories: [domain-names]
+date: 2009-06-29
+description: "Ideas on reserving domain names for kids."
+tags: 
+  - family
+  - networking
 ---
 
 Though the biggest domain name purchases are probably long-gone since the initial dot-com boom, they still remain a valued property. They'll never be as valuable as real land of course, since we can always create more of them, as opposed to things like lake-front property.

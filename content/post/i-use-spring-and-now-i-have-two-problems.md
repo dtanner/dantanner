@@ -1,7 +1,11 @@
 ---
 title: "Annotation Infestation"
-date: "2022-01-26 20:00:00"
-categories: [spring, java]
+description: "A caution against annotation-based frameworks"
+date: 2024-01-26
+tags: 
+  - annotations
+  - java
+  - kotlin
 draft: true
 ---
 

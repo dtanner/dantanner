@@ -1,8 +1,11 @@
 ---
 title: "Dynamic Grails Tomcat datasource configuration with Etcd"
-date: "2015-04-30 06:05:00"
-description: 
-categories: [grails, etcd, datasource]
+date: 2015-04-30
+description: "How to dynamically update a Grails datasource while the app is running."
+tags: 
+  - grails
+  - datasource
+  - configuration
 ---
 
 Ever wonder if you could modify a Grails datasource while the app is running? 

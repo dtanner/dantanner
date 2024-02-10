@@ -1,7 +1,9 @@
 ---
 title: "Kotlin Scripting Introduction (late 2020)"
-date: "2020-10-12 20:00:00"
-categories: [kotling, script, programming]
+description: "A brief introduction to Kotlin scripting, with some examples and notes."
+date: 2020-10-12
+tags: 
+  - kotlin
 draft: true
 ---
 

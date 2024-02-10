@@ -1,7 +1,11 @@
 ---
 title: "Cyclometry"
-date: "2020-10-26 20:00:00"
-categories: [bikes, telemetry]
+date: 2020-10-26
+tags:
+  - cycling
+  - telemetry
+  - experiments
+  - data
 draft: true
 ---
 
@@ -14,11 +18,11 @@ draft: true
 
 # initial idea
 ## things i want to measure
-#### steering angle - 
+#### steering angle -
 i.e. which direction the front wheel is pointing.
 my first idea was to use an analog hall sensor on the top tube, pointing at a magnet on the headset. a change in the analog value output by the sensor correlates with the steering angle.
 how do i measure the exact angle and not just a relative value? e.g. maybe mount the sensor and magnet, then manually calibrate/correlate an output value with the measured angle using a protractor? for now don't worry about left/right awareness (we could use two sensors for that).
-example code: 
+example code:
 - https://arduinomodules.info/ky-024-linear-magnetic-hall-module/
 - https://www.sunfounder.com/learn/Sensor-Kit-v2-0-for-Arduino/lesson-2-analog-hall-sensor-sensor-kit-v2-0-for-arduino.html
 
@@ -49,7 +53,7 @@ https://www.thisisant.com/developer/ant-plus/device-profiles - `Bicycle Power` p
     - what sensor and capturing technique should i use?
     - how do i attach the sensors and microcontrollers?
 - how to save the information being collected? wirelessly to a phone? storage card attached to the devices?
-- how many devices will i need? e.g. can i use one device to capture multiple things? can i use my phone for stuff like the accelerometer/gyrometer capture? 
+- how many devices will i need? e.g. can i use one device to capture multiple things? can i use my phone for stuff like the accelerometer/gyrometer capture?
 - how to combine information being collected by the different devices? e.g. i'll want to be able to create a chart of where the x-axis is time, and the y-axis is the various values collected.
 - assuming i can capture all the data on my bike, how to capture the data on other people's bikes and compare the data?
 - https://electronics.stackexchange.com/questions/530721/how-should-i-wire-this-sensor-and-board-for-rugged-experimentation

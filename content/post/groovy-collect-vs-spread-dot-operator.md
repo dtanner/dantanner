@@ -1,8 +1,9 @@
 ---
 title: "Groovy collect vs spread-dot operator"
-date: "2014-11-15 23:17:00"
-description: 
-categories: [groovy, grails, codenarc]
+date: 2014-11-15
+description: "Differences between the collect method and the spread-dot operator"
+tags: 
+  - groovy
 ---
 
 Yesterday I was doing some Groovy code cleanup with the wonderful [CodeNarc](http://codenarc.sourceforge.net/) static analysis tool. One of the violations it found was [UnnecessaryCollectCall](http://codenarc.sourceforge.net/codenarc-rules-unnecessary.html#UnnecessaryCollectCall). 

@@ -18,24 +18,25 @@ You don't have to understand all its features though; learn five of them and you
 
 Memorize the basics, and keep notes of the more advanced problems you solve with it for the future.
 
-# The Basics
+## The Basics
 
-**GET something**
+**GET something**\
 `curl https://jsonplaceholder.typicode.com/posts/1`
 
-**Verbose output [-v]** (e.g. show response status, headers, etc..):
+**Verbose output [-v]** (e.g. show response status, headers, etc..)\
 `curl -v https://jsonplaceholder.typicode.com/posts/1`
 
-**Allow insecure SSL connections [-k]** (useful for self-signed certs):
-`curl -k https://untrusted-root.badssl.com/` (try it without `-k`)
+**Allow insecure SSL connections [-k]** (useful for self-signed certs you want to temporarily ignore)\
+`curl -k https://untrusted-root.badssl.com/`\
+_(try it without `-k` to watch it fail)_
 
-**Add a header [-H name: value]**:
+**Add a header [-H name: value]**\
 `curl -H "Content-Type: application/json" https://jsonplaceholder.typicode.com/posts/1`
 
-**POST a file [-X POST and -d @file-path]**:
+**POST a file [-X POST and -d @file-path]**\
 `curl -X POST -d @/tmp/foo.json https://jsonplaceholder.typicode.com/posts/1`
 
-# More Advanced Usage
+## More Advanced Usage
 
 If you leave with nothing but the knowledge of what's above, you'll be in great shape.
 You'll be able to quickly solve situations with minimal effort and tooling.  But keep reading to get a glimpse of advanced features.
@@ -50,12 +51,12 @@ curl -sL -w "%{http_code}\\n" -o /dev/null "https://foo.com/?[1-100]" | sort | u
      23 200
      77 503
 ```
-Explanation of the arguments:
-`-s`: silent/quiet mode.  don't show progress meter or error messages.
-`-L`: follow redirects
-`-w "%{http_code}\\n"`: make curl write out the http code of the response, followed by a new line
-`-o /dev/null`: write the response to a file (in this /dev/null, meaning we don't care)
-`?[1-100]`: [] is a range specifier.  In this case, execute a request for every value in the range.  e.g. foo.com?1, foo.com?2, etc...
+Explanation of the arguments:\
+`-s`: silent/quiet mode.  don't show progress meter or error messages.\
+`-L`: follow redirects\
+`-w "%{http_code}\\n"`: make curl write out the http code of the response, followed by a new line\
+`-o /dev/null`: write the response to a file (in this /dev/null, meaning we don't care)\
+`?[1-100]`: [] is a range specifier.  In this case, execute a request for every value in the range.  e.g. `foo.com?1`, `foo.com?2`, etc...
 
 Then we pipe the response code output to `sort` and `uniq -c`, which gives us a count of each response code.
 From the above sample output, there were 23 responses with a 200 response code, and 77 responses with a 503 response code.  Not good!
@@ -88,7 +89,7 @@ starttransfer: 0.379
         total: 0.379
 ```
 
-# A case of curl saving my bacon
+## A case of curl saving my bacon
 Recently our team deployed a new mobile app, to a new company warehouse, using a new network provider, in a new server infrastructure.
 The users reported occasional slow response times in the application. ugh - so many variables.
 Our server API stats were all consistently fast.  Load testing our services showed adequate performance, both from the warehouse and from headquarters.
@@ -139,9 +140,11 @@ starttransfer: 5.823
 
 `namelookup` indicates the amount of time it took to do a DNS name lookup.  i.e. The primary DNS server configured for the device was failing to find the server.
 The backup server *was* working though.  The device cached the IP address of the server for a minute, and when the cache expired, the process repeated itself.
-Boom!  Using a different DNS server while we fixed the underlying DNS issue solved the problem.
+Using a different DNS server while we fixed the underlying DNS issue solved the problem.
 
-# Summary
+_It was DNS._
+
+## Summary
 - curl's basic and most common features are easy to use and memorize
 - it has a huge feature list
 - it will almost always be available on the *nix server you're shelled in to

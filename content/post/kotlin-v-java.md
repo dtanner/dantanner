@@ -40,11 +40,13 @@ Java bolted on the `Optional` container to try to solve this problem, but it's c
 seen.  That's a recurring theme in many of the features; Kotlin makes it easy to write concise and stable code.
 This one's just really really important in my opinion, and is worth the price of admission on its own.
 
+_**You could stop reading this article now and that's enough reason alone to use Kotlin in my opinion.**_
+
 Official docs on null safety [here](https://kotlinlang.org/docs/null-safety.html).
 
 ## Some of my favorite features
 Now for some reasons I really enjoy writing Kotlin.
-There are plenty of other features I'm not mentioning, but these are the favorites that come to mind.
+There are plenty of other features, but these are the favorites that come to mind.
 
 ### Collection functions
 There's a _ton_ of them, and they're powerful and pragmatic.
@@ -137,7 +139,7 @@ val score = 1
 println("the score is $score.  The score minus one is ${score - 1}")
 ```
 
-It doesn't get any cleaner than that.
+This is the cleanest string interpolation technique in my opinion.
 
 ### Data classes and .copy()
 Java finally has records now. Something I use all the time though, especially when combined with

@@ -16,7 +16,7 @@ Because of the dozens of tools I need to juggle, because I forget things, and be
 I'm surprised at how many programmers don't keep any notes at all, so hopefully this will convince a couple people to invest a little in their flow.
 Thanks to [Ted Naleid](http://naleid.com/) for showing me his workflow; it motivated me to properly organize my notes.
 
-# History
+## History
 
 I've used a few different combination of styles for keeping programming notes over the years:
 
@@ -39,16 +39,16 @@ I've never been content with any of them.  None of them had all these features:
 
 Here's what works for me:
 
-# Step 1 - Choose Your File Format
+## Step 1 - Choose Your File Format
 I use markdown.  I would suggest that unless you really like some competing but similarly simple format.
 Don't use a binary format.
 Don't use HTML.
 Don't use a format that will be hard to programmatically convert from ten years from now when it becomes obsolete.
 
-# Step 2 - Choose Your File Syncing Tool
+## Step 2 - Choose Your File Syncing Tool
 I use dropbox, and keep my notes in `/Dropbox/code/notes`.
 
-# Step 3 - Organization
+## Step 3 - Organization
 Now it's just a matter of creating your files and filling them up as you go along.
 I have a file per tool or concept, and keep project-specific notes in their folder. e.g.:
 ``` bash
@@ -67,7 +67,7 @@ I have a file per tool or concept, and keep project-specific notes in their fold
 ...
 ```
 
-# Step 4 - Workflow Notes
+## Step 4 - Workflow Notes
 I can usually remember the name of the file I want to open, and that's how I usually access the files.
 e.g. with Alfred on OS X, where Cmd-Space is the hotkey to bring up the search box:
 _Cmd-Space_ `open postg` and then the tool will autocomplete to postgres.md, and I'll hit enter to open the file in my favorite text editor.
@@ -75,6 +75,6 @@ _Cmd-Space_ `open postg` and then the tool will autocomplete to postgres.md, and
 On my Android phone, I use JotterPad to view and (rarely) edit notes.
 
 
-# More Ideas
-https://www.reddit.com/r/archlinux/comments/3a0ibj/notetaking_and_markdown/
-http://lifehacker.com/5943320/what-is-markdown-and-why-is-it-better-for-my-to-do-lists-and-notes
+## More Ideas
+- [https://www.reddit.com/r/archlinux/comments/3a0ibj/notetaking_and_markdown/](https://www.reddit.com/r/archlinux/comments/3a0ibj/notetaking_and_markdown/)
+- [http://lifehacker.com/5943320/what-is-markdown-and-why-is-it-better-for-my-to-do-lists-and-notes](http://lifehacker.com/5943320/what-is-markdown-and-why-is-it-better-for-my-to-do-lists-and-notes)

@@ -2,7 +2,7 @@
 title: "Domain names for daughters"
 date: 2009-06-29
 description: "Ideas on reserving domain names for kids."
-tags: 
+tags:
   - family
   - networking
 ---
@@ -14,7 +14,7 @@ The recent mad rush for facebook profile names reminded me of this new global sc
 Finding a decent available domain name is a tenaciously difficult PITA. It's an exercise in creativity and luck, and girls names are especially tough. Not only do you have to wrestle with the general lack of availability, but also the likelihood that they'll change their name when they get married. In my case, that's sometime after age 28, when they've agreed to start dating.
 
 In my case, my girls are named Maria Mae and Daniela Teresa. All good variants of maria and daniela were taken, which would've been ideal. And no last names were considered because of the potential marriage name change. After tinkering around for a while, here's what I ended up saving for them:
-mariamae.com and danielat.com
+`mariamae.com` and `danielat.com`
 They're both fairly mnemonic, and they're both flexible enough to last. And they're both shorter than my domain name!
 
 It'll be a few years, but hopefully they'll be useful. Not to mention give me a little boost in the cool dad category. Not that I'll need any help in that category.

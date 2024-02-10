@@ -9,12 +9,12 @@ tags:
   - python
 ---
 
-# The Student
+## The Student
 I have a niece in her first year at a local university.  She's never done any programming before, and thinking of becoming an actuary.
 That means she should learn at least a little bit of programming in a tool like `R` or `Python`, right?
 Those seem like good high-level languages in 2019 that are also applicable in that field.
 
-# The Phone Call
+## The Phone Call
 A few weeks ago I got a call from her Dad asking for some help with homework on an introductory (100-level) programming course titled "Problem Solving in the Natural Sciences (using C and Matlab)".
 They were on the `C` portion of the class.  My reaction was, _some schools still teach C as an introduction to programming?_
 My niece was currently stuck on the portion of the program where you read a number from the command line.
@@ -28,7 +28,7 @@ Her: _What's an ascii character?_
 Me: _Uhhh, don't worry about that for now. (Starts looking up how to read a decimal from the command line.)_
 
 
-# We Want More Programmers
+## We Want More Programmers
 
 There are many fields currently filled with technology-averse people, when those roles would be much better performed by people with at least conversational coding abilities.
 Think about jobs where people do a lot of data analysis using Excel.  Many of them could really benefit from some coding skills, even if it's just some scripting.
@@ -37,7 +37,7 @@ It shows some really neat ways to discover information about data, and optimize 
 And these tools are usable with dozens of hours of training, not thousands.
 
 
-# Why is C such a bad starter language?
+## Why is C such a bad starter language?
 
 Before I begin bashing C in this context, let me clarify: **C is a great language for its correct purpose.**
 When you need to build a program that is fast and very efficient with resources, C is still a good language candidate.
@@ -49,13 +49,13 @@ Many university students might just have one or two programming courses total.
 Teaching that group of students C will leave many of them thinking all programming sucks, and they won't ever want to be near a compiler again.
 
 
-# Let's Show Some Examples
+## Let's Show Some Examples
 After helping my niece work through her homework lab, I implemented the assignment myself in three languages: `C`, `Python`, and `Kotlin`.
 Python because I'm guessing it's the most common initial language taught in schools, and I think it's a really good teaching language.
 Kotlin because I wanted a typed language in the comparison, and I know Java's a popular language taught in schools.
 I didn't choose Java because no one ever wants to touch Java after they've used Kotlin.
 
-# The Assignment
+## The Assignment
 The assignment is to make a little program that reads input from the user representing cards in a deck.
 The user enters a number to represent each card/suit, then when the user enters -1, the program displays the hand and calculates a score
 based on arbitrary scoring rules meant to exercise basic logic and programming.
@@ -64,7 +64,7 @@ Implementations here:
 [Python](https://gist.github.com/dtanner/a7a154a12600519cb1fda47723c3e1f1) |
 [Kotlin](https://gist.github.com/dtanner/54a8dc0e111d9b62d44fff6501266d1c)
 
-# Observations
+## Observations
 ### C Observations
 * **Pointers and Addresses are an unnecessary concept for new programmers**. It's not a trivial concept for most beginners, and doesn't need to exist when learning the basics.
 I think this [stackoverflow post](https://stackoverflow.com/questions/4025768/what-do-people-find-difficult-about-c-pointers) illustrates the difficulties well.
@@ -148,7 +148,7 @@ The `!!` in `readLine()!!.toInt()` indicates we know the input could be null, bu
 They're excellent for production use, and IDEs make this a smaller issue, but Python has the least baggage of the bunch.
 
 
-# Obstacles and Comparison
+## Obstacles and Comparison
 I don't know how many schools still teach C to beginners, or what their reasons are.
 I asked the chair of the department for my niece's class, and the two main points from the response were:
 
@@ -160,17 +160,17 @@ I think it's a big deal to start students with the language that will give them 
 To the second reason of accreditation standards, I don't know exactly what this means, but I'd be surprised language choice is a factor in accreditation.
 For comparison, here's what some of the top universities in the U.S. teach new students:
 
-| School | Language |
-| --- | --- |
-| MIT | [Python](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/) |
-| Carnegie Mellon | [Python](https://www.cs.cmu.edu/~15110/syllabus.html) |
-| Stanford | [Java](https://web.stanford.edu/class/cs106a/) |
-| Cornell | [Python](http://www.cs.cornell.edu/courses/cs1110/2019sp/) |
-| University of Washington | [Java](https://courses.cs.washington.edu/courses/cse142/)
+| School                   | Language                                                                                                                                           |
+|:-------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------|
+| MIT                      | [Python](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/) |
+| Carnegie Mellon          | [Python](https://www.cs.cmu.edu/~15110/syllabus.html)                                                                                              |
+| Stanford                 | [Java](https://web.stanford.edu/class/cs106a/)                                                                                                     |
+| Cornell                  | [Python](http://www.cs.cornell.edu/courses/cs1110/2019sp/)                                                                                         |
+| University of Washington | [Java](https://courses.cs.washington.edu/courses/cse142/)                                                                                          |
 
 These are some of our best schools, and they all teach either Python or Java to their new students.
 
-# Many Paths
+## Paths
 
 This chart shows some typical career paths in today's schools.
 In only one of them do I think knowledge of a low-level language like C is important (embedded systems).
@@ -180,12 +180,14 @@ In only one of them do I think knowledge of a low-level language like C is impor
 I used to have a much narrower view of what constitutes a programmer.
 It was a few flavors of people that programmed things like robots, games, and other complete software applications.
 Regardless of the field, they all spent most of their time thinking about the programming problem or writing code.
+
 Today the role of programmer includes a broader set of fields.
 For example, the deep learning specialist that knows how to build and optimize a model, but doesn't know how to productionize it.
 Or the business analyst that knows how to make data-driven predictions with a domain-specific language.
 It's OK if they know nothing about pointers.
 We *do* want them to build a solid foundation of good principles that are applicable to most languages.
 We _don't_ want them to be sitting at their desk two or ten years into their career and be asked to write code without proper initiation.
+
 So please teach more people programming,
 start them off in a language that will put them on the right path,
 and encourage them to keep forging those paths.

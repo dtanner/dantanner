@@ -13,7 +13,7 @@ forums explaining what folks have done.  It's worked really well, so thought I'd
 If you know of an existing commercial solution that does all this, let me know and I'll update the post.
 
 
-# Where This Works Well
+## Where This Works Well
 The target audience is people that want to carry up to 70 oz of water on trails, but don't want to use a backpack.
 70 oz is perfect for most rides up to a few hours.
 Backpacks aren't ideal because they're heavy and sweaty.
@@ -22,7 +22,7 @@ This solution also presumes your frame can fit a pack.
 In this example I'm using a hardtail, but many full suspension bikes can use a similar solution.
 
 
-# Parts
+## Parts
 - [Banjo Brothers Medium Frame Pack](http://banjobrothers.com/products/current/frame-packs/frame-pack-medium/) - $35. Or use whatever frame pack you like.
 - [Platypus Hoser Hydration System - 2 Liter](https://www.platy.com/catalog/product/view/id/16837/s/hoser/category/45) - $25. When full it just barely fits in the medium frame pack.
 The key to this bladder is that it has a small cap. A [CamelBak bladder](/hydration/camelbak-bladder-annot.jpg) won't fit in this pack because of its giant cap.
@@ -30,7 +30,7 @@ The key to this bladder is that it has a small cap. A [CamelBak bladder](/hydrat
 - [Retractable Badge Holder](https://www.amazon.com/Retractable-Carabiner-Keychain-Fishing-Translucent/dp/B01EIQXG66) - $10 for 4, or free if your employer will give you one. They last about a season.
 - [CamelBak Big Bite Valve](https://www.rei.com/product/637547/camelbak-big-bite-valve) - $6. The flow of the [Platypus bite valve](/hydration/platypus-bite-valve-annot.jpg) that comes with the kit is ridiculously slow. Maybe they've improved it since I bought one, but the CamelBak valve works great.
 
-# Steps
+## Steps
 1. If you're using the Banjo Brothers frame pack, you'll need to cut a little hole in the front for the hose before installing it.
 I also used a lighter to singe/seal the hole edges to prevent fraying.
 ![](/hydration/hole.jpg)

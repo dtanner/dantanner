@@ -18,7 +18,7 @@ When I first saw Venkat Subramaniam gliding through his beautiful java to groovy
 Little things were nice, like being able to use `println 'hello'` instead of `System.out.println("hello");`.
 
 Even better was reading a file line by line.  It went from this:
-``` groovy
+```groovy
 BufferedReader br = new BufferedReader(new FileReader("file.txt"));
 try {
     StringBuilder sb = new StringBuilder();
@@ -38,7 +38,7 @@ try {
 ```
 
 to this:
-``` groovy
+```groovy
 new File("file.txt").eachLine { println "line = $it" }
 ```
 
@@ -51,7 +51,7 @@ There's basic stuff like `10.times { println it }`, and
 
 Then there's commonly useful but more powerful improvements like `collect()`, where you iterate through a collection of things, creating a new collection based on a function. e.g. going from this pre-Java 8 code:
 
-``` groovy
+```groovy
 List<Integer> input = Arrays.asList(1, 2, 3);
 List results = new ArrayList();
 for (Iterator<Integer> iterator = input.iterator(); iterator.hasNext(); ) {
@@ -60,12 +60,12 @@ for (Iterator<Integer> iterator = input.iterator(); iterator.hasNext(); ) {
 }
 ```
 to:
-``` groovy
+```groovy
 List results = [1, 2, 3].collect { it * 2 }
 ```
 
 Filtering a collection is a similar improvement, where you start with a collection and filter it down based on a condition applied to each element.  e.g. going from (once again, pre-Java 8):
-``` groovy
+```groovy
 List<Integer> input = Arrays.asList(1, 2, 3, 4);
 List evenNumbers = new ArrayList();
 for (Iterator<Integer> iterator = input.iterator(); iterator.hasNext(); ) {
@@ -76,7 +76,7 @@ for (Iterator<Integer> iterator = input.iterator(); iterator.hasNext(); ) {
 }
 ```
 to:
-``` groovy
+```groovy
 List evenNumbers = [1, 2, 3, 4].findAll { it % 2 == 0 }
 ```
 
@@ -86,7 +86,7 @@ Lispers may smugly remark, "oh, how cute; you're learning functional programming
 The pragmatic functional features of Groovy provide a gentle transition from object-oriented to more pure functional programming for many developers.
 
 Fast-forward a bunch of years, and things have changed. Even though Java hasn't been progressing as fast as many would like, they've made some significant changes to include features introduced by Groovy, and pioneered by other languages; most notably lambdas and streaming.  For example, the above Java examples can now be written like this:
-``` groovy
+```groovy
 // read each line in a file
 try (Stream<String> stream = Files.lines(Paths.get("file.txt"))) {
     stream.forEach(System.out::println);

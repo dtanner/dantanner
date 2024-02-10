@@ -3,7 +3,6 @@ title: "Camp Lotto"
 description: "A lottery system idea for a popular family camp"
 date: 2017-08-30
 tags:
-  - data science
   - family
   - experiments
   - data
@@ -39,7 +38,7 @@ What if the first family chosen in the lottery would've been happy with one of t
 With a manual lottery process, you only get one pass.
 Wouldn't it be nice if you could optimize the combination of preferred sites and weeks to produce a lottery that accomodated the most campers?
 
-# Camp Lotto
+## Camp Lotto
 Thus was born [Camp Lotto](https://github.com/dtanner/camplotto) - an attempt to solve these problems.
 At a high level, it takes a list of available reservations and lottery registrations, and produces a list of reservations.
 The process is similar to a [Monte Carlo simulation](https://en.wikipedia.org/wiki/Monte_Carlo_method),
@@ -55,7 +54,7 @@ in that it simulates the lottery many times.  The winner is the lottery simulati
 
 #### Input and Output Examples
 The first iteration of the app uses a spreadsheet for input and output, because everyone knows how to use a spreadsheet. Here's what the available reservations sheet looks like:
-![](/camplotto/input-available-reservations.png)
+![](/camplotto/input-available-reservations.png)\
 An `x` in the cell indicates the site is available that week.  In the above example, Site B is considered unavailable for Week 2.
 
 Next is the lottery registration information.  In reality the preferences will be all over the place, but you get the idea.
@@ -67,7 +66,7 @@ When the program is run, it produces the following spreadsheet.  The first sheet
 Any unreserved sites would be listed in the _Sites Still Open_ tab, and any unmatched registrations would look like this:
 ![](/camplotto/output-unmatched-registrations.png)
 
-# Next Steps
+## Next Steps
 The project is open source (GPL-3 licensed).  Currently it's run as a java app on your machine.
 One obvious next step is to have it run on a server and let people upload a spreadsheet to it through a web app, or integrate through some other type of data format.
 

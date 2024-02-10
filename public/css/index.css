@@ -7,17 +7,14 @@
 /* Theme colors */
 :root {
 	--color-gray-20: #e0e0e0;
-	--color-gray-50: #C0C0C0;
-	--color-gray-90: #333;
+	--default-text-color: #444;
+	--faint-text-color: #666;
+	--alternate-table-row-color: #fcfcfc;
 
 	--background-color: #fff;
 
-	--text-color: var(--color-gray-90);
-	--text-color-link: #082840;
-	--text-color-link-active: #5f2b48;
-	--text-color-link-visited: #17050F;
-
-
+	--text-color: var(--default-text-color);
+	--text-color-link: #5694f1;
 
 	--syntax-tab-size: 2;
 }
@@ -25,18 +22,16 @@
 @media (prefers-color-scheme: dark) {
 	:root {
 		--color-gray-20: #e0e0e0;
-		--color-gray-50: #C0C0C0;
-		--color-gray-90: #dad8d8;
+		--default-text-color: #e0e0e0;
+		--faint-text-color: #888;
+		--alternate-table-row-color: #333;
 
-		/* --text-color is assigned to --color-gray-_ above */
+		--text-color: var(--default-text-color);
 		--text-color-link: #1493fb;
-		--text-color-link-active: #6969f7;
-		--text-color-link-visited: #a6a6f8;
 
 		--background-color: #15202b;
 	}
 }
-
 
 /* Global stylesheet */
 * {
@@ -82,13 +77,7 @@ li {
 
 a[href] {
 	color: var(--text-color-link);
-}
-a[href]:visited {
-	color: var(--text-color-link-visited);
-}
-a[href]:hover,
-a[href]:active {
-	color: var(--text-color-link-active);
+	text-decoration: none;
 }
 
 main {
@@ -115,10 +104,21 @@ header:after {
 
 table {
 	margin: 1em 0;
+	border-collapse: collapse;
+	width: 100%;
+	font-size: 90%;
 }
-table td,
-table th {
-	padding-right: 1em;
+
+td {
+	border-bottom: 1px solid var(--color-gray-20);
+	border-top: 1px solid var(--color-gray-20);
+}
+
+th, td {
+	padding: 10px 15px;
+}
+table tr:nth-child(odd) {
+	background-color: var(--alternate-table-row-color);
 }
 
 pre,
@@ -142,6 +142,7 @@ pre:not([class*="language-"]) {
 }
 code {
 	word-break: break-all;
+	/*background-color: var(--color-gray-20);*/
 }
 
 /* Header */
@@ -193,7 +194,6 @@ header {
 .postlist-date,
 .postlist-item:before {
 	font-size: 0.8125em; /* 13px /16 */
-	color: var(--color-gray-90);
 }
 .postlist-date {
 	word-spacing: -0.5px;
@@ -212,8 +212,8 @@ header {
 }
 
 .postlist-metadata {
+	color: var(--faint-text-color);
 	font-size: 0.8125em; /* 13px /16 */
-	color: var(--color-gray-90);
 	display: inline-flex;
 	flex-wrap: wrap;
 	gap: .5em;
@@ -236,6 +236,7 @@ header {
 
 /* Tags list */
 .post-metadata {
+	color: var(--faint-text-color);
 	display: inline-flex;
 	flex-wrap: wrap;
 	gap: .5em;
@@ -268,6 +269,7 @@ h2 + .header-anchor {
 	font-size: 1.5em;
 }
 
+/* To make styling the feather icon sprites easier */
 .feather {
 	width: 24px;
 	height: 24px;
@@ -276,4 +278,13 @@ h2 + .header-anchor {
 	stroke-linecap: round;
 	stroke-linejoin: round;
 	fill: none;
+}
+
+blockquote {
+	border-left: 2px solid var(--faint-text-color);
+	padding-left: 15px;
+}
+
+img {
+	max-width: 100%;
 }

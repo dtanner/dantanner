@@ -14,7 +14,7 @@
 	--background-color: #fff;
 
 	--text-color: var(--default-text-color);
-	--text-color-link: #5694f1;
+	--text-color-link: #285CA2FF;
 
 	--syntax-tab-size: 2;
 }
@@ -27,7 +27,7 @@
 		--alternate-table-row-color: #333;
 
 		--text-color: var(--default-text-color);
-		--text-color-link: #1493fb;
+		--text-color-link: #82A3C7FF;
 
 		--background-color: #15202b;
 	}

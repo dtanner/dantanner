@@ -6,4 +6,6 @@ eleventyNavigation:
   order: 3
 ---
 
-Dan Tanner's mostly technical blog. Any hyperbole expressed here is 100% true. 
+Dan Tanner's mostly technical blog. No ads, no affiliate links, no tracking.
+
+All opinions are my own, and any hyperbole is 100% true.

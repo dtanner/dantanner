@@ -167,7 +167,7 @@ most common form I use looks like this:
 
 `(Int) -> String`
 
-which can be broken down like this:
+which can be broken down like this:\
 ![](/kotlin-2021/function-type.png)
 
 An example function type that takes two Int parameters and returns a String would be:

@@ -57,13 +57,13 @@ The first iteration of the app uses a spreadsheet for input and output, because 
 ![](/camplotto/input-available-reservations.png)\
 An `x` in the cell indicates the site is available that week.  In the above example, Site B is considered unavailable for Week 2.
 
-Next is the lottery registration information.  In reality the preferences will be all over the place, but you get the idea.
+Next is the lottery registration information.  In reality the preferences will be all over the place, but you get the idea.\
 ![](/camplotto/input-registrations.png)
 
-When the program is run, it produces the following spreadsheet.  The first sheet consists of the calculated reservations:
+When the program is run, it produces the following spreadsheet.  The first sheet consists of the calculated reservations:\
 ![](/camplotto/output-reservations.png)
 
-Any unreserved sites would be listed in the _Sites Still Open_ tab, and any unmatched registrations would look like this:
+Any unreserved sites would be listed in the _Sites Still Open_ tab, and any unmatched registrations would look like this:\
 ![](/camplotto/output-unmatched-registrations.png)
 
 ## Next Steps

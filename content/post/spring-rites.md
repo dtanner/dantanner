@@ -14,23 +14,21 @@ unlisted: true
 ---
 
 <!-- TOC -->
-
-* [Context](#context)
-* [Original problems solved by the Spring Framework](#original-problems-solved-by-the-spring-framework)
-  * ["Helps me configure my application"](#helps-me-configure-my-application)
-  * ["Reduces application server vendor lock-in"](#reduces-application-server-vendor-lock-in)
-  * ["Helps me manage my large monolithic app"](#helps-me-manage-my-large-monolithic-app)
-  * ["Reduces dependency management issues"](#reduces-dependency-management-issues)
-  * ["Provides a productive MVC pattern"](#provides-a-productive-mvc-pattern)
-  * ["Helps me package my application more easily"](#helps-me-package-my-application-more-easily)
-  * ["Helps me unit test my code more easily"](#helps-me-unit-test-my-code-more-easily)
-* [Starting from scratch](#starting-from-scratch)
-* [Why are people still using Spring?](#why-are-people-still-using-spring)
-  * [On starting projects quickly](#on-starting-projects-quickly)
-  * [On people and the sunk cost fallacy](#on-people-and-the-sunk-cost-fallacy)
-* [On Micronaut](#on-micronaut)
-* [On the future of the JVM](#on-the-future-of-the-jvm)
-
+  * [Context](#context)
+  * [Original problems solved by the Spring Framework](#original-problems-solved-by-the-spring-framework)
+    * ["Helps me configure my application"](#helps-me-configure-my-application)
+    * ["Reduces application server vendor lock-in"](#reduces-application-server-vendor-lock-in)
+    * ["Helps me manage my large monolithic app"](#helps-me-manage-my-large-monolithic-app)
+    * ["Reduces dependency management issues"](#reduces-dependency-management-issues)
+    * ["Provides a productive MVC pattern"](#provides-a-productive-mvc-pattern)
+    * ["Helps me package my application more easily"](#helps-me-package-my-application-more-easily)
+    * ["Helps me unit test my code more easily"](#helps-me-unit-test-my-code-more-easily)
+  * [Starting from scratch](#starting-from-scratch)
+  * [Why are people still using Spring?](#why-are-people-still-using-spring)
+      * [On starting projects quickly](#on-starting-projects-quickly)
+      * [On people and the sunk cost fallacy](#on-people-and-the-sunk-cost-fallacy)
+  * [On Micronaut](#on-micronaut)
+  * [On the future of the JVM](#on-the-future-of-the-jvm)
 <!-- TOC -->
 
 ## Context

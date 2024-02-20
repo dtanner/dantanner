@@ -315,8 +315,9 @@ The reason is that you can't unit test a class with annotations like `@GET` or `
 Everything's an integration test when you need to spin up the framework context, which is slower and more complex than
 unit testing.
 
-Mocking and stubbing interactions is also more painful with inversion of control containers when annotations
+Mocking and stubbing interactions is also more painful with inversion of control containers with annotations
 like `@EnableAutoConfiguration`.
+
 Developers' tasks are made more difficult when they need to master the required intricacies of their framework.
 
 ## Starting from scratch

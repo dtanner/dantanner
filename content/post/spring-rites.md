@@ -60,6 +60,7 @@ The theme of my criticisms throughout this article are generally this:
 1. **Using annotations for complex features are inherently more difficult to test, maintain, and extend compared to its
    vanilla Kotlin counterpart.**
 2. **Large application frameworks like Spring are now the cumbersome things they originally displaced.**
+3. **Annotations make it harder to reason about your code. Readers can't easily see what's behind the magic.**
 
 ## Original problems solved by the Spring Framework
 
@@ -89,6 +90,8 @@ For example, this code will load configuration from various sources in order, po
 you define:
 
 ```kotlin
+import com.sksamuel.hoplite.ConfigLoaderBuilder
+
 class App {
   private val config = ConfigLoaderBuilder.default()
     .addFileSource("/etc/myapp/dev.conf", optional = true)
@@ -152,8 +155,14 @@ case you want to make some changes?
 
 Also, check out that hashed `db.password` value. Imagine the scenario where your production server has started up but
 can't connect to the database. Enabling the reporting feature of hoplite with SHA-256 hashing of String values shows you
-a secure hash at startup of the actual value. This is safe to log because it's a one-way hash. But you, who presumably
+part of a secure hash of the actual value at startup. This is safe to log because it's a partial one-way hash. But you, who presumably
 know the actual password, can perform the same hash locally and compare the hashed value to debug your configuration.
+
+For example, the full has of the `databaseName` looks like this:
+```shell
+> echo -n "vanilla_kotlin" | openssl dgst -sha256
+d6ffe1cc9d1f2eaea73df9370d4c60da8dc2c0a264227a75bb96358e20ec4e7c
+```
 
 Instead, what do you get with Spring?
 
@@ -268,8 +277,8 @@ for the Kotlin equivalent. That's a lot of potentially vulnerable code that you 
 
 ### "Provides a productive MVC pattern"
 
-Using [http4k](https://www.http4k.org/guide/howto/use_a_server_backend/) as an example of how hard it is today with
-just about any modern library:
+Using [http4k](https://www.http4k.org/guide/howto/use_a_server_backend/) as an example of how easy it is today with
+modern libraries:
 
 ```kotlin
 fun main() {
@@ -278,8 +287,7 @@ fun main() {
 }
 ```
 
-Whew! That was hard. Wait til you find out how hard it is to unit test your handlers without needing to start the
-server.
+The `app` function can even be unit tested without starting a server!
 
 ### "Helps me package my application more easily"
 
@@ -368,6 +376,11 @@ Tools like the [Spring Initializr](https://start.spring.io/) and [Micronaut Laun
 it easier to start a project. This is a real benefit.
 But just about everyone else makes starting a project easier now too. e.g.
 the [Ktor Project Generator](https://start.ktor.io) and [http4k's toolbox](https://toolbox.http4k.org/).
+
+To Spring's credit, the documentation is very thorough and generally better than most other projects.
+This gets you going. When things get tough, and you need to step through code to see what's really going on, this is
+where annotations work against you. You end up poring over heaps of documentation and obtuse stack traces spending
+hours or days trying to figure out what's wrong with the system.
 
 #### On people and the sunk cost fallacy
 

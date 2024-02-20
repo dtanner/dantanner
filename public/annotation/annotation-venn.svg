@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 1146 757" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
-    <g transform="matrix(1,0,0,1,-300.945,-921.691)">
+    <defs>
+      <style type="text/css"><![CDATA[
+
+        :root {
+            --line-color: #444;
+        }
+
+        @media (prefers-color-scheme: dark) {
+        :root {
+            --line-color: #e0e0e0;
+            }
+        }
+
+        path {
+            fill: var(--line-color);
+        }
+
+      ]]></style>
+    </defs>
+  <g transform="matrix(1,0,0,1,-300.945,-921.691)">
         <circle cx="600.661" cy="1221.41" r="299.716" style="fill:rgb(25,163,61);fill-opacity:0.5;"/>
         <g transform="matrix(1,0,0,1,545.928,0)">
             <circle cx="600.661" cy="1221.41" r="299.716" style="fill:rgb(255,212,121);fill-opacity:0.5;"/>
@@ -9,7 +28,7 @@
         <g transform="matrix(1,0,0,1.04406,5,-18.8366)">
             <g transform="matrix(1,-0,-0,0.957799,295.945,900.836)">
                 <path d="M560.42,383.872L572.92,358.872L585.42,383.872C579.17,377.622 566.67,377.622 560.42,383.872Z"/>
-                <path d="M572.92,634.487L572.92,378.872" style="fill:none;stroke:black;stroke-width:8.33px;"/>
+                <path d="M572.92,634.487L572.92,378.872" style="fill:none;stroke:var(--line-color);stroke-width:8.33px;"/>
             </g>
         </g>
         <g transform="matrix(0.566855,0,0,0.566855,31.2331,657.825)">

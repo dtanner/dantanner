@@ -60,7 +60,7 @@ The theme of my criticisms throughout this article are generally this:
 1. **Using annotations for complex features are inherently more difficult to test, maintain, and extend compared to its
    vanilla Kotlin counterpart.**
 2. **Large application frameworks like Spring are now the cumbersome things they originally displaced.**
-3. **Annotations make it harder to reason about your code. Readers can't easily see what's behind the magic.**
+3. **Annotations make it harder to reason about your code.**
 
 ## Original problems solved by the Spring Framework
 
@@ -167,15 +167,12 @@ d6ffe1cc9d1f2eaea73df9370d4c60da8dc2c0a264227a75bb96358e20ec4e7c
 Instead, what do you get with Spring?
 
 **Quick**, tell me what each of these annotations mean and how they should be used when you need to configure a custom
-bean
-for your application:
+bean for your application:
 
-```kotlin
-@Configuration
-@ConfigurationProperties(prefix = "someprefix")
-@ConstructorBinding
-@EnableConfigurationProperties(SomeConfig::class)
-```
+- `@Configuration`
+- `@ConfigurationProperties(prefix = "someprefix")`
+- `@ConstructorBinding`
+- `@EnableConfigurationProperties(SomeConfig::class)`
 
 Did you know the correct answer, which is that you need to combine those annotations in pairs like so?:
 
@@ -193,7 +190,9 @@ class Configuration(
 )
 ```
 
-Just kidding! The correct answer is a different order of the annotations.
+Just kidding - the correct answer is a different order of the annotations!
+
+![](/annotation/wizard-ampersand.jpeg)
 
 How would you know though? And how long would it take for someone new to find the correct answer?
 

@@ -431,16 +431,15 @@ It's my favorite language on the JVM above Java, Groovy, Scala, and Clojure.
 Kotlin is better in many ways than any other language for typical use cases of server applications. It still carries some
 of the baggage of Java's history, but it's a _really_ good language.
 
-You can teach a Python programmer Kotlin, and they'll grow to like it more and more.
-That doesn't happen with annotation-based frameworks. I think the continued use of annotation-based frameworks will
-correlate with a slow decline of Java.
+I've taught a Python programmer Kotlin and watched them grow to really like it.
+That doesn't happen with annotation-based frameworks; it's the opposite in my experience, and  I think the continued
+use of annotation-based frameworks will continue the decline of Java.
 
 Also consider how tools like ChatGPT and Copilot will affect the situation.
 
-Especially for newer programmers, these tools generate code the person may not fully understand. Languages like Python
+Especially for newer programmers, these tools generate code the person doesn't fully understand. Languages like Python
 and Go have been built an eye toward approachability, so will be readable in more situations compared to languages with
-a richer syntax like Java. But have CoPilot emit a barrage of annotations? Good luck with that. These developers will
+a richer syntax like Java. But have Copilot emit a barrage of annotations? Good luck with that. These developers will
 suffer, and so will your project.
 
 It doesn't have to be like that though. Use Kotlin, ditch the annotation framework, and use a simpler method.
-

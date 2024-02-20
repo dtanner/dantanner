@@ -425,10 +425,10 @@ These languages don't use annotation-based inversion of control frameworks, and 
 asking for it. They view annotations as an annoying obstacle that gets in the way of onboarding and productivity.
 I've polled them in their communities; this is the #1 reason they're repelled by Java.
 
-And this bums me out. I've spent over half of my 27-year career writing for the JVM, and **I** don't want to code
+And this bums me out. I've spent over half of my 27-year career writing for the JVM, and _I_ don't want to code
 in Java either. But [Kotlin is great](https://dantanner.com/post/kotlin-v-java/).
 It's my favorite language on the JVM above Java, Groovy, Scala, and Clojure.
-Kotlin is better in many ways than any other language for typical use cases of server application. It still carries some
+Kotlin is better in many ways than any other language for typical use cases of server applications. It still carries some
 of the baggage of Java's history, but it's a _really_ good language.
 
 You can teach a Python programmer Kotlin, and they'll grow to like it more and more.

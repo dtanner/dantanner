@@ -383,8 +383,8 @@ Some JVM developers in the backend community have settled though. I'm one of the
 like "let's make a choice to use boring technology X for Y years", but the time to continue using annotation-based
 frameworks like Spring Boot has passed.
 
-For those that have given the vanilla Kotlin approach a try, the response has been overwhelmingly positive and joyful
-in my observations. They typically become strong advocates of it once they're past the fear stage.
+For those that have given the vanilla Kotlin approach a try, the response has been overwhelmingly positive
+in my observations. They typically become strong advocates of it once they've spent a couple of weeks with it.
 
 ![](/annotation/annotation-venn.svg)
 

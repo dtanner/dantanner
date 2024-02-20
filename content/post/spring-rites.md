@@ -192,7 +192,7 @@ class Configuration(
 
 Just kidding - the correct answer is a different order of the annotations!
 
-![](/annotation/wizard-ampersand.jpeg)
+![](/annotation/wizard-annotation.jpeg)
 
 How would you know though? And how long would it take for someone new to find the correct answer?
 

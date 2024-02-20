@@ -121,7 +121,7 @@ data class HttpConfig(
 // etc
 ```
 
-There are a bunch more features you can use, but here's a real example of my startup logs using hoplite:
+There are a bunch more features you can use, but here's an example of a startup log using hoplite:
 
 ```shell
 Property sources (highest to lowest priority):
@@ -132,37 +132,23 @@ Property sources (highest to lowest priority):
   - classpath:/local.conf
   - classpath:/default.conf
 Used keys: 4
-+-----------------------------------+-------------------------+---------------------------+
-| Key                               | Source                  | Value                     |
-+-----------------------------------+-------------------------+---------------------------+
-| db.databaseName                   | classpath:/default.conf | hash(d6ffe1cc9d1f2eae...) |
-| db.password                       | classpath:/default.conf | hash(8610dd6dca2c67d5...) |
-| http.client.item.cache.cacheSize  | classpath:/default.conf | 100000                    |
-+-----------------------------------+-------------------------+---------------------------+
++-----------------------------------+-------------------------+
+| Key                               | Source                  |
++-----------------------------------+-------------------------+
+| db.databaseName                   | classpath:/default.conf |
+| db.password                       | classpath:/default.conf |
+| http.client.item.cache.cacheSize  | classpath:/default.conf |
++-----------------------------------+-------------------------+
 Unused keys: 1
-+--------------------------+-------------------------+---------------------------+
-| Key                      | Source                  | Value                     |
-+--------------------------+-------------------------+---------------------------+
-| metrics.tags.team        | classpath:/default.conf | hash(52367a6622b19f08...) |
-+--------------------------+-------------------------+---------------------------+
++--------------------------+-------------------------+
+| Key                      | Source                  |
++--------------------------+-------------------------+
+| metrics.tags.team        | classpath:/default.conf |
++--------------------------+-------------------------+
 --End Hoplite Config Report--
 ```
 
 This is out of the box functionality, and it was about 30 lines of code to configure.
-
-Isn't it nice to see what keys have been set, what haven't been set, and in what order the configuration was loaded in
-case you want to make some changes?
-
-Also, check out that hashed `db.password` value. Imagine the scenario where your production server has started up but
-can't connect to the database. Enabling the reporting feature of hoplite with SHA-256 hashing of String values shows you
-part of a secure hash of the actual value at startup. This is safe to log because it's a partial one-way hash. But you, who presumably
-know the actual password, can perform the same hash locally and compare the hashed value to debug your configuration.
-
-For example, the full has of the `databaseName` looks like this:
-```shell
-> echo -n "vanilla_kotlin" | openssl dgst -sha256
-d6ffe1cc9d1f2eaea73df9370d4c60da8dc2c0a264227a75bb96358e20ec4e7c
-```
 
 Instead, what do you get with Spring?
 
@@ -320,10 +306,9 @@ The reason is that you can't unit test a class with annotations like `@GET` or `
 Everything's an integration test when you need to spin up the framework context, which is slower and more complex than
 unit testing.
 
-Mocking and stubbing interactions is also more painful with inversion of control containers with annotations
-like `@EnableAutoConfiguration`.
-
-Developers' tasks are made more difficult when they need to master the required intricacies of their framework.
+In the same A/B comparison of identically featured applications built using Spring Boot and vanilla
+Kotlin, the mean test execution time was over 185% slower for Spring Boot versus vanilla Kotlin.
+(16 seconds for vanilla Kotlin, 46 seconds for Spring Boot on an M1 Max MacBook Pro)
 
 ## Starting from scratch
 

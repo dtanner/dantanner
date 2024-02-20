@@ -333,8 +333,8 @@ or would you rather learn how to use Kafka
 through [Spring's abstraction](https://docs.spring.io/spring-kafka/reference/kafka/receiving-messages/message-listeners.html)?
 
 If you're not already familiar with the contents of those two links, please just click into those and briefly scan
-over those pages. The tl;dr; is that Kafka is a very powerful and useful messaging tool, but there are a lot of dials
-you need to turn correctly when using it.
+them. The tl;dr; is that Kafka is a very powerful and useful messaging tool, but there are a lot of dials
+you need to adjust to use it correctly.
 
 Using the default Kafka `@KafkaListener` annotation and wondering why your consumer performance is over an order of
 magnitude slower than a plain consumer?

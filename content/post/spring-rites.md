@@ -433,7 +433,7 @@ use of annotation-based frameworks will continue the decline of Java.
 Also consider how tools like ChatGPT and Copilot will affect the situation.
 
 Especially for newer programmers, these tools generate code the person doesn't fully understand. Languages like Python
-and Go have been built an eye toward approachability, so will be readable in more situations compared to languages with
+and Go have been built with an eye toward approachability, so will be readable in more situations compared to languages with
 a richer syntax like Java. But have Copilot emit a barrage of annotations? Good luck with that. These developers will
 suffer, and so will your project.
 

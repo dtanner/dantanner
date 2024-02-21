@@ -11,6 +11,8 @@ tags:
 
 ---
 
+![](/annotation/spring-rites.jpg)
+
 <!-- TOC -->
   * [Context](#context)
   * [Original problems solved by the Spring Framework](#original-problems-solved-by-the-spring-framework)

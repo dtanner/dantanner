@@ -1,7 +1,7 @@
 ---
 
 title: "Spring Rites"
-description: "A caution against annotation-based frameworks"
+description: "A caution against annotation-based web frameworks"
 date: 2024-02-19
 tags:
   - annotations
@@ -10,6 +10,8 @@ tags:
   - kotlin
 
 ---
+
+## A caution against annotation-based web frameworks
 
 ![](/annotation/spring-rites.jpg)
 

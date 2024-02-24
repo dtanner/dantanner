@@ -27,7 +27,7 @@ boring, but it's easy to hop on and get a decent workout in without much setup t
 ## Trainer Software
 
 tl;dr; I'm using [Trainer Day](https://trainerday.com/) and really like it. It's $4/month and I like it better than the
-competitors. I watch a movie/TV on my laptop when I ride use my phone for the trainer software, which heavily influences
+competitors. I watch a movie/TV on my laptop and use my phone for the trainer software, which heavily influences
 the trainer software that I like.
 
 This is a personal decision. This is what I want out of training software:

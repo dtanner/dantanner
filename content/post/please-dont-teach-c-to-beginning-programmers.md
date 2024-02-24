@@ -20,11 +20,11 @@ They were on the `C` portion of the class.  My reaction was, _some schools still
 My niece was currently stuck on the portion of the program where you read a number from the command line.
 It had also been 20 years since I wrote any C myself.
 
-Her: _When I read a number and print it, the code prints out a different number._
-Me: _What function are you calling to get the number?_
-Her: _get char_
-Me: _Oh, you're reading in an ascii character._
-Her: _What's an ascii character?_
+Her: _When I read a number and print it, the code prints out a different number._\
+Me: _What function are you calling to get the number?_\
+Her: _get char_\
+Me: _Oh, you're reading in an ascii character._\
+Her: _What's an ascii character?_\
 Me: _Uhhh, don't worry about that for now. (Starts looking up how to read a decimal from the command line.)_
 
 
@@ -57,7 +57,7 @@ I didn't choose Java because no one ever wants to touch Java after they've used 
 
 ## The Assignment
 The assignment is to make a little program that reads input from the user representing cards in a deck.
-The user enters a number to represent each card/suit, then when the user enters -1, the program displays the hand and calculates a score
+The user enters a number to represent each card/suit, then when the user enters `-1`, the program displays the hand and calculates a score
 based on arbitrary scoring rules meant to exercise basic logic and programming.
 Implementations here:
 [C](https://gist.github.com/dtanner/b3cf09c59b0fd7e1389f635d817facd6) |
@@ -66,7 +66,7 @@ Implementations here:
 
 ## Observations
 ### C Observations
-* **Pointers and Addresses are an unnecessary concept for new programmers**. It's not a trivial concept for most beginners, and doesn't need to exist when learning the basics.
+* **Pointers and Addresses are an unhelpful concept for new programmers**. It's not a trivial concept for most beginners, and obstructs learning the basics of logic.
 I think this [stackoverflow post](https://stackoverflow.com/questions/4025768/what-do-people-find-difficult-about-c-pointers) illustrates the difficulties well.
 * **Line of code count**. The C implementation is about 60% more lines (143) than either the Python (92) or Kotlin (85) implementations.
 Some of it is unnecessary cruft to learners, like function headers.  Some of it is due to a smaller language feature set like no collection functions.

@@ -59,7 +59,7 @@ not my jam.
 It's marketed for the hardcore crowd. I used this a few years ago when I was riding more seriously and liked it.
 It just gives you a screen with your stats, which is what I prefer.
 It has a bunch of AI features, which is code for "this seems like a good way to justify charging $20/month".
-But Trainer Day fits my needs just as well - I know about what my FTP is, and that's not
+But Trainer Day fits my needs just as well.
 
 #### indieVelo - free beta testing at time of writing
 

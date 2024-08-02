@@ -82,6 +82,15 @@ module.exports = function(eleventyConfig) {
 		return (tags || []).filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
 	});
 
+  const encodeKotlinCode = (code) => {
+    return encodeURIComponent(code);
+  };
+
+  eleventyConfig.addFilter("kotlinPlaygroundLink", function(code) {
+    const encodedCode = encodeKotlinCode(code);
+    return `https://play.kotlinlang.org/#code=${encodedCode}`;
+  });
+
 	// Customize Markdown library settings:
 	eleventyConfig.amendLibrary("md", mdLib => {
 		mdLib.use(markdownItAnchor, {

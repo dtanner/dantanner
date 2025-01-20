@@ -43,14 +43,15 @@ So many talking points - it's hard to keep track of them all! With that in mind,
 
 ## \*Sigh\*
 
-The idea for this article started when I entered the following two queries into Claude:
+The idea for this rant started with these questions:
 
 - What top five reasons are large corporations giving to justify their return to office shift?
 - What top five reasons are large corporations giving to justify offshore software development?
 
-At least for the offshore development, the first list item was money. It didn't even mention money in the return to office list.
+At least for the offshore development, the first list item was money. Money wasn't mentioned in the return to office list.
 
-To be clear, I'm not against offshore development. My belief is that it's short-sighted for a capitalist to treat any remote development differently. The hard part is that our industry is so immature that we can barely even *define* quality and productivity, much less *measure* it effectively. My hope is that there'll continue to be enough domestic remote jobs for good companies because they know it's a way to attract the best workers. I know how to get shit done from my home office, and I know how to [wash a dirty cat blanket](https://racketmn.com/minneapolis-mayor-frey-just-called-people-who-work-from-home-losers).
+To be clear, I'm not against offshore development. I see it as a just a different style of remote work with a different
+set of advantages and disadvantages.
 
 ## Who cares what people want?
 
@@ -66,8 +67,7 @@ People want to be able to work remotely for these reasons:
 - Getting to work with more diverse folks, not just those that happen to live in the same geographic area
 
 The most difficult and important problems in my field can't be solved by people with mediocre skill regardless of headcount.
-There's an enormous gap in ability between developers, and supply of is still extremely scarce.
+There's an enormous gap in ability between developers, and the supply of exceptional programmers is still rare.
 
-Want to attract the best people even though you can't compete on salary? Some companies get it.
+Want to attract the best people even if you can't compete on salary? Supporting remote work enables this. Some companies get it.
 I hope they continue to succeed and that I can continue to work in greener pastures.
-

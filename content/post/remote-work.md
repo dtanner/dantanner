@@ -1,6 +1,6 @@
 ---
-title: "Corporate America's Remarkable Embrace of Remote Software Development"
-description: "Money money money"
+title: "Corporate Guide on Domestic vs Foreign Human Resources"
+description: "Remote, Offshore, Hypocrisy"
 date: 2025-01-19
 tags:
   - remote
@@ -8,28 +8,66 @@ tags:
 unlisted: true
 ---
 
-It's striking to observe how major corporations have embraced remote software development. Their overwhelming commitment to supporting distributed teams shows remarkable calculation and adaptability in our evolving digital world. I, for one, am impressed.
+----
+<code>
 
-## Around-the-Clock Development
-One of the most staggering aspects is how companies embrace continuous development cycles. When teams wrap up their workday, remote developers seamlessly continue the progress, ensuring advancement on projects. This kind of round-the-clock development cycle shrinks delivery timelines and maintains momentum in today's demanding market.
+To: Corporate Communications<br>
+From: Board of Directors<br>
+Date: January 20, 2025<br>
+Subject: Propaganda Guide on Domestic vs Foreign Human Resources<br>
 
-## Tapping into Broad Talent Pools
-Corporate leadership continues to discover talent everywhere. By supporting remote work, companies have penetrated markets teeming with developers who happen to live outside traditional business centers. This approach helps organizations scale their teams and access specialized skills that prove elusive in established markets.
 
-## Cost-Effective Innovation
-Executives have made breathtaking moves in resource allocation. By supporting remote development, they're liberating funds from expensive office space to fuel innovation. The extraordinary savings from supporting remote teams creates new opportunities for cutting-edge projects and tools.
+Welcome! If you're reading this, you're a corporate leader looking to maximize shareholder value!
 
-## Flexible Scaling
-The remote model allows companies to expand and contract teams based on project needs without being constrained by physical office space. This calculated agility helps organizations stay responsive to market demands and maintain their crushing competitive edge.
+The recent pandemic has resulted in an unfortunate incident regarding human resource management. What was intended to be a temporary location adjustment to preserve resource vitality and productivity has been mistakenly interpreted as a permanent "situation".
 
-## Cultural Exchange
-Remote work has created delightful opportunities for cultural exchange. Development teams benefit from diverse perspectives and approaches to problem-solving, making products more globally viable.
+We want you to know that we care deeply about this problem, and are here to help you guide your proverbial "domestic sheep" back to the "flock" ;-)
 
-## A Small Clarification
-Oh, something worth noting – when discussing "remote," this refers to offshore development teams in regions like India, Eastern Europe, and Southeast Asia. Not domestically-based developers, who have been ordered back to the office because apparently they can't collaborate effectively unless physically present.
+It is also critical to project a positive image regarding our global human resource market, given their favorable terms of resource management. But how does a leader convince one group of resources that they need to "come home", while managing another group of autonomous resources across the world?
 
-The same companies that praise offshore teams' ability to collaborate remotely are mandating domestic employees return to office for "better collaboration." The same executives who manage teams across continents insist that local employees can't be productive without direct supervision.
-Most of the stated justifications for offshore development contradict the reasons given for requiring domestic employees to return to office.
+So many talking points - it's hard to keep track of them all! With that in mind, we've prepared a communication guide for you to share with your resources and other asset owners. Be sure to read it carefully and communicate the appropriate message with the right resource. You don't want to get your wires crossed on this one, as the same topic results in different guidance based on your audience!
 
-To be clear, I'm not against offshore development. My belief is that it's short-sighted to treat domestic remote development any differently than offshore development. The hard part is that our industry is so immature that we can barely even *define* quality and productivity, much less *measure* it effectively. My hope is that the companies who continue to support domestic remote work can show that it produces better results. Because I know how to get shit done in my home office, and I know how to [wash a blanket](https://racketmn.com/minneapolis-mayor-frey-just-called-people-who-work-from-home-losers).
+
+| Topic                    | Domestic Human Resources                                                                       | Foreign Human Resources                                                                                                  |
+|:-------------------------|:-----------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|
+| Collaboration            | We can only foster innovation through spontaneous in-person collaboration                      | We foster innovation through access to global talent pools                                                               |
+| Productivity             | We need to be in-person to maximize productivity and operational efficiency                    | We need to globalize to maximize around the clock productivity and parallel development                                  |
+| Culture                  | We can build a more cohesive workplace community when we're "close to home"                    | We value diverse perspectives, drawing from _todo: grab something from 2023 DEI form_                                    |
+| Professional Development | We can only foster long-term growth and learning through in-person communication and mentoring | We can rapidly enable strategic initiatives by quickly ramping up and down with offshore partners as needed              |
+| Security                 | We need to protect our intellectual property and data within our facilities                    | We use encrypted connections, access controls, and secure policies to protect our valuable assets regardless of location |
+
+</code>
+
+----
+
+
+## \*Sigh\*
+
+The idea for this article started when I entered the following two queries into Claude:
+
+- What top five reasons are large corporations giving to justify their return to office shift?
+- What top five reasons are large corporations giving to justify offshore software development?
+
+At least for the offshore development, the first list item was money. It didn't even mention money in the return to office list.
+
+To be clear, I'm not against offshore development. My belief is that it's short-sighted for a capitalist to treat any remote development differently. The hard part is that our industry is so immature that we can barely even *define* quality and productivity, much less *measure* it effectively. My hope is that there'll continue to be enough domestic remote jobs for good companies because they know it's a way to attract the best workers. I know how to get shit done from my home office, and I know how to [wash a dirty cat blanket](https://racketmn.com/minneapolis-mayor-frey-just-called-people-who-work-from-home-losers).
+
+## Who cares what people want?
+
+People want to be able to work remotely for these reasons:
+
+- Flexibility in their day about when they work
+- Not wasting 8 hours a week commuting
+- Not wasting time in between meetings finding the next space to meet
+- Reducing disease vectors
+- Shitty setups in office for getting heads-down work done vs their sweet setup at home
+- Better lunches than terrible cafeteria food
+- Increasing the number of companies that they're a viable employee at
+- Getting to work with more diverse folks, not just those that happen to live in the same geographic area
+
+The most difficult and important problems in my field can't be solved by people with mediocre skill regardless of headcount.
+There's an enormous gap in ability between developers, and supply of is still extremely scarce.
+
+Want to attract the best people even though you can't compete on salary? Some companies get it.
+I hope they continue to succeed and that I can continue to work in greener pastures.
 

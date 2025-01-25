@@ -1,11 +1,10 @@
 ---
-title: "Communication Guide on Domestic and Foreign Human Software Resources"
-description: "Money, Money, Money"
+title: "Corporate Communication Guide on Remote Software Resources"
+description: "The annoying two-faced corporate speak on work locations"
 date: 2025-01-19
 tags:
   - remote
   - software
-unlisted: true
 ---
 
 ----
@@ -14,7 +13,7 @@ unlisted: true
 To: Corporate Communications<br>
 From: Board of Directors<br>
 Date: January 20, 2025<br>
-Subject: Communication Guide on Domestic and Foreign Human Software Resources<br>
+Subject: Communication Guide on Remote Software Resources<br>
 
 
 Welcome! If you're reading this, you're a corporate leader looking to maximize shareholder _value_.
@@ -28,7 +27,7 @@ It is also critical to project a positive image regarding our global software hu
 With that in mind, we've prepared a communication guide for you to share with your software-producing human resources. Be sure to read it carefully and communicate the appropriate message with the right resource. You don't want to get your wires crossed on this one, as the same topic results in different guidance based on your audience!
 
 
-| Topic                    | Domestic Human Resources                                                                       | Foreign Human Resources                                                                                                  |
+| Topic                    | Local Human Resources                                                                          | Non-local Human Resources                                                                                                |
 |:-------------------------|:-----------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|
 | Collaboration            | We can only foster innovation through spontaneous in-person collaboration                      | We foster innovation through access to global talent pools                                                               |
 | Productivity             | We need to be in-person to maximize productivity and operational efficiency                    | We need to globalize to maximize around-the-clock productivity and parallel development                                  |
@@ -54,21 +53,19 @@ To be clear, I'm not against offshore development. I see it as a different style
 ## Practical reasons for (domestic) remote work
 
 Some people want to be able to work remotely, and most of those reasons are beneficial to the company as well,
-or at least don't negatively impact the company.
-
-The following table illustrates some practical perks for remote work and how they impact the company, whether it's positive (+), negative (-), or no impact (0).
+or at least don't negatively impact the company. The following table illustrates some practical perks for remote work and how they impact the company:
 
 | Perk                                                                                                    | Company Impact | Reason                                               |
 |:--------------------------------------------------------------------------------------------------------|:--------------:|:-----------------------------------------------------|
-| Flexibility in their day about when they work                                                           |       0        | They get the work done and attend necessary meetings |
-| Not wasting 8 hours a week commuting                                                                    |       +        | Fresher worker means better work                     |
-| Not wasting time in between meetings finding the next space to meet                                     |       +        | Time savings                                         |
-| Reducing disease vectors                                                                                |       +        | Healthier workers means more work                    |
-| Shitty setups in office for getting heads-down work done vs their sweet setup at home                   |       +        | A better setup means better output                   |
-| Better lunches than terrible cafeteria food                                                             |       +        | Happier workers means better work                    |
-| Increasing the number of companies that they're a viable employee at                                    |       -        | More competition for workers is bad for owners       |
-| Getting to work with more diverse folks, not just those that happen to live in the same geographic area |       +        | More diverse viewpoints create better results        |
-| Money saved on commuting                                                                                |       +        | A lower financial burden means less salary pressure  |
+| Flexibility in their day about when they work                                                           |    Neutral     | They get the work done and attend necessary meetings |
+| Not wasting 8 hours a week commuting                                                                    |    Positive    | Fresher worker means better work                     |
+| Not wasting time in between meetings finding the next space to meet                                     |    Positive    | Time savings                                         |
+| Reducing disease vectors                                                                                |    Positive    | Healthier workers means more work                    |
+| Shitty setups in office for getting heads-down work done vs their sweet setup at home                   |    Positive    | A better setup means better output                   |
+| Better lunches than terrible cafeteria food                                                             |    Positive    | Happier workers means better work                    |
+| Increasing the number of companies that they're a viable employee at                                    |    Negative    | More competition for workers is bad for owners       |
+| Getting to work with more diverse folks, not just those that happen to live in the same geographic area |    Positive    | More diverse viewpoints create better results        |
+| Money saved on commuting                                                                                |    Positive    | A lower financial burden means less salary pressure  |
 
 ### I hope we can make significant correlations based on the policy down the road
 Many difficult and important problems can't be solved by people with mediocre skill regardless of headcount.

@@ -2,7 +2,7 @@
 title: "Human vs AI Music Generation Services"
 description: "Musiversal is awesome and AI music still sucks"
 date: 2025-08-10
-draft: true
+unlisted: true
 tags:
   - AI
   - music

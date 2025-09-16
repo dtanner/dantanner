@@ -334,8 +334,7 @@ Oh - it was committing offsets on every message? Aw shucks, guess you picked the
 the eight possible methods.
 
 And lost some messages because your consumer was set to autocommit? Unfortunately you now have to not only read the
-Kafka
-docs, but also read how that relates to Spring's abstraction over it.
+Kafka docs, but also read how that relates to Spring's abstraction over it.
 
 This pattern is true for every library used in the application. You don't have less to understand - you have *more* to
 understand!
@@ -440,3 +439,7 @@ a richer syntax like Java. But have Copilot emit a barrage of annotations? Good 
 suffer, and so will your project.
 
 It doesn't have to be like that though. Use Kotlin, ditch the annotation framework, and use a simpler method.
+
+## Example
+If you want to see what a production quality example looks like, my friend and colleague Jake Luby [made one](https://github.com/aceluby/vanilla-kotlin).
+It uses some of our favorite libraries using patterns illustrated earlier in this post.

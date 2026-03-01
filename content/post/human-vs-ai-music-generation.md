@@ -1,6 +1,6 @@
 ---
-title: "Music Generation Services"
-description: "Musiversal is awesome and AI music still sucks"
+title: "My Own Wrecking Crew"
+description: "Making music with remote session musicians is joy"
 date: 2025-08-10
 draft: true
 unlisted: true
@@ -9,6 +9,27 @@ tags:
   - music
   - musiversal
 ---
+
+scratch notes:
+why i like musiversal best:
+- being in the room is critical
+- everyone is good
+- it's a good value
+- i get the sense that the owners care about making good music
+- scheduled sessions solves the timing problem too
+- sometimes some musicians are booked out for up to a few weeks so you have to plan ahead
+notes:
+- other services have excellent people too
+- you have to find them
+- you're not in control of the schedule
+- the feedback loop is very limited
+  - no in the room quick decisions
+  - i feel uncomfortable giving feedback after a gig at the rates we're paying
+  - note another different aspect to home recording is that you can take your time, as opposed to a studio where time is very expensive so you finish it now whether it's completely done. this is both good and bad because it forces you to make decisions and finish things, but doesn't allow you to try ideas that might come along later when you're not thinking about it.
+
+  - #TODO first
+- publish one or two more songs
+
 
 This post is about two things related to making music:
 1. Making music with remote professionals is amazing and getting even better.
@@ -26,7 +47,7 @@ Enter home studios! Here's what you need:
 - The skills to edit the tracks
 - The skills to mix the tracks
 
-If you want to the recording to be good, then everything's gotta be good. Good room acoustics, good equipment, good skills.
+If you want the recording to be good, then everything's gotta be good. Good room acoustics, good equipment, good skills.
 
 Good musicians too.
 
